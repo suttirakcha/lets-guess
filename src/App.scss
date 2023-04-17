@@ -191,7 +191,6 @@ ol{font-size:17px}
   flex-wrap:wrap;
   width:75%;
   margin:auto;
-  gap:20px;
 }
 
 .block-space{
@@ -506,9 +505,10 @@ input:checked + .switch-toggle:before {
 .card{
   border:1px solid #bfbfbf;
   background-color:white;
-  flex:31.33% 1;
-  max-width:31.33%;
+  flex:33.33% 1;
+  max-width:calc(33.33% - 20px);
   padding:3% 10px;
+  margin:10px;
   border-radius:12px;
   box-sizing:border-box;
   cursor:pointer;
@@ -583,8 +583,8 @@ input:checked + .switch-toggle:before {
 
 @media (max-width:1023px){
   .card{
-    flex:2 1;
-    min-width:46.67%;
+    flex:0 0 50%;
+    min-width:calc(50% - 20px);
   }
   .sec-right{
     display:block;
