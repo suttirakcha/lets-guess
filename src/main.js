@@ -446,6 +446,7 @@ export default function MainPage(){
 
             <h2 className="list-titles">Films</h2>
             <div className="select-lists">
+              <CardCate category="Disney Films (2010s)" link="/disney-films-2010s"/>
               <CardCate category="Fast and Furious Characters" link="/fast-and-furious-characters"/>
               <CardCate category="Film Genres" link="/film-genres"/>
               <CardCate category="Harry Potter Characters" link="/harry-potter-characters"/>
