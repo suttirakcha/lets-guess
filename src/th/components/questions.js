@@ -16,7 +16,6 @@ export default function QuestionsTh(props){
   let textAnswerHidden = localStorage.getItem("text-hidden-th");
 
   const [word, setWord] = useState(randomWord);
-  const [pause, setPause] = useState(false);
 
   const randomizeWords = () => {
     var [...countriesWord] = words;
@@ -49,26 +48,24 @@ export default function QuestionsTh(props){
     let timesUpBg = document.getElementById("times-up-bg");
 
     setInterval(function(){  
-      if (!pause) {
-        count -= 0.5;
-        localStorage.setItem("timer-continue", count);
-        if (count < 20){
-          timer.style.color = "#E63737";
-          timer.style.transition = "color 20s";
-        }
-        if (count < 0) {
-          clearInterval(countTime);
-          timesUp.style.animation = "openModal 400ms forwards";
-          timesUpBg.style.visibility = "visible";
+      count -= 0.5;
+      localStorage.setItem("timer-continue", count);
+      if (count < 20){
+        timer.style.color = "#E63737";
+        timer.style.transition = "color 20s";
+      }
+      if (count < 0) {
+        clearInterval(countTime);
+        timesUp.style.animation = "openModal 400ms forwards";
+        timesUpBg.style.visibility = "visible";
 
-          const moveTimesUp = () => {
-            timesUp.style.animation = "closeModal 400ms forwards";
-            setTimeout(() => timesUp.style.display = "none", 500);
-            showScoreResult();
-          }
-          setTimeout(moveTimesUp, 2000)
-          return;
+        const moveTimesUp = () => {
+          timesUp.style.animation = "closeModal 400ms forwards";
+          setTimeout(() => timesUp.style.display = "none", 500);
+          showScoreResult();
         }
+        setTimeout(moveTimesUp, 2000)
+        return;
       }
       timer.innerHTML = count;
     }, 1000)
@@ -118,8 +115,6 @@ export default function QuestionsTh(props){
   }
 
   const clickToGoBack = () => {
-    setPause(true);
-
     let modal = document.getElementById("want-to-quit-modal");
     let mask = document.getElementById("want-to-quit");
 
@@ -137,8 +132,6 @@ export default function QuestionsTh(props){
     mask.style.animation = "mainAnim 400ms forwards";
 
     setTimeout(() => modal.style.display = "none", 400)
-
-    setPause(false);
   }
 
   const answerYes = () => {
