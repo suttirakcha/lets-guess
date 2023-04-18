@@ -451,6 +451,11 @@ export default function MainPage(){
               <CardCate category="Harry Potter Characters" link="/harry-potter-characters"/>
             </div>
 
+            <h2 className="list-titles">Music</h2>
+            <div className="select-lists">
+              <CardCate category="Blackpink in Your Area" link="/blackpink-in-your-area"/>
+            </div>
+
             <h2 className="list-titles">Games</h2>
             <div className="select-lists">
               <CardCate category="Characters in Mario Games" link="/characters-in-mario-games"/>
