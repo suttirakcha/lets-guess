@@ -512,7 +512,7 @@ export default function MainPage(){
           </div>
           <div className="setting-sec">
             <h2>Answer-hidden Text</h2>
-            <input type="text" id="hidden-text" placeholder="The answer is hidden" onKeyUp={checkHiddenText} onChange={typeHiddenText} autoComplete="off"/>
+            <input type="text" id="hidden-text" className="text-input" placeholder="The answer is hidden" onKeyUp={checkHiddenText} onChange={typeHiddenText} autoComplete="off"/>
             <p>This text will be shown when the hinter presses "Hide answer" button, the default text is "The answer is hidden".</p>
             <p id="warning-hidden-text"></p>
           </div>
