@@ -502,7 +502,7 @@ export default function MainPage(){
             <p>The timer will be displayed at the top of the screen when playing the game.</p>
           </div>
           <div className="setting-sec">
-            <h2>Screen Appearance</h2>
+            <h2>Screen appearance</h2>
             <button className="appear light-btn" onClick={lightMode}>
             <FontAwesomeIcon icon={faSun} style={{marginRight:"8px"}}/> Light Mode
             </button>
@@ -511,7 +511,7 @@ export default function MainPage(){
             </button>
           </div>
           <div className="setting-sec">
-            <h2>Answer-hidden Text</h2>
+            <h2>Hidden answer text</h2>
             <input type="text" id="hidden-text" className="text-input" placeholder="The answer is hidden" onKeyUp={checkHiddenText} onChange={typeHiddenText} autoComplete="off"/>
             <p>This text will be shown when the hinter presses "Hide answer" button, the default text is "The answer is hidden".</p>
             <p id="warning-hidden-text"></p>
