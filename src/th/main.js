@@ -311,7 +311,7 @@ export default function MainPage(){
         warning.innerHTML = "*โปรดหลีกเลี่ยงการใช้คำที่ไม่สุภาพ หรือคำที่อ่อนไหว";
       }
       hiddenText.classList.add("warning");
-      localStorage.removeItem("text-hidden-th");
+      localStorage.setItem("text-hidden-th", "");
       warning.style.opacity = "1";
       warning.style.visibility = "visible";
       warning.style.transform = "translateY(0px)";

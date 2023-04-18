@@ -314,7 +314,7 @@ export default function MainPage(){
         warning.innerHTML = "*Please avoid using impolite or sensitive words.";
       }
       hiddenText.classList.add("warning");
-      localStorage.removeItem("text-hidden");
+      localStorage.setItem("text-hidden", "");
       warning.style.opacity = "1";
       warning.style.visibility = "visible";
       warning.style.transform = "translateY(0px)";
