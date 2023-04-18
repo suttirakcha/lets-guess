@@ -43,14 +43,12 @@ export default function MainPage(){
     let footApp = document.querySelector(".app-foot");
     let goBackBtn = document.getElementById("goBackBtn");
     let settingsBtn = document.getElementById("settingsBtn");
-    let searchBtn = document.getElementById("searchBtn");
     let preventBlock = document.getElementById("prevent");
     headApp.style.animation = "headAnim 900ms forwards";
     mainApp.style.animation = "mainAnim 900ms forwards";
     footApp.style.animation = "footAnim 900ms forwards";
     goBackBtn.style.animation = "mainAnim 900ms forwards";
     settingsBtn.style.animation = "mainAnim 900ms forwards";
-    searchBtn.style.animation = "mainAnim 900ms forwards";
     preventBlock.style.visibility = "visible";
     setTimeout(() => {
       preventBlock.style.visibility = "hidden";
@@ -75,7 +73,6 @@ export default function MainPage(){
     let selectLists = document.getElementById("select-list");
     let goBackBtn = document.getElementById("goBackBtn");
     let settingsBtn = document.getElementById("settingsBtn");
-    let searchBtn = document.getElementById("searchBtn");
     let changeLangBtn = document.getElementById("changeLangBtn");
     let preventBlock = document.getElementById("prevent");
     headApp.style.animation = "headAnim 900ms forwards";
@@ -105,7 +102,6 @@ export default function MainPage(){
       footApp.style.display = "none";
       goBackBtn.style.animation = "mainAnimOut 900ms forwards";
       settingsBtn.style.animation = "mainAnimOut 900ms forwards";
-      searchBtn.style.animation = "mainAnimOut 900ms forwards";
       heading.innerHTML = "Select category";
       howToPlay.style.display = "none";
       selectLists.style.display = "block";
@@ -122,14 +118,12 @@ export default function MainPage(){
     let selectLists = document.getElementById("select-list");
     let loadingTxt = document.getElementById("loading");
     let settingsBtn = document.getElementById("settingsBtn");
-    let searchBtn = document.getElementById("searchBtn");
     let preventBlock = document.getElementById("prevent");
     headApp.style.animation = "headAnim 900ms forwards";
     mainApp.style.animation = "mainAnim 900ms forwards";
     footApp.style.animation = "footAnim 900ms forwards";
     goBackBtn.style.animation = "mainAnim 900ms forwards";
     settingsBtn.style.animation = "mainAnim 900ms forwards";
-    searchBtn.style.animation = "mainAnim 900ms forwards";
     preventBlock.style.visibility = "visible";
     setTimeout(() => {
       preventBlock.style.visibility = "hidden";
@@ -418,9 +412,6 @@ export default function MainPage(){
       </button>
       <button id="settingsBtn" className="btn small-btn" onClick={openSettings}>
         <FontAwesomeIcon icon={faGear}/>
-      </button>
-      <button id="searchBtn" className="btn small-btn" onClick={openSettings}>
-        <FontAwesomeIcon icon={faSearch}/>
       </button>
         <header className="app-head">
           <h1 id="heading">Let's Guess</h1>
