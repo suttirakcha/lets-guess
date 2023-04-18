@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck,faChevronLeft,faXmark,faGear,faClose, faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
+import { faCheck,faChevronLeft,faXmark,faGear,faClose, faSun, faMoon,faSearch } from "@fortawesome/free-solid-svg-icons";
 
 export default function MainPage(){
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
@@ -396,6 +396,7 @@ export default function MainPage(){
     document.body.style.transition = "all 300ms";
     localStorage.setItem('dark-mode', 'false');
   }
+
   return (
     <div className="App">
       <div id="prevent" className="invisible-block"></div>
@@ -404,7 +405,7 @@ export default function MainPage(){
         <FontAwesomeIcon icon={faChevronLeft} className="back-arrow"/>
         กลับ
       </button>
-      <button id="settingsBtn" className="btn" onClick={openSettings}>
+      <button id="settingsBtn" className="btn small-btn" onClick={openSettings}>
         <FontAwesomeIcon icon={faGear}/>
       </button>
         <header className="app-head">
@@ -498,7 +499,7 @@ export default function MainPage(){
           </div>
           <div className="setting-sec">
             <h2>ข้อความเมื่อซ่อนคำตอบ</h2>
-            <input type="text" id="hidden-text" placeholder="คำตอบถูกซ่อนไว้" onKeyUp={checkHiddenText} onChange={typeHiddenTextTh} autoComplete="off"/>
+            <input type="text" id="hidden-text" className="text-input" placeholder="คำตอบถูกซ่อนไว้" onKeyUp={checkHiddenText} onChange={typeHiddenTextTh} autoComplete="off"/>
             <p>ข้อความจะถูกแสดงเมื่อผู้บอกใบ้กดปุ่ม "ซ่อนคำตอบ"<br/> ข้อความเริ่มต้นคือ "คำตอบถูกซ่อนไว้"</p>
             <p id="warning-hidden-text"></p>
           </div>

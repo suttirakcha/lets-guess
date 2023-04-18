@@ -129,16 +129,19 @@ ol{font-size:17px}
   padding:10px 30px;
 }
 
-#settingsBtn {
+.small-btn {
   position:absolute;
-  top:30px;
-  right:40px;
   padding:18px;
   border-radius:99px;
   display:flex;
   align-items:center;
   visibility:hidden;
   opacity:0;
+}
+
+#settingsBtn {
+  top:30px;
+  right:40px;
 }
 
 #loading{display:none}
@@ -325,8 +328,7 @@ ol{font-size:17px}
   h1{margin-top:30px}
 }
 
-#hidden-text {
-  width:100%;
+.text-input {
   padding:10px 16px;
   border-radius:99px;
   border:2px solid #C9C9C9;
@@ -344,6 +346,10 @@ ol{font-size:17px}
       box-shadow:0 0 5px #ff000080;
     }
   }
+}
+
+#hidden-text {
+  width:100%;
 }
 
 #warning-hidden-text {
@@ -836,7 +842,7 @@ input:checked + .switch-toggle:before {
     transition:all 300ms;
   }
 
-  #hidden-text {
+  .text-input {
     background-color:#202020;
     color:white;
     border:2px solid #606060;
