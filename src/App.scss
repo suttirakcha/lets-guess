@@ -146,7 +146,11 @@ ol{font-size:17px}
 }
 
 #loading{display:none}
-#words{font-size:5em}
+#words{
+  font-size:5em;
+  line-height:90px;
+  padding:0 40px;
+}
 .App ol li{text-align:left}
 #how-to-play {margin-top:60px}
 
