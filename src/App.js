@@ -15,7 +15,7 @@ import Sauces from "./categories/sauces";
 import Marketing from "./categories/marketing-words";
 import Animals from "./categories/animals";
 import MobileGames from "./categories/mobile-games";
-import BlackPink from "./categories/kpop-bands";
+import BlackPink from "./categories/blackpink";
 
 import MainPageTh from "./th/main"
 import CountriesTh from "./th/categories/countries";
@@ -50,7 +50,7 @@ export default function App(){
         <Route path="/marketing-words" element={<Marketing />} />
         <Route path="/animals" element={<Animals />} />
         <Route path="/mobile-games" element={<MobileGames />} />
-        <Route path="/blackpink-in-your-area" element={<BlackPink />} />
+        <Route path="/blackpink" element={<BlackPink />} />
 
         {/* Thai */}
         <Route path="/th" element={<MainPageTh />} />

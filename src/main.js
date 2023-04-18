@@ -453,7 +453,7 @@ export default function MainPage(){
 
             <h2 className="list-titles">Music</h2>
             <div className="select-lists">
-              <CardCate category="Blackpink in Your Area" link="/blackpink-in-your-area"/>
+              <CardCate category="Blackpink" link="/blackpink"/>
             </div>
 
             <h2 className="list-titles">Games</h2>
