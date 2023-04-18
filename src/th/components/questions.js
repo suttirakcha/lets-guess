@@ -48,7 +48,7 @@ export default function QuestionsTh(props){
     let timesUpBg = document.getElementById("times-up-bg");
 
     setInterval(function(){  
-      count -= 0.5;
+      count -= 1;
       localStorage.setItem("timer-continue", count);
       if (count < 20){
         timer.style.color = "#E63737";
