@@ -2,12 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck,faXmark,faChevronLeft,faGear,faClose, faSun, faMoon, faSearch } from "@fortawesome/free-solid-svg-icons";
-import Eating from "./components/data/Eating.json";
-import Geography from "./components/data/Geography.json";
-import Films from "./components/data/Films.json";
-import Music from "./components/data/Music.json";
-import Games from "./components/data/Games.json";
-import Other from "./components/data/Other.json";
 
 export default function MainPage(){
   if (localStorage.getItem("lang") === "th"){
@@ -408,6 +402,88 @@ export default function MainPage(){
     document.body.style.transition = "all 300ms";
     localStorage.setItem('dark-mode', 'false');
   }
+
+  const eating = [
+    {
+      category: "Desserts",
+      link: "/desserts"
+    },
+    {
+      category: "Drinks",
+      link: "/drinks"
+    },
+    {
+      category: "Foods",
+      link: "/foods"
+    },
+    {
+      category: "Sauces",
+      link: "/sauces"
+    }
+  ]
+
+  const geography = [
+    {
+      category: "Capital Cities",
+      link: "/capital-cities"
+    },
+    {
+      category: "Countries in the World",
+      link: "/countries-in-the-world"
+    },
+    {
+      category: "Landmarks",
+      link: "/landmarks"
+    }
+  ]
+
+  const films = [
+    {
+      category: "Disney Films (2010s)",
+      link: "/disney-films-2010s"
+    },
+    {
+      category: "Fast and Furious Characters",
+      link: "/fast-and-furious-characters"
+    },
+    {
+      category: "Film Genres",
+      link: "/film-genres"
+    },
+    {
+      category: "Harry Potter Characters",
+      link: "/harry-potter-characters"
+    }
+  ]
+
+  const music = [
+    {
+      category: "Blackpink",
+      link: "/blackpink"
+    }
+  ]
+
+  const games = [
+    {
+      category: "Characters in Mario Games",
+      link: "/characters-in-mario-games"
+    },
+    {
+      category: "Mobile Games",
+      link: "/mobile-games"
+    }
+  ]
+
+  const other = [
+    {
+      category: "Animals",
+      link: "/animals"
+    },
+    {
+      category: "Marketing Words",
+      link: "/marketing-words"
+    }
+  ]
   return (
     <div className="App">
       <div id="prevent" className="invisible-block"></div>
@@ -435,55 +511,55 @@ export default function MainPage(){
             </ol>
           </div>
           <div id="select-list">
-            <h2 className={`list-titles ${Eating.length > 0 ? "" : "no-cate"}`}>Eating</h2>
+            <h2 className={`list-titles ${eating.length > 0 ? "" : "no-cate"}`}>Eating</h2>
             <div className="select-lists">
               {
-                Eating.map((cate) => (
+                eating.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className={`list-titles ${Geography.length > 0 ? "" : "no-cate"}`}>Geography</h2>
+            <h2 className={`list-titles ${geography.length > 0 ? "" : "no-cate"}`}>Geography</h2>
             <div className="select-lists">
               {
-                Geography.map((cate) => (
+                geography.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className={`list-titles ${Films.length > 0 ? "" : "no-cate"}`}>Films</h2>
+            <h2 className={`list-titles ${films.length > 0 ? "" : "no-cate"}`}>Films</h2>
             <div className="select-lists">
               {
-                Films.map((cate) => (
+                films.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className={`list-titles ${Music.length > 0 ? "" : "no-cate"}`}>Music</h2>
+            <h2 className={`list-titles ${music.length > 0 ? "" : "no-cate"}`}>Music</h2>
             <div className="select-lists">
               {
-                Music.map((cate) => (
+                music.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className={`list-titles ${Games.length > 0 ? "" : "no-cate"}`}>Games</h2>
+            <h2 className={`list-titles ${games.length > 0 ? "" : "no-cate"}`}>Games</h2>
             <div className="select-lists">
               {
-                Games.map((cate) => (
+                games.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className={`list-titles ${Other.length > 0 ? "" : "no-cate"}`}>Other</h2>
+            <h2 className={`list-titles ${other.length > 0 ? "" : "no-cate"}`}>Other</h2>
             <div className="select-lists">
               {
-                Other.map((cate) => (
+                other.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }

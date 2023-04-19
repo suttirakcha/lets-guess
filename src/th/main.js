@@ -2,11 +2,6 @@ import React, { useState, useEffect } from "react";
 import "../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck,faChevronLeft,faXmark,faGear,faClose,faSun,faMoon } from "@fortawesome/free-solid-svg-icons";
-import EatingTh from "./components/data/EatingTh.json";
-import GeographyTh from "./components/data/GeographyTh.json";
-import MusicTh from "./components/data/MusicTh.json";
-import GamesTh from "./components/data/GamesTh.json";
-import OtherTh from "./components/data/OtherTh.json";
 
 export default function MainPage(){
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
@@ -402,6 +397,69 @@ export default function MainPage(){
     localStorage.setItem('dark-mode', 'false');
   }
 
+  const eatingTh = [
+    {
+      category: "เครื่องดื่ม",
+      link: "/th/drinks"
+    },
+    {
+      category: "ขนมหวาน",
+      link: "/th/desserts"
+    },
+    {
+      category: "ขนมไทย",
+      link: "/th/thai-desserts"
+    },
+    {
+      category: "อาหาร",
+      link: "/th/foods"
+    }
+  ]
+
+  const geographyTh = [
+    {
+      category: "จังหวัดในประเทศไทย",
+      link: "/th/provinces-in-thailand"
+    },
+    {
+      category: "ประเทศในโลก",
+      link: "/th/countries-in-the-world"
+    },
+    {
+      category: "สถานที่ท่องเที่ยวในกรุงเทพ",
+      link: "/th/places-in-bangkok"
+    }
+  ]
+
+  const musicTh = [
+    {
+      category: "เพลงวง Tattoo Colour",
+      link: "/th/tattoo-colour"
+    },
+    {
+      "category": "เครื่องดนตรี",
+      "link": "/th/musical-instruments"
+    },
+    {
+      "category": "นักร้องไทย",
+      "link": "/th/thai-singers"
+    }
+  ]
+
+  const gamesTh = [
+    {
+      category: "ตัวละครในเกม ROV",
+      link: "/th/characters-in-rov"
+    }
+  ]
+
+  const otherTh = [
+    {
+      category: "สัตว์ต่างๆ",
+      link: "/th/animals"
+    }
+  ]
+
   return (
     <div className="App">
       <div id="prevent" className="invisible-block"></div>
@@ -429,46 +487,46 @@ export default function MainPage(){
             </ol>
           </div>
           <div id="select-list">
-            <h2 className={`list-titles ${EatingTh.length > 0 ? "" : "no-cate"}`}>อาหาร</h2>
+            <h2 className={`list-titles ${eatingTh.length > 0 ? "" : "no-cate"}`}>อาหาร</h2>
             <div className="select-lists">
               {
-                EatingTh.map((cate) => (
+                eatingTh.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className={`list-titles ${GeographyTh.length > 0 ? "" : "no-cate"}`}>ภูมิศาสตร์</h2>
+            <h2 className={`list-titles ${geographyTh.length > 0 ? "" : "no-cate"}`}>ภูมิศาสตร์</h2>
             <div className="select-lists">
               {
-                GeographyTh.map((cate) => (
+                geographyTh.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className={`list-titles ${MusicTh.length > 0 ? "" : "no-cate"}`}>ดนตรี</h2>
+            <h2 className={`list-titles ${musicTh.length > 0 ? "" : "no-cate"}`}>ดนตรี</h2>
             <div className="select-lists">
               {
-                MusicTh.map((cate) => (
+                musicTh.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className={`list-titles ${GamesTh.length > 0 ? "" : "no-cate"}`}>เกม</h2>
+            <h2 className={`list-titles ${gamesTh.length > 0 ? "" : "no-cate"}`}>เกม</h2>
             <div className="select-lists">
               {
-                GamesTh.map((cate) => (
+                gamesTh.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className={`list-titles ${OtherTh.length > 0 ? "" : "no-cate"}`}>อื่นๆ</h2>
+            <h2 className={`list-titles ${otherTh.length > 0 ? "" : "no-cate"}`}>อื่นๆ</h2>
             <div className="select-lists">
               {
-                OtherTh.map((cate) => (
+                otherTh.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
