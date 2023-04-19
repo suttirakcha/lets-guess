@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faCheck,faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export default function QuestionsTh(props){
   if (localStorage.getItem("dark-mode") === 'true'){
@@ -155,8 +155,7 @@ export default function QuestionsTh(props){
     setTimeout(() => {
       window.location.replace("/th");
       localStorage.setItem("timer-continue", countStart);
-    }
-    , 3000)
+    }, 3000)
   }
 
   const showScoreResult = () => {
@@ -211,9 +210,7 @@ export default function QuestionsTh(props){
     countTime();
   }
 
-  useEffect(()=> {
-    loadPage()
-  },[])
+  useEffect(()=> {loadPage()},[])
 
   return (
     <div className="App">

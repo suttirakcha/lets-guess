@@ -16,7 +16,6 @@ export default function Questions(props){
   let textAnswerHidden = localStorage.getItem("text-hidden");
 
   const [word, setWord] = useState(randomWord);
-  const [pause, setPause] = useState(false);
 
   const randomizeWords = () => {
     var [...countriesWord] = words;
@@ -50,26 +49,24 @@ export default function Questions(props){
     let timesUpBg = document.getElementById("times-up-bg");
 
     setInterval(function(){ 
-      if (!pause) {
-        count -= 1;
-        localStorage.setItem("timer-continue", count);
-        if (count < 20){
-          timer.style.color = "#E63737";
-          timer.style.transition = "color 20s";
-        }
-        if (count < 0) {
-          clearInterval(countTime);
-          timesUp.style.animation = "openModal 400ms forwards";
-          timesUpBg.style.visibility = "visible";
+      count -= 1;
+      localStorage.setItem("timer-continue", count);
+      if (count < 20){
+        timer.style.color = "#E63737";
+        timer.style.transition = "color 20s";
+      }
+      if (count < 0) {
+        clearInterval(countTime);
+        timesUp.style.animation = "openModal 400ms forwards";
+        timesUpBg.style.visibility = "visible";
 
-          const moveTimesUp = () => {
-            timesUp.style.animation = "closeModal 400ms forwards";
-            setTimeout(() => timesUp.style.display = "none", 500);
-            showScoreResult();
-          }
-          setTimeout(moveTimesUp, 2000)
-          return;
+        const moveTimesUp = () => {
+          timesUp.style.animation = "closeModal 400ms forwards";
+          setTimeout(() => timesUp.style.display = "none", 500);
+          showScoreResult();
         }
+        setTimeout(moveTimesUp, 2000)
+        return;
       }
       timer.innerHTML = count;
     }, 1000)
@@ -120,7 +117,6 @@ export default function Questions(props){
   }
 
   const clickToGoBack = () => {
-    setPause(true);
     let modal = document.getElementById("want-to-quit-modal");
     let mask = document.getElementById("want-to-quit");
     modal.style.display = "block";
@@ -137,7 +133,6 @@ export default function Questions(props){
     mask.style.animation = "mainAnim 400ms forwards";
 
     setTimeout(() => modal.style.display = "none", 400)
-    setPause(false);
   }
 
   const answerYes = () => {
@@ -161,8 +156,7 @@ export default function Questions(props){
     setTimeout(() => {
       window.location.replace("/");
       localStorage.setItem("timer-continue", countStart);
-    }
-    , 3000)
+    }, 3000)
   }
 
   const showScoreResult = () => {
@@ -216,9 +210,7 @@ export default function Questions(props){
     countTime();
   }
 
-  useEffect(()=> {
-    loadPage()
-  },[])
+  useEffect(()=> {loadPage()},[])
 
   return (
     <div className="App">

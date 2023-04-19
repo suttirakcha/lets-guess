@@ -575,6 +575,8 @@ input:checked + .switch-toggle:before {
   animation:mainAnimOut 1.5s forwards
 }
 
+.no-cate{display:none}
+
 .appear {
   border:none;
   padding:10px 20px;

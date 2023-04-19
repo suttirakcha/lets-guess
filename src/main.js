@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck,faXmark,faChevronLeft,faGear,faClose, faSun, faMoon, faSearch } from "@fortawesome/free-solid-svg-icons";
+import Eating from "./components/data/Eating.json";
+import Geography from "./components/data/Geography.json";
+import Films from "./components/data/Films.json";
+import Music from "./components/data/Music.json";
+import Games from "./components/data/Games.json";
+import Other from "./components/data/Other.json";
 
 export default function MainPage(){
   if (localStorage.getItem("lang") === "th"){
@@ -429,44 +435,58 @@ export default function MainPage(){
             </ol>
           </div>
           <div id="select-list">
-            <h2 className="list-titles">Eating</h2>
+            <h2 className={`list-titles ${Eating.length > 0 ? "" : "no-cate"}`}>Eating</h2>
             <div className="select-lists">
-              <CardCate category="Desserts" link="/desserts"/>
-              <CardCate category="Drinks" link="/drinks"/>
-              <CardCate category="Foods" link="/foods"/>
-              <CardCate category="Sauces" link="/sauces"/>
+              {
+                Eating.map((cate) => (
+                  <CardCate category={cate.category} link={cate.link}/>
+                ))
+              }
             </div>
 
-            <h2 className="list-titles">Geography</h2>
+            <h2 className={`list-titles ${Geography.length > 0 ? "" : "no-cate"}`}>Geography</h2>
             <div className="select-lists">
-              <CardCate category="Capital Cities" link="/capital-cities"/>
-              <CardCate category="Countries in the World" link="/countries-in-the-world"/>
-              <CardCate category="Landmarks" link="/landmarks"/>
+              {
+                Geography.map((cate) => (
+                  <CardCate category={cate.category} link={cate.link}/>
+                ))
+              }
             </div>
 
-            <h2 className="list-titles">Films</h2>
+            <h2 className={`list-titles ${Films.length > 0 ? "" : "no-cate"}`}>Films</h2>
             <div className="select-lists">
-              <CardCate category="Disney Films (2010s)" link="/disney-films-2010s"/>
-              <CardCate category="Fast and Furious Characters" link="/fast-and-furious-characters"/>
-              <CardCate category="Film Genres" link="/film-genres"/>
-              <CardCate category="Harry Potter Characters" link="/harry-potter-characters"/>
+              {
+                Films.map((cate) => (
+                  <CardCate category={cate.category} link={cate.link}/>
+                ))
+              }
             </div>
 
-            <h2 className="list-titles">Music</h2>
+            <h2 className={`list-titles ${Music.length > 0 ? "" : "no-cate"}`}>Music</h2>
             <div className="select-lists">
-              <CardCate category="Blackpink" link="/blackpink"/>
+              {
+                Music.map((cate) => (
+                  <CardCate category={cate.category} link={cate.link}/>
+                ))
+              }
             </div>
 
-            <h2 className="list-titles">Games</h2>
+            <h2 className={`list-titles ${Games.length > 0 ? "" : "no-cate"}`}>Games</h2>
             <div className="select-lists">
-              <CardCate category="Characters in Mario Games" link="/characters-in-mario-games"/>
-              <CardCate category="Mobile Games" link="/mobile-games"/>
+              {
+                Games.map((cate) => (
+                  <CardCate category={cate.category} link={cate.link}/>
+                ))
+              }
             </div>
 
-            <h2 className="list-titles">Other</h2>
+            <h2 className={`list-titles ${Other.length > 0 ? "" : "no-cate"}`}>Other</h2>
             <div className="select-lists">
-              <CardCate category="Animals" link="/animals"/>
-              <CardCate category="Marketing Words" link="/marketing-words"/>
+              {
+                Other.map((cate) => (
+                  <CardCate category={cate.category} link={cate.link}/>
+                ))
+              }
             </div>
           </div>
           <div id="loading">
