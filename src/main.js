@@ -403,87 +403,85 @@ export default function MainPage(){
     localStorage.setItem('dark-mode', 'false');
   }
 
-  const eating = [
-    {
-      category: "Desserts",
-      link: "/desserts"
-    },
-    {
-      category: "Drinks",
-      link: "/drinks"
-    },
-    {
-      category: "Foods",
-      link: "/foods"
-    },
-    {
-      category: "Sauces",
-      link: "/sauces"
-    }
-  ]
+  const cateLists = {
+    eating: [
+      {
+        category: "Desserts",
+        link: "/desserts"
+      },
+      {
+        category: "Drinks",
+        link: "/drinks"
+      },
+      {
+        category: "Foods",
+        link: "/foods"
+      },
+      {
+        category: "Sauces",
+        link: "/sauces"
+      }
+    ],
+    geography: [
+      {
+        category: "Capital Cities",
+        link: "/capital-cities"
+      },
+      {
+        category: "Countries in the World",
+        link: "/countries-in-the-world"
+      },
+      {
+        category: "Landmarks",
+        link: "/landmarks"
+      }
+    ],
+    films: [
+      {
+        category: "Disney Films (2010s)",
+        link: "/disney-films-2010s"
+      },
+      {
+        category: "Fast and Furious Characters",
+        link: "/fast-and-furious-characters"
+      },
+      {
+        category: "Film Genres",
+        link: "/film-genres"
+      },
+      {
+        category: "Harry Potter Characters",
+        link: "/harry-potter-characters"
+      }
+    ],
+    music: [
+      {
+        category: "Blackpink",
+        link: "/blackpink"
+      }
+    ],
+    games: [
+      {
+        category: "Characters in Mario Games",
+        link: "/characters-in-mario-games"
+      },
+      {
+        category: "Mobile Games",
+        link: "/mobile-games"
+      }
+    ],
+    other: [
+      {
+        category: "Animals",
+        link: "/animals"
+      },
+      {
+        category: "Marketing Words",
+        link: "/marketing-words"
+      }
+    ]
+  }
 
-  const geography = [
-    {
-      category: "Capital Cities",
-      link: "/capital-cities"
-    },
-    {
-      category: "Countries in the World",
-      link: "/countries-in-the-world"
-    },
-    {
-      category: "Landmarks",
-      link: "/landmarks"
-    }
-  ]
-
-  const films = [
-    {
-      category: "Disney Films (2010s)",
-      link: "/disney-films-2010s"
-    },
-    {
-      category: "Fast and Furious Characters",
-      link: "/fast-and-furious-characters"
-    },
-    {
-      category: "Film Genres",
-      link: "/film-genres"
-    },
-    {
-      category: "Harry Potter Characters",
-      link: "/harry-potter-characters"
-    }
-  ]
-
-  const music = [
-    {
-      category: "Blackpink",
-      link: "/blackpink"
-    }
-  ]
-
-  const games = [
-    {
-      category: "Characters in Mario Games",
-      link: "/characters-in-mario-games"
-    },
-    {
-      category: "Mobile Games",
-      link: "/mobile-games"
-    }
-  ]
-
-  const other = [
-    {
-      category: "Animals",
-      link: "/animals"
-    },
-    {
-      category: "Marketing Words",
-      link: "/marketing-words"
-    }
-  ]
   return (
     <div className="App">
       <div id="prevent" className="invisible-block"></div>
@@ -511,55 +509,55 @@ export default function MainPage(){
             </ol>
           </div>
           <div id="select-list">
-            <h2 className={`list-titles ${eating.length > 0 ? "" : "no-cate"}`}>Eating</h2>
+            <h2 className={`list-titles ${cateLists.eating.length > 0 ? "" : "no-cate"}`}>Eating</h2>
             <div className="select-lists">
               {
-                eating.map((cate) => (
+                cateLists.eating.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className={`list-titles ${geography.length > 0 ? "" : "no-cate"}`}>Geography</h2>
+            <h2 className={`list-titles ${cateLists.geography.length > 0 ? "" : "no-cate"}`}>Geography</h2>
             <div className="select-lists">
               {
-                geography.map((cate) => (
+                cateLists.geography.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className={`list-titles ${films.length > 0 ? "" : "no-cate"}`}>Films</h2>
+            <h2 className={`list-titles ${cateLists.films.length > 0 ? "" : "no-cate"}`}>Films</h2>
             <div className="select-lists">
               {
-                films.map((cate) => (
+                cateLists.films.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className={`list-titles ${music.length > 0 ? "" : "no-cate"}`}>Music</h2>
+            <h2 className={`list-titles ${cateLists.music.length > 0 ? "" : "no-cate"}`}>Music</h2>
             <div className="select-lists">
               {
-                music.map((cate) => (
+                cateLists.music.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className={`list-titles ${games.length > 0 ? "" : "no-cate"}`}>Games</h2>
+            <h2 className={`list-titles ${cateLists.games.length > 0 ? "" : "no-cate"}`}>Games</h2>
             <div className="select-lists">
               {
-                games.map((cate) => (
+                cateLists.games.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className={`list-titles ${other.length > 0 ? "" : "no-cate"}`}>Other</h2>
+            <h2 className={`list-titles ${cateLists.other.length > 0 ? "" : "no-cate"}`}>Other</h2>
             <div className="select-lists">
               {
-                other.map((cate) => (
+                cateLists.other.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }

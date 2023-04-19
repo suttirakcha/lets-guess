@@ -397,68 +397,66 @@ export default function MainPage(){
     localStorage.setItem('dark-mode', 'false');
   }
 
-  const eatingTh = [
-    {
-      category: "เครื่องดื่ม",
-      link: "/th/drinks"
-    },
-    {
-      category: "ขนมหวาน",
-      link: "/th/desserts"
-    },
-    {
-      category: "ขนมไทย",
-      link: "/th/thai-desserts"
-    },
-    {
-      category: "อาหาร",
-      link: "/th/foods"
-    }
-  ]
-
-  const geographyTh = [
-    {
-      category: "จังหวัดในประเทศไทย",
-      link: "/th/provinces-in-thailand"
-    },
-    {
-      category: "ประเทศในโลก",
-      link: "/th/countries-in-the-world"
-    },
-    {
-      category: "สถานที่ท่องเที่ยวในกรุงเทพ",
-      link: "/th/places-in-bangkok"
-    }
-  ]
-
-  const musicTh = [
-    {
-      category: "เพลงวง Tattoo Colour",
-      link: "/th/tattoo-colour"
-    },
-    {
-      "category": "เครื่องดนตรี",
-      "link": "/th/musical-instruments"
-    },
-    {
-      "category": "นักร้องไทย",
-      "link": "/th/thai-singers"
-    }
-  ]
-
-  const gamesTh = [
-    {
-      category: "ตัวละครในเกม ROV",
-      link: "/th/characters-in-rov"
-    }
-  ]
-
-  const otherTh = [
-    {
-      category: "สัตว์ต่างๆ",
-      link: "/th/animals"
-    }
-  ]
+  const cateLists = {
+    eatingTh: [
+      {
+        category: "เครื่องดื่ม",
+        link: "/th/drinks"
+      },
+      {
+        category: "ขนมหวาน",
+        link: "/th/desserts"
+      },
+      {
+        category: "ขนมไทย",
+        link: "/th/thai-desserts"
+      },
+      {
+        category: "อาหาร",
+        link: "/th/foods"
+      }
+    ],
+    geographyTh: [
+      {
+        category: "จังหวัดในประเทศไทย",
+        link: "/th/provinces-in-thailand"
+      },
+      {
+        category: "ประเทศในโลก",
+        link: "/th/countries-in-the-world"
+      },
+      {
+        category: "สถานที่ท่องเที่ยวในกรุงเทพ",
+        link: "/th/places-in-bangkok"
+      }
+    ],
+    musicTh: [
+      {
+        category: "เพลงวง Tattoo Colour",
+        link: "/th/tattoo-colour"
+      },
+      {
+        "category": "เครื่องดนตรี",
+        "link": "/th/musical-instruments"
+      },
+      {
+        "category": "นักร้องไทย",
+        "link": "/th/thai-singers"
+      }
+    ],
+    gamesTh: [
+      {
+        category: "ตัวละครในเกม ROV",
+        link: "/th/characters-in-rov"
+      }
+    ],
+    otherTh: [
+      {
+        category: "สัตว์ต่างๆ",
+        link: "/th/animals"
+      }
+    ]
+  }
 
   return (
     <div className="App">
@@ -487,46 +485,46 @@ export default function MainPage(){
             </ol>
           </div>
           <div id="select-list">
-            <h2 className={`list-titles ${eatingTh.length > 0 ? "" : "no-cate"}`}>อาหาร</h2>
+            <h2 className={`list-titles ${cateLists.eatingTh.length > 0 ? "" : "no-cate"}`}>อาหาร</h2>
             <div className="select-lists">
               {
-                eatingTh.map((cate) => (
+                cateLists.eatingTh.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className={`list-titles ${geographyTh.length > 0 ? "" : "no-cate"}`}>ภูมิศาสตร์</h2>
+            <h2 className={`list-titles ${cateLists.geographyTh.length > 0 ? "" : "no-cate"}`}>ภูมิศาสตร์</h2>
             <div className="select-lists">
               {
-                geographyTh.map((cate) => (
+                cateLists.geographyTh.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className={`list-titles ${musicTh.length > 0 ? "" : "no-cate"}`}>ดนตรี</h2>
+            <h2 className={`list-titles ${cateLists.musicTh.length > 0 ? "" : "no-cate"}`}>ดนตรี</h2>
             <div className="select-lists">
               {
-                musicTh.map((cate) => (
+                cateLists.musicTh.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className={`list-titles ${gamesTh.length > 0 ? "" : "no-cate"}`}>เกม</h2>
+            <h2 className={`list-titles ${cateLists.gamesTh.length > 0 ? "" : "no-cate"}`}>เกม</h2>
             <div className="select-lists">
               {
-                gamesTh.map((cate) => (
+                cateLists.gamesTh.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className={`list-titles ${otherTh.length > 0 ? "" : "no-cate"}`}>อื่นๆ</h2>
+            <h2 className={`list-titles ${cateLists.otherTh.length > 0 ? "" : "no-cate"}`}>อื่นๆ</h2>
             <div className="select-lists">
               {
-                otherTh.map((cate) => (
+                cateLists.otherTh.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
