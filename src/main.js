@@ -348,11 +348,11 @@ export default function MainPage(){
   useEffect(() => {
     loadGame();
     let hiddenText = document.getElementById("hidden-text");
-    if (localStorage.getItem("timer") === 60){
-      localStorage.setItem("timer-continue",60);
+    if (localStorage.getItem("timer") == 60){
+      setTimeout(()=>localStorage.setItem("timer-continue",60),1)
     }
-    if (localStorage.getItem("timer") === 120){
-      localStorage.setItem("timer-continue",120);
+    if (localStorage.getItem("timer") == 120){
+      setTimeout(()=>localStorage.setItem("timer-continue",120),1)
     }
     if(localStorage.length == 0 || localStorage.getItem("timer-continue") == 'null'){
       localStorage.setItem("timer",60);
