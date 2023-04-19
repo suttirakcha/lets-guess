@@ -143,10 +143,12 @@ export default function Questions(props){
   const answerYes = () => {
     let modal = document.getElementById("want-to-quit-modal");
     let mask = document.getElementById("want-to-quit");
+    let timesUpBg = document.getElementById("times-up-bg");
 
     modal.style.animation = "closeModal 400ms forwards";
     mask.style.backgroundColor = "#00000000";
     mask.style.transition = "all 400ms";
+    timesUpBg.style.visibility = "visible";
 
     document.querySelector(".App").style.animation = "mainAnim 2s forwards";
     if (document.body.classList.contains("dark-mode")){

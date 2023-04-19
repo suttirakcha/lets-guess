@@ -436,6 +436,7 @@ export default function MainPage(){
             <div className="select-lists">
               <CardCate category="จังหวัดในประเทศไทย" link="/th/provinces-in-thailand"/>
               <CardCate category="ประเทศในโลก" link="/th/countries-in-the-world"/>
+              <CardCate category="สถานที่ท่องเที่ยวในกรุงเทพ" link="/th/places-in-bangkok"/>
             </div>
 
             <h2 className="list-titles">ดนตรี</h2>

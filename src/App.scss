@@ -247,6 +247,11 @@ ol{font-size:17px}
   z-index:99;
 }
 
+#times-up-bg {
+  @include invisible-bg;
+  background-color:#00000000;
+}
+
 #settings-drawer-anim {
   position:absolute;
   min-width:480px;

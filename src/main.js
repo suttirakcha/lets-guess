@@ -421,8 +421,8 @@ export default function MainPage(){
           <div id="how-to-play">
             <h2>How to play:</h2>
             <ol>
-              <li>The hinter can only see the answer on the screen, and try to hint the answer so that the players can guess what the answer will be.</li>
-              <li>The hinter should hide the answer by clicking "Hide answer" button at the top right of the screen.</li>
+              <li>The hinter can only see the answer on the screen, and try to hint the answer so that the players can guess what the answer is.</li>
+              <li>The hinter can hide the answer by clicking "Hide answer" button at the top right of the screen.</li>
               <li>If the players guess correctly, press "<FontAwesomeIcon icon={faCheck}/>" button to go to the next word.</li>
               <li>If the players guess incorrectly or don't know the answer, press "<FontAwesomeIcon icon={faXmark}/>" button to skip the word.</li>
               <li>You have 60 or 120 seconds (depending on your setting) to hint the answers.</li>
