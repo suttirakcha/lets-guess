@@ -464,6 +464,10 @@ export default function MainPage(){
       {
         category: "Blackpink",
         link: "/blackpink"
+      },
+      {
+        category: "Musical Instruments",
+        link: "/musical-instruments"
       }
     ],
     games: [

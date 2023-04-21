@@ -17,6 +17,7 @@ import Animals from "./categories/animals";
 import MobileGames from "./categories/mobile-games";
 import BlackPink from "./categories/blackpink";
 import DisneyFilms2010s from "./categories/disney-films-2010s";
+import MusicalInstruments from "./categories/musical-instruments";
 
 import MainPageTh from "./th/main"
 import CountriesTh from "./th/categories/countries";
@@ -54,6 +55,7 @@ export default function App(){
         <Route path="/mobile-games" element={<MobileGames />} />
         <Route path="/blackpink" element={<BlackPink />} />
         <Route path="/disney-films-2010s" element={<DisneyFilms2010s />} />
+        <Route path="/musical-instruments" element={<MusicalInstruments />} />
 
         {/* Thai */}
         <Route path="/th" element={<MainPageTh />} />
