@@ -204,7 +204,7 @@ ol{font-size:17px}
 .block-space{
   position:absolute;
   left:4%;
-  top:20%;
+  top:18%;
   width:92%;
   height:70%;
   background-color:white;
@@ -603,6 +603,9 @@ input:checked + .switch-toggle:before {
   .card{
     flex:0 0 25%;
     max-width:calc(25% - 20px);
+  }
+  #words {
+    font-size:calc(5em + 10px);
   }
 }
 
