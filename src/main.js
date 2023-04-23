@@ -515,6 +515,7 @@ export default function MainPage(){
     let searchBtn = document.getElementById("searchBtn");
     let closeBtn = document.getElementById("searchCloseBtn");
     let searchInput = document.getElementById("search-input");
+    searchInput.value = "";
 
     closeBtn.style.animation = "mainAnim 100ms forwards";
     searchInput.style.width = "0";
@@ -525,6 +526,14 @@ export default function MainPage(){
     setTimeout(() => {
       searchInput.style.visibility = "hidden";
     },200)
+
+    let selectList = document.getElementById("select-list");
+    let cards = selectList.querySelectorAll(".card");
+
+    for (let k = 0; k < cards.length; k++){
+      cards[k].style.display = "block";
+      cards[k].style.animation = "mainAnimOut 200ms forwards";
+    }
   }
 
   const searchCate = () => {
@@ -539,6 +548,7 @@ export default function MainPage(){
       console.log(cardText);
       if (cardText.toUpperCase().indexOf(searchValue) > -1){
         cards[k].style.display = "block";
+        cards[k].style.animation = "mainAnimOut 200ms forwards";
       } else {
         cards[k].style.display = "none";
       }

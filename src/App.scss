@@ -945,6 +945,10 @@ input:checked + .switch-toggle:before {
     color:#1D8500;
   }
 
+  #searchCloseBtn{
+    color:white;
+  }
+
   @keyframes changeBgSelectCateDarkMode{
     from{background-color:#313c26}
     to{background-color:#3f1b3c}
