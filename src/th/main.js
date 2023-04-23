@@ -486,14 +486,14 @@ export default function MainPage(){
     searchInput.value = "";
 
     closeBtn.style.animation = "mainAnim 100ms forwards";
-    searchInput.style.width = "0";
+    searchInput.style.width = "55.2px";
     searchInput.style.transition = "width 400ms";
     setTimeout(() => 
-      searchBtn.style.animation = "mainAnimOut 100ms forwards"
-    ,200);
+      searchBtn.style.animation = "mainAnimOut 200ms forwards"
+    ,300);
     setTimeout(() => {
       searchInput.style.visibility = "hidden";
-    },200)
+    },300)
 
     let selectList = document.getElementById("select-list");
     let cards = selectList.querySelectorAll(".card");

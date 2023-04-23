@@ -156,7 +156,7 @@ export default function MainPage(){
       setTimeout(setLink, 5000);
     }
     return (
-      <div className="card" onClick={clickCate}>
+      <div className={`card ${props.className}`} onClick={clickCate}>
         <h2>{props.category}</h2>
       </div>
     )
@@ -518,14 +518,14 @@ export default function MainPage(){
     searchInput.value = "";
 
     closeBtn.style.animation = "mainAnim 100ms forwards";
-    searchInput.style.width = "0";
+    searchInput.style.width = "55.2px";
     searchInput.style.transition = "width 400ms";
     setTimeout(() => 
-      searchBtn.style.animation = "mainAnimOut 100ms forwards"
-    ,200);
+      searchBtn.style.animation = "mainAnimOut 200ms forwards"
+    ,300);
     setTimeout(() => {
       searchInput.style.visibility = "hidden";
-    },200)
+    },300)
 
     let selectList = document.getElementById("select-list");
     let cards = selectList.querySelectorAll(".card");
@@ -589,11 +589,11 @@ export default function MainPage(){
             </ol>
           </div>
           <div id="select-list">
-            <h2 className={`list-titles ${cateLists.eating.length ? "" : "no-cate"}`}>Eating</h2>
+            <h2 className={`list-titles ${cateLists.eating.length > 0 ? "" : "no-cate"}`}>Eating</h2>
             <div className="select-lists">
               {
                 cateLists.eating.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
+                  <CardCate category={cate.category} link={cate.link} className="eating"/>
                 ))
               }
             </div>
@@ -602,7 +602,7 @@ export default function MainPage(){
             <div className="select-lists">
               {
                 cateLists.geography.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
+                  <CardCate category={cate.category} link={cate.link} className="geography"/>
                 ))
               }
             </div>
@@ -611,7 +611,7 @@ export default function MainPage(){
             <div className="select-lists">
               {
                 cateLists.films.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
+                  <CardCate category={cate.category} link={cate.link} className="films"/>
                 ))
               }
             </div>
@@ -620,7 +620,7 @@ export default function MainPage(){
             <div className="select-lists">
               {
                 cateLists.music.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
+                  <CardCate category={cate.category} link={cate.link} className="music"/>
                 ))
               }
             </div>
@@ -629,7 +629,7 @@ export default function MainPage(){
             <div className="select-lists">
               {
                 cateLists.games.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
+                  <CardCate category={cate.category} link={cate.link} className="games"/>
                 ))
               }
             </div>
@@ -638,7 +638,7 @@ export default function MainPage(){
             <div className="select-lists">
               {
                 cateLists.other.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
+                  <CardCate category={cate.category} link={cate.link} className="other"/>
                 ))
               }
             </div>
