@@ -490,11 +490,9 @@ export default function MainPage(){
     closeBtn.style.animation = "mainAnim 100ms forwards";
     searchInput.style.width = "55.2px";
     searchInput.style.transition = "width 400ms";
-    setTimeout(() => 
-      searchBtn.style.animation = "mainAnimOut 200ms forwards"
-    ,300);
     setTimeout(() => {
       searchInput.style.visibility = "hidden";
+      searchBtn.style.animation = "mainAnimOut 200ms forwards"
     },300)
 
     let selectList = document.getElementById("select-list");

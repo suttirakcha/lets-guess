@@ -11,9 +11,6 @@ export default function MainPage(){
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
   const [timerSixty, setTimerSixty] = useState(localStorage.getItem("timer-sixty") === 'true');
 
-  const [eatingTitle, setEatingTitle] = useState(true);
-  const [geographyTitle, setGeographyTitle] = useState(true);
-
   localStorage.getItem('dark-mode');
 
   if (localStorage.getItem('dark-mode') == 'true'){
@@ -368,11 +365,9 @@ export default function MainPage(){
       hiddenText.value = localStorage.setItem("text-hidden", "");
     }
     hiddenText.value = localStorage.getItem("text-hidden");
-    // for (let i = 0; i < Object.values(cateLists).length; i++){
-    //   console.log(Object.keys(cateLists)[i])
-    // }
-    console.log(eatingTitle);
-    
+    for (let i = 0; i < Object.values(cateLists).length; i++){
+      console.log(Object.keys(cateLists)[i])
+    }
   }, [])
   window.addEventListener("keydown", pressToCloseSettings);
 
@@ -526,11 +521,9 @@ export default function MainPage(){
     closeBtn.style.animation = "mainAnim 100ms forwards";
     searchInput.style.width = "55.2px";
     searchInput.style.transition = "width 400ms";
-    setTimeout(() => 
-      searchBtn.style.animation = "mainAnimOut 200ms forwards"
-    ,300);
     setTimeout(() => {
       searchInput.style.visibility = "hidden";
+      searchBtn.style.animation = "mainAnimOut 200ms forwards"
     },300)
 
     let selectList = document.getElementById("select-list");
@@ -579,7 +572,7 @@ export default function MainPage(){
             <button id="searchCloseBtn" className="btn small-btn" onClick={closeSearch}>
               <FontAwesomeIcon icon={faClose}/>
             </button>
-            <input type="text" id="search-input" onKeyUp={searchCate} className="text-input" placeholder="Search category"/>
+            <input type="text" id="search-input" onInput={searchCate} className="text-input" placeholder="Search category"/>
           </div>
         <button onClick={changeLang} id="changeLangBtn" className="btn">ไทย</button>
         <main className="app-main">
@@ -594,7 +587,7 @@ export default function MainPage(){
             </ol>
           </div>
           <div id="select-list">
-            <h2 className={`list-titles ${eatingTitle ? "" : "no-cate"}`}>Eating</h2>
+            <h2 className={`list-titles ${cateLists.eating.length ? "" : "no-cate"}`}>Eating</h2>
             <div className="select-lists">
               {
                 cateLists.eating.map((cate) => (
