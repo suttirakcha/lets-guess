@@ -532,7 +532,6 @@ export default function MainPage(){
 
     for (let k = 0; k < cards.length; k++){
       cards[k].style.display = "block";
-      cards[k].style.animation = "mainAnimOut 200ms forwards";
     }
   }
 
@@ -548,7 +547,6 @@ export default function MainPage(){
       console.log(cardText);
       if (cardText.toUpperCase().indexOf(searchValue) > -1){
         cards[k].style.display = "block";
-        cards[k].style.animation = "mainAnimOut 200ms forwards";
       } else {
         cards[k].style.display = "none";
       }
