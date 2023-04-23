@@ -540,7 +540,6 @@ export default function MainPage(){
     let searchValue = searchInput.value.toUpperCase();
     let selectList = document.getElementById("select-list");
     let cards = selectList.querySelectorAll(".card");
-    let listTitles = document.querySelectorAll(".list-titles");
 
     for (let k = 0; k < cards.length; k++){
       let cardHead = cards[k].getElementsByTagName("h2")[0];
