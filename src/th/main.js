@@ -38,15 +38,13 @@ export default function MainPage(){
     let mainApp = document.querySelector(".app-main");
     let footApp = document.querySelector(".app-foot");
     let goBackBtn = document.getElementById("goBackBtn");
-    let settingsBtn = document.getElementById("settingsBtn");
-    let searchBtn = document.getElementById("searchBtn");
+    let rightBtns = document.getElementById("right-btns-sec");
     let preventBlock = document.getElementById("prevent");
     headApp.style.animation = "headAnim 900ms forwards";
     mainApp.style.animation = "mainAnim 900ms forwards";
     footApp.style.animation = "footAnim 900ms forwards";
     goBackBtn.style.animation = "mainAnim 900ms forwards";
-    settingsBtn.style.animation = "mainAnim 900ms forwards";
-    searchBtn.style.animation = "mainAnim 900ms forwards";
+    rightBtns.style.animation = "mainAnim 900ms forwards";
     preventBlock.style.visibility = "visible";
     setTimeout(() => {
       preventBlock.style.visibility = "hidden";
@@ -70,8 +68,7 @@ export default function MainPage(){
     let howToPlay = document.getElementById("how-to-play");
     let selectLists = document.getElementById("select-list");
     let goBackBtn = document.getElementById("goBackBtn");
-    let settingsBtn = document.getElementById("settingsBtn");
-    let searchBtn = document.getElementById("searchBtn");
+    let rightBtns = document.getElementById("right-btns-sec");
     let changeLangBtn = document.getElementById("changeLangBtn");
     let preventBlock = document.getElementById("prevent");
     headApp.style.animation = "headAnim 900ms forwards";
@@ -100,8 +97,7 @@ export default function MainPage(){
       mainApp.style.animation = "mainAnimOut 900ms forwards";
       footApp.style.display = "none";
       goBackBtn.style.animation = "mainAnimOut 900ms forwards";
-      settingsBtn.style.animation = "mainAnimOut 900ms forwards";
-      searchBtn.style.animation = "mainAnimOut 900ms forwards";
+      rightBtns.style.animation = "mainAnimOut 900ms forwards";
       heading.innerHTML = "เลือกหมวดหมู่";
       howToPlay.style.display = "none";
       selectLists.style.display = "block";
@@ -117,15 +113,13 @@ export default function MainPage(){
     let goBackBtn = document.getElementById("goBackBtn");
     let selectLists = document.getElementById("select-list");
     let loadingTxt = document.getElementById("loading");
-    let settingsBtn = document.getElementById("settingsBtn");
-    let searchBtn = document.getElementById("settingsBtn");
+    let rightBtns = document.getElementById("right-btns-sec");
     let preventBlock = document.getElementById("prevent");
     headApp.style.animation = "headAnim 900ms forwards";
     mainApp.style.animation = "mainAnim 900ms forwards";
     footApp.style.animation = "footAnim 900ms forwards";
     goBackBtn.style.animation = "mainAnim 900ms forwards";
-    settingsBtn.style.animation = "mainAnim 900ms forwards";
-    searchBtn.style.animation = "mainAnim 900ms forwards";
+    rightBtns.style.animation = "mainAnim 900ms forwards";
     preventBlock.style.visibility = "visible";
     setTimeout(() => {
       preventBlock.style.visibility = "hidden";
@@ -479,9 +473,9 @@ export default function MainPage(){
     searchInput.style.width = "300px";
     searchInput.style.visibility = "visible";
     searchInput.style.transition = "all 400ms";
-    setTimeout(() => 
-      closeBtn.style.animation = "mainAnimOut 100ms forwards"
-    ,100);
+    setTimeout(() => {
+      closeBtn.style.animation = "mainAnimOut 300ms forwards"
+    },200)
   }
 
   const closeSearch = () => {
@@ -494,7 +488,7 @@ export default function MainPage(){
     searchInput.style.transition = "width 400ms";
     setTimeout(() => 
       searchBtn.style.animation = "mainAnimOut 100ms forwards"
-    ,100);
+    ,200);
     setTimeout(() => {
       searchInput.style.visibility = "hidden";
     },200)
@@ -526,19 +520,21 @@ export default function MainPage(){
         <FontAwesomeIcon icon={faChevronLeft} className="back-arrow"/>
         กลับ
       </button>
-      <button id="settingsBtn" className="btn small-btn" onClick={openSettings}>
-        <FontAwesomeIcon icon={faGear}/>
-      </button>
-      <button id="searchBtn" className="btn small-btn" onClick={openSearch}>
-        <FontAwesomeIcon icon={faSearch}/>
-      </button>
-      <button id="searchCloseBtn" className="btn small-btn" onClick={closeSearch}>
-        <FontAwesomeIcon icon={faClose}/>
-      </button>
-      <input type="text" id="search-input" onInput={searchCate} className="text-input" placeholder="ค้นหาหมวดหมู่"/>
         <header className="app-head">
           <h1 id="heading">มาทายคำกันเถอะ</h1>
         </header>
+          <div id="right-btns-sec">
+            <button id="settingsBtn" className="btn small-btn" onClick={openSettings}>
+              <FontAwesomeIcon icon={faGear}/>
+            </button>
+            <button id="searchBtn" className="btn small-btn" onClick={openSearch}>
+              <FontAwesomeIcon icon={faSearch}/>
+            </button>
+            <button id="searchCloseBtn" className="btn small-btn" onClick={closeSearch}>
+              <FontAwesomeIcon icon={faClose}/>
+            </button>
+            <input type="text" id="search-input" onInput={searchCate} className="text-input" placeholder="ค้นหาหมวดหมู่"/>
+          </div>
         <button onClick={changeLang} id="changeLangBtn" className="btn">Eng</button>
         <main className="app-main">
           <div id="how-to-play">

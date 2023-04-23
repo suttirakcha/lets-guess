@@ -136,9 +136,11 @@ ol{font-size:17px}
   border-radius:99px;
   display:flex;
   align-items:center;
-  visibility:hidden;
+}
+
+#right-btns-sec{
   opacity:0;
-  z-index:10;
+  visibility:hidden;
 }
 
 #settingsBtn {
@@ -149,6 +151,7 @@ ol{font-size:17px}
 #searchBtn,#searchCloseBtn {
   top:25px;
   right:120px;
+  z-index:12;
 }
 
 #searchCloseBtn{
