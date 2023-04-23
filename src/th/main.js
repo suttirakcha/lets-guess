@@ -475,8 +475,9 @@ export default function MainPage(){
     searchInput.style.visibility = "visible";
     searchInput.style.transition = "all 400ms";
     setTimeout(() => {
+      searchInput.classList.add("place");
       closeBtn.style.animation = "mainAnimOut 300ms forwards"
-    },200)
+    },300)
   }
 
   const closeSearch = () => {
@@ -484,6 +485,7 @@ export default function MainPage(){
     let closeBtn = document.getElementById("searchCloseBtn");
     let searchInput = document.getElementById("search-input");
     searchInput.value = "";
+    searchInput.classList.remove("place");
 
     closeBtn.style.animation = "mainAnim 100ms forwards";
     searchInput.style.width = "55.2px";

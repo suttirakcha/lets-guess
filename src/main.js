@@ -11,6 +11,9 @@ export default function MainPage(){
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
   const [timerSixty, setTimerSixty] = useState(localStorage.getItem("timer-sixty") === 'true');
 
+  const [eatingTitle, setEatingTitle] = useState(true);
+  const [geographyTitle, setGeographyTitle] = useState(true);
+
   localStorage.getItem('dark-mode');
 
   if (localStorage.getItem('dark-mode') == 'true'){
@@ -365,9 +368,10 @@ export default function MainPage(){
       hiddenText.value = localStorage.setItem("text-hidden", "");
     }
     hiddenText.value = localStorage.getItem("text-hidden");
-    for (let i = 0; i < Object.values(cateLists).length; i++){
-      console.log(Object.keys(cateLists)[i])
-    }
+    // for (let i = 0; i < Object.values(cateLists).length; i++){
+    //   console.log(Object.keys(cateLists)[i])
+    // }
+    console.log(eatingTitle);
     
   }, [])
   window.addEventListener("keydown", pressToCloseSettings);
@@ -507,8 +511,9 @@ export default function MainPage(){
     searchInput.style.visibility = "visible";
     searchInput.style.transition = "all 400ms";
     setTimeout(() => {
-      closeBtn.style.animation = "mainAnimOut 300ms forwards"
-    },200)
+      searchInput.classList.add("place");
+      closeBtn.style.animation = "mainAnimOut 300ms forwards";
+    },300)
   }
 
   const closeSearch = () => {
@@ -516,6 +521,7 @@ export default function MainPage(){
     let closeBtn = document.getElementById("searchCloseBtn");
     let searchInput = document.getElementById("search-input");
     searchInput.value = "";
+    searchInput.classList.remove("place");
 
     closeBtn.style.animation = "mainAnim 100ms forwards";
     searchInput.style.width = "55.2px";
@@ -544,7 +550,6 @@ export default function MainPage(){
     for (let k = 0; k < cards.length; k++){
       let cardHead = cards[k].getElementsByTagName("h2")[0];
       let cardText = cardHead.innerText;
-      console.log(cardText);
       if (cardText.toUpperCase().indexOf(searchValue) > -1){
         cards[k].style.display = "block";
       } else {
@@ -574,7 +579,7 @@ export default function MainPage(){
             <button id="searchCloseBtn" className="btn small-btn" onClick={closeSearch}>
               <FontAwesomeIcon icon={faClose}/>
             </button>
-            <input type="text" id="search-input" onInput={searchCate} className="text-input" placeholder="Search Category"/>
+            <input type="text" id="search-input" onKeyUp={searchCate} className="text-input" placeholder="Search category"/>
           </div>
         <button onClick={changeLang} id="changeLangBtn" className="btn">ไทย</button>
         <main className="app-main">
@@ -589,7 +594,7 @@ export default function MainPage(){
             </ol>
           </div>
           <div id="select-list">
-            <h2 className={`list-titles ${cateLists.eating.length > 0 ? "" : "no-cate"}`}>Eating</h2>
+            <h2 className={`list-titles ${eatingTitle ? "" : "no-cate"}`}>Eating</h2>
             <div className="select-lists">
               {
                 cateLists.eating.map((cate) => (

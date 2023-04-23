@@ -172,6 +172,14 @@ ol{font-size:17px}
   width:55.2px;
   visibility:hidden;
   z-index:9;
+  &::placeholder {
+    opacity:0;
+    transition:all 100ms;
+  }
+  &.place::placeholder {
+    opacity:1;
+    transition:all 300ms;
+  }
 }
 
 #loading,#no-result{display:none}
