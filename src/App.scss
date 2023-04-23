@@ -102,7 +102,7 @@ ol{font-size:17px}
   visibility:hidden;
   position:absolute;
   left:30px;
-  top:30px;
+  top:25px;
   font-size:16px;
   padding:10px 20px;
   &:hover {
@@ -138,11 +138,37 @@ ol{font-size:17px}
   align-items:center;
   visibility:hidden;
   opacity:0;
+  z-index:10;
 }
 
 #settingsBtn {
-  top:30px;
+  top:25px;
   right:40px;
+}
+
+#searchBtn,#searchCloseBtn {
+  top:25px;
+  right:120px;
+}
+
+#searchCloseBtn{
+  opacity:0;
+  visibility:hidden;
+  background-color:transparent;
+  color:black;
+  &:hover {
+    box-shadow:none;
+  }
+}
+
+#search-input {
+  position:absolute;
+  top:25px;
+  right:120px;
+  padding:12px 16px;
+  width:0;
+  visibility:hidden;
+  z-index:9;
 }
 
 #loading{display:none}

@@ -43,12 +43,14 @@ export default function MainPage(){
     let footApp = document.querySelector(".app-foot");
     let goBackBtn = document.getElementById("goBackBtn");
     let settingsBtn = document.getElementById("settingsBtn");
+    let searchBtn = document.getElementById("searchBtn");
     let preventBlock = document.getElementById("prevent");
     headApp.style.animation = "headAnim 900ms forwards";
     mainApp.style.animation = "mainAnim 900ms forwards";
     footApp.style.animation = "footAnim 900ms forwards";
     goBackBtn.style.animation = "mainAnim 900ms forwards";
     settingsBtn.style.animation = "mainAnim 900ms forwards";
+    searchBtn.style.animation = "mainAnim 900ms forwards";
     preventBlock.style.visibility = "visible";
     setTimeout(() => {
       preventBlock.style.visibility = "hidden";
@@ -73,6 +75,7 @@ export default function MainPage(){
     let selectLists = document.getElementById("select-list");
     let goBackBtn = document.getElementById("goBackBtn");
     let settingsBtn = document.getElementById("settingsBtn");
+    let searchBtn = document.getElementById("searchBtn");
     let changeLangBtn = document.getElementById("changeLangBtn");
     let preventBlock = document.getElementById("prevent");
     headApp.style.animation = "headAnim 900ms forwards";
@@ -102,6 +105,7 @@ export default function MainPage(){
       footApp.style.display = "none";
       goBackBtn.style.animation = "mainAnimOut 900ms forwards";
       settingsBtn.style.animation = "mainAnimOut 900ms forwards";
+      searchBtn.style.animation = "mainAnimOut 900ms forwards";
       heading.innerHTML = "Select category";
       howToPlay.style.display = "none";
       selectLists.style.display = "block";
@@ -118,12 +122,14 @@ export default function MainPage(){
     let selectLists = document.getElementById("select-list");
     let loadingTxt = document.getElementById("loading");
     let settingsBtn = document.getElementById("settingsBtn");
+    let searchBtn = document.getElementById("searchBtn");
     let preventBlock = document.getElementById("prevent");
     headApp.style.animation = "headAnim 900ms forwards";
     mainApp.style.animation = "mainAnim 900ms forwards";
     footApp.style.animation = "footAnim 900ms forwards";
     goBackBtn.style.animation = "mainAnim 900ms forwards";
     settingsBtn.style.animation = "mainAnim 900ms forwards";
+    searchBtn.style.animation = "mainAnim 900ms forwards";
     preventBlock.style.visibility = "visible";
     setTimeout(() => {
       preventBlock.style.visibility = "hidden";
@@ -364,6 +370,10 @@ export default function MainPage(){
       hiddenText.value = localStorage.setItem("text-hidden", "");
     }
     hiddenText.value = localStorage.getItem("text-hidden");
+    for (let i = 0; i < Object.values(cateLists).length; i++){
+      console.log(Object.keys(cateLists)[i])
+    }
+    
   }, [])
   window.addEventListener("keydown", pressToCloseSettings);
 
@@ -492,6 +502,52 @@ export default function MainPage(){
     ]
   }
 
+  const openSearch = () => {
+    let searchBtn = document.getElementById("searchBtn");
+    let closeBtn = document.getElementById("searchCloseBtn");
+    let searchInput = document.getElementById("search-input");
+
+    searchBtn.style.animation = "mainAnim 0ms forwards";
+    searchInput.style.width = "300px";
+    searchInput.style.visibility = "visible";
+    searchInput.style.transition = "all 400ms";
+    closeBtn.style.animation = "mainAnimOut 300ms forwards"
+  }
+
+  const closeSearch = () => {
+    let searchBtn = document.getElementById("searchBtn");
+    let closeBtn = document.getElementById("searchCloseBtn");
+    let searchInput = document.getElementById("search-input");
+
+    closeBtn.style.animation = "mainAnim 100ms forwards";
+    searchInput.style.width = "0";
+    searchInput.style.transition = "width 400ms";
+    setTimeout(() => 
+      searchBtn.style.animation = "mainAnimOut 100ms forwards"
+    ,100);
+    setTimeout(() => {
+      searchInput.style.visibility = "hidden";
+    },200)
+  }
+
+  const searchCate = () => {
+    let searchInput = document.getElementById("search-input");
+    let searchValue = searchInput.value.toUpperCase();
+    let selectList = document.getElementById("select-list");
+    let cards = selectList.querySelectorAll(".card");
+
+    for (let k = 0; k < cards.length; k++){
+      let cardHead = cards[k].getElementsByTagName("h2")[0];
+      let cardText = cardHead.innerText;
+      console.log(cardText);
+      if (cardText.toUpperCase().indexOf(searchValue) > -1){
+        cards[k].style.display = "block";
+      } else {
+        cards[k].style.display = "none";
+      }
+    }
+  }
+
   return (
     <div className="App">
       <div id="prevent" className="invisible-block"></div>
@@ -503,6 +559,13 @@ export default function MainPage(){
       <button id="settingsBtn" className="btn small-btn" onClick={openSettings}>
         <FontAwesomeIcon icon={faGear}/>
       </button>
+      <button id="searchBtn" className="btn small-btn" onClick={openSearch}>
+        <FontAwesomeIcon icon={faSearch}/>
+      </button>
+      <button id="searchCloseBtn" className="btn small-btn" onClick={closeSearch}>
+        <FontAwesomeIcon icon={faClose}/>
+      </button>
+      <input type="text" id="search-input" onInput={searchCate} className="text-input" placeholder="Search Category"/>
         <header className="app-head">
           <h1 id="heading">Let's Guess</h1>
         </header>
@@ -519,7 +582,7 @@ export default function MainPage(){
             </ol>
           </div>
           <div id="select-list">
-            <h2 className={`list-titles ${cateLists.eating.length > 0 ? "" : "no-cate"}`}>Eating</h2>
+            <h2 className={`list-titles ${cateLists.eating.length ? "" : "no-cate"}`}>Eating</h2>
             <div className="select-lists">
               {
                 cateLists.eating.map((cate) => (
@@ -617,7 +680,7 @@ export default function MainPage(){
           </div>
           <div className="setting-sec">
             <h2>Hidden answer text</h2>
-            <input type="text" id="hidden-text" className="text-input" placeholder="The answer is hidden" onKeyUp={checkHiddenText} onChange={typeHiddenText} autoComplete="off"/>
+            <input type="text" id="hidden-text" className="text-input" placeholder="The answer is hidden" onInput={checkHiddenText} onChange={typeHiddenText} autoComplete="off"/>
             <p>This text will be shown when the hinter presses "Hide answer" button, the default text is "The answer is hidden".</p>
             <p id="warning-hidden-text"></p>
           </div>
