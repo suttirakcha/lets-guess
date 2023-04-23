@@ -503,7 +503,7 @@ export default function MainPage(){
     let searchInput = document.getElementById("search-input");
 
     searchBtn.style.animation = "mainAnim 100ms forwards";
-    searchInput.style.width = "300px";
+    searchInput.style.width = "20%";
     searchInput.style.visibility = "visible";
     searchInput.style.transition = "all 400ms";
     setTimeout(() => {
