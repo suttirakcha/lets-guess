@@ -161,6 +161,7 @@ export default function MainPage(){
 
   const openSettings = () => {
     setSettings(true);
+    closeSearch();
     let settingsDrawer = document.getElementById("settings-drawer");
     let settingsDrawerMask = document.getElementById("settings-drawer-mask");
     let settingsDrawerBg = document.getElementById("settings-drawer-anim");
@@ -542,7 +543,7 @@ export default function MainPage(){
             <button id="searchCloseBtn" className="btn small-btn" onClick={closeSearch}>
               <FontAwesomeIcon icon={faClose}/>
             </button>
-            <input type="text" id="search-input" onInput={searchCate} className="text-input" placeholder="ค้นหาหมวดหมู่"/>
+            <input type="text" id="search-input" onKeyUp={searchCate} className="text-input" placeholder="ค้นหาหมวดหมู่"/>
           </div>
         <button onClick={changeLang} id="changeLangBtn" className="btn">Eng</button>
         <main className="app-main">

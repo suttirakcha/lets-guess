@@ -164,6 +164,7 @@ export default function MainPage(){
 
   const openSettings = () => {
     setSettings(true);
+    closeSearch();
     let settingsDrawer = document.getElementById("settings-drawer");
     let settingsDrawerMask = document.getElementById("settings-drawer-mask");
     let settingsDrawerBg = document.getElementById("settings-drawer-anim");
@@ -539,6 +540,7 @@ export default function MainPage(){
     let searchValue = searchInput.value.toUpperCase();
     let selectList = document.getElementById("select-list");
     let cards = selectList.querySelectorAll(".card");
+    let listTitles = document.querySelectorAll(".list-titles");
 
     for (let k = 0; k < cards.length; k++){
       let cardHead = cards[k].getElementsByTagName("h2")[0];
@@ -572,7 +574,7 @@ export default function MainPage(){
             <button id="searchCloseBtn" className="btn small-btn" onClick={closeSearch}>
               <FontAwesomeIcon icon={faClose}/>
             </button>
-            <input type="text" id="search-input" onInput={searchCate} className="text-input" placeholder="Search category"/>
+            <input type="text" id="search-input" onKeyUp={searchCate} className="text-input" placeholder="Search category"/>
           </div>
         <button onClick={changeLang} id="changeLangBtn" className="btn">ไทย</button>
         <main className="app-main">
@@ -587,7 +589,7 @@ export default function MainPage(){
             </ol>
           </div>
           <div id="select-list">
-            <h2 className={`list-titles ${cateLists.eating.length ? "" : "no-cate"}`}>Eating</h2>
+            <h2 className={`list-titles ${cateLists.eating.length > 0 ? "" : "no-cate"}`}>Eating</h2>
             <div className="select-lists">
               {
                 cateLists.eating.map((cate) => (
