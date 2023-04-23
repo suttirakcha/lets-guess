@@ -440,12 +440,16 @@ export default function MainPage(){
     ],
     musicTh: [
       {
+        "category": "เครื่องดนตรี",
+        "link": "/th/musical-instruments"
+      },
+      {
         category: "เพลงวง Tattoo Colour",
         link: "/th/tattoo-colour"
       },
       {
-        "category": "เครื่องดนตรี",
-        "link": "/th/musical-instruments"
+        category: "เพลงวง ETC",
+        link: "/th/etc-songs"
       },
       {
         "category": "นักร้องไทย",

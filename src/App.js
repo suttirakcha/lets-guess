@@ -32,6 +32,7 @@ import ThaiDessertsTh from "./th/categories/thai-desserts";
 import MusicalInstrumentsTh from "./th/categories/musical-instruments";
 import ThaiSingersTh from "./th/categories/thai-singers";
 import PlacesInBangkok from "./th/categories/bangkok-places";
+import ETCSongsTh from "./th/categories/etc-songs";
 
 export default function App(){
   return (
@@ -71,6 +72,7 @@ export default function App(){
         <Route path="/th/musical-instruments" element={<MusicalInstrumentsTh />} />
         <Route path="/th/thai-singers" element={<ThaiSingersTh />} />
         <Route path="/th/places-in-bangkok" element={<PlacesInBangkok />} />
+        <Route path="/th/etc-songs" element={<ETCSongsTh />} />
       </Routes>
     </Router>
   )
