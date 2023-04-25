@@ -472,12 +472,12 @@ export default function MainPage(){
     ],
     otherTh: [
       {
-        category: "สัตว์ต่างๆ",
-        link: "/th/animals"
-      },
-      {
         category: "แบรนด์เสื้อผ้า",
         link: "th/clothing-brands"
+      },
+      {
+        category: "สัตว์ต่างๆ",
+        link: "/th/animals"
       }
     ]
   }
