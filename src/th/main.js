@@ -7,6 +7,8 @@ export default function MainPage(){
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
   const [timerSixty, setTimerSixty] = useState(localStorage.getItem("timer-sixty") === 'true');
 
+  const [clicked, setClicked] = useState(false);
+
   const [settings, setSettings] = useState(false);
 
   localStorage.getItem('dark-mode');
@@ -58,7 +60,9 @@ export default function MainPage(){
 
     const selectBack = () => {loadGame()}
     setTimeout(selectBack, 890)
-    closeSearch();
+    if (clicked){
+      closeSearch();
+    }
   }
 
   const playNow = () => {
@@ -113,6 +117,7 @@ export default function MainPage(){
     let footApp = document.querySelector(".app-foot");
     let goBackBtn = document.getElementById("goBackBtn");
     let selectLists = document.getElementById("select-list");
+    let allCates = document.getElementById("all-cates");
     let loadingTxt = document.getElementById("loading");
     let rightBtns = document.getElementById("right-btns-sec");
     let preventBlock = document.getElementById("prevent");
@@ -134,6 +139,7 @@ export default function MainPage(){
 
     const showLoading = () => {
         selectLists.style.display = "none";
+        allCates.style.display = "none";
         loadingTxt.style.display = "block";
         mainApp.style.animation = "mainAnimOut 900ms forwards"
     }
@@ -161,7 +167,9 @@ export default function MainPage(){
 
   const openSettings = () => {
     setSettings(true);
-    closeSearch();
+    if (clicked) {
+      closeSearch();
+    }
     let settingsDrawer = document.getElementById("settings-drawer");
     let settingsDrawerMask = document.getElementById("settings-drawer-mask");
     let settingsDrawerBg = document.getElementById("settings-drawer-anim");
@@ -408,10 +416,6 @@ export default function MainPage(){
   const cateLists = {
     eatingTh: [
       {
-        category: "เครื่องดื่ม",
-        link: "/th/drinks"
-      },
-      {
         category: "ขนมหวาน",
         link: "/th/desserts"
       },
@@ -422,6 +426,10 @@ export default function MainPage(){
       {
         category: "อาหาร",
         link: "/th/foods"
+      },
+      {
+        category: "เครื่องดื่ม",
+        link: "/th/drinks"
       }
     ],
     geographyTh: [
@@ -440,20 +448,20 @@ export default function MainPage(){
     ],
     musicTh: [
       {
-        "category": "เครื่องดนตรี",
-        "link": "/th/musical-instruments"
+        "category": "นักร้องไทย",
+        "link": "/th/thai-singers"
       },
       {
-        category: "เพลงวง Tattoo Colour",
-        link: "/th/tattoo-colour"
+        "category": "เครื่องดนตรี",
+        "link": "/th/musical-instruments"
       },
       {
         category: "เพลงวง ETC",
         link: "/th/etc-songs"
       },
       {
-        "category": "นักร้องไทย",
-        "link": "/th/thai-singers"
+        category: "เพลงวง Tattoo Colour",
+        link: "/th/tattoo-colour"
       }
     ],
     gamesTh: [
@@ -474,6 +482,19 @@ export default function MainPage(){
     let searchBtn = document.getElementById("searchBtn");
     let closeBtn = document.getElementById("searchCloseBtn");
     let searchInput = document.getElementById("search-input");
+    let searchList = document.getElementById("select-list");
+    let allCates = document.getElementById("all-cates");
+
+    searchList.style.opacity = "0";
+    searchList.style.transition = "all 200ms";
+    setTimeout(() => {
+      searchList.style.display = "none";
+      allCates.style.display = "block";
+    }, 200);
+    setTimeout(() => {
+      allCates.style.opacity = "1";
+      allCates.style.transition = "opacity 200ms";
+    },300)
 
     searchBtn.style.animation = "mainAnim 100ms forwards";
     searchInput.style.width = "20%";
@@ -483,14 +504,28 @@ export default function MainPage(){
       searchInput.classList.add("place");
       closeBtn.style.animation = "mainAnimOut 300ms forwards"
     },300)
+    setClicked(true);
   }
 
   const closeSearch = () => {
     let searchBtn = document.getElementById("searchBtn");
     let closeBtn = document.getElementById("searchCloseBtn");
     let searchInput = document.getElementById("search-input");
+    let searchList = document.getElementById("select-list");
+    let allCates = document.getElementById("all-cates");
     searchInput.value = "";
     searchInput.classList.remove("place");
+
+    allCates.style.opacity = "0";
+    allCates.style.transition = "all 200ms";
+    setTimeout(() => {
+      allCates.style.display = "none";
+      searchList.style.display = "block";
+    }, 200);
+    setTimeout(() => {
+      searchList.style.opacity = "1";
+      searchList.style.transition = "opacity 200ms";
+    },300)
 
     closeBtn.style.animation = "mainAnim 100ms forwards";
     searchInput.style.width = "55.2px";
@@ -500,7 +535,7 @@ export default function MainPage(){
       searchBtn.style.animation = "mainAnimOut 200ms forwards"
     },300)
 
-    let selectList = document.getElementById("select-list");
+    let selectList = document.getElementById("all-cates");
     let cards = selectList.querySelectorAll(".card");
 
     for (let k = 0; k < cards.length; k++){
@@ -508,20 +543,40 @@ export default function MainPage(){
     }
   }
 
+  const AllCates = () => {
+    return (
+      <div className="select-lists">
+        <CardCate category="ขนมหวาน" link="/th/desserts"/>
+        <CardCate category="ขนมไทย" link="/th/thai-desserts"/>
+        <CardCate category="เครื่องดนตรี" link="/th/musical-instruments"/>
+        <CardCate category="เครื่องดื่ม" link="/th/drinks"/>
+        <CardCate category="จังหวัดในประเทศไทย" link="/th/provinces-in-thailand"/>
+        <CardCate category="ตัวละครในเกม ROV" link="/th/characters-in-rov"/>
+        <CardCate category="นักร้องไทย" link="/th/thai-singers"/>
+        <CardCate category="ประเทศในโลก" link="/th/countries-in-the-world"/>
+        <CardCate category="เพลงวง ETC" link="/th/etc-songs"/>
+        <CardCate category="เพลงวง Tattoo Colour" link="/th/tattoo-colour"/>
+        <CardCate category="สถานที่ท่องเที่ยวในกรุงเทพ" link="/th/places-in-bangkok"/>
+        <CardCate category="สัตว์ต่างๆ" link="/th/animals"/>
+        <CardCate category="อาหาร" link="/th/foods"/>
+      </div>
+    )
+  }
+
   const searchCate = () => {
     let searchInput = document.getElementById("search-input");
     let searchValue = searchInput.value.toUpperCase();
-    let selectList = document.getElementById("select-list");
+    let selectList = document.getElementById("all-cates");
     let cards = selectList.querySelectorAll(".card");
 
     for (let k = 0; k < cards.length; k++){
       let cardHead = cards[k].getElementsByTagName("h2")[0];
       let cardText = cardHead.innerText;
       console.log(cardText);
-      if (cardText.toUpperCase().indexOf(searchValue) > -1){
-        cards[k].style.display = "block";
-      } else {
+      if (cardText.toUpperCase().indexOf(searchValue) < 0){
         cards[k].style.display = "none";
+      } else {
+        cards[k].style.display = "block";
       }
     }
   }
@@ -560,6 +615,9 @@ export default function MainPage(){
               <li>ถ้าผู้เล่นทายผิด หรือไม่รู้คำตอบ ให้กดปุ่ม "<FontAwesomeIcon icon={faXmark}/>" เพื่อข้ามคำตอบ</li>
               <li>คุณมีเวลา 60 หรือ 120 วินาที (ขึ้นอยู่กับการตั้งค่าของคุณ) ในการทายคำตอบ</li>
             </ol>
+          </div>
+          <div id="all-cates">
+            <AllCates />
           </div>
           <div id="select-list">
             <h2 className={`list-titles ${cateLists.eatingTh.length > 0 ? "" : "no-cate"}`}>อาหาร</h2>

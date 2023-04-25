@@ -8,8 +8,11 @@ export default function MainPage(){
     window.location.replace("/th")
   }
 
+  const [clicked, setClicked] = useState(false);
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
   const [timerSixty, setTimerSixty] = useState(localStorage.getItem("timer-sixty") === 'true');
+
+  const [eatingTitle, setEatingTitle] = useState(true);
 
   localStorage.getItem('dark-mode');
 
@@ -62,7 +65,9 @@ export default function MainPage(){
 
     const selectBack = () => {loadGame()}
     setTimeout(selectBack, 890)
-    closeSearch();
+    if (clicked){
+      closeSearch();
+    }
   }
 
   const playNow = () => {
@@ -120,6 +125,7 @@ export default function MainPage(){
     let loadingTxt = document.getElementById("loading");
     let rightBtns = document.getElementById("right-btns-sec");
     let preventBlock = document.getElementById("prevent");
+    let allCates = document.getElementById("all-cates");
     headApp.style.animation = "headAnim 900ms forwards";
     mainApp.style.animation = "mainAnim 900ms forwards";
     footApp.style.animation = "footAnim 900ms forwards";
@@ -138,6 +144,7 @@ export default function MainPage(){
 
     const showLoading = () => {
         selectLists.style.display = "none";
+        allCates.style.display = "none";
         loadingTxt.style.display = "block";
         mainApp.style.animation = "mainAnimOut 900ms forwards"
     }
@@ -156,7 +163,7 @@ export default function MainPage(){
       setTimeout(setLink, 5000);
     }
     return (
-      <div className={`card ${props.className}`} onClick={clickCate}>
+      <div className="card" onClick={clickCate}>
         <h2>{props.category}</h2>
       </div>
     )
@@ -164,7 +171,9 @@ export default function MainPage(){
 
   const openSettings = () => {
     setSettings(true);
-    closeSearch();
+    if (clicked){
+      closeSearch();
+    }
     let settingsDrawer = document.getElementById("settings-drawer");
     let settingsDrawerMask = document.getElementById("settings-drawer-mask");
     let settingsDrawerBg = document.getElementById("settings-drawer-anim");
@@ -367,7 +376,9 @@ export default function MainPage(){
     }
     hiddenText.value = localStorage.getItem("text-hidden");
     for (let i = 0; i < Object.values(cateLists).length; i++){
-      console.log(Object.keys(cateLists)[i])
+      for (let j = 0;j < Object.values(cateLists)[i].length; j++){
+        console.log(Object.values(cateLists)[i][j]);
+      }
     }
   }, [])
   window.addEventListener("keydown", pressToCloseSettings);
@@ -497,10 +508,47 @@ export default function MainPage(){
     ]
   }
 
+  const AllCates = () => {
+    return (
+      <div className="select-lists">
+        <CardCate category="Animals" link="/animals"/>
+        <CardCate category="Blackpink" link="/blackpink"/>
+        <CardCate category="Capital Cities" link="/capital-cities"/>
+        <CardCate category="Characters in Mario Games" link="/characters-in-mario-games"/>
+        <CardCate category="Countries in the World" link="/countries-in-the-world"/>
+        <CardCate category="Desserts" link="/desserts"/>
+        <CardCate category="Disney Films (2010s)" link="/disney-films-2010s"/>
+        <CardCate category="Drinks" link="/drinks"/>
+        <CardCate category="Fast and Furious Characters" link="/fast-and-furious-characters"/>
+        <CardCate category="Foods" link="/foods"/>
+        <CardCate category="Film Genres" link="/film-genres"/>
+        <CardCate category="Harry Potter Characters" link="/harry-potter-characters"/>
+        <CardCate category="Landmarks" link="/landmarks"/>
+        <CardCate category="Marketing Words" link="/marketing-words"/>
+        <CardCate category="Mobile Games" link="/mobile-games"/>
+        <CardCate category="Musical Instruments" link="/musical-instruments"/>
+        <CardCate category="Sauces" link="/sauces"/>
+      </div>
+    )
+  }
+
   const openSearch = () => {
     let searchBtn = document.getElementById("searchBtn");
     let closeBtn = document.getElementById("searchCloseBtn");
     let searchInput = document.getElementById("search-input");
+    let searchList = document.getElementById("select-list");
+    let allCates = document.getElementById("all-cates");
+
+    searchList.style.opacity = "0";
+    searchList.style.transition = "all 200ms";
+    setTimeout(() => {
+      searchList.style.display = "none";
+      allCates.style.display = "block";
+    }, 200);
+    setTimeout(() => {
+      allCates.style.opacity = "1";
+      allCates.style.transition = "opacity 200ms";
+    },300)
 
     searchBtn.style.animation = "mainAnim 100ms forwards";
     searchInput.style.width = "20%";
@@ -510,14 +558,28 @@ export default function MainPage(){
       searchInput.classList.add("place");
       closeBtn.style.animation = "mainAnimOut 300ms forwards";
     },300)
+    setClicked(true);
   }
 
   const closeSearch = () => {
     let searchBtn = document.getElementById("searchBtn");
     let closeBtn = document.getElementById("searchCloseBtn");
     let searchInput = document.getElementById("search-input");
+    let searchList = document.getElementById("select-list");
+    let allCates = document.getElementById("all-cates");
     searchInput.value = "";
     searchInput.classList.remove("place");
+
+    allCates.style.opacity = "0";
+    allCates.style.transition = "all 200ms";
+    setTimeout(() => {
+      allCates.style.display = "none";
+      searchList.style.display = "block";
+    }, 200);
+    setTimeout(() => {
+      searchList.style.opacity = "1";
+      searchList.style.transition = "opacity 200ms";
+    },300)
 
     closeBtn.style.animation = "mainAnim 100ms forwards";
     searchInput.style.width = "55.2px";
@@ -527,7 +589,7 @@ export default function MainPage(){
       searchBtn.style.animation = "mainAnimOut 200ms forwards"
     },300)
 
-    let selectList = document.getElementById("select-list");
+    let selectList = document.getElementById("all-cates");
     let cards = selectList.querySelectorAll(".card");
 
     for (let k = 0; k < cards.length; k++){
@@ -538,16 +600,16 @@ export default function MainPage(){
   const searchCate = () => {
     let searchInput = document.getElementById("search-input");
     let searchValue = searchInput.value.toUpperCase();
-    let selectList = document.getElementById("select-list");
+    let selectList = document.getElementById("all-cates");
     let cards = selectList.querySelectorAll(".card");
 
     for (let k = 0; k < cards.length; k++){
       let cardHead = cards[k].getElementsByTagName("h2")[0];
       let cardText = cardHead.innerText;
-      if (cardText.toUpperCase().indexOf(searchValue) > -1){
-        cards[k].style.display = "block";
-      } else {
+      if (cardText.toUpperCase().indexOf(searchValue) < 0){
         cards[k].style.display = "none";
+      } else {
+        cards[k].style.display = "block";
       }
     }
   }
@@ -573,7 +635,7 @@ export default function MainPage(){
             <button id="searchCloseBtn" className="btn small-btn" onClick={closeSearch}>
               <FontAwesomeIcon icon={faClose}/>
             </button>
-            <input type="text" id="search-input" onKeyUp={searchCate} className="text-input" placeholder="Search category"/>
+            <input type="text" id="search-input" onInput={searchCate} className="text-input" placeholder="Search category"/>
           </div>
         <button onClick={changeLang} id="changeLangBtn" className="btn">ไทย</button>
         <main className="app-main">
@@ -587,12 +649,15 @@ export default function MainPage(){
               <li>You have 60 or 120 seconds (depending on your setting) to hint the answers.</li>
             </ol>
           </div>
+          <div id="all-cates">
+            <AllCates />
+          </div>
           <div id="select-list">
-            <h2 className={`list-titles ${cateLists.eating.length > 0 ? "" : "no-cate"}`}>Eating</h2>
+            <h2 className={`list-titles ${eatingTitle ? "" : "no-cate"}`}>Eating</h2>
             <div className="select-lists">
               {
                 cateLists.eating.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link} className="eating"/>
+                  <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
@@ -601,7 +666,7 @@ export default function MainPage(){
             <div className="select-lists">
               {
                 cateLists.geography.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link} className="geography"/>
+                  <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
@@ -610,7 +675,7 @@ export default function MainPage(){
             <div className="select-lists">
               {
                 cateLists.films.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link} className="films"/>
+                  <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
@@ -619,7 +684,7 @@ export default function MainPage(){
             <div className="select-lists">
               {
                 cateLists.music.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link} className="music"/>
+                  <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
@@ -628,7 +693,7 @@ export default function MainPage(){
             <div className="select-lists">
               {
                 cateLists.games.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link} className="games"/>
+                  <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
@@ -637,7 +702,7 @@ export default function MainPage(){
             <div className="select-lists">
               {
                 cateLists.other.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link} className="other"/>
+                  <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>

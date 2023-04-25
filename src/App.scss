@@ -5,6 +5,8 @@ body{
 }
 ol{font-size:17px}
 
+::placeholder{color:#8e8e8e}
+
 ::-webkit-scrollbar {
   width:10px;
 }
@@ -201,14 +203,17 @@ ol{font-size:17px}
   margin-bottom:30px
 }
 
-#select-list{
+#select-list,#all-cates{
   display:none;
   overflow-y:scroll;
   height:60vh;
   margin:auto;
   width:99%;
   padding:0 0 10px 10px;
+  opacity:1;
 }
+
+#all-cates{opacity:0;}
 
 @mixin aside-lines{
   content:"";
@@ -299,7 +304,7 @@ ol{font-size:17px}
   overflow:hidden;
   #circle {
     position:absolute;
-    top:30px;
+    top:25px;
     right:40px;
     width:55.2px;
     height:55.2px;
