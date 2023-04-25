@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck,faChevronLeft,faXmark,faGear,faClose,faSun,faMoon,faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faCheck,faChevronLeft,faXmark,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 
 export default function MainPage(){
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
@@ -474,6 +474,10 @@ export default function MainPage(){
       {
         category: "สัตว์ต่างๆ",
         link: "/th/animals"
+      },
+      {
+        category: "แบรนด์เสื้อผ้า",
+        link: "th/clothing-brands"
       }
     ]
   }
@@ -493,11 +497,11 @@ export default function MainPage(){
     }, 200);
     setTimeout(() => {
       allCates.style.opacity = "1";
-      allCates.style.transition = "opacity 200ms";
+      allCates.style.transition = "opacity 300ms";
     },300)
 
     searchBtn.style.animation = "mainAnim 100ms forwards";
-    searchInput.style.width = "20%";
+    searchInput.style.width = "25%";
     searchInput.style.visibility = "visible";
     searchInput.style.transition = "all 400ms";
     setTimeout(() => {
@@ -524,7 +528,7 @@ export default function MainPage(){
     }, 200);
     setTimeout(() => {
       searchList.style.opacity = "1";
-      searchList.style.transition = "opacity 200ms";
+      searchList.style.transition = "opacity 300ms";
     },300)
 
     closeBtn.style.animation = "mainAnim 100ms forwards";
@@ -553,6 +557,7 @@ export default function MainPage(){
         <CardCate category="จังหวัดในประเทศไทย" link="/th/provinces-in-thailand"/>
         <CardCate category="ตัวละครในเกม ROV" link="/th/characters-in-rov"/>
         <CardCate category="นักร้องไทย" link="/th/thai-singers"/>
+        <CardCate category="แบรนด์เสื้อผ้า" link="/th/clothing-brands"/>
         <CardCate category="ประเทศในโลก" link="/th/countries-in-the-world"/>
         <CardCate category="เพลงวง ETC" link="/th/etc-songs"/>
         <CardCate category="เพลงวง Tattoo Colour" link="/th/tattoo-colour"/>
@@ -561,6 +566,22 @@ export default function MainPage(){
         <CardCate category="อาหาร" link="/th/foods"/>
       </div>
     )
+  }
+
+  const showNoResult = () => {
+    let selectList = document.getElementById("all-cates");
+    let cards = selectList.querySelectorAll(".card");
+    let cardsNone = selectList.querySelectorAll(".card[style='display: none;']");
+    let noResult = document.getElementById("no-result");
+    if (cardsNone.length === cards.length){
+      noResult.style.display = "block";
+      setTimeout(() => {
+        noResult.classList.add("active");
+      }, 1)
+    } else {
+      noResult.style.display = "none";
+      noResult.classList.remove("active");
+    }
   }
 
   const searchCate = () => {
@@ -579,6 +600,7 @@ export default function MainPage(){
         cards[k].style.display = "block";
       }
     }
+    showNoResult();
   }
 
   return (
@@ -618,6 +640,11 @@ export default function MainPage(){
           </div>
           <div id="all-cates">
             <AllCates />
+            <div id="no-result">
+              <FontAwesomeIcon icon={faExclamationCircle} style={{fontSize:"54px"}}/>
+              <h1 style={{marginBottom:0,fontSize:"calc(2vw + 8px)"}}>ไม่พบผลลัพธ์</h1>
+              <p style={{fontSize:"calc(1.2vw + 2px)"}}>กรุณาลองคีย์เวิร์ดอื่น</p>
+            </div>
           </div>
           <div id="select-list">
             <h2 className={`list-titles ${cateLists.eatingTh.length > 0 ? "" : "no-cate"}`}>อาหาร</h2>

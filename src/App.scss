@@ -184,6 +184,18 @@ ol{font-size:17px}
   }
 }
 
+#no-result{
+  margin-top:10vh;
+  opacity:0;
+  transform:translateY(5px);
+  transition:opacity 300ms,transform 300ms;
+  &.active {
+    opacity:1;
+    transform:translateY(0px);
+    transition:all 300ms;
+  }
+}
+
 #loading,#no-result{display:none}
 #words{
   font-size:5em;
@@ -200,7 +212,7 @@ ol{font-size:17px}
 
 #heading{
   font-size:80px;
-  margin-bottom:30px
+  margin-bottom:30px;
 }
 
 #select-list,#all-cates{

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck,faXmark,faChevronLeft,faGear,faClose, faSun, faMoon, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faCheck,faXmark,faChevronLeft,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 
 export default function MainPage(){
   if (localStorage.getItem("lang") === "th"){
@@ -12,7 +12,7 @@ export default function MainPage(){
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
   const [timerSixty, setTimerSixty] = useState(localStorage.getItem("timer-sixty") === 'true');
 
-  const [eatingTitle, setEatingTitle] = useState(true);
+  const [noResult, setNoResult] = useState(true);
 
   localStorage.getItem('dark-mode');
 
@@ -508,7 +508,7 @@ export default function MainPage(){
     ]
   }
 
-  const AllCates = () => {
+  const AllCates = () => {    
     return (
       <div className="select-lists">
         <CardCate category="Animals" link="/animals"/>
@@ -547,11 +547,11 @@ export default function MainPage(){
     }, 200);
     setTimeout(() => {
       allCates.style.opacity = "1";
-      allCates.style.transition = "opacity 200ms";
+      allCates.style.transition = "opacity 300ms";
     },300)
 
     searchBtn.style.animation = "mainAnim 100ms forwards";
-    searchInput.style.width = "20%";
+    searchInput.style.width = "25%";
     searchInput.style.visibility = "visible";
     searchInput.style.transition = "all 400ms";
     setTimeout(() => {
@@ -578,7 +578,7 @@ export default function MainPage(){
     }, 200);
     setTimeout(() => {
       searchList.style.opacity = "1";
-      searchList.style.transition = "opacity 200ms";
+      searchList.style.transition = "opacity 300ms";
     },300)
 
     closeBtn.style.animation = "mainAnim 100ms forwards";
@@ -597,6 +597,22 @@ export default function MainPage(){
     }
   }
 
+  const showNoResult = () => {
+    let selectList = document.getElementById("all-cates");
+    let cards = selectList.querySelectorAll(".card");
+    let cardsNone = selectList.querySelectorAll(".card[style='display: none;']");
+    let noResult = document.getElementById("no-result");
+    if (cardsNone.length === cards.length){
+      noResult.style.display = "block";
+      setTimeout(() => {
+        noResult.classList.add("active");
+      }, 1)
+    } else {
+      noResult.style.display = "none";
+      noResult.classList.remove("active");
+    }
+  }
+
   const searchCate = () => {
     let searchInput = document.getElementById("search-input");
     let searchValue = searchInput.value.toUpperCase();
@@ -612,6 +628,8 @@ export default function MainPage(){
         cards[k].style.display = "block";
       }
     }
+
+    showNoResult();
   }
 
   return (
@@ -651,9 +669,14 @@ export default function MainPage(){
           </div>
           <div id="all-cates">
             <AllCates />
+            <div id="no-result">
+              <FontAwesomeIcon icon={faExclamationCircle} style={{fontSize:"54px"}}/>
+              <h1 style={{marginBottom:0,fontSize:"calc(2vw + 8px)"}}>No search results</h1>
+              <p style={{fontSize:"calc(1.2vw + 2px)"}}>Please try another keyword.</p>
+            </div>
           </div>
           <div id="select-list">
-            <h2 className={`list-titles ${eatingTitle ? "" : "no-cate"}`}>Eating</h2>
+            <h2 className="list-titles">Eating</h2>
             <div className="select-lists">
               {
                 cateLists.eating.map((cate) => (
@@ -662,7 +685,7 @@ export default function MainPage(){
               }
             </div>
 
-            <h2 className={`list-titles ${cateLists.geography.length > 0 ? "" : "no-cate"}`}>Geography</h2>
+            <h2 className="list-titles">Geography</h2>
             <div className="select-lists">
               {
                 cateLists.geography.map((cate) => (
@@ -671,7 +694,7 @@ export default function MainPage(){
               }
             </div>
 
-            <h2 className={`list-titles ${cateLists.films.length > 0 ? "" : "no-cate"}`}>Films</h2>
+            <h2 className="list-titles">Films</h2>
             <div className="select-lists">
               {
                 cateLists.films.map((cate) => (
@@ -680,7 +703,7 @@ export default function MainPage(){
               }
             </div>
 
-            <h2 className={`list-titles ${cateLists.music.length > 0 ? "" : "no-cate"}`}>Music</h2>
+            <h2 className="list-titles">Music</h2>
             <div className="select-lists">
               {
                 cateLists.music.map((cate) => (
@@ -689,7 +712,7 @@ export default function MainPage(){
               }
             </div>
 
-            <h2 className={`list-titles ${cateLists.games.length > 0 ? "" : "no-cate"}`}>Games</h2>
+            <h2 className="list-titles">Games</h2>
             <div className="select-lists">
               {
                 cateLists.games.map((cate) => (
@@ -698,7 +721,7 @@ export default function MainPage(){
               }
             </div>
 
-            <h2 className={`list-titles ${cateLists.other.length > 0 ? "" : "no-cate"}`}>Other</h2>
+            <h2 className="list-titles">Other</h2>
             <div className="select-lists">
               {
                 cateLists.other.map((cate) => (
