@@ -424,12 +424,12 @@ export default function MainPage(){
         link: "/th/thai-desserts"
       },
       {
-        category: "อาหาร",
-        link: "/th/foods"
-      },
-      {
         category: "เครื่องดื่ม",
         link: "/th/drinks"
+      },
+      {
+        category: "อาหาร",
+        link: "/th/foods"
       }
     ],
     geographyTh: [
@@ -448,12 +448,12 @@ export default function MainPage(){
     ],
     musicTh: [
       {
-        "category": "นักร้องไทย",
-        "link": "/th/thai-singers"
-      },
-      {
         "category": "เครื่องดนตรี",
         "link": "/th/musical-instruments"
+      },
+      {
+        "category": "นักร้องไทย",
+        "link": "/th/thai-singers"
       },
       {
         category: "เพลงวง ETC",
