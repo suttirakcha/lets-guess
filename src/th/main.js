@@ -232,6 +232,7 @@ export default function MainPage(){
       hiddenText.value.includes("เงิน") ||
       hiddenText.value.includes("ห่า") ||
       hiddenText.value.includes("เสือก") ||
+      hiddenText.value.includes("หำ") ||
       hiddenText.value.toUpperCase().includes("fuck".toUpperCase()) ||
       hiddenText.value.toUpperCase().includes("shit".toUpperCase()) ||
       hiddenText.value.toUpperCase().includes("damn".toUpperCase()) ||
@@ -302,6 +303,7 @@ export default function MainPage(){
       hiddenText.value.includes("เงิน") ||
       hiddenText.value.includes("ห่า") ||
       hiddenText.value.includes("เสือก") ||
+      hiddenText.value.includes("หำ") ||
       hiddenText.value.toUpperCase().includes("fuck".toUpperCase()) ||
       hiddenText.value.toUpperCase().includes("shit".toUpperCase()) ||
       hiddenText.value.toUpperCase().includes("damn".toUpperCase()) ||
