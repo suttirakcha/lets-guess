@@ -478,6 +478,10 @@ export default function MainPage(){
     ],
     music: [
       {
+        category: "Albert Posis's Songs",
+        link: "/albert-posis-songs"
+      },
+      {
         category: "Blackpink",
         link: "/blackpink"
       },
@@ -515,6 +519,7 @@ export default function MainPage(){
   const AllCates = () => {    
     return (
       <div className="select-lists">
+        <CardCate category="Albert Posis's Songs" link="/albert-posis-songs"/>
         <CardCate category="Animals" link="/animals"/>
         <CardCate category="Blackpink" link="/blackpink"/>
         <CardCate category="Capital Cities" link="/capital-cities"/>
@@ -572,8 +577,10 @@ export default function MainPage(){
     let searchInput = document.getElementById("search-input");
     let searchList = document.getElementById("select-list");
     let allCates = document.getElementById("all-cates");
+    let noResult = document.getElementById("no-result");
     searchInput.value = "";
     searchInput.classList.remove("place");
+    noResult.style.display = "none";
 
     allCates.style.opacity = "0";
     allCates.style.transition = "all 200ms";

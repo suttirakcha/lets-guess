@@ -19,6 +19,7 @@ import BlackPink from "./categories/blackpink";
 import DisneyFilms2010s from "./categories/disney-films-2010s";
 import MusicalInstruments from "./categories/musical-instruments";
 import FashionBrands from "./categories/fashion-brands";
+import AlbertPosis from "./categories/albert-posis";
 
 import MainPageTh from "./th/main"
 import CountriesTh from "./th/categories/countries";
@@ -59,6 +60,7 @@ export default function App(){
         <Route path="/disney-films-2010s" element={<DisneyFilms2010s />} />
         <Route path="/musical-instruments" element={<MusicalInstruments />} />
         <Route path="/fashion-brands" element={<FashionBrands />} />
+        <Route path="/albert-posis-songs" element={<AlbertPosis />} />
 
         {/* Thai */}
         <Route path="/th" element={<MainPageTh />} />

@@ -513,8 +513,10 @@ export default function MainPage(){
     let searchInput = document.getElementById("search-input");
     let searchList = document.getElementById("select-list");
     let allCates = document.getElementById("all-cates");
+    let noResult = document.getElementById("no-result");
     searchInput.value = "";
     searchInput.classList.remove("place");
+    noResult.style.display = "none";
 
     allCates.style.opacity = "0";
     allCates.style.transition = "all 200ms";
