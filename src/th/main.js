@@ -472,10 +472,6 @@ export default function MainPage(){
     ],
     otherTh: [
       {
-        category: "แบรนด์เสื้อผ้า",
-        link: "th/clothing-brands"
-      },
-      {
         category: "สัตว์ต่างๆ",
         link: "/th/animals"
       }
@@ -557,7 +553,6 @@ export default function MainPage(){
         <CardCate category="จังหวัดในประเทศไทย" link="/th/provinces-in-thailand"/>
         <CardCate category="ตัวละครในเกม ROV" link="/th/characters-in-rov"/>
         <CardCate category="นักร้องไทย" link="/th/thai-singers"/>
-        <CardCate category="แบรนด์เสื้อผ้า" link="/th/clothing-brands"/>
         <CardCate category="ประเทศในโลก" link="/th/countries-in-the-world"/>
         <CardCate category="เพลงวง ETC" link="/th/etc-songs"/>
         <CardCate category="เพลงวง Tattoo Colour" link="/th/tattoo-colour"/>

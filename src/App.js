@@ -18,6 +18,7 @@ import MobileGames from "./categories/mobile-games";
 import BlackPink from "./categories/blackpink";
 import DisneyFilms2010s from "./categories/disney-films-2010s";
 import MusicalInstruments from "./categories/musical-instruments";
+import FashionBrands from "./categories/fashion-brands";
 
 import MainPageTh from "./th/main"
 import CountriesTh from "./th/categories/countries";
@@ -33,7 +34,6 @@ import MusicalInstrumentsTh from "./th/categories/musical-instruments";
 import ThaiSingersTh from "./th/categories/thai-singers";
 import PlacesInBangkok from "./th/categories/bangkok-places";
 import ETCSongsTh from "./th/categories/etc-songs";
-import ClothingBrands from "./th/categories/clothing-brands";
 
 export default function App(){
   return (
@@ -58,6 +58,7 @@ export default function App(){
         <Route path="/blackpink" element={<BlackPink />} />
         <Route path="/disney-films-2010s" element={<DisneyFilms2010s />} />
         <Route path="/musical-instruments" element={<MusicalInstruments />} />
+        <Route path="/fashion-brands" element={<FashionBrands />} />
 
         {/* Thai */}
         <Route path="/th" element={<MainPageTh />} />
@@ -74,7 +75,6 @@ export default function App(){
         <Route path="/th/thai-singers" element={<ThaiSingersTh />} />
         <Route path="/th/places-in-bangkok" element={<PlacesInBangkok />} />
         <Route path="/th/etc-songs" element={<ETCSongsTh />} />
-        <Route path="/th/clothing-brands" element={<ClothingBrands />} />
       </Routes>
     </Router>
   )
