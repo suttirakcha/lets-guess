@@ -676,8 +676,8 @@ export default function MainPage(){
             <AllCates />
             <div id="no-result">
               <FontAwesomeIcon icon={faExclamationCircle} style={{fontSize:"54px"}}/>
-              <h1 style={{marginBottom:0,fontSize:"calc(2vw + 8px)"}}>No search results</h1>
-              <p style={{fontSize:"calc(1.2vw + 2px)"}}>Please try another keyword.</p>
+              <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>No search results</h1>
+              <p style={{fontSize:"calc(12px + 0.5vw)"}}>Please try another keyword.</p>
             </div>
           </div>
           <div id="select-list">
