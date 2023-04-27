@@ -563,7 +563,11 @@ export default function MainPage(){
     },300)
 
     searchBtn.style.animation = "mainAnim 100ms forwards";
-    searchInput.style.width = "25%";
+    if (window.matchMedia("(max-width: 1023px)").matches){
+      searchInput.style.width = "50%";
+    } else {
+      searchInput.style.width = "25%";
+    }
     searchInput.style.visibility = "visible";
     searchInput.style.transition = "all 400ms";
     setTimeout(() => {

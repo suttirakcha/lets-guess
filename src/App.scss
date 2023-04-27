@@ -583,7 +583,12 @@ input:checked + .switch-toggle:before {
   box-sizing:border-box;
   cursor:pointer;
   transition:box-shadow 500ms,background-color 300ms,border 500ms;
-  h2 {height:100%}
+  h2 {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:calc(100% - 48px)
+  }
   &:hover{
     box-shadow:3px 3px 5px #bfbfbf;
     transition:all 500ms;
@@ -689,7 +694,7 @@ input:checked + .switch-toggle:before {
     }
   }
   .block-space {
-    top:22%;
+    top:200px;
   }
 }
 
@@ -702,7 +707,7 @@ input:checked + .switch-toggle:before {
 
 @media (max-width:767px){
   #heading {
-    margin-top:110px;
+    margin-top:80px;
     line-height:80px;
     font-size:60px;
   }
@@ -717,6 +722,10 @@ input:checked + .switch-toggle:before {
   #score-result{
     left:10%;
     right:10%;
+  }
+  .card h2 {
+    font-size:20px;
+    height:calc(100% - 32px)
   }
 }
 
