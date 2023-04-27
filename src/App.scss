@@ -317,6 +317,7 @@ ol{font-size:17px}
 #times-up-bg {
   @include invisible-bg;
   background-color:#00000000;
+  display:none;
 }
 
 #settings-drawer-anim {
@@ -749,11 +750,6 @@ input:checked + .switch-toggle:before {
     right:3%;
     padding:60px 30px;
   }
-}
-
-@media (max-width:1023px) and (orientation: portrait){
-  .no-landscape{display:block}
-  .landscape{display:none}
 }
 
 @keyframes headAnim{
