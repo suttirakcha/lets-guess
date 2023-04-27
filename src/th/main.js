@@ -476,6 +476,10 @@ export default function MainPage(){
       {
         category: "สัตว์ต่างๆ",
         link: "/th/animals"
+      },
+      {
+        category: "เครื่องครัว",
+        link: "/th/kitchenware"
       }
     ]
   }
@@ -552,6 +556,7 @@ export default function MainPage(){
       <div className="select-lists">
         <CardCate category="ขนมหวาน" link="/th/desserts"/>
         <CardCate category="ขนมไทย" link="/th/thai-desserts"/>
+        <CardCate category="เครื่องครัว" link="/th/kitchenware"/>
         <CardCate category="เครื่องดนตรี" link="/th/musical-instruments"/>
         <CardCate category="เครื่องดื่ม" link="/th/drinks"/>
         <CardCate category="จังหวัดในประเทศไทย" link="/th/provinces-in-thailand"/>
