@@ -210,59 +210,66 @@ export default function Questions(props){
     countTime();
   }
 
-  useEffect(()=> {loadPage()},[])
+  useEffect(()=> {
+    loadPage();
+  },[])
 
   return (
-    <div className="App">
-      <header className="app-head head-game">
-        <div className="sec-left">
-          <h1 style={{fontSize:"30px"}}>Category: {props.category}</h1>
-          <h1 id="get-point">Point +1</h1>
-        </div>
-        <div className="sec-middle">
-          <h1 id="timer">{getTimer}</h1>
-        </div>
-        <div className="sec-right">
-          <button className="btn" id="toggle-hide-show" onClick={clickToHideAnswer}>Hide answer</button>
-          <button className="btn" onClick={clickToGoBack}>Back to Homepage</button>
-        </div>
-      </header>
-      <main className="app-main words-in-screen">
-        <h1 id="words">{word}</h1>
-        <footer className="foot-main btns-check">
-          <button className="btn incorrect" onClick={randomizeWords}><FontAwesomeIcon icon={faXmark}/></button>
-          <button className="btn correct" onClick={countPoint}><FontAwesomeIcon icon={faCheck}/></button>
-        </footer>
-      </main>
+    <>
+      <div className={"App landscape"}>
+        <header className="app-head head-game">
+          <div className="sec-left">
+            <h1 style={{fontSize:"30px"}}>Category: {props.category}</h1>
+            <h1 id="get-point">Point +1</h1>
+          </div>
+          <div className="sec-middle">
+            <h1 id="timer">{getTimer}</h1>
+          </div>
+          <div className="sec-right">
+            <button className="btn" id="toggle-hide-show" onClick={clickToHideAnswer}>Hide answer</button>
+            <button className="btn" onClick={clickToGoBack}>Back to Homepage</button>
+          </div>
+        </header>
+        <main className="app-main words-in-screen">
+          <h1 id="words">{word}</h1>
+          <footer className="foot-main btns-check">
+            <button className="btn incorrect" onClick={randomizeWords}><FontAwesomeIcon icon={faXmark}/></button>
+            <button className="btn correct" onClick={countPoint}><FontAwesomeIcon icon={faCheck}/></button>
+          </footer>
+        </main>
 
-      <div id="answer-hidden" className="block-space">
-        <h1>{localStorage.getItem("text-hidden") === "" ? "The answer is hidden" : textAnswerHidden}</h1>
+        <div id="answer-hidden" className="block-space">
+          <h1>{localStorage.getItem("text-hidden") === "" ? "The answer is hidden" : textAnswerHidden}</h1>
+        </div>
+
+        <div id="want-to-quit" onClick={answerNo}></div>
+
+        <div id="want-to-quit-modal">
+          <h1>Are you sure you want to go back to the homepage?</h1>
+          <div className="btns-check">
+            <button className="btn" onClick={answerYes}>Yes</button>
+            <button className="btn" onClick={answerNo}>No</button>
+          </div>
+        </div>
+
+        <div id="times-up-bg"></div>
+        <div id="times-up" className="block-space">
+          <h1 className="times-up-text">Time's up!</h1>
+        </div>
+
+        <div id="score-result">
+          <h1 style={{fontSize:"60px",marginTop:0}}>Result</h1>
+          <h1 style={{fontSize:"48px"}}>Score: {numPoint}</h1>
+          <h2>Having fun?</h2>
+          <div className="btns-check">
+            <button className="btn" onClick={backToHomepage}>Go back</button>
+            <button className="btn" onClick={playAgain}>Play again</button>
+          </div>
+        </div>
       </div>
-
-      <div id="want-to-quit" onClick={answerNo}></div>
-
-      <div id="want-to-quit-modal">
-        <h1>Are you sure you want to go back to the homepage?</h1>
-        <div className="btns-check">
-          <button className="btn" onClick={answerYes}>Yes</button>
-          <button className="btn" onClick={answerNo}>No</button>
-        </div>
+      <div className="no-landscape">
+        <h1 className="horizontal-screen">Please tilt the screen horizontally.</h1>
       </div>
-
-      <div id="times-up-bg"></div>
-      <div id="times-up" className="block-space">
-        <h1 className="times-up-text">Time's up!</h1>
-      </div>
-
-      <div id="score-result">
-        <h1 style={{fontSize:"60px",marginTop:0}}>Result</h1>
-        <h1 style={{fontSize:"48px"}}>Score: {numPoint}</h1>
-        <h2>Having fun?</h2>
-        <div className="btns-check">
-          <button className="btn" onClick={backToHomepage}>Go back</button>
-          <button className="btn" onClick={playAgain}>Play again</button>
-        </div>
-      </div>
-    </div>
+    </>
   )
 }
