@@ -532,8 +532,8 @@ export default function MainPage(){
         <CardCate category="Drinks" link="/drinks"/>
         <CardCate category="Fashion Brands" link="/fashion-brands"/>
         <CardCate category="Fast and Furious Characters" link="/fast-and-furious-characters"/>
-        <CardCate category="Foods" link="/foods"/>
         <CardCate category="Film Genres" link="/film-genres"/>
+        <CardCate category="Foods" link="/foods"/>
         <CardCate category="Harry Potter Characters" link="/harry-potter-characters"/>
         <CardCate category="Landmarks" link="/landmarks"/>
         <CardCate category="Marketing Words" link="/marketing-words"/>
