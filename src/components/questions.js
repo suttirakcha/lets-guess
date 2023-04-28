@@ -55,6 +55,9 @@ export default function Questions(props){
         timer.style.color = "#E63737";
         timer.style.transition = "color 20s";
       }
+      if (count == 0){
+        timesUp.style.display = "flex";
+      }
       if (count < 0) {
         clearInterval(countTime);
         timesUp.style.animation = "openModal 400ms forwards";
@@ -108,11 +111,17 @@ export default function Questions(props){
     let answerBtn = document.getElementById("toggle-hide-show");
     let answerHidden = document.getElementById("answer-hidden");
     if (answerBtn.innerText == "Hide answer"){
+      answerHidden.style.display = "flex";
       answerHidden.style.animation = "openModal 400ms forwards";
       answerBtn.innerText = "Show answer";
+      answerBtn.disabled = true;
+      setTimeout(() => answerBtn.disabled = false, 500);
     } else {
+      answerBtn.disabled = true;
+      setTimeout(() => answerBtn.disabled = false, 500);
       answerBtn.innerText = "Hide answer";
       answerHidden.style.animation = "closeModal 500ms forwards";
+      setTimeout(() => answerHidden.style.display = "none", 500);
     }
   }
 
