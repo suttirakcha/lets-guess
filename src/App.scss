@@ -735,6 +735,18 @@ input:checked + .switch-toggle:before {
   }
 }
 
+@media (orientation: portrait){
+  .sec-right {
+    display:block;
+    width:calc(100% - 80px);
+    position:absolute;
+    top:100px;
+    .btn:last-child {
+      margin-left:20px;
+    }
+  }
+}
+
 @media (max-height:767px){
   #settings-drawer {
     overflow-y:scroll;
