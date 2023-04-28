@@ -484,6 +484,10 @@ export default function MainPage(){
         link: "/albert-posis-songs"
       },
       {
+        category: "Girls' Generation",
+        link: "/girls-generation"
+      },
+      {
         category: "Blackpink",
         link: "/blackpink"
       },
@@ -534,6 +538,7 @@ export default function MainPage(){
         <CardCate category="Fast and Furious Characters" link="/fast-and-furious-characters"/>
         <CardCate category="Film Genres" link="/film-genres"/>
         <CardCate category="Foods" link="/foods"/>
+        <CardCate category="Girls' Generation" link="/girls-generation"/>
         <CardCate category="Harry Potter Characters" link="/harry-potter-characters"/>
         <CardCate category="Landmarks" link="/landmarks"/>
         <CardCate category="Marketing Words" link="/marketing-words"/>
