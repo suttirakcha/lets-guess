@@ -252,11 +252,13 @@ export default function Questions(props){
 
       <div id="want-to-quit" onClick={answerNo}></div>
 
-      <div id="want-to-quit-modal">
-        <h1>Are you sure you want to go back to the homepage?</h1>
-        <div className="btns-check">
-          <button className="btn" onClick={answerYes}>Yes</button>
-          <button className="btn" onClick={answerNo}>No</button>
+      <div className="center">
+        <div id="want-to-quit-modal">
+          <h1>Are you sure you want to go back to the homepage?</h1>
+          <div className="btns-check">
+            <button className="btn" onClick={answerYes}>Yes</button>
+            <button className="btn" onClick={answerNo}>No</button>
+          </div>
         </div>
       </div>
 
@@ -265,13 +267,15 @@ export default function Questions(props){
         <h1 className="times-up-text">Time's up!</h1>
       </div>
 
-      <div id="score-result">
-        <h1 style={{fontSize:"60px",marginTop:0}}>Result</h1>
-        <h1 style={{fontSize:"48px"}}>Score: {numPoint}</h1>
-        <h2>Having fun?</h2>
-        <div className="btns-check">
-          <button className="btn" onClick={backToHomepage}>Go back</button>
-          <button className="btn" onClick={playAgain}>Play again</button>
+      <div className="center">
+        <div id="score-result">
+          <h1 style={{fontSize:"60px",marginTop:0}}>Result</h1>
+          <h1 style={{fontSize:"48px"}}>Score: {numPoint}</h1>
+          <h2>Having fun?</h2>
+          <div className="btns-check">
+            <button className="btn" onClick={backToHomepage}>Go back</button>
+            <button className="btn" onClick={playAgain}>Play again</button>
+          </div>
         </div>
       </div>
     </div>

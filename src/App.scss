@@ -290,8 +290,7 @@ ol{font-size:17px}
   background-color:white;
   padding:60px;
   border-radius: 20px;
-  left:28%;
-  right:28%;
+  width:500px;
   top:30%;
   transform:translateX(180%);
   display:none;
@@ -318,6 +317,11 @@ ol{font-size:17px}
   @include invisible-bg;
   background-color:#00000000;
   z-index:20;
+}
+
+.center {
+  display:flex;
+  justify-content:center;
 }
 
 #settings-drawer-anim {
@@ -570,8 +574,7 @@ input:checked + .switch-toggle:before {
   background-color:white;
   padding:60px;
   border-radius: 20px;
-  left:30%;
-  right:30%;
+  width:420px;
   top:15%;
   transform:translateY(-400%)
 }
@@ -687,10 +690,6 @@ input:checked + .switch-toggle:before {
 }
 
 @media (max-width:1200px){
-  #score-result{
-    left:20%;
-    right:20%;
-  }
   #timer{
     font-size:40px;
     top:6px;
@@ -728,10 +727,6 @@ input:checked + .switch-toggle:before {
     max-width:480px;
     width:100%;
   }
-  #score-result{
-    left:10%;
-    right:10%;
-  }
   .card h2 {
     font-size:20px;
     height:calc(100% - 32px)
@@ -760,14 +755,6 @@ input:checked + .switch-toggle:before {
   }
   ::-webkit-scrollbar {
     display:none;
-  }
-}
-
-@media (max-width:500px){
-  #score-result{
-    left:3%;
-    right:3%;
-    padding:60px 30px;
   }
 }
 

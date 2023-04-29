@@ -250,11 +250,13 @@ export default function QuestionsTh(props){
 
       <div id="want-to-quit" onClick={answerNo}></div>
 
-      <div id="want-to-quit-modal">
-        <h1>คุณต้องการกลับไปที่<br/>หน้าแรกหรือไม่</h1>
-        <div className="btns-check">
-          <button className="btn" onClick={answerYes}>ใช่</button>
-          <button className="btn" onClick={answerNo}>ไม่</button>
+      <div className="center">
+        <div id="want-to-quit-modal">
+          <h1>คุณต้องการกลับไปที่<br/>หน้าแรกหรือไม่</h1>
+          <div className="btns-check">
+            <button className="btn" onClick={answerYes}>ใช่</button>
+            <button className="btn" onClick={answerNo}>ไม่</button>
+          </div>
         </div>
       </div>
 
@@ -263,13 +265,15 @@ export default function QuestionsTh(props){
         <h1 className="times-up-text">หมดเวลา!</h1>
       </div>
 
-      <div id="score-result">
-        <h1 style={{fontSize:"60px",marginTop:0}}>ผลลัพธ์</h1>
-        <h1 style={{fontSize:"48px"}}>คะแนน: {numPoint}</h1>
-        <h2>สนุกมั้ย?</h2>
-        <div className="btns-check">
-          <button className="btn" onClick={scoreResultBackToHomepage}>กลับ</button>
-          <button className="btn" onClick={scoreResultPlayAgain}>เล่นอีกครั้ง</button>
+      <div className="center">
+        <div id="score-result">
+          <h1 style={{fontSize:"60px",marginTop:0}}>ผลลัพธ์</h1>
+          <h1 style={{fontSize:"48px"}}>คะแนน: {numPoint}</h1>
+          <h2>สนุกมั้ย?</h2>
+          <div className="btns-check">
+            <button className="btn" onClick={scoreResultBackToHomepage}>กลับ</button>
+            <button className="btn" onClick={scoreResultPlayAgain}>เล่นอีกครั้ง</button>
+          </div>
         </div>
       </div>
     </div>
