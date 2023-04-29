@@ -488,12 +488,12 @@ export default function MainPage(){
         link: "/albert-posis-songs"
       },
       {
-        category: "Girls' Generation",
-        link: "/girls-generation"
-      },
-      {
         category: "Blackpink",
         link: "/blackpink"
+      },
+      {
+        category: "Girls' Generation",
+        link: "/girls-generation"
       },
       {
         category: "Musical Instruments",
