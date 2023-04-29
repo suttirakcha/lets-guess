@@ -318,6 +318,7 @@ ol{font-size:17px}
   @include invisible-bg;
   background-color:#00000000;
   display:none;
+  z-index:20;
 }
 
 #settings-drawer-anim {
