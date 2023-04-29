@@ -227,7 +227,7 @@ export default function Questions(props){
     <div className={"App"}>
       <header className="app-head head-game">
         <div className="sec-left">
-          <h1 style={{fontSize:"30px"}}>Category: {props.category}</h1>
+          <h1 id="category">Category: {props.category}</h1>
           <h1 id="get-point">Point +1</h1>
         </div>
         <div className="sec-middle">

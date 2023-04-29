@@ -472,6 +472,12 @@ export default function MainPage(){
         link: "/th/characters-in-rov"
       }
     ],
+    languagesTh: [
+      {
+        category: "คำที่มาจากภาษาบาลี-สันสกฤต",
+        link: "/th/bali-sanskrit-loanwords"
+      }
+    ],
     otherTh: [
       {
         category: "สัตว์ต่างๆ",
@@ -560,6 +566,7 @@ export default function MainPage(){
       <div className="select-lists">
         <CardCate category="ขนมหวาน" link="/th/desserts"/>
         <CardCate category="ขนมไทย" link="/th/thai-desserts"/>
+        <CardCate category="คำที่มาจากภาษาบาลี-สันสกฤต" link="/th/bali-sanskrit-loanwords"/>
         <CardCate category="เครื่องครัว" link="/th/kitchenware"/>
         <CardCate category="เครื่องดนตรี" link="/th/musical-instruments"/>
         <CardCate category="เครื่องดื่ม" link="/th/drinks"/>
@@ -686,6 +693,15 @@ export default function MainPage(){
             <div className="select-lists">
               {
                 cateLists.gamesTh.map((cate) => (
+                  <CardCate category={cate.category} link={cate.link}/>
+                ))
+              }
+            </div>
+
+            <h2 className={`list-titles ${cateLists.languagesTh.length > 0 ? "" : "no-cate"}`}>ภาษา</h2>
+            <div className="select-lists">
+              {
+                cateLists.languagesTh.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }

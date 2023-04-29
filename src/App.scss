@@ -560,6 +560,10 @@ input:checked + .switch-toggle:before {
   animation:mainAnimOut 900ms forwards;
 }
 
+#category {
+  font-size:30px;
+}
+
 #score-result{
   position:absolute;
   z-index:99;
@@ -693,7 +697,10 @@ input:checked + .switch-toggle:before {
   }
   .sec-left {
     text-align:left;
-    width:45%;
+    margin-top:8px;
+    #category {
+      font-size:24px;
+    }
   }
   .btn {
     font-size:1em;

@@ -225,7 +225,7 @@ export default function QuestionsTh(props){
     <div className="App">
       <header className="app-head head-game">
         <div className="sec-left">
-          <h1 style={{fontSize:"30px"}}>หมวดหมู่: {props.category}</h1>
+          <h1 id="category">หมวดหมู่: {props.category}</h1>
           <h1 id="get-point">คะแนน +1</h1>
         </div>
         <div className="sec-middle">
