@@ -462,6 +462,10 @@ export default function MainPage(){
     ],
     films: [
       {
+        category: "Despicable Me",
+        link: "/despicable-me"
+      },
+      {
         category: "Disney Films (2010s)",
         link: "/disney-films-2010s"
       },
@@ -531,6 +535,7 @@ export default function MainPage(){
         <CardCate category="Capital Cities" link="/capital-cities"/>
         <CardCate category="Characters in Mario Games" link="/characters-in-mario-games"/>
         <CardCate category="Countries in the World" link="/countries-in-the-world"/>
+        <CardCate category="Despicable Me" link="/despicable-me"/>
         <CardCate category="Desserts" link="/desserts"/>
         <CardCate category="Disney Films (2010s)" link="/disney-films-2010s"/>
         <CardCate category="Drinks" link="/drinks"/>
