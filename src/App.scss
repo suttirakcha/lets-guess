@@ -715,6 +715,10 @@ input:checked + .switch-toggle:before {
     flex:0 0 50%;
     max-width:calc(50% - 20px);
   }
+  #select-list {
+    padding-left:0;
+    width:100%;
+  }
 }
 
 @media (max-width:767px){
@@ -770,6 +774,9 @@ input:checked + .switch-toggle:before {
       width:100%;
       margin-bottom:20px;
     }
+  }
+  .card h2{
+    font-size:16px;
   }
 }
 
