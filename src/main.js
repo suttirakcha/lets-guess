@@ -442,6 +442,10 @@ export default function MainPage(){
         link: "/foods"
       },
       {
+        category: "Restaurant Chains",
+        link: "/restaurant-chains"
+      },
+      {
         category: "Sauces",
         link: "/sauces"
       }
@@ -554,6 +558,7 @@ export default function MainPage(){
         <CardCate category="Marketing Words" link="/marketing-words"/>
         <CardCate category="Mobile Games" link="/mobile-games"/>
         <CardCate category="Musical Instruments" link="/musical-instruments"/>
+        <CardCate category="Restaurant Chains" link="/restaurant-chains"/>
         <CardCate category="Sauces" link="/sauces"/>
       </div>
     )
