@@ -292,7 +292,8 @@ body{
   background-color:white;
   padding:60px;
   border-radius: 20px;
-  width:560px;
+  max-width:600px;
+  width:90%;
   box-sizing:border-box;
   top:30%;
   transform:translateX(180%);
@@ -577,7 +578,9 @@ input:checked + .switch-toggle:before {
   background-color:white;
   padding:60px;
   border-radius: 20px;
-  width:420px;
+  max-width:500px;
+  width:90%;
+  box-sizing:border-box;
   top:15%;
   transform:translateY(-400%)
 }
@@ -757,6 +760,16 @@ input:checked + .switch-toggle:before {
   }
   ::-webkit-scrollbar {
     display:none;
+  }
+}
+
+@media (max-width:480px){
+  #score-result .btns-check {
+    display:block;
+    .btn {
+      width:100%;
+      margin-bottom:20px;
+    }
   }
 }
 
