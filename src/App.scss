@@ -578,7 +578,7 @@ input:checked + .switch-toggle:before {
   background-color:white;
   padding:60px;
   border-radius: 20px;
-  max-width:500px;
+  max-width:540px;
   width:90%;
   box-sizing:border-box;
   top:15%;
@@ -916,20 +916,6 @@ input:checked + .switch-toggle:before {
   overflow:hidden;
   color:white;
 
-  ::-webkit-scrollbar {
-    width:10px;
-  }
-  ::-webkit-scrollbar-track {
-    background:transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    background:#404040;
-    border-radius:99px;
-    &:hover {
-        background:#303030;
-    }
-    }
-  .App{text-align:center}
   #lets-start .app-foot{
     position:absolute;
     width:100%;
