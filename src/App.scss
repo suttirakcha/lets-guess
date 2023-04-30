@@ -283,7 +283,7 @@ body{
   display:none;
   align-items:center;
   justify-content:center;
-  transform:translateX(180%)
+  transform:translateX(200%)
 }
 
 #want-to-quit-modal{
@@ -296,7 +296,7 @@ body{
   width:90%;
   box-sizing:border-box;
   top:30%;
-  transform:translateX(180%);
+  transform:translateX(200%);
   display:none;
   h1{
     line-height:40px;
@@ -836,13 +836,13 @@ input:checked + .switch-toggle:before {
 }
 
 @keyframes openModal{
-  from{transform:translateX(180%)}
+  from{transform:translateX(200%)}
   to{transform:translateX(0%)}
 }
 
 @keyframes closeModal{
   from{transform:translateX(0%)}
-  to{transform:translateX(180%)}
+  to{transform:translateX(200%)}
 }
 
 @keyframes randomWordsOut{
@@ -1026,7 +1026,7 @@ input:checked + .switch-toggle:before {
       transition:all 500ms;
     }
     &:active{
-      background-color:#666666;
+      background-color:#363636;
       box-shadow:3px 3px 5px #303030;
       transition:box-shadow 500ms,background-color 300ms;
     }
