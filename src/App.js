@@ -22,6 +22,7 @@ import FashionBrands from "./categories/fashion-brands";
 import AlbertPosis from "./categories/albert-posis";
 import GirlsGeneration from "./categories/girls-generation";
 import DespicableMe from "./categories/despicable-me";
+import Airline from "./categories/airline-words";
 
 import MainPageTh from "./th/main"
 import CountriesTh from "./th/categories/countries";
@@ -67,6 +68,7 @@ export default function App(){
         <Route path="/albert-posis-songs" element={<AlbertPosis />} />
         <Route path="/girls-generation" element={<GirlsGeneration />} />
         <Route path="/despicable-me" element={<DespicableMe />} />
+        <Route path="/airline-words" element={<Airline />} />
 
         {/* Thai */}
         <Route path="/th" element={<MainPageTh />} />

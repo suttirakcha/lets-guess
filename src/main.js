@@ -512,6 +512,10 @@ export default function MainPage(){
     ],
     other: [
       {
+        category: "Airline Words",
+        link: "/airline-words"
+      },
+      {
         category: "Animals",
         link: "/animals"
       },
@@ -529,6 +533,7 @@ export default function MainPage(){
   const AllCates = () => {    
     return (
       <div className="select-lists">
+        <CardCate category="Airline Words" link="/airline-words"/>
         <CardCate category="Albert Posis's Songs" link="/albert-posis-songs"/>
         <CardCate category="Animals" link="/animals"/>
         <CardCate category="Blackpink" link="/blackpink"/>
