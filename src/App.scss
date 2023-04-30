@@ -1,8 +1,10 @@
-body,button,input{font-family:"IBM Plex Sans Thai",sans-serif}
+body,button,input,code{font-family:"IBM Plex Sans Thai",sans-serif}
 body{
   background-color:#D4FFA8;
   overflow:hidden;
   margin:0;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale
 }
 
 ::placeholder{color:#8e8e8e}
