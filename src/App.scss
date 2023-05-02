@@ -296,7 +296,7 @@ body{
   width:90%;
   box-sizing:border-box;
   top:30%;
-  transform:translateX(200%);
+  transform:translateX(250%);
   display:none;
   h1{
     line-height:40px;
@@ -843,13 +843,13 @@ input:checked + .switch-toggle:before {
 }
 
 @keyframes openModal{
-  from{transform:translateX(200%)}
+  from{transform:translateX(250%)}
   to{transform:translateX(0%)}
 }
 
 @keyframes closeModal{
   from{transform:translateX(0%)}
-  to{transform:translateX(200%)}
+  to{transform:translateX(250%)}
 }
 
 @keyframes randomWordsOut{

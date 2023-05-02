@@ -24,6 +24,7 @@ import GirlsGeneration from "./categories/girls-generation";
 import DespicableMe from "./categories/despicable-me";
 import Airline from "./categories/airline-words";
 import RestaurantChains from "./categories/restaurant-chains";
+import PhoneBrands from "./categories/phone-brands";
 
 import MainPageTh from "./th/main"
 import CountriesTh from "./th/categories/countries";
@@ -71,6 +72,7 @@ export default function App(){
         <Route path="/despicable-me" element={<DespicableMe />} />
         <Route path="/airline-words" element={<Airline />} />
         <Route path="/restaurant-chains" element={<RestaurantChains />} />
+        <Route path="/phone-brands" element={<PhoneBrands />} />
 
         {/* Thai */}
         <Route path="/th" element={<MainPageTh />} />

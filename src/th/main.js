@@ -662,7 +662,7 @@ export default function MainPage(){
             </div>
           </div>
           <div id="select-list">
-            <h2 className={`list-titles ${cateLists.eatingTh.length > 0 ? "" : "no-cate"}`}>อาหาร</h2>
+            <h2 className="list-titles">อาหาร</h2>
             <div className="select-lists">
               {
                 cateLists.eatingTh.map((cate) => (
@@ -671,7 +671,7 @@ export default function MainPage(){
               }
             </div>
 
-            <h2 className={`list-titles ${cateLists.geographyTh.length > 0 ? "" : "no-cate"}`}>ภูมิศาสตร์</h2>
+            <h2 className="list-titles">ภูมิศาสตร์</h2>
             <div className="select-lists">
               {
                 cateLists.geographyTh.map((cate) => (
@@ -680,7 +680,7 @@ export default function MainPage(){
               }
             </div>
 
-            <h2 className={`list-titles ${cateLists.musicTh.length > 0 ? "" : "no-cate"}`}>ดนตรี</h2>
+            <h2 className="list-titles">ดนตรี</h2>
             <div className="select-lists">
               {
                 cateLists.musicTh.map((cate) => (
@@ -689,7 +689,7 @@ export default function MainPage(){
               }
             </div>
 
-            <h2 className={`list-titles ${cateLists.gamesTh.length > 0 ? "" : "no-cate"}`}>เกม</h2>
+            <h2 className="list-titles">เกม</h2>
             <div className="select-lists">
               {
                 cateLists.gamesTh.map((cate) => (
@@ -698,7 +698,7 @@ export default function MainPage(){
               }
             </div>
 
-            <h2 className={`list-titles ${cateLists.languagesTh.length > 0 ? "" : "no-cate"}`}>ภาษา</h2>
+            <h2 className="list-titles">ภาษา</h2>
             <div className="select-lists">
               {
                 cateLists.languagesTh.map((cate) => (
@@ -707,7 +707,7 @@ export default function MainPage(){
               }
             </div>
 
-            <h2 className={`list-titles ${cateLists.otherTh.length > 0 ? "" : "no-cate"}`}>อื่นๆ</h2>
+            <h2 className="list-titles">อื่นๆ</h2>
             <div className="select-lists">
               {
                 cateLists.otherTh.map((cate) => (
