@@ -478,9 +478,9 @@ export default function MainPage(){
         link: "/th/bali-sanskrit-loanwords"
       },
       {
-        category: "คำเลียนเสียงธรรมชาติ",
-        link: "/th/onomatopoeia"
-      }
+        category: "ภาษาที่ใช้อักษรละติน",
+        link: "/th/latin-used-languages"
+      },
     ],
     otherTh: [
       {
@@ -571,7 +571,6 @@ export default function MainPage(){
         <CardCate category="ขนมหวาน" link="/th/desserts"/>
         <CardCate category="ขนมไทย" link="/th/thai-desserts"/>
         <CardCate category="คำที่มาจากภาษาบาลี-สันสกฤต" link="/th/bali-sanskrit-loanwords"/>
-        <CardCate category="คำเลียนเสียงธรรมชาติ" link="/th/onomatopoeia"/>
         <CardCate category="เครื่องครัว" link="/th/kitchenware"/>
         <CardCate category="เครื่องดนตรี" link="/th/musical-instruments"/>
         <CardCate category="เครื่องดื่ม" link="/th/drinks"/>
@@ -581,6 +580,7 @@ export default function MainPage(){
         <CardCate category="ประเทศในโลก" link="/th/countries-in-the-world"/>
         <CardCate category="เพลงวง ETC" link="/th/etc-songs"/>
         <CardCate category="เพลงวง Tattoo Colour" link="/th/tattoo-colour"/>
+        <CardCate category="ภาษาที่ใช้อักษรละติน" link="/th/latin-used-languages"/>
         <CardCate category="สถานที่ท่องเที่ยวในกรุงเทพ" link="/th/places-in-bangkok"/>
         <CardCate category="สัตว์ต่างๆ" link="/th/animals"/>
         <CardCate category="อาหาร" link="/th/foods"/>
