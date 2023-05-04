@@ -476,6 +476,10 @@ export default function MainPage(){
       {
         category: "คำที่มาจากภาษาบาลี-สันสกฤต",
         link: "/th/bali-sanskrit-loanwords"
+      },
+      {
+        category: "คำเลียนเสียงธรรมชาติ",
+        link: "/th/onomatopoeia"
       }
     ],
     otherTh: [
@@ -567,6 +571,7 @@ export default function MainPage(){
         <CardCate category="ขนมหวาน" link="/th/desserts"/>
         <CardCate category="ขนมไทย" link="/th/thai-desserts"/>
         <CardCate category="คำที่มาจากภาษาบาลี-สันสกฤต" link="/th/bali-sanskrit-loanwords"/>
+        <CardCate category="คำเลียนเสียงธรรมชาติ" link="/th/onomatopoeia"/>
         <CardCate category="เครื่องครัว" link="/th/kitchenware"/>
         <CardCate category="เครื่องดนตรี" link="/th/musical-instruments"/>
         <CardCate category="เครื่องดื่ม" link="/th/drinks"/>

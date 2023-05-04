@@ -47,7 +47,7 @@ body{
   background-color:black;
   color:white;
   padding:10px 60px;
-  border-radius:25px;
+  border-radius:99px;
   cursor:pointer;
   transition-duration:300ms;
   font-size:1.2em;
@@ -692,6 +692,14 @@ input:checked + .switch-toggle:before {
   }
   #words {
     font-size:calc(5em + 10px);
+  }
+  .App ol li,.btn{font-size:24px}
+  h2{font-size:30px}
+  #heading{font-size:100px}
+  #words{font-size:110px}
+  .btn.correct,.btn.incorrect{
+    font-size:30px;
+    padding:10px 80px;
   }
 }
 

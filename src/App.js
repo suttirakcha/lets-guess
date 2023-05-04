@@ -42,6 +42,7 @@ import PlacesInBangkok from "./th/categories/bangkok-places";
 import ETCSongsTh from "./th/categories/etc-songs";
 import KitchenwareTh from "./th/categories/kitchenware";
 import BaliSanskritLoanwords from "./th/categories/bali-sanskrit-loanwords";
+import Onomatopoeia from "./th/categories/onomatopoeia";
 
 export default function App(){
   return (
@@ -91,6 +92,7 @@ export default function App(){
         <Route path="/th/etc-songs" element={<ETCSongsTh />} />
         <Route path="/th/kitchenware" element={<KitchenwareTh />} />
         <Route path="/th/bali-sanskrit-loanwords" element={<BaliSanskritLoanwords />} />
+        <Route path="/th/onomatopoeia" element={<Onomatopoeia />} />
       </Routes>
     </Router>
   )
