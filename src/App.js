@@ -43,6 +43,7 @@ import ETCSongsTh from "./th/categories/etc-songs";
 import KitchenwareTh from "./th/categories/kitchenware";
 import BaliSanskritLoanwords from "./th/categories/bali-sanskrit-loanwords";
 import LatinUsedLanguages from "./th/categories/latin-used-languages";
+import FruitsTh from "./th/categories/fruits";
 
 export default function App(){
   return (
@@ -92,7 +93,8 @@ export default function App(){
         <Route path="/th/etc-songs" element={<ETCSongsTh />} />
         <Route path="/th/kitchenware" element={<KitchenwareTh />} />
         <Route path="/th/bali-sanskrit-loanwords" element={<BaliSanskritLoanwords />} />
-        <Route path="/th/latin-used-languages" element={<LatinUsedLanguages />} />
+        <Route path="/th/languages-that-use-latin-alphabets" element={<LatinUsedLanguages />} />
+        <Route path="/th/fruits" element={<FruitsTh />} />
       </Routes>
     </Router>
   )

@@ -479,18 +479,22 @@ export default function MainPage(){
       },
       {
         category: "ภาษาที่ใช้อักษรละติน",
-        link: "/th/latin-used-languages"
+        link: "/th/languages-that-use-latin-alphabets"
       },
     ],
     otherTh: [
       {
+        category: "เครื่องครัว",
+        link: "/th/kitchenware"
+      },
+      {
+        category: "ผลไม้ต่างๆ",
+        link: "/th/fruits"
+      },
+      {
         category: "สัตว์ต่างๆ",
         link: "/th/animals"
       },
-      {
-        category: "เครื่องครัว",
-        link: "/th/kitchenware"
-      }
     ]
   }
 
@@ -578,9 +582,10 @@ export default function MainPage(){
         <CardCate category="ตัวละครในเกม ROV" link="/th/characters-in-rov"/>
         <CardCate category="นักร้องไทย" link="/th/thai-singers"/>
         <CardCate category="ประเทศในโลก" link="/th/countries-in-the-world"/>
+        <CardCate category="ผลไม้ต่างๆ" link="/th/fruits"/>
         <CardCate category="เพลงวง ETC" link="/th/etc-songs"/>
         <CardCate category="เพลงวง Tattoo Colour" link="/th/tattoo-colour"/>
-        <CardCate category="ภาษาที่ใช้อักษรละติน" link="/th/latin-used-languages"/>
+        <CardCate category="ภาษาที่ใช้อักษรละติน" link="/th/languages-that-use-latin-alphabets"/>
         <CardCate category="สถานที่ท่องเที่ยวในกรุงเทพ" link="/th/places-in-bangkok"/>
         <CardCate category="สัตว์ต่างๆ" link="/th/animals"/>
         <CardCate category="อาหาร" link="/th/foods"/>
