@@ -693,10 +693,12 @@ input:checked + .switch-toggle:before {
   #words {
     font-size:calc(5em + 10px);
   }
+}
+
+@media (min-width: 1800px) and (min-height: 1100px){
   .App ol li,.btn{font-size:24px}
   h2{font-size:30px}
   #heading{font-size:100px}
-  #words{font-size:110px}
   .btn.correct,.btn.incorrect{
     font-size:30px;
     padding:10px 80px;
