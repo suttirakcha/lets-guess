@@ -26,6 +26,7 @@ import Airline from "./categories/airline-words";
 import RestaurantChains from "./categories/restaurant-chains";
 import PhoneBrands from "./categories/phone-brands";
 import Education from "./categories/education";
+import Driving from "./categories/driving";
 
 import MainPageTh from "./th/main"
 import CountriesTh from "./th/categories/countries";
@@ -77,6 +78,7 @@ export default function App(){
         <Route path="/restaurant-chains" element={<RestaurantChains />} />
         <Route path="/phone-brands" element={<PhoneBrands />} />
         <Route path="/education" element={<Education />} />
+        <Route path="/driving" element={<Driving />} />
 
         {/* Thai */}
         <Route path="/th" element={<MainPageTh />} />
