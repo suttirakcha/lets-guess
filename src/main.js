@@ -534,6 +534,10 @@ export default function MainPage(){
         link: "/animals"
       },
       {
+        category: "Education",
+        link: "/education"
+      },
+      {
         category: "Marketing Words",
         link: "/marketing-words"
       }
@@ -554,6 +558,7 @@ export default function MainPage(){
         <CardCate category="Desserts" link="/desserts"/>
         <CardCate category="Disney Films (2010s)" link="/disney-films-2010s"/>
         <CardCate category="Drinks" link="/drinks"/>
+        <CardCate category="Education" link="/education"/>
         <CardCate category="Fashion Brands" link="/fashion-brands"/>
         <CardCate category="Fast and Furious Characters" link="/fast-and-furious-characters"/>
         <CardCate category="Film Genres" link="/film-genres"/>
