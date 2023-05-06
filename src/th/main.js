@@ -484,6 +484,10 @@ export default function MainPage(){
     ],
     otherTh: [
       {
+        category: "การศึกษา",
+        link: "/th/education"
+      },
+      {
         category: "เครื่องครัว",
         link: "/th/kitchenware"
       },
@@ -572,6 +576,7 @@ export default function MainPage(){
   const AllCates = () => {
     return (
       <div className="select-lists">
+        <CardCate category="การศึกษา" link="/th/education"/>
         <CardCate category="ขนมหวาน" link="/th/desserts"/>
         <CardCate category="ขนมไทย" link="/th/thai-desserts"/>
         <CardCate category="คำที่มาจากภาษาบาลี-สันสกฤต" link="/th/bali-sanskrit-loanwords"/>

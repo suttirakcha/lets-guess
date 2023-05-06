@@ -46,6 +46,7 @@ import KitchenwareTh from "./th/categories/kitchenware";
 import BaliSanskritLoanwords from "./th/categories/bali-sanskrit-loanwords";
 import LatinUsedLanguages from "./th/categories/latin-used-languages";
 import FruitsTh from "./th/categories/fruits";
+import EducationTh from "./th/categories/education";
 
 export default function App(){
   return (
@@ -99,6 +100,7 @@ export default function App(){
         <Route path="/th/bali-sanskrit-loanwords" element={<BaliSanskritLoanwords />} />
         <Route path="/th/languages-that-use-latin-alphabets" element={<LatinUsedLanguages />} />
         <Route path="/th/fruits" element={<FruitsTh />} />
+        <Route path="/th/education" element={<EducationTh />} />
       </Routes>
     </Router>
   )
