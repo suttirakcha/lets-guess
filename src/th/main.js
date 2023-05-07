@@ -479,7 +479,7 @@ export default function MainPage(){
       },
       {
         category: "ภาษาที่ใช้อักษรละติน",
-        link: "/th/languages-that-use-latin-alphabets"
+        link: "/th/latin-used-languages"
       },
     ],
     otherTh: [
@@ -590,7 +590,7 @@ export default function MainPage(){
         <CardCate category="ผลไม้ต่างๆ" link="/th/fruits"/>
         <CardCate category="เพลงวง ETC" link="/th/etc-songs"/>
         <CardCate category="เพลงวง Tattoo Colour" link="/th/tattoo-colour"/>
-        <CardCate category="ภาษาที่ใช้อักษรละติน" link="/th/languages-that-use-latin-alphabets"/>
+        <CardCate category="ภาษาที่ใช้อักษรละติน" link="/th/latin-used-languages"/>
         <CardCate category="สถานที่ท่องเที่ยวในกรุงเทพ" link="/th/places-in-bangkok"/>
         <CardCate category="สัตว์ต่างๆ" link="/th/animals"/>
         <CardCate category="อาหาร" link="/th/foods"/>

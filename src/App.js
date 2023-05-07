@@ -28,6 +28,7 @@ import PhoneBrands from "./categories/phone-brands";
 import Education from "./categories/education";
 import Driving from "./categories/driving";
 import ActionFilmActors from "./categories/action-film-actors";
+import LatinUsedLanguages from "./categories/latin-used-languages";
 
 import MainPageTh from "./th/main"
 import CountriesTh from "./th/categories/countries";
@@ -45,7 +46,7 @@ import PlacesInBangkok from "./th/categories/bangkok-places";
 import ETCSongsTh from "./th/categories/etc-songs";
 import KitchenwareTh from "./th/categories/kitchenware";
 import BaliSanskritLoanwords from "./th/categories/bali-sanskrit-loanwords";
-import LatinUsedLanguages from "./th/categories/latin-used-languages";
+import LatinUsedLanguagesTh from "./th/categories/latin-used-languages";
 import FruitsTh from "./th/categories/fruits";
 import EducationTh from "./th/categories/education";
 
@@ -82,6 +83,7 @@ export default function App(){
         <Route path="/education" element={<Education />} />
         <Route path="/driving" element={<Driving />} />
         <Route path="/action-film-actors" element={<ActionFilmActors />} />
+        <Route path="/latin-used-languages" element={<LatinUsedLanguages />} />
 
         {/* Thai */}
         <Route path="/th" element={<MainPageTh />} />
@@ -100,7 +102,7 @@ export default function App(){
         <Route path="/th/etc-songs" element={<ETCSongsTh />} />
         <Route path="/th/kitchenware" element={<KitchenwareTh />} />
         <Route path="/th/bali-sanskrit-loanwords" element={<BaliSanskritLoanwords />} />
-        <Route path="/th/languages-that-use-latin-alphabets" element={<LatinUsedLanguages />} />
+        <Route path="/th/latin-used-languages" element={<LatinUsedLanguagesTh />} />
         <Route path="/th/fruits" element={<FruitsTh />} />
         <Route path="/th/education" element={<EducationTh />} />
       </Routes>

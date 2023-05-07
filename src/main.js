@@ -464,6 +464,12 @@ export default function MainPage(){
         link: "/landmarks"
       }
     ],
+    languages: [
+      {
+        category: "Latin-used Languages",
+        link: "/latin-used-languages"
+      },
+    ],
     films: [
       {
         category: "Action Film Actors",
@@ -575,6 +581,7 @@ export default function MainPage(){
         <CardCate category="Girls' Generation" link="/girls-generation"/>
         <CardCate category="Harry Potter Characters" link="/harry-potter-characters"/>
         <CardCate category="Landmarks" link="/landmarks"/>
+        <CardCate category="Languages that use Latin alphabets" link="/latin-used-languages"/>
         <CardCate category="Mobile Games" link="/mobile-games"/>
         <CardCate category="Musical Instruments" link="/musical-instruments"/>
         <CardCate category="Phone Brands" link="/phone-brands"/>
@@ -749,6 +756,15 @@ export default function MainPage(){
             <div className="select-lists">
               {
                 cateLists.geography.map((cate) => (
+                  <CardCate category={cate.category} link={cate.link}/>
+                ))
+              }
+            </div>
+
+            <h2 className="list-titles">Languages</h2>
+            <div className="select-lists">
+              {
+                cateLists.languages.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
