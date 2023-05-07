@@ -581,7 +581,7 @@ export default function MainPage(){
         <CardCate category="Girls' Generation" link="/girls-generation"/>
         <CardCate category="Harry Potter Characters" link="/harry-potter-characters"/>
         <CardCate category="Landmarks" link="/landmarks"/>
-        <CardCate category="Languages that use Latin alphabets" link="/latin-used-languages"/>
+        <CardCate category="Latin-used Languages" link="/latin-used-languages"/>
         <CardCate category="Mobile Games" link="/mobile-games"/>
         <CardCate category="Musical Instruments" link="/musical-instruments"/>
         <CardCate category="Phone Brands" link="/phone-brands"/>
