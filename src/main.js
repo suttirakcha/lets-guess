@@ -466,6 +466,10 @@ export default function MainPage(){
     ],
     films: [
       {
+        category: "Action Film Actors",
+        link: "/action-film-actors"
+      },
+      {
         category: "Despicable Me",
         link: "/despicable-me"
       },
@@ -551,6 +555,7 @@ export default function MainPage(){
   const AllCates = () => {    
     return (
       <div className="select-lists">
+        <CardCate category="Action Film Actors" link="/action-film-actors"/>
         <CardCate category="Albert Posis's Songs" link="/albert-posis-songs"/>
         <CardCate category="Animals" link="/animals"/>
         <CardCate category="Blackpink" link="/blackpink"/>
