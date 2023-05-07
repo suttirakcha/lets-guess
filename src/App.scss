@@ -725,6 +725,16 @@ input:checked + .switch-toggle:before {
   .btn{
     font-size:1em;
   }
+  .sec-right {
+    display:block;
+    width:calc(100% - 80px);
+    position:absolute;
+    top:110px;
+    .btn:last-child {
+      margin-left:20px;
+    }
+  }
+  #how-to-play{padding:0 20px}
 }
 
 @media (max-width:1023px){
@@ -760,19 +770,6 @@ input:checked + .switch-toggle:before {
     font-size:40px;
     line-height:48px;
   }
-}
-
-@media (orientation: portrait){
-  .sec-right {
-    display:block;
-    width:calc(100% - 80px);
-    position:absolute;
-    top:110px;
-    .btn:last-child {
-      margin-left:20px;
-    }
-  }
-  #how-to-play{padding:0 20px}
 }
 
 @media (max-height:767px){
