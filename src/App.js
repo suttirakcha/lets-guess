@@ -65,7 +65,7 @@ export default function App(){
         <Route path="/fast-and-furious-characters" element={<FastFurious />} />
         <Route path="/capital-cities" element={<CapitalCities />} />
         <Route path="/harry-potter-characters" element={<HarryPotter />} />
-        <Route path="/marketing-words" element={<Marketing />} />
+        <Route path="/words-in-marketing" element={<Marketing />} />
         <Route path="/animals" element={<Animals />} />
         <Route path="/mobile-games" element={<MobileGames />} />
         <Route path="/blackpink" element={<BlackPink />} />
@@ -75,7 +75,7 @@ export default function App(){
         <Route path="/albert-posis-songs" element={<AlbertPosis />} />
         <Route path="/girls-generation" element={<GirlsGeneration />} />
         <Route path="/despicable-me" element={<DespicableMe />} />
-        <Route path="/airline-words" element={<Airline />} />
+        <Route path="/words-in-airline" element={<Airline />} />
         <Route path="/restaurant-chains" element={<RestaurantChains />} />
         <Route path="/phone-brands" element={<PhoneBrands />} />
         <Route path="/education" element={<Education />} />

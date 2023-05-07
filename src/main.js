@@ -523,12 +523,16 @@ export default function MainPage(){
         category: "Phone Brands",
         link: "/phone-brands"
       },
+      {
+        category: "Words in Airline",
+        link: "/words-in-airline"
+      },
+      {
+        category: "Words in Marketing",
+        link: "/words-in-marketing"
+      }
     ],
     other: [
-      {
-        category: "Airline Words",
-        link: "/airline-words"
-      },
       {
         category: "Animals",
         link: "/animals"
@@ -541,17 +545,12 @@ export default function MainPage(){
         category: "Education",
         link: "/education"
       },
-      {
-        category: "Marketing Words",
-        link: "/marketing-words"
-      }
     ]
   }
 
   const AllCates = () => {    
     return (
       <div className="select-lists">
-        <CardCate category="Airline Words" link="/airline-words"/>
         <CardCate category="Albert Posis's Songs" link="/albert-posis-songs"/>
         <CardCate category="Animals" link="/animals"/>
         <CardCate category="Blackpink" link="/blackpink"/>
@@ -571,12 +570,13 @@ export default function MainPage(){
         <CardCate category="Girls' Generation" link="/girls-generation"/>
         <CardCate category="Harry Potter Characters" link="/harry-potter-characters"/>
         <CardCate category="Landmarks" link="/landmarks"/>
-        <CardCate category="Marketing Words" link="/marketing-words"/>
         <CardCate category="Mobile Games" link="/mobile-games"/>
         <CardCate category="Musical Instruments" link="/musical-instruments"/>
         <CardCate category="Phone Brands" link="/phone-brands"/>
         <CardCate category="Restaurant Chains" link="/restaurant-chains"/>
         <CardCate category="Sauces" link="/sauces"/>
+        <CardCate category="Words in Airline" link="/words-in-airline"/>
+        <CardCate category="Words in Marketing" link="/words-in-marketing"/>
       </div>
     )
   }

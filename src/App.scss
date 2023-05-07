@@ -695,7 +695,7 @@ input:checked + .switch-toggle:before {
   }
 }
 
-@media (min-width: 1800px) and (min-height: 1100px){
+@media (min-width: 1800px) and (min-height: 1200px){
   .App ol li,.btn{font-size:24px}
   h2{font-size:30px}
   #heading{font-size:100px}
@@ -705,6 +705,10 @@ input:checked + .switch-toggle:before {
   }
   #words {
     font-size:110px;
+  }
+  #timer {
+    font-size:60px;
+    margin-top:20px;
   }
 }
 
