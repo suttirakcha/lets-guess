@@ -29,7 +29,7 @@ export default function MainPage(){
     mainApp.style.animation = "mainAnimOut 900ms forwards";
     footApp.style.display = "block";
     footApp.style.animation = "footAnimOut 900ms forwards";
-    heading.innerHTML = "มาทายคำกันเถอะ";
+    heading.innerHTML = "ມາເດົາຄຳກັນ";
     howToPlay.style.display = "block";
     selectLists.style.display = "none";
     changeLangBtn.style.animation = "mainAnimOut 900ms forwards";
@@ -103,7 +103,7 @@ export default function MainPage(){
       footApp.style.display = "none";
       goBackBtn.style.animation = "mainAnimOut 900ms forwards";
       rightBtns.style.animation = "mainAnimOut 900ms forwards";
-      heading.innerHTML = "เลือกหมวดหมู่";
+      heading.innerHTML = "ເລືອກໝວດໝູ່";
       howToPlay.style.display = "none";
       selectLists.style.display = "block";
     }
@@ -318,12 +318,12 @@ export default function MainPage(){
       (hiddenText.value.includes("@"))
     ){
       if (hiddenText.value.includes("@")){
-        warning.innerHTML = "*ไม่อนุญาตให้ใช้ @ ในพื้นที่ข้อความนี้";
+        warning.innerHTML = "*ບໍ່ອະນຸຍາດໃຫ້ໃຊ້ @ ໃນພື້ນທີ່ຂໍ້ຄວາມນີ້.";
       } else {
-        warning.innerHTML = "*โปรดหลีกเลี่ยงการใช้คำที่ไม่สุภาพ หรือคำที่อ่อนไหว";
+        warning.innerHTML = "*ກະລຸນາຫຼີກລ່ຽງຄຳທີ່ບໍ່ສຸພາບ ຫຼືຄຳທີ່ອ່ອນໄຫວ.";
       }
       hiddenText.classList.add("warning");
-      localStorage.setItem("text-hidden-th", "");
+      localStorage.setItem("text-hidden-lo", "");
       warning.style.opacity = "1";
       warning.style.visibility = "visible";
       warning.style.transform = "translateY(0px)";
@@ -370,9 +370,9 @@ export default function MainPage(){
       localStorage.setItem("text-hidden-th", "")
       localStorage.setItem("text-hidden-lo", "")
       localStorage.setItem("point", 0);
-      hiddenText.value = localStorage.setItem("text-hidden-th", "");
+      hiddenText.value = localStorage.setItem("text-hidden-lo", "");
     }
-    hiddenText.value = localStorage.getItem("text-hidden-th");
+    hiddenText.value = localStorage.getItem("text-hidden-lo");
   }, [])
   window.addEventListener("keydown", pressToCloseSettings);
 
@@ -394,17 +394,17 @@ export default function MainPage(){
     console.log(localStorage);
   }
 
-  const typeHiddenTextTh = () => {
+  const typeHiddenTextLo = () => {
     let hiddenText = document.getElementById("hidden-text").value;
-    localStorage.setItem("text-hidden-th", hiddenText);
+    localStorage.setItem("text-hidden-lo", hiddenText);
   }
   const changeLang = () => {
     localStorage.setItem("lang", "");
     window.location.replace("/");
   }
-  const changeLangLo = () => {
-    localStorage.setItem("lang", "lo");
-    window.location.replace("/lo");
+  const changeLangTh = () => {
+    localStorage.setItem("lang", "th");
+    window.location.replace("/th");
   }
   const darkMode = () => {
     document.body.classList.add("dark-mode");
@@ -421,94 +421,18 @@ export default function MainPage(){
   }
 
   const cateLists = {
-    eatingTh: [
+    eatingLo: [
       {
-        category: "ขนมหวาน",
-        link: "/th/desserts"
-      },
-      {
-        category: "ขนมไทย",
-        link: "/th/thai-desserts"
-      },
-      {
-        category: "เครื่องดื่ม",
-        link: "/th/drinks"
-      },
-      {
-        category: "อาหาร",
-        link: "/th/foods"
-      }
-    ],
-    geographyTh: [
-      {
-        category: "จังหวัดในประเทศไทย",
-        link: "/th/provinces-in-thailand"
-      },
-      {
-        category: "ประเทศในโลก",
-        link: "/th/countries-in-the-world"
-      },
-      {
-        category: "สถานที่ท่องเที่ยวในกรุงเทพ",
-        link: "/th/places-in-bangkok"
-      }
-    ],
-    musicTh: [
-      {
-        "category": "เครื่องดนตรี",
-        "link": "/th/musical-instruments"
-      },
-      {
-        "category": "นักร้องไทย",
-        "link": "/th/thai-singers"
-      },
-      {
-        category: "เพลงวง ETC",
-        link: "/th/etc-songs"
-      },
-      {
-        category: "เพลงวง Tattoo Colour",
-        link: "/th/tattoo-colour"
-      }
-    ],
-    gamesTh: [
-      {
-        category: "ตัวละครในเกม ROV",
-        link: "/th/characters-in-rov"
-      }
-    ],
-    languagesTh: [
-      {
-        category: "คำที่มาจากภาษาบาลี-สันสกฤต",
-        link: "/th/bali-sanskrit-loanwords"
-      },
-      {
-        category: "ภาษาที่ใช้อักษรละติน",
-        link: "/th/latin-used-languages"
+        category: "ເຂົ້າໜົມຫວານ",
+        link: "/lo/desserts"
       },
     ],
-    otherTh: [
+    otherLo: [
       {
-        category: "การศึกษา",
-        link: "/th/education"
+        category: "ສັດຕ່າງໆ",
+        link: "/lo/animals"
       },
-      {
-        category: "เครื่องครัว",
-        link: "/th/kitchenware"
-      },
-      {
-        category: "ไปต่างประเทศ",
-        link: "/th/travel-to-foreign-countries"
-      },
-      {
-        category: "ผลไม้ต่างๆ",
-        link: "/th/fruits"
-      },
-      {
-        category: "สัตว์ต่างๆ",
-        link: "/th/animals"
-      },
-    ]
+    ],
   }
 
   const openSearch = () => {
@@ -585,25 +509,8 @@ export default function MainPage(){
   const AllCates = () => {
     return (
       <div className="select-lists">
-        <CardCate category="การศึกษา" link="/th/education"/>
-        <CardCate category="ขนมหวาน" link="/th/desserts"/>
-        <CardCate category="ขนมไทย" link="/th/thai-desserts"/>
-        <CardCate category="คำที่มาจากภาษาบาลี-สันสกฤต" link="/th/bali-sanskrit-loanwords"/>
-        <CardCate category="เครื่องครัว" link="/th/kitchenware"/>
-        <CardCate category="เครื่องดนตรี" link="/th/musical-instruments"/>
-        <CardCate category="เครื่องดื่ม" link="/th/drinks"/>
-        <CardCate category="จังหวัดในประเทศไทย" link="/th/provinces-in-thailand"/>
-        <CardCate category="ตัวละครในเกม ROV" link="/th/characters-in-rov"/>
-        <CardCate category="นักร้องไทย" link="/th/thai-singers"/>
-        <CardCate category="ประเทศในโลก" link="/th/countries-in-the-world"/>
-        <CardCate category="ไปต่างประเทศ" link="/th/travel-to-foreign-countries"/>
-        <CardCate category="ผลไม้ต่างๆ" link="/th/fruits"/>
-        <CardCate category="เพลงวง ETC" link="/th/etc-songs"/>
-        <CardCate category="เพลงวง Tattoo Colour" link="/th/tattoo-colour"/>
-        <CardCate category="ภาษาที่ใช้อักษรละติน" link="/th/latin-used-languages"/>
-        <CardCate category="สถานที่ท่องเที่ยวในกรุงเทพ" link="/th/places-in-bangkok"/>
-        <CardCate category="สัตว์ต่างๆ" link="/th/animals"/>
-        <CardCate category="อาหาร" link="/th/foods"/>
+        <CardCate category="ເຂົ້າໜົມຫວານ" link="/lo/desserts"/>
+        <CardCate category="ສັດຕ່າງໆ" link="/lo/animals"/>
       </div>
     )
   }
@@ -649,10 +556,10 @@ export default function MainPage(){
       <div id="lets-start">
       <button onClick={goBack} id="goBackBtn" className="btn">
         <FontAwesomeIcon icon={faChevronLeft} className="back-arrow"/>
-        กลับ
+        ກັບ
       </button>
         <header className="app-head">
-          <h1 id="heading">มาทายคำกันเถอะ</h1>
+          <h1 id="heading">ມາເດົາຄຳກັນ</h1>
         </header>
           <div id="right-btns-sec">
             <button id="settingsBtn" className="btn small-btn" onClick={openSettings}>
@@ -664,81 +571,45 @@ export default function MainPage(){
             <button id="searchCloseBtn" className="btn small-btn" onClick={closeSearch}>
               <FontAwesomeIcon icon={faClose}/>
             </button>
-            <input type="text" id="search-input" onKeyUp={searchCate} className="text-input" placeholder="ค้นหาหมวดหมู่"/>
+            <input type="text" id="search-input" onKeyUp={searchCate} className="text-input" placeholder="ຊອກຫາໝວດໝູ່"/>
           </div>
           <div id="changeLangBtn">
-            <button onClick={changeLang} className="btn">Eng</button>
-            <button onClick={changeLangLo} className="btn" style={{top:"12%"}}>ລາວ</button>
+            <button onClick={changeLang}  className="btn">Eng</button>
+            <button onClick={changeLangTh} className="btn" style={{top:"12%"}}>ไทย</button>
           </div>
         <main className="app-main">
           <div id="how-to-play">
-            <h2>วิธีเล่น:</h2>
+            <h2>ວິທີຫຼິ້ນ:</h2>
             <ol>
-              <li>ผู้บอกใบ้สามารถที่จะเห็นคำตอบได้เท่านั้น และให้ใบ้คำตอบเพื่อที่ผู้เล่นจะสามารถเดาคำตอบที่ปรากฏบนจอได้</li>
-              <li>ผู้บอกใบ้สามารถซ่อนคำตอบโดยกดปุ่ม "ซ่อนคำตอบ" ตรงมุมขวาบนของจอ</li>
-              <li>ถ้าผู้เล่นทายถูก ให้กดปุ่ม "<FontAwesomeIcon icon={faCheck}/>" เพื่อไปยังคำต่อไป</li>
-              <li>ถ้าผู้เล่นทายผิด หรือไม่รู้คำตอบ ให้กดปุ่ม "<FontAwesomeIcon icon={faXmark}/>" เพื่อข้ามคำตอบ</li>
-              <li>คุณมีเวลา 60 หรือ 120 วินาที (ขึ้นอยู่กับการตั้งค่าของคุณ) ในการทายคำตอบ</li>
+              <li>ຄົນໃບ້ຄຳສາມາດເຫັນຄຳຕອບໄດ້ເທົ່ານັ້ນ ແລະໃຫ້ໃບ້ຄຳຕອບເພື່ອໃຫ້ຄົນຫຼິ້ນສາມາດເດົາຄຳຕອບທີ່ປະກົດໃນໜ້າຈໍໄດ້.</li>
+              <li>ຄົນໃບ້ຄຳສາມາດເຊື່ອງຄຳຕອບໄດ້ໂດຍກົດປຸ່ມ "ເຊື່ອງຄຳຕອບ" ໃນມຸມຂວາຂອງຈໍ.</li>
+              <li>ຖ້າຄົນຫຼິ້ນເດົາຖືກ ໃຫ້ກົດປຸ່ມ"<FontAwesomeIcon icon={faCheck}/>" ເພື່ອໄປຍັງຄຳຕໍ່ໄປ.</li>
+              <li>ຖ້າຄົນຫຼິ້ນເດົາຜິດ ຫຼືບໍ່ຮູ້ຄຳຕອບ ໃຫ້ກົດປຸ່ມ"<FontAwesomeIcon icon={faXmark}/>" ເພື່ອຂ້າມຄຳຕອບ.</li>
+              <li>ເຈົ້າມີເວລາ 60 ຫຼື 120 ວິນາທີ (ຂຶ້ນຢູ່ກັບການຕັ້ງຄ່າຂອງເຈົ້າ) ໃນກາຮເດົາຄຳຕອບ.</li>
             </ol>
           </div>
           <div id="all-cates">
             <AllCates />
             <div id="no-result">
               <FontAwesomeIcon icon={faExclamationCircle} style={{fontSize:"54px"}}/>
-              <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>ไม่พบผลลัพธ์</h1>
-              <p style={{fontSize:"calc(12px + 0.5vw)"}}>กรุณาลองคีย์เวิร์ดอื่น</p>
+              <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>ບໍ່ພົບຜົນໄດ້ຮັບ</h1>
+              <p style={{fontSize:"calc(12px + 0.5vw)"}}>ກະລຸນາລອງຄີເວິດອື່ນ</p>
             </div>
           </div>
           <div id="select-list">
-            <h2 className="list-titles">อาหาร</h2>
+            <h2 className="list-titles">ອາຫານ</h2>
             <div className="select-lists">
               {
-                cateLists.eatingTh.map((cate) => (
+                cateLists.eatingLo.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className="list-titles">ภูมิศาสตร์</h2>
+            <h2 className="list-titles">ອື່ນໆ</h2>
             <div className="select-lists">
               {
-                cateLists.geographyTh.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">ดนตรี</h2>
-            <div className="select-lists">
-              {
-                cateLists.musicTh.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">เกม</h2>
-            <div className="select-lists">
-              {
-                cateLists.gamesTh.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">ภาษา</h2>
-            <div className="select-lists">
-              {
-                cateLists.languagesTh.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">อื่นๆ</h2>
-            <div className="select-lists">
-              {
-                cateLists.otherTh.map((cate) => (
+                cateLists.otherLo.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
@@ -748,12 +619,12 @@ export default function MainPage(){
             <div className="loading-icon">
                 <div className="inner-icon"></div>
             </div>
-            <h2>กำลังโหลด...</h2>
+            <h2>ກຳລັງໂຫຼດ...</h2>
           </div>
         </main>
         <footer className="app-foot">
-          <h2>พร้อมหรือยัง?</h2>
-          <button onClick={playNow} className="btn">เล่นเลย</button>
+          <h2>ພ້ອມແລ້ວບໍ່?</h2>
+          <button onClick={playNow} className="btn">ເລ່ນເລົຍ</button>
         </footer>
 
         <div id="settings-drawer-mask" onClick={closeSettings}></div>
@@ -762,34 +633,34 @@ export default function MainPage(){
           <FontAwesomeIcon icon={faClose} id="close-settings-btn" onClick={closeSettings}/>
         </div>
         <div id="settings-drawer">
-          <h1>การตั้งค่า</h1>
-          <p style={{marginBottom:0}}><strong>หมายเหตุ: </strong> การตั้งค่าของคุณจะถูกบันทึกโดยอัตโนมัติเมื่อคุณปิดแถบด้านข้างนี้</p>
+          <h1>ການຕັ້ງຄ່າ</h1>
+          <p style={{marginBottom:0}}><strong>ໝາຍເຫດ: </strong> ການຕັ້ງຄ່າຂອງເຈົ້າຈະຖືກບັນທຶກໂດຍອັດຕະໂນມັດເມື່ອເຈົ້າປິດແຖບດ້ານຂ້າງນີ້.</p>
           <div className="setting-sec">
-            <h2>ตัวจับเวลา</h2>
+            <h2>ຕົວຈັບເວລາ</h2>
             <label className="switch" htmlFor="switch-timer">
               <input type="checkbox" id="switch-timer" checked={timerSwitch} onChange={toggleTimer}/>
               <span className="switch-toggle"></span>
               <div className="setting-text">
-                <p className="second-th">60 วินาที</p>
-                <p className="second-th">120 วินาที</p>
+                <p className="second-th">60 ວິນາທີ</p>
+                <p className="second-th">120 ວິນາທີ</p>
               </div>
             </label>
             <div id="block" className={`${timerSwitch ? "active" : ""}`}></div>
-            <p>ตัวจับเวลาจะถูกแสดงด้านบนของจอเมื่อเล่นเกม</p>
+            <p>ຕົວຈັບເວລາຈະຖືກສະແດງດ້ານເທິງຂອງຈໍເມື່ອຫຼິ້ນເກມ.</p>
           </div>
           <div className="setting-sec">
-            <h2>โหมดหน้าจอ</h2>
+            <h2>ໂໝດໜ້າຈໍ</h2>
             <button className="appear light-btn" onClick={lightMode}>
-            <FontAwesomeIcon icon={faSun} style={{marginRight:"8px"}}/> โหมดสีสว่าง
+            <FontAwesomeIcon icon={faSun} style={{marginRight:"8px"}}/> ໂໝດສີສະຫວ່າງ
             </button>
             <button className="appear dark-btn" onClick={darkMode}>
-            <FontAwesomeIcon icon={faMoon} style={{marginRight:"8px"}}/> โหมดสีเข้ม
+            <FontAwesomeIcon icon={faMoon} style={{marginRight:"8px"}}/> ໂໝດສີເຂົ້ມ
             </button>
           </div>
           <div className="setting-sec">
-            <h2>ข้อความเมื่อซ่อนคำตอบ</h2>
-            <input type="text" id="hidden-text" className="text-input" placeholder="คำตอบถูกซ่อนไว้" onInput={checkHiddenText} onChange={typeHiddenTextTh} autoComplete="off"/>
-            <p>ข้อความจะถูกแสดงเมื่อผู้บอกใบ้กดปุ่ม "ซ่อนคำตอบ"<br/> ข้อความเริ่มต้นคือ "คำตอบถูกซ่อนไว้"</p>
+            <h2>ຂໍ້ຄວາມເມື່ອເຊື່ອງຄຳຕອບ</h2>
+            <input type="text" id="hidden-text" className="text-input" placeholder="ຄຳຕອບຖືກເຊື່ອງໄວ້" onInput={checkHiddenText} onChange={typeHiddenTextLo} autoComplete="off"/>
+            <p>ຂໍ້ຄວາມຈະຖືກສະແດງເມື່ອຄົນໃບ້ຄຳກົດປຸ່ມ "ເຊື່ອງຄຳຕອບ". <br/>ຂໍ້ຄວາມເລິ່ມຕົ້ນຄື "ຄຳຕອບຖືກເຊື່ອງໄວ້"</p>
             <p id="warning-hidden-text"></p>
           </div>
         </div>

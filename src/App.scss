@@ -1,4 +1,4 @@
-body,button,input,code{font-family:"IBM Plex Sans Thai",sans-serif}
+body,button,input,code{font-family:"IBM Plex Sans Thai","Noto Sans Lao",sans-serif}
 body{
   background-color:#D4FFA8;
   overflow:hidden;
@@ -139,11 +139,12 @@ body{
   border-radius:50%;
 }
 
-#changeLangBtn{
+#changeLangBtn .btn{
   position:absolute;
   top:4%;
   right:4%;
   padding:10px 30px;
+  width:100px;
 }
 
 .small-btn {
