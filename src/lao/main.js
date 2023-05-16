@@ -585,7 +585,7 @@ export default function MainPage(){
               <li>ຄົນໃບ້ຄຳສາມາດເຊື່ອງຄຳຕອບໄດ້ໂດຍກົດປຸ່ມ "ເຊື່ອງຄຳຕອບ" ໃນມຸມຂວາຂອງຈໍ.</li>
               <li>ຖ້າຄົນຫຼິ້ນເດົາຖືກ ໃຫ້ກົດປຸ່ມ"<FontAwesomeIcon icon={faCheck}/>" ເພື່ອໄປຍັງຄຳຕໍ່ໄປ.</li>
               <li>ຖ້າຄົນຫຼິ້ນເດົາຜິດ ຫຼືບໍ່ຮູ້ຄຳຕອບ ໃຫ້ກົດປຸ່ມ"<FontAwesomeIcon icon={faXmark}/>" ເພື່ອຂ້າມຄຳຕອບ.</li>
-              <li>ເຈົ້າມີເວລາ 60 ຫຼື 120 ວິນາທີ (ຂຶ້ນຢູ່ກັບການຕັ້ງຄ່າຂອງເຈົ້າ) ໃນກາຮເດົາຄຳຕອບ.</li>
+              <li>ເຈົ້າມີເວລາ 60 ຫຼື 120 ວິນາທີ (ຂຶ້ນຢູ່ກັບການຕັ້ງຄ່າຂອງເຈົ້າ) ໃນການເດົາຄຳຕອບ.</li>
             </ol>
           </div>
           <div id="all-cates">
@@ -636,7 +636,7 @@ export default function MainPage(){
           <h1>ການຕັ້ງຄ່າ</h1>
           <p style={{marginBottom:0}}><strong>ໝາຍເຫດ: </strong> ການຕັ້ງຄ່າຂອງເຈົ້າຈະຖືກບັນທຶກໂດຍອັດຕະໂນມັດເມື່ອເຈົ້າປິດແຖບດ້ານຂ້າງນີ້.</p>
           <div className="setting-sec">
-            <h2>ຕົວຈັບເວລາ</h2>
+            <h2>ໂມງຈັບເວລາ</h2>
             <label className="switch" htmlFor="switch-timer">
               <input type="checkbox" id="switch-timer" checked={timerSwitch} onChange={toggleTimer}/>
               <span className="switch-toggle"></span>
@@ -646,7 +646,7 @@ export default function MainPage(){
               </div>
             </label>
             <div id="block" className={`${timerSwitch ? "active" : ""}`}></div>
-            <p>ຕົວຈັບເວລາຈະຖືກສະແດງດ້ານເທິງຂອງຈໍເມື່ອຫຼິ້ນເກມ.</p>
+            <p>ໂມງຈັບເວລາຈະຖືກສະແດງດ້ານເທິງຂອງຈໍເມື່ອຫຼິ້ນເກມ.</p>
           </div>
           <div className="setting-sec">
             <h2>ໂໝດໜ້າຈໍ</h2>

@@ -53,6 +53,7 @@ import TravelToForeignCountries from "./th/categories/travel-to-foreign-countrie
 
 import MainPageLo from "./lao/main";
 import AnimalsLao from "./lao/categories/animals";
+import DessertsLao from "./lao/categories/desserts";
 
 export default function App(){
   return (
@@ -114,6 +115,7 @@ export default function App(){
         {/* Lao */}
         <Route path="/lo" element={<MainPageLo />} />
         <Route path="/lo/animals" element={<AnimalsLao />} />
+        <Route path="/lo/desserts" element={<DessertsLao />} />
       </Routes>
     </Router>
   )
