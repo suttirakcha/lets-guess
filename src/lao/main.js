@@ -320,7 +320,7 @@ export default function MainPage(){
       if (hiddenText.value.includes("@")){
         warning.innerHTML = "*ບໍ່ອະນຸຍາດໃຫ້ໃຊ້ @ ໃນພື້ນທີ່ຂໍ້ຄວາມນີ້.";
       } else {
-        warning.innerHTML = "*ກະລຸນາຫຼີກລ່ຽງຄຳທີ່ບໍ່ສຸພາບ ຫຼືຄຳທີ່ອ່ອນໄຫວ.";
+        warning.innerHTML = "*ກະລຸນາຫຼີກເວົ້ນການນຳໃຊ້ຄຳທີ່ບໍ່ສຸພາບ ຫຼືຄຳທີ່ອ່ອນໄຫວ.";
       }
       hiddenText.classList.add("warning");
       localStorage.setItem("text-hidden-lo", "");
