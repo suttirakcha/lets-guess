@@ -141,7 +141,7 @@ body{
 
 #changeLangBtn .btn{
   position:absolute;
-  top:4%;
+  top:25px;
   right:4%;
   padding:10px 30px;
   width:100px;
@@ -752,6 +752,10 @@ input:checked + .switch-toggle:before {
   }
   #heading {
     margin-top:80px;
+  }
+  #changeLangBtn .btn {
+    width:80px;
+    padding:10px 20px;
   }
 }
 

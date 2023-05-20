@@ -426,6 +426,10 @@ export default function MainPage(){
         category: "ເຂົ້າໜົມຫວານ",
         link: "/lo/desserts"
       },
+      {
+        category: "ອາຫານ",
+        link: "lo/foods"
+      }
     ],
     otherLo: [
       {
@@ -511,6 +515,7 @@ export default function MainPage(){
       <div className="select-lists">
         <CardCate category="ເຂົ້າໜົມຫວານ" link="/lo/desserts"/>
         <CardCate category="ສັດຕ່າງໆ" link="/lo/animals"/>
+        <CardCate category="ອາຫານ" link="/lo/foods"/>
       </div>
     )
   }
@@ -575,7 +580,7 @@ export default function MainPage(){
           </div>
           <div id="changeLangBtn">
             <button onClick={changeLang}  className="btn">Eng</button>
-            <button onClick={changeLangTh} className="btn" style={{top:"12%"}}>ไทย</button>
+            <button onClick={changeLangTh} className="btn" style={{top:"100px"}}>ไทย</button>
           </div>
         <main className="app-main">
           <div id="how-to-play">

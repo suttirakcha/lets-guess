@@ -668,7 +668,7 @@ export default function MainPage(){
           </div>
           <div id="changeLangBtn">
             <button onClick={changeLang} className="btn">Eng</button>
-            <button onClick={changeLangLo} className="btn" style={{top:"12%"}}>ລາວ</button>
+            <button onClick={changeLangLo} className="btn" style={{top:"100px"}}>ລາວ</button>
           </div>
         <main className="app-main">
           <div id="how-to-play">

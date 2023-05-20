@@ -54,6 +54,7 @@ import TravelToForeignCountries from "./th/categories/travel-to-foreign-countrie
 import MainPageLo from "./lao/main";
 import AnimalsLao from "./lao/categories/animals";
 import DessertsLao from "./lao/categories/desserts";
+import FoodsLao from "./lao/categories/foods";
 
 export default function App(){
   return (
@@ -116,6 +117,7 @@ export default function App(){
         <Route path="/lo" element={<MainPageLo />} />
         <Route path="/lo/animals" element={<AnimalsLao />} />
         <Route path="/lo/desserts" element={<DessertsLao />} />
+        <Route path="/lo/foods" element={<FoodsLao />} />
       </Routes>
     </Router>
   )
