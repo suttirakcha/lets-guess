@@ -528,6 +528,10 @@ export default function MainPage(){
     ],
     businesses: [
       {
+        category: "Cosmetics Brands",
+        link: "/cosmetics-brands"
+      },
+      {
         category: "Fashion Brands",
         link: "/fashion-brands"
       },
@@ -569,6 +573,7 @@ export default function MainPage(){
         <CardCate category="Blackpink" link="/blackpink"/>
         <CardCate category="Capital Cities" link="/capital-cities"/>
         <CardCate category="Characters in Mario Games" link="/characters-in-mario-games"/>
+        <CardCate category="Cosmetics Brands" link="/cosmetics-brands"/>
         <CardCate category="Countries in the World" link="/countries-in-the-world"/>
         <CardCate category="Despicable Me" link="/despicable-me"/>
         <CardCate category="Desserts" link="/desserts"/>

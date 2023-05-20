@@ -29,6 +29,7 @@ import Education from "./categories/education";
 import Driving from "./categories/driving";
 import ActionFilmActors from "./categories/action-film-actors";
 import LatinUsedLanguages from "./categories/latin-used-languages";
+import CosmeticsBrands from "./categories/cosmetics-brands";
 
 import MainPageTh from "./th/main"
 import CountriesTh from "./th/categories/countries";
@@ -90,6 +91,7 @@ export default function App(){
         <Route path="/driving" element={<Driving />} />
         <Route path="/action-film-actors" element={<ActionFilmActors />} />
         <Route path="/latin-used-languages" element={<LatinUsedLanguages />} />
+        <Route path="/cosmetics-brands" element={<CosmeticsBrands />} />
 
         {/* Thai */}
         <Route path="/th" element={<MainPageTh />} />
