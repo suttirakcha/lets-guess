@@ -435,9 +435,13 @@ export default function MainPage(){
         link: "/th/drinks"
       },
       {
+        category: "ผลไม้ต่างๆ",
+        link: "/th/fruits"
+      },
+      {
         category: "อาหาร",
         link: "/th/foods"
-      }
+      },
     ],
     geographyTh: [
       {
@@ -493,16 +497,16 @@ export default function MainPage(){
         link: "/th/education"
       },
       {
+        category: "ของใช้ในบ้าน",
+        link: "/th/household-items"
+      },
+      {
         category: "เครื่องครัว",
         link: "/th/kitchenware"
       },
       {
         category: "ไปต่างประเทศ",
         link: "/th/travel-to-foreign-countries"
-      },
-      {
-        category: "ผลไม้ต่างๆ",
-        link: "/th/fruits"
       },
       {
         category: "สัตว์ต่างๆ",
@@ -588,6 +592,7 @@ export default function MainPage(){
         <CardCate category="การศึกษา" link="/th/education"/>
         <CardCate category="ขนมหวาน" link="/th/desserts"/>
         <CardCate category="ขนมไทย" link="/th/thai-desserts"/>
+        <CardCate category="ของใช้ในบ้าน" link="/th/household-items"/>
         <CardCate category="คำที่มาจากภาษาบาลี-สันสกฤต" link="/th/bali-sanskrit-loanwords"/>
         <CardCate category="เครื่องครัว" link="/th/kitchenware"/>
         <CardCate category="เครื่องดนตรี" link="/th/musical-instruments"/>

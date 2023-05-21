@@ -51,6 +51,7 @@ import LatinUsedLanguagesTh from "./th/categories/latin-used-languages";
 import FruitsTh from "./th/categories/fruits";
 import EducationTh from "./th/categories/education";
 import TravelToForeignCountries from "./th/categories/travel-to-foreign-countries";
+import HouseholdItemsTh from "./th/categories/household-items";
 
 import MainPageLo from "./lao/main";
 import AnimalsLao from "./lao/categories/animals";
@@ -114,6 +115,7 @@ export default function App(){
         <Route path="/th/fruits" element={<FruitsTh />} />
         <Route path="/th/education" element={<EducationTh />} />
         <Route path="/th/travel-to-foreign-countries" element={<TravelToForeignCountries />} />
+        <Route path="/th/household-items" element={<HouseholdItemsTh />} />
 
         {/* Lao */}
         <Route path="/lo" element={<MainPageLo />} />
