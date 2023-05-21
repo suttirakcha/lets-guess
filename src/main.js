@@ -368,7 +368,6 @@ export default function MainPage(){
       localStorage.setItem("timer-continue",60);
       localStorage.setItem("text-hidden", "")
       localStorage.setItem("text-hidden-th", "")
-      localStorage.setItem("text-hidden-lo", "")
       localStorage.setItem("point", 0);
       localStorage.setItem("dark-mode", 'false')
       hiddenText.value = localStorage.setItem("text-hidden", "");
@@ -408,11 +407,6 @@ export default function MainPage(){
   const changeLang = () => {
     localStorage.setItem("lang", "th");
     window.location.replace("/th");
-  }
-
-  const changeLangLao = () => {
-    localStorage.setItem("lang", "lo");
-    window.location.replace("/lo");
   }
 
   const darkMode = () => {
@@ -731,7 +725,6 @@ export default function MainPage(){
           </div>
         <div id="changeLangBtn">
           <button onClick={changeLang} className="btn">ไทย</button>
-          <button onClick={changeLangLao} className="btn" style={{top:"100px"}}>ລາວ</button>
         </div>
         <main className="app-main">
           <div id="how-to-play">

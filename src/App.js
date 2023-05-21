@@ -53,11 +53,6 @@ import EducationTh from "./th/categories/education";
 import TravelToForeignCountries from "./th/categories/travel-to-foreign-countries";
 import HouseholdItemsTh from "./th/categories/household-items";
 
-import MainPageLo from "./lao/main";
-import AnimalsLao from "./lao/categories/animals";
-import DessertsLao from "./lao/categories/desserts";
-import FoodsLao from "./lao/categories/foods";
-
 export default function App(){
   return (
     <Router>
@@ -116,12 +111,6 @@ export default function App(){
         <Route path="/th/education" element={<EducationTh />} />
         <Route path="/th/travel-to-foreign-countries" element={<TravelToForeignCountries />} />
         <Route path="/th/household-items" element={<HouseholdItemsTh />} />
-
-        {/* Lao */}
-        <Route path="/lo" element={<MainPageLo />} />
-        <Route path="/lo/animals" element={<AnimalsLao />} />
-        <Route path="/lo/desserts" element={<DessertsLao />} />
-        <Route path="/lo/foods" element={<FoodsLao />} />
       </Routes>
     </Router>
   )
