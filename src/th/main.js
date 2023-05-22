@@ -418,12 +418,12 @@ export default function MainPage(){
   const cateLists = {
     eatingTh: [
       {
-        category: "ขนมหวาน",
-        link: "/th/desserts"
-      },
-      {
         category: "ขนมไทย",
         link: "/th/thai-desserts"
+      },
+      {
+        category: "ขนมหวาน",
+        link: "/th/desserts"
       },
       {
         category: "เครื่องดื่ม",
