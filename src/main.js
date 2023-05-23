@@ -534,6 +534,10 @@ export default function MainPage(){
         link: "/phone-brands"
       },
       {
+        category: "Social Media",
+        link: "/social-media"
+      },
+      {
         category: "Words in Airline",
         link: "/words-in-airline"
       },
@@ -588,6 +592,7 @@ export default function MainPage(){
         <CardCate category="Phone Brands" link="/phone-brands"/>
         <CardCate category="Restaurant Chains" link="/restaurant-chains"/>
         <CardCate category="Sauces" link="/sauces"/>
+        <CardCate category="Social Media" link="/social-media"/>
         <CardCate category="Words in Airline" link="/words-in-airline"/>
         <CardCate category="Words in Marketing" link="/words-in-marketing"/>
       </div>

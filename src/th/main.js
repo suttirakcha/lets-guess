@@ -462,6 +462,10 @@ export default function MainPage(){
         "link": "/th/thai-singers"
       },
       {
+        category: "เพลงวง Cocktail",
+        link: "/th/cocktail-songs"
+      },
+      {
         category: "เพลงวง ETC",
         link: "/th/etc-songs"
       },
@@ -585,8 +589,8 @@ export default function MainPage(){
     return (
       <div className="select-lists">
         <CardCate category="การศึกษา" link="/th/education"/>
-        <CardCate category="ขนมหวาน" link="/th/desserts"/>
         <CardCate category="ขนมไทย" link="/th/thai-desserts"/>
+        <CardCate category="ขนมหวาน" link="/th/desserts"/>
         <CardCate category="ของใช้ในบ้าน" link="/th/household-items"/>
         <CardCate category="คำที่มาจากภาษาบาลี-สันสกฤต" link="/th/bali-sanskrit-loanwords"/>
         <CardCate category="เครื่องครัว" link="/th/kitchenware"/>
@@ -598,6 +602,7 @@ export default function MainPage(){
         <CardCate category="ประเทศในโลก" link="/th/countries-in-the-world"/>
         <CardCate category="ไปต่างประเทศ" link="/th/travel-to-foreign-countries"/>
         <CardCate category="ผลไม้ต่างๆ" link="/th/fruits"/>
+        <CardCate category="เพลงวง Cocktail" link="/th/cocktail-songs"/>
         <CardCate category="เพลงวง ETC" link="/th/etc-songs"/>
         <CardCate category="เพลงวง Tattoo Colour" link="/th/tattoo-colour"/>
         <CardCate category="ภาษาที่ใช้อักษรละติน" link="/th/latin-used-languages"/>

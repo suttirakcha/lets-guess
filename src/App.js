@@ -30,6 +30,7 @@ import Driving from "./categories/driving";
 import ActionFilmActors from "./categories/action-film-actors";
 import LatinUsedLanguages from "./categories/latin-used-languages";
 import CosmeticsBrands from "./categories/cosmetics-brands";
+import SocialMedia from "./categories/social-media";
 
 import MainPageTh from "./th/main"
 import CountriesTh from "./th/categories/countries";
@@ -52,6 +53,7 @@ import FruitsTh from "./th/categories/fruits";
 import EducationTh from "./th/categories/education";
 import TravelToForeignCountries from "./th/categories/travel-to-foreign-countries";
 import HouseholdItemsTh from "./th/categories/household-items";
+import CocktailSongs from "./th/categories/cocktail-songs";
 
 export default function App(){
   return (
@@ -88,6 +90,7 @@ export default function App(){
         <Route path="/action-film-actors" element={<ActionFilmActors />} />
         <Route path="/latin-used-languages" element={<LatinUsedLanguages />} />
         <Route path="/cosmetics-brands" element={<CosmeticsBrands />} />
+        <Route path="/social-media" element={<SocialMedia />} />
 
         {/* Thai */}
         <Route path="/th" element={<MainPageTh />} />
@@ -111,6 +114,7 @@ export default function App(){
         <Route path="/th/education" element={<EducationTh />} />
         <Route path="/th/travel-to-foreign-countries" element={<TravelToForeignCountries />} />
         <Route path="/th/household-items" element={<HouseholdItemsTh />} />
+        <Route path="/th/cocktail-songs" element={<CocktailSongs />} />
       </Routes>
     </Router>
   )
