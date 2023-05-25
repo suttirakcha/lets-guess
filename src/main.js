@@ -520,6 +520,12 @@ export default function MainPage(){
         link: "/mobile-games"
       }
     ],
+    sports: [
+      {
+        category: "Sports",
+        link: "/sports"
+      },
+    ],
     businesses: [
       {
         category: "Cosmetics Brands",
@@ -593,6 +599,7 @@ export default function MainPage(){
         <CardCate category="Restaurant Chains" link="/restaurant-chains"/>
         <CardCate category="Sauces" link="/sauces"/>
         <CardCate category="Social Media" link="/social-media"/>
+        <CardCate category="Sports" link="/sports"/>
         <CardCate category="Words in Airline" link="/words-in-airline"/>
         <CardCate category="Words in Marketing" link="/words-in-marketing"/>
       </div>
@@ -800,6 +807,15 @@ export default function MainPage(){
             <div className="select-lists">
               {
                 cateLists.games.map((cate) => (
+                  <CardCate category={cate.category} link={cate.link}/>
+                ))
+              }
+            </div>
+
+            <h2 className="list-titles">Sports</h2>
+            <div className="select-lists">
+              {
+                cateLists.sports.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }

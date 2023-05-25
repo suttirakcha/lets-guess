@@ -31,6 +31,7 @@ import ActionFilmActors from "./categories/action-film-actors";
 import LatinUsedLanguages from "./categories/latin-used-languages";
 import CosmeticsBrands from "./categories/cosmetics-brands";
 import SocialMedia from "./categories/social-media";
+import Sports from "./categories/sports";
 
 import MainPageTh from "./th/main"
 import CountriesTh from "./th/categories/countries";
@@ -91,6 +92,7 @@ export default function App(){
         <Route path="/latin-used-languages" element={<LatinUsedLanguages />} />
         <Route path="/cosmetics-brands" element={<CosmeticsBrands />} />
         <Route path="/social-media" element={<SocialMedia />} />
+        <Route path="/sports" element={<Sports />} />
 
         {/* Thai */}
         <Route path="/th" element={<MainPageTh />} />
