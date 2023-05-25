@@ -234,7 +234,7 @@ body{
 #select-list,#all-cates{
   display:none;
   overflow-y:scroll;
-  height:60vh;
+  height:62vh;
   margin:auto;
   width:99%;
   padding:0 0 10px 10px;
@@ -634,6 +634,7 @@ input:checked + .switch-toggle:before {
   color:#1D8500;
   right:30%;
   left:30%;
+  text-align:center;
   z-index:0;
   opacity:0;
   visibility:hidden;
