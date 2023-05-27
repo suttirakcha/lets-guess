@@ -782,12 +782,12 @@ export default function MainPageZh(){
             <p>玩游戏的时候，定时器在屏幕的上边展示。</p>
           </div>
           <div className="setting-sec">
-            <h2>โหมดหน้าจอ</h2>
+            <h2>屏幕出现</h2>
             <button className="appear light-btn" onClick={lightMode}>
-            <FontAwesomeIcon icon={faSun} style={{marginRight:"8px"}}/> โหมดสีสว่าง
+            <FontAwesomeIcon icon={faSun} style={{marginRight:"8px"}}/> 灯光模式
             </button>
             <button className="appear dark-btn" onClick={darkMode}>
-            <FontAwesomeIcon icon={faMoon} style={{marginRight:"8px"}}/> โหมดสีเข้ม
+            <FontAwesomeIcon icon={faMoon} style={{marginRight:"8px"}}/> 黑暗模式
             </button>
           </div>
           <div className="setting-sec">
