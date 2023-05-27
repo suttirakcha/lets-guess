@@ -56,6 +56,7 @@ import TravelToForeignCountries from "./th/categories/travel-to-foreign-countrie
 import HouseholdItemsTh from "./th/categories/household-items";
 import CocktailSongs from "./th/categories/cocktail-songs";
 
+import MainPageZh from "./zh/main";
 export default function App(){
   return (
     <Router>
@@ -117,6 +118,8 @@ export default function App(){
         <Route path="/th/travel-to-foreign-countries" element={<TravelToForeignCountries />} />
         <Route path="/th/household-items" element={<HouseholdItemsTh />} />
         <Route path="/th/cocktail-songs" element={<CocktailSongs />} />
+
+        <Route path="/zh" element={<MainPageZh />} />
       </Routes>
     </Router>
   )
