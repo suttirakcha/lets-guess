@@ -416,100 +416,10 @@ export default function MainPageZh(){
   }
 
   const cateLists = {
-    eatingTh: [
+    otherZh: [
       {
-        category: "ขนมไทย",
-        link: "/th/thai-desserts"
-      },
-      {
-        category: "ขนมหวาน",
-        link: "/th/desserts"
-      },
-      {
-        category: "เครื่องดื่ม",
-        link: "/th/drinks"
-      },
-      {
-        category: "ผลไม้ต่างๆ",
-        link: "/th/fruits"
-      },
-      {
-        category: "อาหาร",
-        link: "/th/foods"
-      },
-    ],
-    geographyTh: [
-      {
-        category: "จังหวัดในประเทศไทย",
-        link: "/th/provinces-in-thailand"
-      },
-      {
-        category: "ประเทศในโลก",
-        link: "/th/countries-in-the-world"
-      },
-      {
-        category: "สถานที่ท่องเที่ยวในกรุงเทพ",
-        link: "/th/places-in-bangkok"
-      }
-    ],
-    musicTh: [
-      {
-        "category": "เครื่องดนตรี",
-        "link": "/th/musical-instruments"
-      },
-      {
-        "category": "นักร้องไทย",
-        "link": "/th/thai-singers"
-      },
-      {
-        category: "เพลงวง Cocktail",
-        link: "/th/cocktail-songs"
-      },
-      {
-        category: "เพลงวง ETC",
-        link: "/th/etc-songs"
-      },
-      {
-        category: "เพลงวง Tattoo Colour",
-        link: "/th/tattoo-colour"
-      }
-    ],
-    gamesTh: [
-      {
-        category: "ตัวละครในเกม ROV",
-        link: "/th/characters-in-rov"
-      }
-    ],
-    languagesTh: [
-      {
-        category: "คำที่มาจากภาษาบาลี-สันสกฤต",
-        link: "/th/bali-sanskrit-loanwords"
-      },
-      {
-        category: "ภาษาที่ใช้อักษรละติน",
-        link: "/th/latin-used-languages"
-      },
-    ],
-    otherTh: [
-      {
-        category: "การศึกษา",
-        link: "/th/education"
-      },
-      {
-        category: "ของใช้ในบ้าน",
-        link: "/th/household-items"
-      },
-      {
-        category: "เครื่องครัว",
-        link: "/th/kitchenware"
-      },
-      {
-        category: "ไปต่างประเทศ",
-        link: "/th/travel-to-foreign-countries"
-      },
-      {
-        category: "สัตว์ต่างๆ",
-        link: "/th/animals"
+        category: "动物",
+        link: "/zh/animals"
       },
     ]
   }
@@ -588,27 +498,7 @@ export default function MainPageZh(){
   const AllCates = () => {
     return (
       <div className="select-lists">
-        <CardCate category="การศึกษา" link="/th/education"/>
-        <CardCate category="ขนมไทย" link="/th/thai-desserts"/>
-        <CardCate category="ขนมหวาน" link="/th/desserts"/>
-        <CardCate category="ของใช้ในบ้าน" link="/th/household-items"/>
-        <CardCate category="คำที่มาจากภาษาบาลี-สันสกฤต" link="/th/bali-sanskrit-loanwords"/>
-        <CardCate category="เครื่องครัว" link="/th/kitchenware"/>
-        <CardCate category="เครื่องดนตรี" link="/th/musical-instruments"/>
-        <CardCate category="เครื่องดื่ม" link="/th/drinks"/>
-        <CardCate category="จังหวัดในประเทศไทย" link="/th/provinces-in-thailand"/>
-        <CardCate category="ตัวละครในเกม ROV" link="/th/characters-in-rov"/>
-        <CardCate category="นักร้องไทย" link="/th/thai-singers"/>
-        <CardCate category="ประเทศในโลก" link="/th/countries-in-the-world"/>
-        <CardCate category="ไปต่างประเทศ" link="/th/travel-to-foreign-countries"/>
-        <CardCate category="ผลไม้ต่างๆ" link="/th/fruits"/>
-        <CardCate category="เพลงวง Cocktail" link="/th/cocktail-songs"/>
-        <CardCate category="เพลงวง ETC" link="/th/etc-songs"/>
-        <CardCate category="เพลงวง Tattoo Colour" link="/th/tattoo-colour"/>
-        <CardCate category="ภาษาที่ใช้อักษรละติน" link="/th/latin-used-languages"/>
-        <CardCate category="สถานที่ท่องเที่ยวในกรุงเทพ" link="/th/places-in-bangkok"/>
-        <CardCate category="สัตว์ต่างๆ" link="/th/animals"/>
-        <CardCate category="อาหาร" link="/th/foods"/>
+        <CardCate category="动物" link="/zh/animals"/>
       </div>
     )
   }
@@ -694,55 +584,10 @@ export default function MainPageZh(){
             </div>
           </div>
           <div id="select-list">
-            <h2 className="list-titles">อาหาร</h2>
+            <h2 className="list-titles">其他</h2>
             <div className="select-lists">
               {
-                cateLists.eatingTh.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">ภูมิศาสตร์</h2>
-            <div className="select-lists">
-              {
-                cateLists.geographyTh.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">ดนตรี</h2>
-            <div className="select-lists">
-              {
-                cateLists.musicTh.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">เกม</h2>
-            <div className="select-lists">
-              {
-                cateLists.gamesTh.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">ภาษา</h2>
-            <div className="select-lists">
-              {
-                cateLists.languagesTh.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">อื่นๆ</h2>
-            <div className="select-lists">
-              {
-                cateLists.otherTh.map((cate) => (
+                cateLists.otherZh.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
@@ -792,7 +637,7 @@ export default function MainPageZh(){
           </div>
           <div className="setting-sec">
             <h2>隐藏答案的本文</h2>
-            <input type="text" id="hidden-text" className="text-input" placeholder="คำตอบถูกซ่อนไว้" onInput={checkHiddenText} onChange={typeHiddenTextTh} autoComplete="off"/>
+            <input type="text" id="hidden-text" className="text-input" placeholder="隐藏被答案" onInput={checkHiddenText} onChange={typeHiddenTextTh} autoComplete="off"/>
             <p>暗示人按 “隐藏答案” 的时候，<br/>文本会展示。默认文本是 “答案被隐藏了”</p>
             <p id="warning-hidden-text"></p>
           </div>

@@ -3,7 +3,7 @@ import "../../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck,faXmark } from "@fortawesome/free-solid-svg-icons";
 
-export default function QuestionsTh(props){
+export default function QuestionsZh(props){
   if (localStorage.getItem("dark-mode") === 'true'){
     document.body.style.backgroundColor = "#272d60";
     document.body.classList.add("dark-mode");
@@ -108,16 +108,16 @@ export default function QuestionsTh(props){
   const clickToHideAnswer = () => {
     let answerBtn = document.getElementById("toggle-hide-show");
     let answerHidden = document.getElementById("answer-hidden");
-    if (answerBtn.innerText == "ซ่อนคำตอบ"){
+    if (answerBtn.innerText == "隐藏答案"){
       answerHidden.style.display = "flex";
       answerHidden.style.animation = "openModal 400ms forwards";
-      answerBtn.innerText = "แสดงคำตอบ";
+      answerBtn.innerText = "展示答案";
       answerBtn.disabled = true;
       setTimeout(() => answerBtn.disabled = false, 500);
     } else {
       answerBtn.disabled = true;
       setTimeout(() => answerBtn.disabled = false, 500);
-      answerBtn.innerText = "ซ่อนคำตอบ";
+      answerBtn.innerText = "隐藏答案";
       answerHidden.style.animation = "closeModal 500ms forwards";
       setTimeout(() => answerHidden.style.display = "none", 500);
     }
@@ -162,7 +162,7 @@ export default function QuestionsTh(props){
     localStorage.setItem("point", 0);
 
     setTimeout(() => {
-      window.location.replace("/th");
+      window.location.replace("/zh");
       localStorage.setItem("timer-continue", countStart);
     }, 3000)
   }
@@ -195,7 +195,7 @@ export default function QuestionsTh(props){
       document.body.style.animation = "changeBgToFront 1s forwards";
     }
     setTimeout(() => {
-      window.location.replace("/th");
+      window.location.replace("/zh");
       localStorage.setItem("point", 0);
     }, 2000);
   }
@@ -225,15 +225,15 @@ export default function QuestionsTh(props){
     <div className="App">
       <header className="app-head head-game">
         <div className="sec-left">
-          <h1 id="category">หมวดหมู่: {props.category}</h1>
-          <h1 id="get-point">คะแนน +1</h1>
+          <h1 id="category">类别: {props.category}</h1>
+          <h1 id="get-point">评分 +1</h1>
         </div>
         <div className="sec-middle">
           <h1 id="timer">{getTimer}</h1>
         </div>
         <div className="sec-right">
-          <button className="btn" id="toggle-hide-show" onClick={clickToHideAnswer}>ซ่อนคำตอบ</button>
-          <button className="btn" onClick={clickToGoBack}>กลับไปหน้าแรก</button>
+          <button className="btn" id="toggle-hide-show" onClick={clickToHideAnswer}>隐藏答案</button>
+          <button className="btn" onClick={clickToGoBack}>返回首页</button>
         </div>
       </header>
       <main className="app-main words-in-screen">
@@ -245,34 +245,34 @@ export default function QuestionsTh(props){
       </main>
 
       <div id="answer-hidden" className="block-space">
-        <h1>{localStorage.getItem("text-hidden-th") === "" ? "คำตอบถูกซ่อนไว้" : textAnswerHidden}</h1>
+        <h1>{localStorage.getItem("text-hidden-th") === "" ? "答案被隐藏" : textAnswerHidden}</h1>
       </div>
 
       <div id="want-to-quit" onClick={answerNo}></div>
 
       <div className="center">
         <div id="want-to-quit-modal">
-          <h1>คุณต้องการกลับไปที่<br/>หน้าแรกหรือไม่</h1>
+          <h1>你想要返回首页吗？</h1>
           <div className="btns-check">
-            <button className="btn" onClick={answerYes}>ใช่</button>
-            <button className="btn" onClick={answerNo}>ไม่</button>
+            <button className="btn" onClick={answerYes}>是</button>
+            <button className="btn" onClick={answerNo}>否</button>
           </div>
         </div>
       </div>
 
       <div id="times-up-bg"></div>
       <div id="times-up" className="block-space">
-        <h1 className="times-up-text">หมดเวลา!</h1>
+        <h1 className="times-up-text">时间到了！</h1>
       </div>
 
       <div className="center">
         <div id="score-result">
-          <h1 style={{fontSize:"60px",marginTop:0}}>ผลลัพธ์</h1>
-          <h1 style={{fontSize:"48px"}}>คะแนน: {numPoint}</h1>
-          <h2>สนุกมั้ย?</h2>
+          <h1 style={{fontSize:"60px",marginTop:0}}>结果</h1>
+          <h1 style={{fontSize:"48px"}}>评分: {numPoint}</h1>
+          <h2>好玩吗？</h2>
           <div className="btns-check">
-            <button className="btn" onClick={scoreResultBackToHomepage}>กลับ</button>
-            <button className="btn" onClick={scoreResultPlayAgain}>เล่นอีกครั้ง</button>
+            <button className="btn" onClick={scoreResultBackToHomepage}>回去</button>
+            <button className="btn" onClick={scoreResultPlayAgain}>再玩一次</button>
           </div>
         </div>
       </div>
