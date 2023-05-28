@@ -508,6 +508,10 @@ export default function MainPage(){
         link: "/th/travel-to-foreign-countries"
       },
       {
+        category: "สภาพอากาศ",
+        link: "/th/weather"
+      },
+      {
         category: "สัตว์ต่างๆ",
         link: "/th/animals"
       },
@@ -607,6 +611,7 @@ export default function MainPage(){
         <CardCate category="เพลงวง Tattoo Colour" link="/th/tattoo-colour"/>
         <CardCate category="ภาษาที่ใช้อักษรละติน" link="/th/latin-used-languages"/>
         <CardCate category="สถานที่ท่องเที่ยวในกรุงเทพ" link="/th/places-in-bangkok"/>
+        <CardCate category="สภาพอากาศ" link="/th/weather"/>
         <CardCate category="สัตว์ต่างๆ" link="/th/animals"/>
         <CardCate category="อาหาร" link="/th/foods"/>
       </div>
