@@ -32,6 +32,7 @@ import LatinUsedLanguages from "./categories/latin-used-languages";
 import CosmeticsBrands from "./categories/cosmetics-brands";
 import SocialMedia from "./categories/social-media";
 import Sports from "./categories/sports";
+import MusicGenres from "./categories/music-genres";
 
 import MainPageTh from "./th/main"
 import CountriesTh from "./th/categories/countries";
@@ -99,6 +100,7 @@ export default function App(){
         <Route path="/cosmetics-brands" element={<CosmeticsBrands />} />
         <Route path="/social-media" element={<SocialMedia />} />
         <Route path="/sports" element={<Sports />} />
+        <Route path="/music-genres" element={<MusicGenres />} />
 
         {/* Thai */}
         <Route path="/th" element={<MainPageTh />} />

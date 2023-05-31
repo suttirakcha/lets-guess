@@ -506,6 +506,10 @@ export default function MainPage(){
         link: "/girls-generation"
       },
       {
+        category: "Music Genres",
+        link: "/music-genres"
+      },
+      {
         category: "Musical Instruments",
         link: "/musical-instruments"
       }
@@ -594,6 +598,7 @@ export default function MainPage(){
         <CardCate category="Landmarks" link="/landmarks"/>
         <CardCate category="Latin-used Languages" link="/latin-used-languages"/>
         <CardCate category="Mobile Games" link="/mobile-games"/>
+        <CardCate category="Music Genres" link="/music-genres"/>
         <CardCate category="Musical Instruments" link="/musical-instruments"/>
         <CardCate category="Phone Brands" link="/phone-brands"/>
         <CardCate category="Restaurant Chains" link="/restaurant-chains"/>
