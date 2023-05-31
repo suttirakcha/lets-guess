@@ -519,6 +519,10 @@ export default function MainPage(){
         category: "สัตว์ต่างๆ",
         link: "/th/animals"
       },
+      {
+        category: "อาชีพ",
+        link: "/th/occupations"
+      },
     ]
   }
 
@@ -618,6 +622,7 @@ export default function MainPage(){
         <CardCate category="สถานที่ท่องเที่ยวในกรุงเทพ" link="/th/places-in-bangkok"/>
         <CardCate category="สภาพอากาศ" link="/th/weather"/>
         <CardCate category="สัตว์ต่างๆ" link="/th/animals"/>
+        <CardCate category="อาชีพ" link="/th/occupations"/>
         <CardCate category="อาหาร" link="/th/foods"/>
       </div>
     )
