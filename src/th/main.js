@@ -466,6 +466,10 @@ export default function MainPage(){
         "link": "/th/thai-singers"
       },
       {
+        "category": "เพลงของ BOWKYLION",
+        "link": "/th/bowkylion-songs"
+      },
+      {
         category: "เพลงวง Cocktail",
         link: "/th/cocktail-songs"
       },
@@ -615,6 +619,7 @@ export default function MainPage(){
         <CardCate category="ประเทศในโลก" link="/th/countries-in-the-world"/>
         <CardCate category="ไปต่างประเทศ" link="/th/travel-to-foreign-countries"/>
         <CardCate category="ผลไม้ต่างๆ" link="/th/fruits"/>
+        <CardCate category="เพลงของ BOWKYLION" link="/th/bowkylion-songs"/>
         <CardCate category="เพลงวง Cocktail" link="/th/cocktail-songs"/>
         <CardCate category="เพลงวง ETC" link="/th/etc-songs"/>
         <CardCate category="เพลงวง Tattoo Colour" link="/th/tattoo-colour"/>
