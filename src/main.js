@@ -522,6 +522,10 @@ export default function MainPage(){
       {
         category: "Mobile Games",
         link: "/mobile-games"
+      },
+      {
+        category: "Puzzle Games",
+        link: "/puzzle-games"
       }
     ],
     sports: [
@@ -601,6 +605,7 @@ export default function MainPage(){
         <CardCate category="Music Genres" link="/music-genres"/>
         <CardCate category="Musical Instruments" link="/musical-instruments"/>
         <CardCate category="Phone Brands" link="/phone-brands"/>
+        <CardCate category="Puzzle Games" link="/puzzle-games"/>
         <CardCate category="Restaurant Chains" link="/restaurant-chains"/>
         <CardCate category="Sauces" link="/sauces"/>
         <CardCate category="Social Media" link="/social-media"/>

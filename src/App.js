@@ -33,6 +33,7 @@ import CosmeticsBrands from "./categories/cosmetics-brands";
 import SocialMedia from "./categories/social-media";
 import Sports from "./categories/sports";
 import MusicGenres from "./categories/music-genres";
+import PuzzleGames from "./categories/puzzle-games";
 
 import MainPageTh from "./th/main"
 import CountriesTh from "./th/categories/countries";
@@ -101,6 +102,7 @@ export default function App(){
         <Route path="/social-media" element={<SocialMedia />} />
         <Route path="/sports" element={<Sports />} />
         <Route path="/music-genres" element={<MusicGenres />} />
+        <Route path="/puzzle-games" element={<PuzzleGames />} />
 
         {/* Thai */}
         <Route path="/th" element={<MainPageTh />} />
