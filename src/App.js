@@ -61,6 +61,7 @@ import WeatherTh from "./th/categories/weather";
 import SeasoningTh from "./th/categories/seasoning";
 import OccupationsTh from "./th/categories/occupations";
 import BowkylionSongs from "./th/categories/bowkylion-songs";
+import ClothingTh from "./th/categories/clothing";
 
 import MainPageZh from "./zh/main";
 import AnimalsZh from "./zh/categories/animals";
@@ -131,6 +132,7 @@ export default function App(){
         <Route path="/th/seasoning" element={<SeasoningTh />} />
         <Route path="/th/occupations" element={<OccupationsTh />} />
         <Route path="/th/bowkylion-songs" element={<BowkylionSongs />} />
+        <Route path="/th/clothing" element={<ClothingTh />} />
 
         {/* Chinese */}
         <Route path="/zh" element={<MainPageZh />} />

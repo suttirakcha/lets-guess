@@ -512,6 +512,10 @@ export default function MainPage(){
         link: "/th/kitchenware"
       },
       {
+        category: "เครื่องแต่งกาย",
+        link: "/th/clothing"
+      },
+      {
         category: "ไปต่างประเทศ",
         link: "/th/travel-to-foreign-countries"
       },
@@ -612,6 +616,7 @@ export default function MainPage(){
         <CardCate category="เครื่องครัว" link="/th/kitchenware"/>
         <CardCate category="เครื่องดนตรี" link="/th/musical-instruments"/>
         <CardCate category="เครื่องดื่ม" link="/th/drinks"/>
+        <CardCate category="เครื่องแต่งกาย" link="/th/clothing"/>
         <CardCate category="เครื่องปรุง" link="/th/seasoning"/>
         <CardCate category="จังหวัดในประเทศไทย" link="/th/provinces-in-thailand"/>
         <CardCate category="ตัวละครในเกม ROV" link="/th/characters-in-rov"/>
