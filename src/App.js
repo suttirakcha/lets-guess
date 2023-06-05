@@ -34,6 +34,7 @@ import SocialMedia from "./categories/social-media";
 import Sports from "./categories/sports";
 import MusicGenres from "./categories/music-genres";
 import PuzzleGames from "./categories/puzzle-games";
+import NotFound from "./404";
 
 import MainPageTh from "./th/main"
 import CountriesTh from "./th/categories/countries";
@@ -69,6 +70,7 @@ export default function App(){
   return (
     <Router>
       <Routes>
+        <Route path="*" element={<NotFound />}/>
         {/* English */}
         <Route path="/" element={<MainPage />} />
         <Route path="/countries-in-the-world" element={<Countries />} />

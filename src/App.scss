@@ -942,6 +942,10 @@ input:checked + .switch-toggle:before {
   overflow:hidden;
   color:white;
 
+  #javascript-disabled {
+    background-color:#202020;
+  }
+
   #lets-start .app-foot{
     position:absolute;
     width:100%;
