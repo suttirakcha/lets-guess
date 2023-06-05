@@ -727,15 +727,6 @@ input:checked + .switch-toggle:before {
   .btn{
     font-size:1em;
   }
-  .sec-right {
-    display:block;
-    width:calc(100% - 80px);
-    position:absolute;
-    top:110px;
-    .btn:last-child {
-      margin-left:20px;
-    }
-  }
   #how-to-play{padding:0 20px}
   .block-space {
     top:200px;
@@ -757,6 +748,10 @@ input:checked + .switch-toggle:before {
   #changeLangBtn .btn {
     width:80px;
     padding:10px 20px;
+  }
+  #timer {
+    font-size:60px;
+    top:60px;
   }
 }
 
