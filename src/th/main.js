@@ -520,6 +520,10 @@ export default function MainPage(){
         link: "/th/travel-to-foreign-countries"
       },
       {
+        category: "วันสำคัญ",
+        link: "/th/holidays"
+      },
+      {
         category: "สภาพอากาศ",
         link: "/th/weather"
       },
@@ -629,6 +633,7 @@ export default function MainPage(){
         <CardCate category="เพลงวง ETC" link="/th/etc-songs"/>
         <CardCate category="เพลงวง Tattoo Colour" link="/th/tattoo-colour"/>
         <CardCate category="ภาษาที่ใช้อักษรละติน" link="/th/latin-used-languages"/>
+        <CardCate category="วันสำคัญ" link="/th/holidays"/>
         <CardCate category="สถานที่ท่องเที่ยวในกรุงเทพ" link="/th/places-in-bangkok"/>
         <CardCate category="สภาพอากาศ" link="/th/weather"/>
         <CardCate category="สัตว์ต่างๆ" link="/th/animals"/>
