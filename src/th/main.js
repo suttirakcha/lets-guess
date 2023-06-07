@@ -494,15 +494,15 @@ export default function MainPage(){
         link: "/th/bali-sanskrit-loanwords"
       },
       {
-        category: "คำที่มาจากภาษาอังกฤษ",
-        link: "/th/english-loanwords"
-      },
-      {
         category: "ภาษาที่ใช้อักษรละติน",
         link: "/th/latin-used-languages"
       },
     ],
-    thingsTh: [
+    otherTh: [
+      {
+        category: "การศึกษา",
+        link: "/th/education"
+      },
       {
         category: "ของใช้ในบ้าน",
         link: "/th/household-items"
@@ -514,12 +514,6 @@ export default function MainPage(){
       {
         category: "เครื่องแต่งกาย",
         link: "/th/clothing"
-      },
-    ],
-    otherTh: [
-      {
-        category: "การศึกษา",
-        link: "/th/education"
       },
       {
         category: "ไปต่างประเทศ",
@@ -623,7 +617,6 @@ export default function MainPage(){
         <CardCate category="ขนมหวาน" link="/th/desserts"/>
         <CardCate category="ของใช้ในบ้าน" link="/th/household-items"/>
         <CardCate category="คำที่มาจากภาษาบาลี-สันสกฤต" link="/th/bali-sanskrit-loanwords"/>
-        <CardCate category="คำที่มาจากภาษาอังกฤษ" link="/th/english-loanwords"/>
         <CardCate category="เครื่องครัว" link="/th/kitchenware"/>
         <CardCate category="เครื่องดนตรี" link="/th/musical-instruments"/>
         <CardCate category="เครื่องดื่ม" link="/th/drinks"/>
@@ -762,15 +755,6 @@ export default function MainPage(){
             <div className="select-lists">
               {
                 cateLists.gamesTh.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">สิ่งของ</h2>
-            <div className="select-lists">
-              {
-                cateLists.thingsTh.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
