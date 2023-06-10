@@ -550,7 +550,9 @@ export default function MainPage(){
     let searchInput = document.getElementById("search-input");
     let searchList = document.getElementById("select-list");
     let allCates = document.getElementById("all-cates");
+    let heading = document.getElementById("heading");
 
+    heading.classList.add("active");
     searchList.style.opacity = "0";
     searchList.style.transition = "all 200ms";
     setTimeout(() => {
@@ -563,11 +565,7 @@ export default function MainPage(){
     },300)
 
     searchBtn.style.animation = "mainAnim 100ms forwards";
-    if (window.matchMedia("(max-width: 1023px)").matches){
-      searchInput.style.width = "50%";
-    } else {
-      searchInput.style.width = "25%";
-    }
+    searchInput.style.width = "40%";
     searchInput.style.visibility = "visible";
     searchInput.style.transition = "all 400ms";
     setTimeout(() => {
@@ -584,6 +582,9 @@ export default function MainPage(){
     let searchList = document.getElementById("select-list");
     let allCates = document.getElementById("all-cates");
     let noResult = document.getElementById("no-result");
+    let heading = document.getElementById("heading");
+
+    heading.classList.remove("active");
     searchInput.value = "";
     searchInput.classList.remove("place");
     noResult.style.display = "none";
