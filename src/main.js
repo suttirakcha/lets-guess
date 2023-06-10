@@ -566,6 +566,10 @@ export default function MainPage(){
         link: "/animals"
       },
       {
+        category: "Clothing",
+        link: "/clothing"
+      },
+      {
         category: "Driving",
         link: "/driving"
       },
@@ -584,6 +588,7 @@ export default function MainPage(){
         <CardCate category="Animals" link="/animals"/>
         <CardCate category="Blackpink" link="/blackpink"/>
         <CardCate category="Capital Cities" link="/capital-cities"/>
+        <CardCate category="Clothing" link="/clothing"/>
         <CardCate category="Characters in Mario Games" link="/characters-in-mario-games"/>
         <CardCate category="Cosmetics Brands" link="/cosmetics-brands"/>
         <CardCate category="Countries in the World" link="/countries-in-the-world"/>

@@ -34,6 +34,7 @@ import SocialMedia from "./categories/social-media";
 import Sports from "./categories/sports";
 import MusicGenres from "./categories/music-genres";
 import PuzzleGames from "./categories/puzzle-games";
+import Clothing from "./categories/clothing";
 import NotFound from "./404";
 
 import MainPageTh from "./th/main"
@@ -108,6 +109,7 @@ export default function App(){
         <Route path="/sports" element={<Sports />} />
         <Route path="/music-genres" element={<MusicGenres />} />
         <Route path="/puzzle-games" element={<PuzzleGames />} />
+        <Route path="/clothing" element={<Clothing />} />
 
         {/* Thai */}
         <Route path="/th" element={<MainPageTh />} />
