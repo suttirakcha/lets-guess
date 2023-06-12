@@ -66,6 +66,7 @@ import BowkylionSongs from "./th/categories/bowkylion-songs";
 import ClothingTh from "./th/categories/clothing";
 import HolidaysTh from "./th/categories/holidays";
 import EnglishLoanwords from "./th/categories/english-loanwords";
+import ChatWithFriends from "./th/categories/chat-with-friends";
 
 // import MainPageZh from "./zh/main";
 // import AnimalsZh from "./zh/categories/animals";
@@ -141,6 +142,7 @@ export default function App(){
         <Route path="/th/clothing" element={<ClothingTh />} />
         <Route path="/th/holidays" element={<HolidaysTh />} />
         <Route path="/th/english-loanwords" element={<EnglishLoanwords />} />
+        <Route path="/th/chat-with-friends" element={<ChatWithFriends />} />
 
         {/* Chinese */}
         {/* <Route path="/zh" element={<MainPageZh />} />
