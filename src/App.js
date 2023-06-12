@@ -67,8 +67,8 @@ import ClothingTh from "./th/categories/clothing";
 import HolidaysTh from "./th/categories/holidays";
 import EnglishLoanwords from "./th/categories/english-loanwords";
 
-import MainPageZh from "./zh/main";
-import AnimalsZh from "./zh/categories/animals";
+// import MainPageZh from "./zh/main";
+// import AnimalsZh from "./zh/categories/animals";
 export default function App(){
   return (
     <Router>
@@ -143,8 +143,8 @@ export default function App(){
         <Route path="/th/english-loanwords" element={<EnglishLoanwords />} />
 
         {/* Chinese */}
-        <Route path="/zh" element={<MainPageZh />} />
-        <Route path="/zh/animals" element={<AnimalsZh />} />
+        {/* <Route path="/zh" element={<MainPageZh />} />
+        <Route path="/zh/animals" element={<AnimalsZh />} /> */}
       </Routes>
     </Router>
   )
