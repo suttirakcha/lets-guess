@@ -35,6 +35,7 @@ import Sports from "./categories/sports";
 import MusicGenres from "./categories/music-genres";
 import PuzzleGames from "./categories/puzzle-games";
 import Clothing from "./categories/clothing";
+import GoogleServices from "./categories/google-services";
 import NotFound from "./404";
 
 import MainPageTh from "./th/main"
@@ -66,7 +67,6 @@ import BowkylionSongs from "./th/categories/bowkylion-songs";
 import ClothingTh from "./th/categories/clothing";
 import HolidaysTh from "./th/categories/holidays";
 import EnglishLoanwords from "./th/categories/english-loanwords";
-import ChatWithFriends from "./th/categories/chat-with-friends";
 
 // import MainPageZh from "./zh/main";
 // import AnimalsZh from "./zh/categories/animals";
@@ -111,6 +111,7 @@ export default function App(){
         <Route path="/music-genres" element={<MusicGenres />} />
         <Route path="/puzzle-games" element={<PuzzleGames />} />
         <Route path="/clothing" element={<Clothing />} />
+        <Route path="/google-services" element={<GoogleServices />} />
 
         {/* Thai */}
         <Route path="/th" element={<MainPageTh />} />
@@ -142,7 +143,6 @@ export default function App(){
         <Route path="/th/clothing" element={<ClothingTh />} />
         <Route path="/th/holidays" element={<HolidaysTh />} />
         <Route path="/th/english-loanwords" element={<EnglishLoanwords />} />
-        <Route path="/th/chat-with-friends" element={<ChatWithFriends />} />
 
         {/* Chinese */}
         {/* <Route path="/zh" element={<MainPageZh />} />

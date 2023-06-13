@@ -522,10 +522,6 @@ export default function MainPage(){
         link: "/th/education"
       },
       {
-        category: "ประโยคไว้คุยกับเพื่อน",
-        link: "/th/chat-with-friends"
-      },
-      {
         category: "ไปต่างประเทศ",
         link: "/th/travel-to-foreign-countries"
       },
@@ -638,7 +634,6 @@ export default function MainPage(){
         <CardCate category="ตัวละครในเกม ROV" link="/th/characters-in-rov"/>
         <CardCate category="นักร้องไทย" link="/th/thai-singers"/>
         <CardCate category="ประเทศในโลก" link="/th/countries-in-the-world"/>
-        <CardCate category="ประโยคไว้คุยกับเพื่อน" link="/th/chat-with-friends"/>
         <CardCate category="ไปต่างประเทศ" link="/th/travel-to-foreign-countries"/>
         <CardCate category="ผลไม้ต่างๆ" link="/th/fruits"/>
         <CardCate category="เพลงของ BOWKYLION" link="/th/bowkylion-songs"/>

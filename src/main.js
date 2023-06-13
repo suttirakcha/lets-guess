@@ -544,6 +544,10 @@ export default function MainPage(){
         link: "/fashion-brands"
       },
       {
+        category: "Google Services",
+        link: "/google-services"
+      },
+      {
         category: "Phone Brands",
         link: "/phone-brands"
       },
@@ -603,6 +607,7 @@ export default function MainPage(){
         <CardCate category="Film Genres" link="/film-genres"/>
         <CardCate category="Foods" link="/foods"/>
         <CardCate category="Girls' Generation" link="/girls-generation"/>
+        <CardCate category="Google Services" link="/google-services"/>
         <CardCate category="Harry Potter Characters" link="/harry-potter-characters"/>
         <CardCate category="Landmarks" link="/landmarks"/>
         <CardCate category="Latin-used Languages" link="/latin-used-languages"/>
