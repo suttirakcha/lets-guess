@@ -482,6 +482,12 @@ export default function MainPage(){
         link: "/th/tattoo-colour"
       }
     ],
+    filmsTh: [
+      {
+        category: "ภาพยนตร์ตลกไทย",
+        link: "/th/thai-comedy-films"
+      }
+    ],
     gamesTh: [
       {
         category: "ตัวละครในเกม ROV",
@@ -640,6 +646,7 @@ export default function MainPage(){
         <CardCate category="เพลงวง Cocktail" link="/th/cocktail-songs"/>
         <CardCate category="เพลงวง ETC" link="/th/etc-songs"/>
         <CardCate category="เพลงวง Tattoo Colour" link="/th/tattoo-colour"/>
+        <CardCate category="ภาพยนตร์ตลกไทย" link="/th/thai-comedy-films"/>
         <CardCate category="ภาษาที่ใช้อักษรละติน" link="/th/latin-used-languages"/>
         <CardCate category="วันสำคัญ" link="/th/holidays"/>
         <CardCate category="สถานที่ท่องเที่ยวในกรุงเทพ" link="/th/places-in-bangkok"/>
@@ -754,6 +761,15 @@ export default function MainPage(){
             <div className="select-lists">
               {
                 cateLists.musicTh.map((cate) => (
+                  <CardCate category={cate.category} link={cate.link}/>
+                ))
+              }
+            </div>
+
+            <h2 className="list-titles">ภาพยนตร์</h2>
+            <div className="select-lists">
+              {
+                cateLists.filmsTh.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
