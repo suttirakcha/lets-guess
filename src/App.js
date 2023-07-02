@@ -36,6 +36,7 @@ import MusicGenres from "./categories/music-genres";
 import PuzzleGames from "./categories/puzzle-games";
 import Clothing from "./categories/clothing";
 import GoogleServices from "./categories/google-services";
+import CommonNames from "./categories/common-names";
 import NotFound from "./404";
 
 import MainPageTh from "./th/main"
@@ -113,6 +114,7 @@ export default function App(){
         <Route path="/puzzle-games" element={<PuzzleGames />} />
         <Route path="/clothing" element={<Clothing />} />
         <Route path="/google-services" element={<GoogleServices />} />
+        <Route path="/common-names" element={<CommonNames />} />
 
         {/* Thai */}
         <Route path="/th" element={<MainPageTh />} />

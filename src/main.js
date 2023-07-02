@@ -574,6 +574,10 @@ export default function MainPage(){
         link: "/clothing"
       },
       {
+        category: "Common Names",
+        link: "/common-names"
+      },
+      {
         category: "Driving",
         link: "/driving"
       },
@@ -594,6 +598,7 @@ export default function MainPage(){
         <CardCate category="Capital Cities" link="/capital-cities"/>
         <CardCate category="Clothing" link="/clothing"/>
         <CardCate category="Characters in Mario Games" link="/characters-in-mario-games"/>
+        <CardCate category="Common Names" link="/common-names"/>
         <CardCate category="Cosmetics Brands" link="/cosmetics-brands"/>
         <CardCate category="Countries in the World" link="/countries-in-the-world"/>
         <CardCate category="Despicable Me" link="/despicable-me"/>
@@ -891,7 +896,7 @@ export default function MainPage(){
               </div>
             </label>
             <div id="block" className={`${timerSwitch ? "active" : ""}`}></div>
-            <p>The timer will be displayed at the top of the screen when playing the game.</p>
+            <p>The timer is displayed at the top of the screen when playing the game.</p>
           </div>
           <div className="setting-sec">
             <h2>Screen appearance</h2>
