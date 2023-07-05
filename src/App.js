@@ -37,6 +37,7 @@ import PuzzleGames from "./categories/puzzle-games";
 import Clothing from "./categories/clothing";
 import GoogleServices from "./categories/google-services";
 import CommonNames from "./categories/common-names";
+import GraphicDesignWords from "./categories/graphic-design-words";
 import NotFound from "./404";
 
 import MainPageTh from "./th/main"
@@ -115,6 +116,7 @@ export default function App(){
         <Route path="/clothing" element={<Clothing />} />
         <Route path="/google-services" element={<GoogleServices />} />
         <Route path="/common-names" element={<CommonNames />} />
+        <Route path="/words-in-graphic-design" element={<GraphicDesignWords />} />
 
         {/* Thai */}
         <Route path="/th" element={<MainPageTh />} />

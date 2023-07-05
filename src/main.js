@@ -560,9 +560,13 @@ export default function MainPage(){
         link: "/words-in-airline"
       },
       {
+        category: "Words in Graphic Design",
+        link: "/words-in-graphic-design"
+      },
+      {
         category: "Words in Marketing",
         link: "/words-in-marketing"
-      }
+      },
     ],
     other: [
       {
@@ -626,6 +630,7 @@ export default function MainPage(){
         <CardCate category="Social Media" link="/social-media"/>
         <CardCate category="Sports" link="/sports"/>
         <CardCate category="Words in Airline" link="/words-in-airline"/>
+        <CardCate category="Words in Graphic Design" link="/words-in-graphic-design"/>
         <CardCate category="Words in Marketing" link="/words-in-marketing"/>
       </div>
     )
