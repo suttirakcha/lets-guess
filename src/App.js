@@ -38,6 +38,7 @@ import Clothing from "./categories/clothing";
 import GoogleServices from "./categories/google-services";
 import CommonNames from "./categories/common-names";
 import GraphicDesignWords from "./categories/graphic-design-words";
+import Places from "./categories/places";
 import NotFound from "./404";
 
 import MainPageTh from "./th/main"
@@ -70,6 +71,7 @@ import ClothingTh from "./th/categories/clothing";
 import HolidaysTh from "./th/categories/holidays";
 import EnglishLoanwords from "./th/categories/english-loanwords";
 import ThaiComedyFilms from "./th/categories/thai-comedy-films";
+import PlacesTh from "./th/categories/places";
 
 // import MainPageZh from "./zh/main";
 // import AnimalsZh from "./zh/categories/animals";
@@ -117,6 +119,7 @@ export default function App(){
         <Route path="/google-services" element={<GoogleServices />} />
         <Route path="/common-names" element={<CommonNames />} />
         <Route path="/words-in-graphic-design" element={<GraphicDesignWords />} />
+        <Route path="/places" element={<Places />} />
 
         {/* Thai */}
         <Route path="/th" element={<MainPageTh />} />
@@ -149,6 +152,7 @@ export default function App(){
         <Route path="/th/holidays" element={<HolidaysTh />} />
         <Route path="/th/english-loanwords" element={<EnglishLoanwords />} />
         <Route path="/th/thai-comedy-films" element={<ThaiComedyFilms />} />
+        <Route path="/th/places" element={<PlacesTh />} />
 
         {/* Chinese */}
         {/* <Route path="/zh" element={<MainPageZh />} />

@@ -452,6 +452,10 @@ export default function MainPage(){
         link: "/th/countries-in-the-world"
       },
       {
+        category: "สถานที่",
+        link: "/th/places"
+      },
+      {
         category: "สถานที่ท่องเที่ยวในกรุงเทพ",
         link: "/th/places-in-bangkok"
       }
@@ -649,6 +653,7 @@ export default function MainPage(){
         <CardCate category="ภาพยนตร์ตลกไทย" link="/th/thai-comedy-films"/>
         <CardCate category="ภาษาที่ใช้อักษรละติน" link="/th/latin-used-languages"/>
         <CardCate category="วันสำคัญ" link="/th/holidays"/>
+        <CardCate category="สถานที่" link="/th/places"/>
         <CardCate category="สถานที่ท่องเที่ยวในกรุงเทพ" link="/th/places-in-bangkok"/>
         <CardCate category="สภาพอากาศ" link="/th/weather"/>
         <CardCate category="สัตว์ต่างๆ" link="/th/animals"/>

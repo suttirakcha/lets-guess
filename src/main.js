@@ -458,6 +458,10 @@ export default function MainPage(){
       {
         category: "Landmarks",
         link: "/landmarks"
+      },
+      {
+        category: "Places",
+        link: "/places"
       }
     ],
     languages: [
@@ -624,6 +628,7 @@ export default function MainPage(){
         <CardCate category="Music Genres" link="/music-genres"/>
         <CardCate category="Musical Instruments" link="/musical-instruments"/>
         <CardCate category="Phone Brands" link="/phone-brands"/>
+        <CardCate category="Places" link="/places"/>
         <CardCate category="Puzzle Games" link="/puzzle-games"/>
         <CardCate category="Restaurant Chains" link="/restaurant-chains"/>
         <CardCate category="Sauces" link="/sauces"/>
