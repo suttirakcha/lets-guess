@@ -39,6 +39,7 @@ import GoogleServices from "./categories/google-services";
 import CommonNames from "./categories/common-names";
 import GraphicDesignWords from "./categories/graphic-design-words";
 import Places from "./categories/places";
+import EnglishActors from "./categories/english-actors";
 import NotFound from "./404";
 
 import MainPageTh from "./th/main"
@@ -120,6 +121,7 @@ export default function App(){
         <Route path="/common-names" element={<CommonNames />} />
         <Route path="/words-in-graphic-design" element={<GraphicDesignWords />} />
         <Route path="/places" element={<Places />} />
+        <Route path="/english-actors" element={<EnglishActors />} />
 
         {/* Thai */}
         <Route path="/th" element={<MainPageTh />} />

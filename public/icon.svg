@@ -10,19 +10,19 @@
 </g>
 <g transform="matrix(1.46 0 0 1.46 48 48)">
 <g style="" vector-effect="non-scaling-stroke">
-		<g transform="matrix(1 0 0 1 15 10)">
+	<g transform="matrix(1 0 0 1 15 10)">
 <polygon style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(74,78,255); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  points="-15,2.5 15,13.5 5,-13.5 " />
 </g>
-		<g transform="matrix(1 0 0 1 0 -3.5)">
+	<g transform="matrix(1 0 0 1 0 -3.5)">
 <ellipse style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(74,78,255); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  cx="0" cy="0" rx="30" ry="20" />
 </g>
-		<g transform="matrix(1 0 0 1 -13 -3.5)">
+	<g transform="matrix(1 0 0 1 -13 -3.5)">
 <circle style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(224,228,255); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  cx="0" cy="0" r="3" />
 </g>
-		<g transform="matrix(1 0 0 1 0 -3.5)">
+	<g transform="matrix(1 0 0 1 0 -3.5)">
 <circle style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(224,228,255); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  cx="0" cy="0" r="3" />
 </g>
-		<g transform="matrix(1 0 0 1 13 -3.5)">
+	<g transform="matrix(1 0 0 1 13 -3.5)">
 <circle style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(224,228,255); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  cx="0" cy="0" r="3" />
 </g>
 </g>

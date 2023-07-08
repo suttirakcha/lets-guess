@@ -484,6 +484,10 @@ export default function MainPage(){
         link: "/disney-films-2010s"
       },
       {
+        category: "English Actors",
+        link: "/english-actors"
+      },
+      {
         category: "Fast and Furious Characters",
         link: "/fast-and-furious-characters"
       },
@@ -615,6 +619,7 @@ export default function MainPage(){
         <CardCate category="Drinks" link="/drinks"/>
         <CardCate category="Driving" link="/driving"/>
         <CardCate category="Education" link="/education"/>
+        <CardCate category="English Actors" link="/english-actors"/>
         <CardCate category="Fashion Brands" link="/fashion-brands"/>
         <CardCate category="Fast and Furious Characters" link="/fast-and-furious-characters"/>
         <CardCate category="Film Genres" link="/film-genres"/>
