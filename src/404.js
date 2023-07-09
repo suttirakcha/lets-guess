@@ -17,11 +17,11 @@ export default function NotFound(){
 
     if (changeLang){
       heading.innerHTML = "ไม่พบหน้านี้";
-      para.innerHTML = "ดูเหมือนว่าจะไม่พบหน้าที่คุณจะเข้าถึง โปรดกดปุ่ม \"กลับ\" เพื่อไปยังหน้าแรก";
+      para.innerHTML = "ดูเหมือนว่าจะไม่พบหน้าที่คุณจะเข้าถึง โปรดกดปุ่ม 'กลับ' เพื่อไปยังหน้าแรก";
       btn.innerHTML = "กลับ";
     } else {
       heading.innerHTML = "This page is not found";
-      para.innerHTML = "It seems that the page you are accessing is not found. <br/>Please click \"Go back\" to go to the homepage.";
+      para.innerHTML = "It seems that the page you are accessing is not found. <br/>Please click 'Go back' to go to the homepage.";
       btn.innerHTML = "Go back";
     }
 
@@ -38,7 +38,7 @@ export default function NotFound(){
     <div id="javascript-disabled">
       <FontAwesomeIcon icon={faFaceFrownOpen} style={{fontSize:"60px",marginBottom:"20px"}}/>
       <h1 id="not-found-heading">This page is not found</h1>
-      <p id="not-found-para" style={{marginBottom:"30px"}}>It seems that the page you are accessing is not found. <br/>Please click "Go back" to go to the homepage.</p>
+      <p id="not-found-para" style={{marginBottom:"30px"}}>It seems that the page you are accessing is not found. <br/>Please click 'Go back' to go to the homepage.</p>
       <button class="btn" onClick={clickToGoBack} id="not-found-btn">Go back</button>
     </div>
   )

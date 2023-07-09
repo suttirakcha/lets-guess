@@ -768,9 +768,15 @@ export default function MainPage(){
             <button id="settingsBtn" className="btn small-btn" onClick={openSettings}>
               <FontAwesomeIcon icon={faGear}/>
             </button>
+            <div id="settings-tooltip" className="tooltips">
+              <p>Settings</p>
+            </div>
             <button id="searchBtn" className="btn small-btn" onClick={openSearch}>
               <FontAwesomeIcon icon={faSearch}/>
             </button>
+            <div id="search-tooltip" className="tooltips">
+              <p>Search category</p>
+            </div>
             <button id="searchCloseBtn" className="btn small-btn" onClick={closeSearch}>
               <FontAwesomeIcon icon={faClose}/>
             </button>
@@ -784,10 +790,10 @@ export default function MainPage(){
             <h2>How to play:</h2>
             <ol>
               <li>The hinter can only see the answer on the screen, and try to hint the answer so that the players can guess what the answer is.</li>
-              <li>The hinter can hide the answer by clicking "Hide answer" button at the top right of the screen.</li>
-              <li>If the players guess correctly, press "<FontAwesomeIcon icon={faCheck}/>" button to go to the next word.</li>
-              <li>If the players guess incorrectly or don't know the answer, press "<FontAwesomeIcon icon={faXmark}/>" button to skip the word.</li>
-              <li>You have 60 or 120 seconds (depending on your setting) to hint the answers.</li>
+              <li>The hinter can hide the answer by clicking 'Hide answer' button at the top right of the screen.</li>
+              <li>If the players guess correctly, press <FontAwesomeIcon icon={faCheck}/> button to go to the next word.</li>
+              <li>If the players guess incorrectly or don't know the answer, press <FontAwesomeIcon icon={faXmark}/> button to skip the word.</li>
+              <li>You have 60 or 120 seconds, depending on your setting, to hint the answers.</li>
             </ol>
           </div>
           <div id="all-cates">
@@ -925,7 +931,7 @@ export default function MainPage(){
           <div className="setting-sec">
             <h2>Hidden answer text</h2>
             <input type="text" id="hidden-text" className="text-input" placeholder="The answer is hidden" onInput={checkHiddenText} onChange={typeHiddenText} autoComplete="off"/>
-            <p>This text will be shown when the hinter presses "Hide answer" button, the default text is "The answer is hidden".</p>
+            <p>This text will be shown when the hinter presses 'Hide answer' button, the default text is 'The answer is hidden'.</p>
             <p id="warning-hidden-text"></p>
           </div>
         </div>

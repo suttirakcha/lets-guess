@@ -713,9 +713,15 @@ export default function MainPage(){
             <button id="settingsBtn" className="btn small-btn" onClick={openSettings}>
               <FontAwesomeIcon icon={faGear}/>
             </button>
+            <div id="settings-tooltip" className="tooltips">
+              <p>การตั้งค่า</p>
+            </div>
             <button id="searchBtn" className="btn small-btn" onClick={openSearch}>
               <FontAwesomeIcon icon={faSearch}/>
             </button>
+            <div id="search-tooltip" className="tooltips">
+              <p>ค้นหาหมวดหมู่</p>
+            </div>
             <button id="searchCloseBtn" className="btn small-btn" onClick={closeSearch}>
               <FontAwesomeIcon icon={faClose}/>
             </button>
@@ -729,9 +735,9 @@ export default function MainPage(){
             <h2>วิธีเล่น:</h2>
             <ol>
               <li>ผู้บอกใบ้สามารถที่จะเห็นคำตอบได้เท่านั้น และให้ใบ้คำตอบเพื่อที่ผู้เล่นจะสามารถเดาคำตอบที่ปรากฏบนจอได้</li>
-              <li>ผู้บอกใบ้สามารถซ่อนคำตอบโดยกดปุ่ม "ซ่อนคำตอบ" ตรงมุมขวาบนของจอ</li>
-              <li>ถ้าผู้เล่นทายถูก ให้กดปุ่ม "<FontAwesomeIcon icon={faCheck}/>" เพื่อไปยังคำต่อไป</li>
-              <li>ถ้าผู้เล่นทายผิด หรือไม่รู้คำตอบ ให้กดปุ่ม "<FontAwesomeIcon icon={faXmark}/>" เพื่อข้ามคำตอบ</li>
+              <li>ผู้บอกใบ้สามารถซ่อนคำตอบโดยกดปุ่ม 'ซ่อนคำตอบ' ตรงมุมขวาบนของจอ</li>
+              <li>ถ้าผู้เล่นทายถูก ให้กดปุ่ม <FontAwesomeIcon icon={faCheck}/> เพื่อไปยังคำต่อไป</li>
+              <li>ถ้าผู้เล่นทายผิด หรือไม่รู้คำตอบ ให้กดปุ่ม <FontAwesomeIcon icon={faXmark}/> เพื่อข้ามคำตอบ</li>
               <li>คุณมีเวลา 60 หรือ 120 วินาที (ขึ้นอยู่กับการตั้งค่าของคุณ) ในการทายคำตอบ</li>
             </ol>
           </div>
@@ -861,7 +867,7 @@ export default function MainPage(){
           <div className="setting-sec">
             <h2>ข้อความเมื่อซ่อนคำตอบ</h2>
             <input type="text" id="hidden-text" className="text-input" placeholder="คำตอบถูกซ่อนไว้" onInput={checkHiddenText} onChange={typeHiddenTextTh} autoComplete="off"/>
-            <p>ข้อความจะถูกแสดงเมื่อผู้บอกใบ้กดปุ่ม "ซ่อนคำตอบ"<br/> ข้อความเริ่มต้นคือ "คำตอบถูกซ่อนไว้"</p>
+            <p>ข้อความจะถูกแสดงเมื่อผู้บอกใบ้กดปุ่ม 'ซ่อนคำตอบ'<br/> ข้อความเริ่มต้นคือ 'คำตอบถูกซ่อนไว้'</p>
             <p id="warning-hidden-text"></p>
           </div>
         </div>
