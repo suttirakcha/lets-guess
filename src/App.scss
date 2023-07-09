@@ -89,11 +89,12 @@ body{
 
 .tooltips {
   position:absolute;
-  background-color:black;
+  background-color:#00000099;
   color:white;
   border-radius:99px;
   visibility:hidden;
   opacity:0;
+  box-shadow:0 0 3px #00000099;
   transition:visibility 300ms,opacity 300ms,top 300ms;
   p {
     margin:0;
@@ -104,12 +105,12 @@ body{
 
 #settings-tooltip {
   right:30px;
-  top:85px;
+  top:75px;
 }
 
 #search-tooltip {
   right:85px;
-  top:85px;
+  top:75px;
 }
 
 #timer{
@@ -191,7 +192,7 @@ body{
   &:hover + #settings-tooltip{
     visibility:visible;
     opacity:1;
-    top:90px;
+    top:85px;
     transition:all 300ms;
     transition-delay:500ms;
   }
@@ -200,7 +201,7 @@ body{
 #searchBtn:hover + #search-tooltip {
   visibility:visible;
   opacity:1;
-  top:90px;
+  top:85px;
   transition:all 300ms;
   transition-delay:500ms;
 }
@@ -1143,7 +1144,8 @@ input:checked + .switch-toggle:before {
   }
 
   .tooltips {
-    background-color:white;
+    background-color:#FFFFFFCC;
     color:black;
+    box-shadow:0 0 3px #FFFFFF99;
   }
 }
