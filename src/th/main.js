@@ -444,6 +444,10 @@ export default function MainPage(){
     ],
     geographyTh: [
       {
+        category: "เขตและแขวงในกรุงเทพ",
+        link: "/th/bangkok-districts-and-subdistricts"
+      },
+      {
         category: "จังหวัดในประเทศไทย",
         link: "/th/provinces-in-thailand"
       },
@@ -633,6 +637,7 @@ export default function MainPage(){
         <CardCate category="ขนมไทย" link="/th/thai-desserts"/>
         <CardCate category="ขนมหวาน" link="/th/desserts"/>
         <CardCate category="ของใช้ในบ้าน" link="/th/household-items"/>
+        <CardCate category="เขตและแขวงในกรุงเทพ" link="/th/bangkok-districts-and-subdistricts"/>
         <CardCate category="คำที่มาจากภาษาบาลี-สันสกฤต" link="/th/bali-sanskrit-loanwords"/>
         <CardCate category="คำที่มาจากภาษาอังกฤษ" link="/th/english-loanwords"/>
         <CardCate category="เครื่องครัว" link="/th/kitchenware"/>

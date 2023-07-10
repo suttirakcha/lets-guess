@@ -73,6 +73,7 @@ import HolidaysTh from "./th/categories/holidays";
 import EnglishLoanwords from "./th/categories/english-loanwords";
 import ThaiComedyFilms from "./th/categories/thai-comedy-films";
 import PlacesTh from "./th/categories/places";
+import BangkokDistrictsAndSubdistricts from "./th/categories/bangkok-districts";
 
 // import MainPageZh from "./zh/main";
 // import AnimalsZh from "./zh/categories/animals";
@@ -155,6 +156,7 @@ export default function App(){
         <Route path="/th/english-loanwords" element={<EnglishLoanwords />} />
         <Route path="/th/thai-comedy-films" element={<ThaiComedyFilms />} />
         <Route path="/th/places" element={<PlacesTh />} />
+        <Route path="/th/bangkok-districts-and-subdistricts" element={<BangkokDistrictsAndSubdistricts />} />
 
         {/* Chinese */}
         {/* <Route path="/zh" element={<MainPageZh />} />
