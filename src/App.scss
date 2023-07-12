@@ -290,6 +290,8 @@ body{
   opacity:1;
 }
 
+#all-cates {opacity:0}
+
 @mixin aside-lines{
   content:"";
   flex:1 1;

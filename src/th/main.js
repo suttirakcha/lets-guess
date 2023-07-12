@@ -504,6 +504,10 @@ export default function MainPage(){
     ],
     languagesTh: [
       {
+        category: "คำที่มาจากภาษาจีน",
+        link: "/th/chinese-loanwords"
+      },
+      {
         category: "คำที่มาจากภาษาบาลี-สันสกฤต",
         link: "/th/bali-sanskrit-loanwords"
       },
@@ -638,6 +642,7 @@ export default function MainPage(){
         <CardCate category="ขนมหวาน" link="/th/desserts"/>
         <CardCate category="ของใช้ในบ้าน" link="/th/household-items"/>
         <CardCate category="เขตและแขวงในกรุงเทพ" link="/th/bangkok-districts-and-subdistricts"/>
+        <CardCate category="คำที่มาจากภาษาจีน" link="/th/chinese-loanwords"/>
         <CardCate category="คำที่มาจากภาษาบาลี-สันสกฤต" link="/th/bali-sanskrit-loanwords"/>
         <CardCate category="คำที่มาจากภาษาอังกฤษ" link="/th/english-loanwords"/>
         <CardCate category="เครื่องครัว" link="/th/kitchenware"/>
