@@ -1,4 +1,4 @@
-body,button,input,code{font-family:"IBM Plex Sans Thai","Sarabun",sans-serif}
+body,button,input,code{font-family:"IBM Plex Sans Thai","Noto Sans Lao","Sarabun",sans-serif}
 body{
   background-color:#D4FFA8;
   overflow:hidden;
@@ -169,8 +169,51 @@ body{
   position:absolute;
   top:25px;
   right:4%;
-  padding:10px 30px;
+  padding:10px 20px;
   width:100px;
+}
+
+#chevron {
+  margin-left:12px;
+  transition:transform 300ms;
+  &.active {
+    transform:rotateX(180deg);
+    transition:all 300ms;
+  }
+}
+
+#langList {
+  visibility:hidden;
+  opacity:0;
+  background-color:white;
+  display:inline-block;
+  position:absolute;
+  right:4%;
+  width:160px;
+  top:80px;
+  border-radius:6px;
+  transition:visibility 200ms, opacity 200ms;
+  ul {
+    padding:0 12px;
+    li {
+      list-style:none;
+      cursor:pointer;
+      border-radius:6px;
+      padding:6px;
+      margin:8px 0;
+      transition:background-color 300ms, color 300ms;
+      &:hover,&.active {
+        background-color:#202020;
+        color:white;
+        transition:all 300ms;
+      }
+    }
+  }
+  &.active {
+    visibility:visible;
+    opacity:1;
+    transition:all 200ms;
+  }
 }
 
 .small-btn {

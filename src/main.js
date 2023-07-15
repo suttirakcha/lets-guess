@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck,faXmark,faChevronLeft,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
+import { faCheck,faXmark,faChevronLeft,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faChevronDown,faLanguage } from "@fortawesome/free-solid-svg-icons";
 
 export default function MainPage(){
   const [clicked, setClicked] = useState(false);
@@ -368,6 +368,7 @@ export default function MainPage(){
       localStorage.setItem("timer-continue",60);
       localStorage.setItem("text-hidden", "")
       localStorage.setItem("text-hidden-th", "")
+      localStorage.setItem("text-hidden-lo", "")
       localStorage.setItem("point", 0);
       localStorage.setItem("dark-mode", 'false')
       hiddenText.value = localStorage.setItem("text-hidden", "");
@@ -405,10 +406,11 @@ export default function MainPage(){
   }
   
   const changeLang = () => {
-    localStorage.setItem("lang", "th");
-    window.location.replace("/th");
+    let langList = document.getElementById("langList");
+    let chevron = document.getElementById("chevron");
+    langList.classList.toggle("active");
+    chevron.classList.toggle("active");
   }
-
   const darkMode = () => {
     document.body.classList.add("dark-mode");
     document.body.style.backgroundColor = "#3f1b3c";
@@ -783,7 +785,17 @@ export default function MainPage(){
             <input type="text" id="search-input" onInput={searchCate} className="text-input" placeholder="Search category"/>
           </div>
         <div id="changeLangBtn">
-          <button onClick={changeLang} className="btn">ไทย</button>
+          <button onClick={changeLang} className="btn">
+            <FontAwesomeIcon icon={faLanguage} />
+            <FontAwesomeIcon icon={faChevronDown} id="chevron"/>
+          </button>
+          <div id="langList">
+            <ul>
+              <li className="active">English</li>
+              <li onClick={() => window.location.replace("/th")}>ไทย / Thai</li>
+              <li onClick={() => window.location.replace("/lo")}>ລາວ / Lao</li>
+            </ul>
+          </div>
         </div>
         <main className="app-main">
           <div id="how-to-play">
