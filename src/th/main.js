@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck,faChevronLeft,faXmark,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faChevronDown,faLanguage } from "@fortawesome/free-solid-svg-icons";
+import { faCheck,faChevronLeft,faXmark,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faChevronDown,faLanguage, faEarthAsia } from "@fortawesome/free-solid-svg-icons";
 
 export default function MainPage(){
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
@@ -761,7 +761,7 @@ export default function MainPage(){
           <div id="changeLangBtn">
             <button onClick={changeLang} className="btn">
               <FontAwesomeIcon icon={faLanguage} />
-              <FontAwesomeIcon icon={faChevronDown} id="chevron"/>
+              เลือกภาษา
             </button>
           </div>
           <div id="langList-bg"></div>

@@ -168,18 +168,11 @@ body{
 #changeLangBtn .btn{
   position:absolute;
   top:25px;
-  right:4%;
-  padding:10px 20px;
-  width:100px;
-}
-
-#chevron {
-  margin-left:12px;
-  transition:transform 300ms;
-  &.active {
-    transform:rotateX(180deg);
-    transition:all 300ms;
-  }
+  right:40px;
+  padding:8px 20px;
+  display:flex;
+  align-items:center;
+  gap:8px;
 }
 
 #langList-bg {
@@ -188,11 +181,12 @@ body{
   top:0;
   right:0;
   width:0;
+  max-width:600px;
   height:100%;
   transition:width 300ms;
   z-index:9;
   &.active {
-    width:600px;
+    width:100%;
     transition:all 300ms;
   }
 }
@@ -221,12 +215,13 @@ body{
   display:flex;
   position:fixed;
   right:0;
-  width:calc(600px - 120px);
+  width:calc(100% - 120px);
+  max-width:calc(600px - 120px);
   height:100%;
   top:0;
   transition:visibility 400ms, opacity 400ms;
   z-index:9;
-  padding:40px 60px;
+  padding:10px 60px;
   flex-direction:column;
   text-align:left;
   .langs {
@@ -246,7 +241,7 @@ body{
       padding:12px 36px;
       margin:8px 0;
       transition:background-color 300ms, color 300ms;
-      font-size:30px;
+      font-size:28px;
       &:hover,&.active {
         background-color:#202020;
         color:white;

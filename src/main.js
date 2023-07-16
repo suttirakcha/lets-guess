@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck,faXmark,faChevronLeft,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faChevronDown,faLanguage } from "@fortawesome/free-solid-svg-icons";
+import { faCheck,faXmark,faChevronLeft,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faChevronDown,faLanguage, faEarthAsia } from "@fortawesome/free-solid-svg-icons";
 
 export default function MainPage(){
   const [clicked, setClicked] = useState(false);
@@ -805,7 +805,7 @@ export default function MainPage(){
         <div id="changeLangBtn">
           <button onClick={changeLang} className="btn">
             <FontAwesomeIcon icon={faLanguage} />
-            <FontAwesomeIcon icon={faChevronDown} id="chevron"/>
+            Select language
           </button>
         </div>
         <div id="langList-bg"></div>

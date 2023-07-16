@@ -80,6 +80,7 @@ import MainPageLao from "./lao/main";
 import FoodsLao from "./lao/categories/foods";
 import DessertsLao from "./lao/categories/desserts";
 import AnimalsLao from "./lao/categories/animals";
+import KitchenwareLao from "./lao/categories/kitchenware";
 
 // import MainPageZh from "./zh/main";
 // import AnimalsZh from "./zh/categories/animals";
@@ -169,6 +170,7 @@ export default function App(){
         <Route path="/lo/animals" element={<AnimalsLao />}/>
         <Route path="/lo/desserts" element={<DessertsLao />} />
         <Route path="/lo/foods" element={<FoodsLao />}/>
+        <Route path="/lo/kitchenware" element={<KitchenwareLao />}/>
 
         {/* Chinese */}
         {/* <Route path="/zh" element={<MainPageZh />} />

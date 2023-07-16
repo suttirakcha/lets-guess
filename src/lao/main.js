@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck,faXmark,faChevronLeft,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faChevronDown,faLanguage } from "@fortawesome/free-solid-svg-icons";
+import { faCheck,faXmark,faChevronLeft,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faChevronDown,faLanguage, faEarthAsia } from "@fortawesome/free-solid-svg-icons";
 
 export default function MainPageLao(){
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
@@ -449,6 +449,10 @@ export default function MainPageLao(){
     ],
     otherLo: [
       {
+        category: "ເຄື່ອງຄົວ",
+        link: "/lo/kitchenware"
+      },
+      {
         category: "ສັດຕ່າງໆ",
         link: "/lo/animals"
       },
@@ -531,6 +535,7 @@ export default function MainPageLao(){
     return (
       <div className="select-lists">
         <CardCate category="ເຂົ້າໜົມຫວານ" link="/lo/desserts"/>
+        <CardCate category="ເຄື່ອງຄົວ" link="/lo/kitchenware"/>
         <CardCate category="ສັດຕ່າງໆ" link="/lo/animals"/>
         <CardCate category="ອາຫານ" link="/lo/foods"/>
       </div>
@@ -602,9 +607,9 @@ export default function MainPageLao(){
             <input type="text" id="search-input" onKeyUp={searchCate} className="text-input" placeholder="ຊອກຫາໝວດໝູ່"/>
           </div>
           <div id="changeLangBtn">
-            <button onClick={changeLang} className="btn">
+            <button onClick={changeLang} className="btn small-btn">
               <FontAwesomeIcon icon={faLanguage} />
-              <FontAwesomeIcon icon={faChevronDown} id="chevron"/>
+              ເລືອກພາສາ
             </button>
           </div>
           <div id="langList-bg"></div>
