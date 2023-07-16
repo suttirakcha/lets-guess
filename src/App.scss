@@ -182,26 +182,71 @@ body{
   }
 }
 
+#langList-bg {
+  background-color:#FFFFFF;
+  position:fixed;
+  top:0;
+  right:0;
+  width:0;
+  height:100%;
+  transition:width 300ms;
+  z-index:9;
+  &.active {
+    width:600px;
+    transition:all 300ms;
+  }
+}
+
+#langList-overlay {
+  visibility:hidden;
+  opacity:0;
+  background-color:#00000099;
+  position:fixed;
+  top:0;
+  right:0;
+  width:100%;
+  height:100%;
+  transition:visibility 300ms, opacity 300ms;
+  z-index:8;
+  &.active {
+    visibility:visible;
+    opacity:1;
+    transition:all 300ms;
+  }
+}
+
 #langList {
   visibility:hidden;
   opacity:0;
-  background-color:white;
-  display:inline-block;
-  position:absolute;
-  right:4%;
-  width:160px;
-  top:80px;
-  border-radius:6px;
-  transition:visibility 200ms, opacity 200ms;
+  display:flex;
+  position:fixed;
+  right:0;
+  width:calc(600px - 120px);
+  height:100%;
+  top:0;
+  transition:visibility 400ms, opacity 400ms;
+  z-index:9;
+  padding:40px 60px;
+  flex-direction:column;
+  text-align:left;
+  .langs {
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+    flex-basis:100%;
+  }
   ul {
     padding:0 12px;
     li {
       list-style:none;
+      width:100%;
       cursor:pointer;
-      border-radius:6px;
-      padding:6px;
+      border-radius:99px;
+      text-align:left;
+      padding:12px 36px;
       margin:8px 0;
       transition:background-color 300ms, color 300ms;
+      font-size:30px;
       &:hover,&.active {
         background-color:#202020;
         color:white;
@@ -212,7 +257,7 @@ body{
   &.active {
     visibility:visible;
     opacity:1;
-    transition:all 200ms;
+    transition:all 400ms;
   }
 }
 
@@ -444,7 +489,7 @@ body{
   }
 }
 
-#close-settings-btn{
+#close-settings-btn,#close-changeLang-btn{
   font-size:32px;
   position:absolute;
   top:40px;
@@ -457,6 +502,17 @@ body{
   cursor:pointer;
   &:hover{
     color:black;
+    transition:all 300ms;
+  }
+}
+
+#close-changeLang-btn {
+  visibility:hidden;
+  opacity:0;
+  transition:visibility 300ms, opacity 300ms;
+  &.active {
+    visibility:visible;
+    opacity:1;
     transition:all 300ms;
   }
 }
@@ -820,10 +876,6 @@ input:checked + .switch-toggle:before{
   #heading{
     margin-top:80px;
   }
-  #changeLangBtn .btn{
-    width:80px;
-    padding:10px 20px;
-  }
   #timer{
     font-size:60px;
     top:60px;
@@ -1049,7 +1101,7 @@ input:checked + .switch-toggle:before{
 
   .game{background-color:#272d60}
 
-  .block-space,#score-result,#want-to-quit-modal{
+  .block-space,#score-result,#want-to-quit-modal,#langList-bg{
     background-color:#202020;
   }
 
@@ -1058,7 +1110,7 @@ input:checked + .switch-toggle:before{
     transition:all 300ms;
   }
 
-  #close-settings-btn{
+  #close-settings-btn,#close-changeLang-btn{
     color:white;
     &:hover{
       color:#C0C0C0;

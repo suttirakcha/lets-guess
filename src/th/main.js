@@ -400,9 +400,27 @@ export default function MainPage(){
   }
   const changeLang = () => {
     let langList = document.getElementById("langList");
-    let chevron = document.getElementById("chevron");
-    langList.classList.toggle("active");
-    chevron.classList.toggle("active");
+    let langListBg = document.getElementById("langList-bg");
+    let closeBtn = document.getElementById("close-changeLang-btn");
+    let langListOverlay = document.getElementById("langList-overlay");
+    langList.classList.add("active");
+    langListBg.classList.add("active");
+    langList.style.transitionDelay = "300ms";
+    langListBg.style.transitionDelay = "0ms";
+    closeBtn.classList.add("active");
+    langListOverlay.classList.add("active");
+  }
+  const closeChangeLang = () => {
+    let langList = document.getElementById("langList");
+    let langListBg = document.getElementById("langList-bg");
+    let closeBtn = document.getElementById("close-changeLang-btn");
+    let langListOverlay = document.getElementById("langList-overlay");
+    langList.classList.remove("active");
+    langList.style.transitionDelay = "0ms";
+    langListBg.classList.remove("active");
+    langListBg.style.transitionDelay = "200ms";
+    closeBtn.classList.remove("active");
+    langListOverlay.classList.remove("active");
   }
   const darkMode = () => {
     document.body.classList.add("dark-mode");
@@ -745,13 +763,17 @@ export default function MainPage(){
               <FontAwesomeIcon icon={faLanguage} />
               <FontAwesomeIcon icon={faChevronDown} id="chevron"/>
             </button>
-            <div id="langList">
-              <ul>
-                <li className="active">ไทย / Thai</li>
-                <li onClick={() => window.location.replace("/")}>English</li>
-                <li onClick={() => window.location.replace("/lo")}>ລາວ / Lao</li>
-              </ul>
-            </div>
+          </div>
+          <div id="langList-bg"></div>
+          <div id="langList-overlay" onClick={closeChangeLang}></div>
+          <div id="langList">
+            <h1>เลือกภาษา</h1>
+            <FontAwesomeIcon icon={faClose} id="close-changeLang-btn" onClick={closeChangeLang}/>
+            <ul className="langs">
+              <li className="active">ไทย</li>
+              <li onClick={() => window.location.replace("/")}>English / อังกฤษ</li>
+              <li onClick={() => window.location.replace("/lo")}>ລາວ / ลาว</li>
+            </ul>
           </div>
         <main className="app-main">
           <div id="how-to-play">
