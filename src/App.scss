@@ -186,7 +186,7 @@ body{
   transition:width 300ms;
   z-index:9;
   &.active {
-    width:100%;
+    width:600px;
     transition:all 300ms;
   }
 }

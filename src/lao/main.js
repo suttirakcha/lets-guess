@@ -443,6 +443,10 @@ export default function MainPageLao(){
         link: "/lo/desserts"
       },
       {
+        category: "ເຄື່ອງດື່ມ",
+        link: "/lo/drinks"
+      },
+      {
         category: "ອາຫານ",
         link: "/lo/foods"
       },
@@ -536,6 +540,7 @@ export default function MainPageLao(){
       <div className="select-lists">
         <CardCate category="ເຂົ້າໜົມຫວານ" link="/lo/desserts"/>
         <CardCate category="ເຄື່ອງຄົວ" link="/lo/kitchenware"/>
+        <CardCate category="ເຄື່ອງດື່ມ" link="/lo/drinks"/>
         <CardCate category="ສັດຕ່າງໆ" link="/lo/animals"/>
         <CardCate category="ອາຫານ" link="/lo/foods"/>
       </div>
@@ -670,7 +675,7 @@ export default function MainPageLao(){
         </main>
         <footer className="app-foot">
           <h2>ພ້ອມແລ້ວບໍ່?</h2>
-          <button onClick={playNow} className="btn">ເລ່ນເລົຍ</button>
+          <button onClick={playNow} className="btn">ຫຼິ້ນເລີຍ</button>
         </footer>
 
         <div id="settings-drawer-mask" onClick={closeSettings}></div>
