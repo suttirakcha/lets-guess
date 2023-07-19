@@ -451,6 +451,12 @@ export default function MainPageLao(){
         link: "/lo/foods"
       },
     ],
+    geographyLo: [
+      {
+        category: "ແຂວງໃນປະເທດລາວ",
+        link: "/lo/laos-provinces"
+      }
+    ],
     otherLo: [
       {
         category: "ເຄື່ອງຄົວ",
@@ -539,6 +545,7 @@ export default function MainPageLao(){
     return (
       <div className="select-lists">
         <CardCate category="ເຂົ້າໜົມຫວານ" link="/lo/desserts"/>
+        <CardCate category="ແຂວງໃນປະເທດລາວ" link="/lo/laos-provinces"/>
         <CardCate category="ເຄື່ອງຄົວ" link="/lo/kitchenware"/>
         <CardCate category="ເຄື່ອງດື່ມ" link="/lo/drinks"/>
         <CardCate category="ສັດຕ່າງໆ" link="/lo/animals"/>
@@ -652,6 +659,15 @@ export default function MainPageLao(){
             <div className="select-lists">
               {
                 cateLists.eatingLo.map((cate) => (
+                  <CardCate category={cate.category} link={cate.link}/>
+                ))
+              }
+            </div>
+
+            <h2 className="list-titles">ພູມສາດ</h2>
+            <div className="select-lists">
+              {
+                cateLists.geographyLo.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
