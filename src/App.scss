@@ -899,6 +899,9 @@ input:checked + .switch-toggle:before{
     font-size:40px;
     line-height:48px;
   }
+  .head-game {
+    flex-direction:column;
+  }
 }
 
 @media (max-height:767px){
@@ -920,6 +923,9 @@ input:checked + .switch-toggle:before{
   }
   .card h2{
     font-size:16px;
+  }
+  #heading, #heading.active {
+    font-size:40px;
   }
 }
 
