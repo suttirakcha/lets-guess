@@ -320,7 +320,7 @@ export default function MainPageLao(){
       if (hiddenText.value.includes("@")){
         warning.innerHTML = "*ບໍ່ອະນຸຍາດໃຫ້ໃຊ້ @ ໃນພື້ນທີ່ຂໍ້ຄວາມນີ້.";
       } else {
-        warning.innerHTML = "*ກະລຸນາຫຼີກເວົ້ນການນຳໃຊ້ຄຳທີ່ບໍ່ສຸພາບ ຫຼືຄຳທີ່ອ່ອນໄຫວ.";
+        warning.innerHTML = "*ກະລຸນາຫຼີກລ່ຽງການນຳໃຊ້ຄຳທີ່ບໍ່ສຸພາບ ຫຼືຄຳທີ່ອ່ອນໄຫວ.";
       }
       hiddenText.classList.add("warning");
       localStorage.setItem("text-hidden-lo", "");
@@ -544,8 +544,8 @@ export default function MainPageLao(){
   const AllCates = () => {
     return (
       <div className="select-lists">
-        <CardCate category="ເຂົ້າໜົມຫວານ" link="/lo/desserts"/>
         <CardCate category="ແຂວງໃນປະເທດລາວ" link="/lo/laos-provinces"/>
+        <CardCate category="ເຂົ້າໜົມຫວານ" link="/lo/desserts"/>
         <CardCate category="ເຄື່ອງຄົວ" link="/lo/kitchenware"/>
         <CardCate category="ເຄື່ອງດື່ມ" link="/lo/drinks"/>
         <CardCate category="ສັດຕ່າງໆ" link="/lo/animals"/>
@@ -590,7 +590,7 @@ export default function MainPageLao(){
   }
 
   return (
-    <div className="App">
+    <div className="App lao">
       <div id="prevent" className="invisible-block"></div>
       <div id="lets-start">
       <button onClick={goBack} id="goBackBtn" className="btn">
@@ -641,8 +641,8 @@ export default function MainPageLao(){
             <ol>
               <li>ຄົນໃບ້ຄຳສາມາດເຫັນຄຳຕອບໄດ້ເທົ່ານັ້ນ ແລະໃຫ້ໃບ້ຄຳຕອບເພື່ອໃຫ້ຄົນຫຼິ້ນສາມາດເດົາຄຳຕອບທີ່ປະກົດໃນໜ້າຈໍໄດ້.</li>
               <li>ຄົນໃບ້ຄຳສາມາດເຊື່ອງຄຳຕອບໄດ້ໂດຍກົດປຸ່ມ "ເຊື່ອງຄຳຕອບ" ໃນມຸມຂວາຂອງຈໍ.</li>
-              <li>ຖ້າຄົນຫຼິ້ນເດົາຖືກ ໃຫ້ກົດປຸ່ມ"<FontAwesomeIcon icon={faCheck}/>" ເພື່ອໄປຍັງຄຳຕໍ່ໄປ.</li>
-              <li>ຖ້າຄົນຫຼິ້ນເດົາຜິດ ຫຼືບໍ່ຮູ້ຄຳຕອບ ໃຫ້ກົດປຸ່ມ"<FontAwesomeIcon icon={faXmark}/>" ເພື່ອຂ້າມຄຳຕອບ.</li>
+              <li>ຖ້າຄົນຫຼິ້ນເດົາຖືກ ໃຫ້ກົດປຸ່ມ <FontAwesomeIcon icon={faCheck}/> ເພື່ອໄປຍັງຄຳຕໍ່ໄປ.</li>
+              <li>ຖ້າຄົນຫຼິ້ນເດົາຜິດ ຫຼືບໍ່ຮູ້ຄຳຕອບ ໃຫ້ກົດປຸ່ມ <FontAwesomeIcon icon={faXmark}/> ເພື່ອຂ້າມຄຳຕອບ.</li>
               <li>ເຈົ້າມີເວລາ 60 ຫຼື 120 ວິນາທີ (ຂຶ້ນຢູ່ກັບການຕັ້ງຄ່າຂອງເຈົ້າ) ໃນການເດົາຄຳຕອບ.</li>
             </ol>
           </div>

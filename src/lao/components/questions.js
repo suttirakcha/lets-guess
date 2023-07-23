@@ -223,7 +223,7 @@ export default function QuestionsLao(props){
   useEffect(()=> {loadPage()},[])
 
   return (
-    <div className="App">
+    <div className="App lao">
       <header className="app-head head-game">
         <div className="sec-left">
           <h1 id="category">ໝວດໝູ່: {props.category}</h1>

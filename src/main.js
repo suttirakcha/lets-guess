@@ -8,8 +8,6 @@ export default function MainPage(){
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
   const [timerSixty, setTimerSixty] = useState(localStorage.getItem("timer-sixty") === 'true');
 
-  const [noResult, setNoResult] = useState(true);
-
   localStorage.getItem('dark-mode');
 
   if (localStorage.getItem('dark-mode') == 'true'){
@@ -317,13 +315,13 @@ export default function MainPage(){
       hiddenText.value.toUpperCase().includes("dick".toUpperCase()) ||
       hiddenText.value.includes("@")
     ){
+      localStorage.setItem("text-hidden", "");
       if (hiddenText.value.includes("@")){
         warning.innerHTML = "*@ is not allowed in this text field.";
       } else {
         warning.innerHTML = "*Please avoid using impolite or sensitive words.";
       }
       hiddenText.classList.add("warning");
-      localStorage.setItem("text-hidden", "");
       warning.style.opacity = "1";
       warning.style.visibility = "visible";
       warning.style.transform = "translateY(0px)";
@@ -374,11 +372,6 @@ export default function MainPage(){
       hiddenText.value = localStorage.setItem("text-hidden", "");
     }
     hiddenText.value = localStorage.getItem("text-hidden");
-    for (let i = 0; i < Object.values(cateLists).length; i++){
-      for (let j = 0;j < Object.values(cateLists)[i].length; j++){
-        console.log(Object.values(cateLists)[i][j]);
-      }
-    }
   }, [])
   window.addEventListener("keydown", pressToCloseSettings);
 

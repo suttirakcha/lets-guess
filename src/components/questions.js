@@ -224,7 +224,7 @@ export default function Questions(props){
   },[])
 
   return (
-    <div className={"App"}>
+    <div className="App">
       <header className="app-head head-game">
         <div className="sec-left">
           <h1 id="category">Category: {props.category}</h1>
