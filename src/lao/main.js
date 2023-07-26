@@ -455,6 +455,10 @@ export default function MainPageLao(){
       {
         category: "ແຂວງໃນປະເທດລາວ",
         link: "/lo/laos-provinces"
+      },
+      {
+        category: "ສະຖານທີ່",
+        link: "/lo/places"
       }
     ],
     otherLo: [
@@ -548,6 +552,7 @@ export default function MainPageLao(){
         <CardCate category="ເຂົ້າໜົມຫວານ" link="/lo/desserts"/>
         <CardCate category="ເຄື່ອງຄົວ" link="/lo/kitchenware"/>
         <CardCate category="ເຄື່ອງດື່ມ" link="/lo/drinks"/>
+        <CardCate category="ສະຖານທີ່" link="/lo/places"/>
         <CardCate category="ສັດຕ່າງໆ" link="/lo/animals"/>
         <CardCate category="ອາຫານ" link="/lo/foods"/>
       </div>
