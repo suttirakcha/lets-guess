@@ -29,7 +29,7 @@ export default function MainPageLao(){
     mainApp.style.animation = "mainAnimOut 900ms forwards";
     footApp.style.display = "block";
     footApp.style.animation = "footAnimOut 900ms forwards";
-    heading.innerHTML = "ມາເດົາຄຳກັນ";
+    heading.innerHTML = "ມາທາຍຄຳກັນເດີ";
     howToPlay.style.display = "block";
     selectLists.style.display = "none";
     changeLangBtn.style.animation = "mainAnimOut 900ms forwards";
@@ -603,7 +603,7 @@ export default function MainPageLao(){
         ກັບ
       </button>
         <header className="app-head">
-          <h1 id="heading">ມາເດົາຄຳກັນ</h1>
+          <h1 id="heading">ມາທາຍຄຳກັນເດີ</h1>
         </header>
           <div id="right-btns-sec">
             <button id="settingsBtn" className="btn small-btn" onClick={openSettings}>
