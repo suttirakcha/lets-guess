@@ -18,8 +18,8 @@ export default function Questions(props){
   const [word, setWord] = useState(randomWord);
 
   const randomizeWords = () => {
-    var [...countriesWord] = words;
-    var randomWord = countriesWord[Math.floor(Math.random() * words.length)];
+    var [...guessWord] = words;
+    var randomWord = guessWord[Math.floor(Math.random() * words.length)];
     let wordTxt = document.getElementById("words");
     wordTxt.style.color = "#E00000";
     wordTxt.style.animation = "randomWordsOut 600ms forwards";
@@ -78,8 +78,8 @@ export default function Questions(props){
   const [num, setNum] = useState(parseInt(localStorage.getItem("point")));
 
   const countPoint = () => {
-    var [...countriesWord] = words;
-    var randomWord = countriesWord[Math.floor(Math.random() * words.length)];
+    var [...guessWord] = words;
+    var randomWord = guessWord[Math.floor(Math.random() * words.length)];
     let wordTxt = document.getElementById("words");
     wordTxt.style.color = "#00D604";
     wordTxt.style.animation = "randomWordsOut 600ms forwards";

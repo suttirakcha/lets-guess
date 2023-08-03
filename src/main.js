@@ -610,6 +610,10 @@ export default function MainPage(){
         category: "Education",
         link: "/education"
       },
+      {
+        category: "Weather",
+        link: "/weather"
+      }
     ]
   }
 
@@ -652,6 +656,7 @@ export default function MainPage(){
         <CardCate category="Sauces" link="/sauces"/>
         <CardCate category="Social Media" link="/social-media"/>
         <CardCate category="Sports" link="/sports"/>
+        <CardCate category="Weather" link="/weather"/>
         <CardCate category="Words in Airline" link="/words-in-airline"/>
         <CardCate category="Words in Graphic Design" link="/words-in-graphic-design"/>
         <CardCate category="Words in Marketing" link="/words-in-marketing"/>
