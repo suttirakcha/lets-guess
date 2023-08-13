@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 import "../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck,faChevronLeft,faXmark,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faChevronDown,faLanguage, faEarthAsia } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 export default function MainPage(){
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
   const [timerSixty, setTimerSixty] = useState(localStorage.getItem("timer-sixty") === 'true');
+
+  const navigate = useNavigate()
 
   const [clicked, setClicked] = useState(false);
 
@@ -111,6 +114,20 @@ export default function MainPage(){
     setTimeout(selectCate, 890)
   }
 
+  const clickToChangeLang = (lang) => {
+    closeChangeLang();
+    let headApp = document.querySelector(".app-head");
+    let mainApp = document.querySelector(".app-main");
+    let footApp = document.querySelector(".app-foot");
+    let changeLangBtn = document.getElementById("changeLangBtn");
+    headApp.style.animation = "headAnim 900ms forwards";
+    mainApp.style.animation = "mainAnim 900ms forwards";
+    footApp.style.animation = "footAnim 900ms forwards";
+    changeLangBtn.style.animation = "mainAnim 900ms forwards";
+
+    setTimeout(() => navigate(lang, {replace:true}), 800)
+  }
+
   const clickToCate = () => {
     let headApp = document.querySelector(".app-head");
     let mainApp = document.querySelector(".app-main");
@@ -155,7 +172,7 @@ export default function MainPage(){
   const CardCate = (props) => {
     const clickCate = () => {
       clickToCate();
-      const setLink = () => {window.location.replace(props.link)}
+      const setLink = () => navigate(props.link,{replace:true})
       setTimeout(setLink, 5000);
     }
     return (
@@ -565,6 +582,10 @@ export default function MainPage(){
         link: "/th/travel-to-foreign-countries"
       },
       {
+        category: "มหาวิทยาลัยในไทย",
+        link: "/th/universities-in-thailand"
+      },
+      {
         category: "วันสำคัญ",
         link: "/th/holidays"
       },
@@ -683,6 +704,7 @@ export default function MainPage(){
         <CardCate category="เพลงวง Tattoo Colour" link="/th/tattoo-colour"/>
         <CardCate category="ภาพยนตร์ตลกไทย" link="/th/thai-comedy-films"/>
         <CardCate category="ภาษาที่ใช้อักษรละติน" link="/th/latin-used-languages"/>
+        <CardCate category="มหาวิทยาลัยในไทย" link="/th/universities-in-thailand"/>
         <CardCate category="วันสำคัญ" link="/th/holidays"/>
         <CardCate category="สถานที่" link="/th/places"/>
         <CardCate category="สถานที่ท่องเที่ยวในกรุงเทพ" link="/th/places-in-bangkok"/>
@@ -771,8 +793,8 @@ export default function MainPage(){
             <FontAwesomeIcon icon={faClose} id="close-changeLang-btn" onClick={closeChangeLang}/>
             <ul className="langs">
               <li className="active">ไทย</li>
-              <li onClick={() => window.location.replace("/")}>English / อังกฤษ</li>
-              <li onClick={() => window.location.replace("/lo")}>ລາວ / ลาว</li>
+              <li onClick={() => clickToChangeLang("/")}>English / อังกฤษ</li>
+              <li onClick={() => clickToChangeLang("/lo")}>ລາວ / ลาว</li>
             </ul>
           </div>
         <main className="app-main">

@@ -172,6 +172,11 @@ body{
   border-radius:50%;
 }
 
+#changeLangBtn {
+  opacity:0;
+  visibility:hidden;
+}
+
 #changeLangBtn .btn{
   position:absolute;
   top:25px;
@@ -822,6 +827,20 @@ input:checked + .switch-toggle:before{
       background-color:#C9C9C9;
     }
   }
+}
+
+/* Initial styles before animation of home page */
+.app-head {
+  transform:translateY(-200%);
+}
+
+.app-foot {
+  transform:translateY(300%);
+}
+
+.app-main {
+  opacity:0;
+  visibility:hidden;
 }
 
 @media (min-width: 1800px){

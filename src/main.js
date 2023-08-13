@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck,faXmark,faChevronLeft,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faChevronDown,faLanguage, faEarthAsia } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 export default function MainPage(){
   const [clicked, setClicked] = useState(false);
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
   const [timerSixty, setTimerSixty] = useState(localStorage.getItem("timer-sixty") === 'true');
+
+  const navigate = useNavigate();
 
   localStorage.getItem('dark-mode');
 
@@ -110,6 +113,20 @@ export default function MainPage(){
     setTimeout(selectCate, 890)
   }
 
+  const clickToChangeLang = (lang) => {
+    closeChangeLang();
+    let headApp = document.querySelector(".app-head");
+    let mainApp = document.querySelector(".app-main");
+    let footApp = document.querySelector(".app-foot");
+    let changeLangBtn = document.getElementById("changeLangBtn");
+    headApp.style.animation = "headAnim 900ms forwards";
+    mainApp.style.animation = "mainAnim 900ms forwards";
+    footApp.style.animation = "footAnim 900ms forwards";
+    changeLangBtn.style.animation = "mainAnim 900ms forwards";
+
+    setTimeout(() => navigate(lang, {replace:true}), 800)
+  }
+
   const clickToCate = () => {
     let headApp = document.querySelector(".app-head");
     let mainApp = document.querySelector(".app-main");
@@ -153,7 +170,7 @@ export default function MainPage(){
   const CardCate = (props) => {
     const clickCate = () => {
       clickToCate();
-      const setLink = () => {window.location.replace(props.link)}
+      const setLink = () => navigate(props.link, {replace:true})
       setTimeout(setLink, 5000);
     }
     return (
@@ -813,8 +830,8 @@ export default function MainPage(){
           <FontAwesomeIcon icon={faClose} id="close-changeLang-btn" onClick={closeChangeLang}/>
           <ul className="langs">
             <li className="active">English</li>
-            <li onClick={() => window.location.replace("/th")}>ไทย / Thai</li>
-            <li onClick={() => window.location.replace("/lo")}>ລາວ / Lao</li>
+            <li onClick={() => clickToChangeLang("/th")}>ไทย / Thai</li>
+            <li onClick={() => clickToChangeLang("/lo")}>ລາວ / Lao</li>
           </ul>
         </div>
         <main className="app-main">
