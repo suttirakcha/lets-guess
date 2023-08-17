@@ -220,6 +220,8 @@ export default function QuestionsLao(props){
     countTime();
   }
 
+  const afterGameText = ['ມ່ວນບໍ່?','ໄວ້ມາຫຼິ້ນອີກເດີ','ຢາກຫຼິ້ນອີກບໍ່?','ບໍ່ເປັນຫຍັງ ເທື່ອໜ້າເອົາໃຫມ່']
+
   useEffect(()=> {loadPage()},[])
 
   return (
@@ -270,7 +272,7 @@ export default function QuestionsLao(props){
         <div id="score-result">
           <h1 style={{fontSize:"60px",marginTop:0}}>ຜົນໄດ້ຮັບ</h1>
           <h1 style={{fontSize:"48px"}}>ຄະແນນ: {numPoint}</h1>
-          <h2>ມ່ວນບໍ່?</h2>
+          <h2>{afterGameText[Math.floor(Math.random() * afterGameText.length)]}</h2>
           <div className="btns-check">
             <button className="btn" onClick={scoreResultBackToHomepage}>ກັບ</button>
             <button className="btn" onClick={scoreResultPlayAgain}>ຫຼິ້ນອີກຄັ້ງ</button>

@@ -219,6 +219,8 @@ export default function QuestionsTh(props){
     countTime();
   }
 
+  const afterGameText = ['สนุกมั้ย?','ไว้มาเล่นกันอีกนะ','ไม่เป็นไร ครั้งหน้าเอาใหม่','อยากเล่นอีกมั้ย?']
+
   useEffect(()=> {loadPage()},[])
 
   return (
@@ -269,7 +271,7 @@ export default function QuestionsTh(props){
         <div id="score-result">
           <h1 style={{fontSize:"60px",marginTop:0}}>ผลลัพธ์</h1>
           <h1 style={{fontSize:"48px"}}>คะแนน: {numPoint}</h1>
-          <h2>สนุกมั้ย?</h2>
+          <h2>{afterGameText[Math.floor(Math.random() * afterGameText.length)]}</h2>
           <div className="btns-check">
             <button className="btn" onClick={scoreResultBackToHomepage}>กลับ</button>
             <button className="btn" onClick={scoreResultPlayAgain}>เล่นอีกครั้ง</button>

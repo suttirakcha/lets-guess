@@ -219,6 +219,8 @@ export default function Questions(props){
     countTime();
   }
 
+  const afterGameText = ['Having fun?','Better luck next time','Wanna play again?','Hope you have enjoyed the game']
+
   useEffect(()=> {
     loadPage();
   },[])
@@ -271,7 +273,7 @@ export default function Questions(props){
         <div id="score-result">
           <h1 style={{fontSize:"60px",marginTop:0}}>Result</h1>
           <h1 style={{fontSize:"48px"}}>Score: {numPoint}</h1>
-          <h2>Having fun?</h2>
+          <h2>{afterGameText[Math.floor(Math.random() * afterGameText.length)]}</h2>
           <div className="btns-check">
             <button className="btn" onClick={backToHomepage}>Go back</button>
             <button className="btn" onClick={playAgain}>Play again</button>
