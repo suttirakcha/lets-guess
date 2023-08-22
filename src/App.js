@@ -77,6 +77,7 @@ import PlacesTh from "./th/categories/places";
 import BangkokDistrictsAndSubdistricts from "./th/categories/bangkok-districts";
 import ChineseLoanwords from "./th/categories/chinese-loanwords";
 import UniversitiesInThailand from "./th/categories/universities-in-thailand";
+import MarketingTh from "./th/categories/marketing-words";
 
 import MainPageLao from "./lao/main";
 import FoodsLao from "./lao/categories/foods";
@@ -172,6 +173,7 @@ export default function App(){
         <Route path="/th/bangkok-districts-and-subdistricts" element={<BangkokDistrictsAndSubdistricts />} />
         <Route path="/th/chinese-loanwords" element={<ChineseLoanwords />} />
         <Route path="/th/universities-in-thailand" element={<UniversitiesInThailand />} />
+        <Route path="/th/marketing-words" element={<MarketingTh />} />
 
         <Route path="/lo" element={<MainPageLao />} />
         <Route path="/lo/animals" element={<AnimalsLao />}/>

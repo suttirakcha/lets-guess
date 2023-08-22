@@ -504,16 +504,16 @@ export default function MainPage(){
     ],
     musicTh: [
       {
-        "category": "เครื่องดนตรี",
-        "link": "/th/musical-instruments"
+        category: "เครื่องดนตรี",
+        link: "/th/musical-instruments"
       },
       {
-        "category": "นักร้องไทย",
-        "link": "/th/thai-singers"
+        category: "นักร้องไทย",
+        link: "/th/thai-singers"
       },
       {
-        "category": "เพลงของ BOWKYLION",
-        "link": "/th/bowkylion-songs"
+        category: "เพลงของ BOWKYLION",
+        link: "/th/bowkylion-songs"
       },
       {
         category: "เพลงวง Cocktail",
@@ -538,6 +538,12 @@ export default function MainPage(){
       {
         category: "ตัวละครในเกม ROV",
         link: "/th/characters-in-rov"
+      }
+    ],
+    businessesTh: [
+      {
+        category: "คำศัพท์เกี่ยวกับการตลาด",
+        link: "/th/marketing-words"
       }
     ],
     languagesTh: [
@@ -687,6 +693,7 @@ export default function MainPage(){
         <CardCate category="คำที่มาจากภาษาจีน" link="/th/chinese-loanwords"/>
         <CardCate category="คำที่มาจากภาษาบาลี-สันสกฤต" link="/th/bali-sanskrit-loanwords"/>
         <CardCate category="คำที่มาจากภาษาอังกฤษ" link="/th/english-loanwords"/>
+        <CardCate category="คำศัพท์เกี่ยวกับการตลาด" link="/th/marketing-words"/>
         <CardCate category="เครื่องครัว" link="/th/kitchenware"/>
         <CardCate category="เครื่องดนตรี" link="/th/musical-instruments"/>
         <CardCate category="เครื่องดื่ม" link="/th/drinks"/>
@@ -857,6 +864,15 @@ export default function MainPage(){
             <div className="select-lists">
               {
                 cateLists.gamesTh.map((cate) => (
+                  <CardCate category={cate.category} link={cate.link}/>
+                ))
+              }
+            </div>
+
+            <h2 className="list-titles">ธุรกิจ</h2>
+            <div className="select-lists">
+              {
+                cateLists.businessesTh.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
