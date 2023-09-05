@@ -41,6 +41,8 @@ import GraphicDesignWords from "./categories/graphic-design-words";
 import Places from "./categories/places";
 import EnglishActors from "./categories/english-actors";
 import Weather from "./categories/weather";
+import Space from "./categories/space";
+import InformationTechnology from "./categories/information-technology";
 import NotFound from "./404";
 
 import MainPageTh from "./th/main"
@@ -78,6 +80,7 @@ import BangkokDistrictsAndSubdistricts from "./th/categories/bangkok-districts";
 import ChineseLoanwords from "./th/categories/chinese-loanwords";
 import UniversitiesInThailand from "./th/categories/universities-in-thailand";
 import MarketingTh from "./th/categories/marketing-words";
+import SpaceTh from "./th/categories/space";
 
 import MainPageLao from "./lao/main";
 import FoodsLao from "./lao/categories/foods";
@@ -137,6 +140,8 @@ export default function App(){
         <Route path="/places" element={<Places />} />
         <Route path="/english-actors" element={<EnglishActors />} />
         <Route path="/weather" element={<Weather />} />
+        <Route path="/space" element={<Space />} />
+        <Route path="/information-technology" element={<InformationTechnology />} />
 
         {/* Thai */}
         <Route path="/th" element={<MainPageTh />} />
@@ -174,6 +179,7 @@ export default function App(){
         <Route path="/th/chinese-loanwords" element={<ChineseLoanwords />} />
         <Route path="/th/universities-in-thailand" element={<UniversitiesInThailand />} />
         <Route path="/th/marketing-words" element={<MarketingTh />} />
+        <Route path="/th/space" element={<SpaceTh />} />
 
         <Route path="/lo" element={<MainPageLao />} />
         <Route path="/lo/animals" element={<AnimalsLao />}/>

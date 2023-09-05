@@ -606,6 +606,16 @@ export default function MainPage(){
         link: "/words-in-marketing"
       },
     ],
+    science: [
+      {
+        category: "Information Technology",
+        link: "/information-technology"
+      },
+      {
+        category: "Space",
+        link: "/space"
+      }
+    ],
     other: [
       {
         category: "Animals",
@@ -661,6 +671,7 @@ export default function MainPage(){
         <CardCate category="Girls' Generation" link="/girls-generation"/>
         <CardCate category="Google Services" link="/google-services"/>
         <CardCate category="Harry Potter Characters" link="/harry-potter-characters"/>
+        <CardCate category="Information Technology" link="/information-technology"/>
         <CardCate category="Landmarks" link="/landmarks"/>
         <CardCate category="Latin-used Languages" link="/latin-used-languages"/>
         <CardCate category="Mobile Games" link="/mobile-games"/>
@@ -672,6 +683,7 @@ export default function MainPage(){
         <CardCate category="Restaurant Chains" link="/restaurant-chains"/>
         <CardCate category="Sauces" link="/sauces"/>
         <CardCate category="Social Media" link="/social-media"/>
+        <CardCate category="Space" link="/space"/>
         <CardCate category="Sports" link="/sports"/>
         <CardCate category="Weather" link="/weather"/>
         <CardCate category="Words in Airline" link="/words-in-airline"/>
@@ -921,6 +933,15 @@ export default function MainPage(){
             <div className="select-lists">
               {
                 cateLists.businesses.map((cate) => (
+                  <CardCate category={cate.category} link={cate.link}/>
+                ))
+              }
+            </div>
+
+            <h2 className="list-titles">Science</h2>
+            <div className="select-lists">
+              {
+                cateLists.science.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }

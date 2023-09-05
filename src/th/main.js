@@ -578,6 +578,12 @@ export default function MainPage(){
         link: "/th/clothing"
       },
     ],
+    scienceTh: [
+      {
+        category: "อวกาศ",
+        link: "/th/space"
+      },
+    ],
     otherTh: [
       {
         category: "การศึกษา",
@@ -717,6 +723,7 @@ export default function MainPage(){
         <CardCate category="สถานที่ท่องเที่ยวในกรุงเทพ" link="/th/places-in-bangkok"/>
         <CardCate category="สภาพอากาศ" link="/th/weather"/>
         <CardCate category="สัตว์ต่างๆ" link="/th/animals"/>
+        <CardCate category="อวกาศ" link="/th/space"/>
         <CardCate category="อาชีพ" link="/th/occupations"/>
         <CardCate category="อาหาร" link="/th/foods"/>
       </div>
@@ -891,6 +898,15 @@ export default function MainPage(){
             <div className="select-lists">
               {
                 cateLists.languagesTh.map((cate) => (
+                  <CardCate category={cate.category} link={cate.link}/>
+                ))
+              }
+            </div>
+
+            <h2 className="list-titles">วิทยาศาสตร์</h2>
+            <div className="select-lists">
+              {
+                cateLists.scienceTh.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
