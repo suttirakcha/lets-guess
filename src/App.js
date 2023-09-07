@@ -91,8 +91,10 @@ import DrinksLao from "./lao/categories/drinks";
 import LaosProvinces from "./lao/categories/lao-provinces";
 import PlacesLao from "./lao/categories/places";
 
-// import MainPageZh from "./zh/main";
-// import AnimalsZh from "./zh/categories/animals";
+import MainPageZh from "./zh/main";
+import AnimalsZh from "./zh/categories/animals";
+import FoodsZh from "./zh/categories/foods";
+import DrinksZh from "./zh/categories/drinks";
 export default function App(){
   return (
     <Router>
@@ -191,8 +193,10 @@ export default function App(){
         <Route path="/lo/places" element={<PlacesLao />}/>
 
         {/* Chinese */}
-        {/* <Route path="/zh" element={<MainPageZh />} />
-        <Route path="/zh/animals" element={<AnimalsZh />} /> */}
+        <Route path="/zh" element={<MainPageZh />} />
+        <Route path="/zh/animals" element={<AnimalsZh />} />
+        <Route path="/zh/foods" element={<FoodsZh />} />
+        <Route path="/zh/drinks" element={<DrinksZh />} />
       </Routes>
     </Router>
   )

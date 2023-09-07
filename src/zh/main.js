@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck,faChevronLeft,faXmark,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
+import { faCheck,faChevronLeft,faXmark,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faLanguage } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 export default function MainPageZh(){
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
   const [timerSixty, setTimerSixty] = useState(localStorage.getItem("timer-sixty") === 'true');
+
+  const navigate = useNavigate();
 
   const [clicked, setClicked] = useState(false);
 
@@ -111,6 +114,20 @@ export default function MainPageZh(){
     setTimeout(selectCate, 890)
   }
 
+  const clickToChangeLang = (lang) => {
+    closeChangeLang();
+    let headApp = document.querySelector(".app-head");
+    let mainApp = document.querySelector(".app-main");
+    let footApp = document.querySelector(".app-foot");
+    let changeLangBtn = document.getElementById("changeLangBtn");
+    headApp.style.animation = "headAnim 900ms forwards";
+    mainApp.style.animation = "mainAnim 900ms forwards";
+    footApp.style.animation = "footAnim 900ms forwards";
+    changeLangBtn.style.animation = "mainAnim 900ms forwards";
+
+    setTimeout(() => navigate(lang, {replace:true}), 800)
+  }
+
   const clickToCate = () => {
     let headApp = document.querySelector(".app-head");
     let mainApp = document.querySelector(".app-main");
@@ -138,14 +155,14 @@ export default function MainPageZh(){
     }
 
     const showLoading = () => {
-        selectLists.style.display = "none";
-        allCates.style.display = "none";
-        loadingTxt.style.display = "block";
-        mainApp.style.animation = "mainAnimOut 900ms forwards"
+      selectLists.style.display = "none";
+      allCates.style.display = "none";
+      loadingTxt.style.display = "block";
+      mainApp.style.animation = "mainAnimOut 900ms forwards"
     }
 
     const hideLoading = () => {
-        mainApp.style.animation = "mainAnim 900ms forwards";
+      mainApp.style.animation = "mainAnim 900ms forwards";
     }
 
     setTimeout(showLoading,890);
@@ -155,7 +172,7 @@ export default function MainPageZh(){
   const CardCate = (props) => {
     const clickCate = () => {
       clickToCate();
-      const setLink = () => {window.location.replace(props.link)}
+      const setLink = () => navigate(props.link,{replace:true})
       setTimeout(setLink, 5000);
     }
     return (
@@ -368,10 +385,12 @@ export default function MainPageZh(){
       localStorage.setItem("timer-continue", 60);
       localStorage.setItem("text-hidden", "")
       localStorage.setItem("text-hidden-th", "")
+      localStorage.setItem("text-hidden-lo", "")
+      localStorage.setItem("text-hidden-zh", "")
       localStorage.setItem("point", 0);
-      hiddenText.value = localStorage.setItem("text-hidden-th", "");
+      hiddenText.value = localStorage.setItem("text-hidden-zh", "");
     }
-    hiddenText.value = localStorage.getItem("text-hidden-th");
+    hiddenText.value = localStorage.getItem("text-hidden-zh");
   }, [])
   window.addEventListener("keydown", pressToCloseSettings);
 
@@ -393,13 +412,33 @@ export default function MainPageZh(){
     console.log(localStorage);
   }
 
-  const typeHiddenTextTh = () => {
+  const typeHiddenTextZh = () => {
     let hiddenText = document.getElementById("hidden-text").value;
-    localStorage.setItem("text-hidden-th", hiddenText);
+    localStorage.setItem("text-hidden-zh", hiddenText);
   }
   const changeLang = () => {
-    localStorage.setItem("lang", "");
-    window.location.replace("/");
+    let langList = document.getElementById("langList");
+    let langListBg = document.getElementById("langList-bg");
+    let closeBtn = document.getElementById("close-changeLang-btn");
+    let langListOverlay = document.getElementById("langList-overlay");
+    langList.classList.add("active");
+    langListBg.classList.add("active");
+    langList.style.transitionDelay = "300ms";
+    langListBg.style.transitionDelay = "0ms";
+    closeBtn.classList.add("active");
+    langListOverlay.classList.add("active");
+  }
+  const closeChangeLang = () => {
+    let langList = document.getElementById("langList");
+    let langListBg = document.getElementById("langList-bg");
+    let closeBtn = document.getElementById("close-changeLang-btn");
+    let langListOverlay = document.getElementById("langList-overlay");
+    langList.classList.remove("active");
+    langList.style.transitionDelay = "0ms";
+    langListBg.classList.remove("active");
+    langListBg.style.transitionDelay = "200ms";
+    closeBtn.classList.remove("active");
+    langListOverlay.classList.remove("active");
   }
   const darkMode = () => {
     document.body.classList.add("dark-mode");
@@ -416,6 +455,16 @@ export default function MainPageZh(){
   }
 
   const cateLists = {
+    foodsZh: [
+      {
+        category: "食物",
+        link: "/zh/foods"
+      },
+      {
+        category: "饮料",
+        link: "/zh/drinks"
+      }
+    ],
     otherZh: [
       {
         category: "动物",
@@ -430,7 +479,9 @@ export default function MainPageZh(){
     let searchInput = document.getElementById("search-input");
     let searchList = document.getElementById("select-list");
     let allCates = document.getElementById("all-cates");
+    let heading = document.getElementById("heading");
 
+    heading.classList.add("active");
     searchList.style.opacity = "0";
     searchList.style.transition = "all 200ms";
     setTimeout(() => {
@@ -443,16 +494,12 @@ export default function MainPageZh(){
     },300)
 
     searchBtn.style.animation = "mainAnim 100ms forwards";
-    if (window.matchMedia("(max-width: 1023px)").matches){
-      searchInput.style.width = "50%";
-    } else {
-      searchInput.style.width = "25%";
-    }
+    searchInput.style.width = "40%";
     searchInput.style.visibility = "visible";
     searchInput.style.transition = "all 400ms";
     setTimeout(() => {
       searchInput.classList.add("place");
-      closeBtn.style.animation = "mainAnimOut 300ms forwards"
+      closeBtn.style.animation = "mainAnimOut 300ms forwards";
     },300)
     setClicked(true);
   }
@@ -464,6 +511,9 @@ export default function MainPageZh(){
     let searchList = document.getElementById("select-list");
     let allCates = document.getElementById("all-cates");
     let noResult = document.getElementById("no-result");
+    let heading = document.getElementById("heading");
+
+    heading.classList.remove("active");
     searchInput.value = "";
     searchInput.classList.remove("place");
     noResult.style.display = "none";
@@ -499,6 +549,8 @@ export default function MainPageZh(){
     return (
       <div className="select-lists">
         <CardCate category="动物" link="/zh/animals"/>
+        <CardCate category="食物" link="/zh/foods"/>
+        <CardCate category="饮料" link="/zh/drinks"/>
       </div>
     )
   }
@@ -562,7 +614,22 @@ export default function MainPageZh(){
             <input type="text" id="search-input" onKeyUp={searchCate} className="text-input" placeholder="搜索类别"/>
           </div>
           <div id="changeLangBtn">
-            <button onClick={changeLang} className="btn">Eng</button>
+            <button onClick={changeLang} className="btn">
+              <FontAwesomeIcon icon={faLanguage} />
+              选择语言
+            </button>
+          </div>
+          <div id="langList-bg"></div>
+          <div id="langList-overlay" onClick={closeChangeLang}></div>
+          <div id="langList">
+            <h1>选择语言</h1>
+            <FontAwesomeIcon icon={faClose} id="close-changeLang-btn" onClick={closeChangeLang}/>
+            <ul className="langs">
+              <li className="active">中文</li>
+              <li onClick={() => clickToChangeLang("/")}>English / 英文</li>
+              <li onClick={() => clickToChangeLang("/th")}>ไทย / 泰文</li>
+              <li onClick={() => clickToChangeLang("/lo")}>ລາວ / 老挝语</li>
+            </ul>
           </div>
         <main className="app-main">
           <div id="how-to-play">
@@ -570,8 +637,8 @@ export default function MainPageZh(){
             <ol>
               <li>暗示人只可以见答案，也可以暗示答案，所以玩家可以猜在屏幕上的答案。</li>
               <li>暗示人可以在屏幕的右上角按 ”隐藏答案“ 隐藏答案。</li>
-              <li>如果玩家猜得正确，按 “<FontAwesomeIcon icon={faCheck}/>” 转到下一个的单词。</li>
-              <li>如果玩家猜的错，或者不知道答案是什么，按 “<FontAwesomeIcon icon={faXmark}/>” 跳过到下一步的单词。</li>
+              <li>如果玩家猜正确，按 “<FontAwesomeIcon icon={faCheck}/>” 转到下一个的单词。</li>
+              <li>如果玩家猜错或者不知道答案是什么，按 “<FontAwesomeIcon icon={faXmark}/>” 跳过到下一步的单词。</li>
               <li>你有60或者120秒（根据你的设置）暗示答案。</li>
             </ol>
           </div>
@@ -580,10 +647,19 @@ export default function MainPageZh(){
             <div id="no-result">
               <FontAwesomeIcon icon={faExclamationCircle} style={{fontSize:"54px"}}/>
               <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>没有结果</h1>
-              <p style={{fontSize:"calc(12px + 0.5vw)"}}>กรุณาลองคีย์เวิร์ดอื่น</p>
+              <p style={{fontSize:"calc(12px + 0.5vw)"}}>请试试其他的关键词</p>
             </div>
           </div>
           <div id="select-list">
+            <h2 className="list-titles">食物</h2>
+            <div className="select-lists">
+              {
+                cateLists.foodsZh.map((cate) => (
+                  <CardCate category={cate.category} link={cate.link}/>
+                ))
+              }
+            </div>
+
             <h2 className="list-titles">其他</h2>
             <div className="select-lists">
               {
@@ -612,7 +688,7 @@ export default function MainPageZh(){
         </div>
         <div id="settings-drawer">
           <h1>设置</h1>
-          <p style={{marginBottom:0}}><strong>注意: </strong>你关这个边栏的时候，你的设置自动保存。</p>
+          <p style={{marginBottom:0}}><strong>注意: </strong>你关这个边栏的时候，你的设置将自动保存。</p>
           <div className="setting-sec">
             <h2>定时器</h2>
             <label className="switch" htmlFor="switch-timer">
@@ -637,7 +713,7 @@ export default function MainPageZh(){
           </div>
           <div className="setting-sec">
             <h2>隐藏答案的本文</h2>
-            <input type="text" id="hidden-text" className="text-input" placeholder="隐藏被答案" onInput={checkHiddenText} onChange={typeHiddenTextTh} autoComplete="off"/>
+            <input type="text" id="hidden-text" className="text-input" placeholder="隐藏被答案" onInput={checkHiddenText} onChange={typeHiddenTextZh} autoComplete="off"/>
             <p>暗示人按 “隐藏答案” 的时候，<br/>文本会展示。默认文本是 “答案被隐藏了”</p>
             <p id="warning-hidden-text"></p>
           </div>

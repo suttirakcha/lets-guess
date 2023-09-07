@@ -13,7 +13,7 @@ export default function QuestionsZh(props){
   var words = props.answers;
   var randomWord = words[Math.floor(Math.random() * words.length)];
 
-  let textAnswerHidden = localStorage.getItem("text-hidden-th");
+  let textAnswerHidden = localStorage.getItem("text-hidden-zh");
 
   const [word, setWord] = useState(randomWord);
 
@@ -245,7 +245,7 @@ export default function QuestionsZh(props){
       </main>
 
       <div id="answer-hidden" className="block-space">
-        <h1>{localStorage.getItem("text-hidden-th") === "" ? "答案被隐藏" : textAnswerHidden}</h1>
+        <h1>{localStorage.getItem("text-hidden-zh") === "" ? "答案被隐藏" : textAnswerHidden}</h1>
       </div>
 
       <div id="want-to-quit" onClick={answerNo}></div>

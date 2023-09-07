@@ -386,6 +386,7 @@ export default function MainPageLao(){
       localStorage.setItem("text-hidden", "")
       localStorage.setItem("text-hidden-th", "")
       localStorage.setItem("text-hidden-lo", "")
+      localStorage.setItem("text-hidden-zh", "")
       localStorage.setItem("point", 0);
       hiddenText.value = localStorage.setItem("text-hidden-lo", "");
     }
@@ -655,6 +656,7 @@ export default function MainPageLao(){
               <li className="active">ລາວ</li>
               <li onClick={() => clickToChangeLang("/")}>English / ອັງກິດ</li>
               <li onClick={() => clickToChangeLang("/th")}>ไทย / ໄທ</li>
+              <li onClick={() => clickToChangeLang("/zh")}>中文 / ຈີນ</li>
             </ul>
           </div>
         <main className="app-main">

@@ -384,6 +384,7 @@ export default function MainPage(){
       localStorage.setItem("text-hidden", "")
       localStorage.setItem("text-hidden-th", "")
       localStorage.setItem("text-hidden-lo", "")
+      localStorage.setItem("text-hidden-zh", "")
       localStorage.setItem("point", 0);
       localStorage.setItem("dark-mode", 'false')
       hiddenText.value = localStorage.setItem("text-hidden", "");
@@ -844,6 +845,7 @@ export default function MainPage(){
             <li className="active">English</li>
             <li onClick={() => clickToChangeLang("/th")}>ไทย / Thai</li>
             <li onClick={() => clickToChangeLang("/lo")}>ລາວ / Lao</li>
+            <li onClick={() => clickToChangeLang("/zh")}>中文 / Chinese</li>
           </ul>
         </div>
         <main className="app-main">
