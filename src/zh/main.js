@@ -713,8 +713,8 @@ export default function MainPageZh(){
           </div>
           <div className="setting-sec">
             <h2>隐藏答案的本文</h2>
-            <input type="text" id="hidden-text" className="text-input" placeholder="隐藏被答案" onInput={checkHiddenText} onChange={typeHiddenTextZh} autoComplete="off"/>
-            <p>暗示人按 “隐藏答案” 的时候，<br/>文本会展示。默认文本是 “答案被隐藏了”</p>
+            <input type="text" id="hidden-text" className="text-input" placeholder="答案被隐藏" onInput={checkHiddenText} onChange={typeHiddenTextZh} autoComplete="off"/>
+            <p>暗示人按 “隐藏答案” 的时候，<br/>文本会展示。默认文本是 “答案被隐藏”</p>
             <p id="warning-hidden-text"></p>
           </div>
         </div>
