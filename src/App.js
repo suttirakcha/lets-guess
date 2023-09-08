@@ -81,6 +81,7 @@ import ChineseLoanwords from "./th/categories/chinese-loanwords";
 import UniversitiesInThailand from "./th/categories/universities-in-thailand";
 import MarketingTh from "./th/categories/marketing-words";
 import SpaceTh from "./th/categories/space";
+import TwoThousandsSongsTh from "./th/categories/2000s-songs";
 
 import MainPageLao from "./lao/main";
 import FoodsLao from "./lao/categories/foods";
@@ -182,6 +183,7 @@ export default function App(){
         <Route path="/th/universities-in-thailand" element={<UniversitiesInThailand />} />
         <Route path="/th/marketing-words" element={<MarketingTh />} />
         <Route path="/th/space" element={<SpaceTh />} />
+        <Route path="/th/2000s-songs" element={<TwoThousandsSongsTh />} />
 
         <Route path="/lo" element={<MainPageLao />} />
         <Route path="/lo/animals" element={<AnimalsLao />}/>

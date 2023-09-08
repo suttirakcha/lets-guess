@@ -221,6 +221,8 @@ export default function QuestionsZh(props){
 
   useEffect(()=> {loadPage()},[])
 
+  const afterGameText = ['好玩吗？','想再玩一次吗？','希望你喜欢这个游戏吧','下次好运']
+
   return (
     <div className="App">
       <header className="app-head head-game">
@@ -269,7 +271,7 @@ export default function QuestionsZh(props){
         <div id="score-result">
           <h1 style={{fontSize:"60px",marginTop:0}}>结果</h1>
           <h1 style={{fontSize:"48px"}}>评分: {numPoint}</h1>
-          <h2>好玩吗？</h2>
+          <h2>{afterGameText[Math.floor(Math.random() * afterGameText.length)]}</h2>
           <div className="btns-check">
             <button className="btn" onClick={scoreResultBackToHomepage}>回去</button>
             <button className="btn" onClick={scoreResultPlayAgain}>再玩一次</button>
