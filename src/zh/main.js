@@ -332,12 +332,13 @@ export default function MainPageZh(){
       hiddenText.value.toUpperCase().includes("bastard".toUpperCase()) ||
       hiddenText.value.toUpperCase().includes("slut".toUpperCase()) ||
       hiddenText.value.toUpperCase().includes("dick".toUpperCase()) ||
+      hiddenText.value.includes("草泥马") ||
       (hiddenText.value.includes("@"))
     ){
       if (hiddenText.value.includes("@")){
-        warning.innerHTML = "*ไม่อนุญาตให้ใช้ @ ในพื้นที่ข้อความนี้";
+        warning.innerHTML = "*此文本字段中不充许用 @。";
       } else {
-        warning.innerHTML = "*โปรดหลีกเลี่ยงการใช้คำที่ไม่สุภาพ หรือคำที่อ่อนไหว";
+        warning.innerHTML = "*请避免用不礼貌或敏感的词。";
       }
       hiddenText.classList.add("warning");
       localStorage.setItem("text-hidden-th", "");
