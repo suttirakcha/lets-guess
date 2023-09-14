@@ -336,7 +336,7 @@ export default function MainPageZh(){
       (hiddenText.value.includes("@"))
     ){
       if (hiddenText.value.includes("@")){
-        warning.innerHTML = "*此文本字段中不充许用 @。";
+        warning.innerHTML = "*此文本字段中不允许用 @。";
       } else {
         warning.innerHTML = "*请避免用不礼貌或敏感的词。";
       }

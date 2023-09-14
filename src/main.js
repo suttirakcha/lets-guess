@@ -545,6 +545,10 @@ export default function MainPage(){
         link: "/girls-generation"
       },
       {
+        category: "K-Pop Bands",
+        link: "/kpop-bands"
+      },
+      {
         category: "Music Genres",
         link: "/music-genres"
       },
@@ -673,6 +677,7 @@ export default function MainPage(){
         <CardCate category="Google Services" link="/google-services"/>
         <CardCate category="Harry Potter Characters" link="/harry-potter-characters"/>
         <CardCate category="Information Technology" link="/information-technology"/>
+        <CardCate category="K-Pop Bands" link="/kpop-bands"/>
         <CardCate category="Landmarks" link="/landmarks"/>
         <CardCate category="Latin-used Languages" link="/latin-used-languages"/>
         <CardCate category="Mobile Games" link="/mobile-games"/>

@@ -43,6 +43,7 @@ import EnglishActors from "./categories/english-actors";
 import Weather from "./categories/weather";
 import Space from "./categories/space";
 import InformationTechnology from "./categories/information-technology";
+import KPopBands from "./categories/kpop-bands";
 import NotFound from "./404";
 
 import MainPageTh from "./th/main"
@@ -145,6 +146,7 @@ export default function App(){
         <Route path="/weather" element={<Weather />} />
         <Route path="/space" element={<Space />} />
         <Route path="/information-technology" element={<InformationTechnology />} />
+        <Route path="/kpop-bands" element={<KPopBands />} />
 
         {/* Thai */}
         <Route path="/th" element={<MainPageTh />} />
