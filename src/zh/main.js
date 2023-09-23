@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck,faChevronLeft,faXmark,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faLanguage } from "@fortawesome/free-solid-svg-icons";
@@ -7,6 +7,11 @@ import { useNavigate } from "react-router-dom";
 export default function MainPageZh(){
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
   const [timerSixty, setTimerSixty] = useState(localStorage.getItem("timer-sixty") === 'true');
+  const [title, setTitle] = useState('我们猜吧')
+
+  const headApp = useRef(null);
+  const mainApp = useRef(null);
+  const footApp = useRef(null);
 
   const navigate = useNavigate();
 
@@ -21,33 +26,26 @@ export default function MainPageZh(){
   }
 
   const loadGame = () => {
-    let headApp = document.querySelector(".app-head");
-    let mainApp = document.querySelector(".app-main");
-    let footApp = document.querySelector(".app-foot");
-    let heading = document.getElementById("heading");
     let howToPlay = document.getElementById("how-to-play");
     let selectLists = document.getElementById("select-list");
     let changeLangBtn = document.getElementById("changeLangBtn");
-    headApp.style.animation = "headAnimOut 900ms forwards";
-    mainApp.style.animation = "mainAnimOut 900ms forwards";
-    footApp.style.display = "block";
-    footApp.style.animation = "footAnimOut 900ms forwards";
-    heading.innerHTML = "我们猜吧";
+    headApp.current.style.animation = "headAnimOut 900ms forwards";
+    mainApp.current.style.animation = "mainAnimOut 900ms forwards";
+    footApp.current.style.display = "block";
+    footApp.current.style.animation = "footAnimOut 900ms forwards";
     howToPlay.style.display = "block";
     selectLists.style.display = "none";
     changeLangBtn.style.animation = "mainAnimOut 900ms forwards";
+    setTitle("我们猜吧");
   }
 
   const goBack = () => {
-    let headApp = document.querySelector(".app-head");
-    let mainApp = document.querySelector(".app-main");
-    let footApp = document.querySelector(".app-foot");
     let goBackBtn = document.getElementById("goBackBtn");
     let rightBtns = document.getElementById("right-btns-sec");
     let preventBlock = document.getElementById("prevent");
-    headApp.style.animation = "headAnim 900ms forwards";
-    mainApp.style.animation = "mainAnim 900ms forwards";
-    footApp.style.animation = "footAnim 900ms forwards";
+    headApp.current.style.animation = "headAnim 900ms forwards";
+    mainApp.current.style.animation = "mainAnim 900ms forwards";
+    footApp.current.style.animation = "footAnim 900ms forwards";
     goBackBtn.style.animation = "mainAnim 900ms forwards";
     rightBtns.style.animation = "mainAnim 900ms forwards";
     preventBlock.style.visibility = "visible";
@@ -69,19 +67,15 @@ export default function MainPageZh(){
   }
 
   const playNow = () => {
-    let headApp = document.querySelector(".app-head");
-    let mainApp = document.querySelector(".app-main");
-    let footApp = document.querySelector(".app-foot");
-    let heading = document.getElementById("heading");
     let howToPlay = document.getElementById("how-to-play");
     let selectLists = document.getElementById("select-list");
     let goBackBtn = document.getElementById("goBackBtn");
     let rightBtns = document.getElementById("right-btns-sec");
     let changeLangBtn = document.getElementById("changeLangBtn");
     let preventBlock = document.getElementById("prevent");
-    headApp.style.animation = "headAnim 900ms forwards";
-    mainApp.style.animation = "mainAnim 900ms forwards";
-    footApp.style.animation = "footAnim 900ms forwards";
+    headApp.current.style.animation = "headAnim 900ms forwards";
+    mainApp.current.style.animation = "mainAnim 900ms forwards";
+    footApp.current.style.animation = "footAnim 900ms forwards";
     changeLangBtn.style.animation = "mainAnim 900ms forwards";
     preventBlock.style.visibility = "visible";
     setTimeout(() => {
@@ -101,14 +95,14 @@ export default function MainPageZh(){
     }
 
     const selectCate = () => {
-      headApp.style.animation = "headAnimOut 900ms forwards";
-      mainApp.style.animation = "mainAnimOut 900ms forwards";
-      footApp.style.display = "none";
+      headApp.current.style.animation = "headAnimOut 900ms forwards";
+      mainApp.current.style.animation = "mainAnimOut 900ms forwards";
+      footApp.current.style.display = "none";
       goBackBtn.style.animation = "mainAnimOut 900ms forwards";
       rightBtns.style.animation = "mainAnimOut 900ms forwards";
-      heading.innerHTML = "选择类别";
       howToPlay.style.display = "none";
       selectLists.style.display = "block";
+      setTitle("选择类别");
     }
 
     setTimeout(selectCate, 890)
@@ -116,31 +110,25 @@ export default function MainPageZh(){
 
   const clickToChangeLang = (lang) => {
     closeChangeLang();
-    let headApp = document.querySelector(".app-head");
-    let mainApp = document.querySelector(".app-main");
-    let footApp = document.querySelector(".app-foot");
     let changeLangBtn = document.getElementById("changeLangBtn");
-    headApp.style.animation = "headAnim 900ms forwards";
-    mainApp.style.animation = "mainAnim 900ms forwards";
-    footApp.style.animation = "footAnim 900ms forwards";
+    headApp.current.style.animation = "headAnim 900ms forwards";
+    mainApp.current.style.animation = "mainAnim 900ms forwards";
+    footApp.current.style.animation = "footAnim 900ms forwards";
     changeLangBtn.style.animation = "mainAnim 900ms forwards";
 
     setTimeout(() => navigate(lang, {replace:true}), 800)
   }
 
   const clickToCate = () => {
-    let headApp = document.querySelector(".app-head");
-    let mainApp = document.querySelector(".app-main");
-    let footApp = document.querySelector(".app-foot");
     let goBackBtn = document.getElementById("goBackBtn");
     let selectLists = document.getElementById("select-list");
     let allCates = document.getElementById("all-cates");
     let loadingTxt = document.getElementById("loading");
     let rightBtns = document.getElementById("right-btns-sec");
     let preventBlock = document.getElementById("prevent");
-    headApp.style.animation = "headAnim 900ms forwards";
-    mainApp.style.animation = "mainAnim 900ms forwards";
-    footApp.style.animation = "footAnim 900ms forwards";
+    headApp.current.style.animation = "headAnim 900ms forwards";
+    mainApp.current.style.animation = "mainAnim 900ms forwards";
+    footApp.current.style.animation = "footAnim 900ms forwards";
     goBackBtn.style.animation = "mainAnim 900ms forwards";
     rightBtns.style.animation = "mainAnim 900ms forwards";
     preventBlock.style.visibility = "visible";
@@ -158,11 +146,11 @@ export default function MainPageZh(){
       selectLists.style.display = "none";
       allCates.style.display = "none";
       loadingTxt.style.display = "block";
-      mainApp.style.animation = "mainAnimOut 900ms forwards"
+      mainApp.current.style.animation = "mainAnimOut 900ms forwards"
     }
 
     const hideLoading = () => {
-      mainApp.style.animation = "mainAnim 900ms forwards";
+      mainApp.current.style.animation = "mainAnim 900ms forwards";
     }
 
     setTimeout(showLoading,890);
@@ -599,8 +587,8 @@ export default function MainPageZh(){
         <FontAwesomeIcon icon={faChevronLeft} className="back-arrow"/>
         回去
       </button>
-        <header className="app-head">
-          <h1 id="heading">我们猜吧</h1>
+        <header className="app-head" ref={headApp}>
+          <h1 id="heading">{title}</h1>
         </header>
           <div id="right-btns-sec">
             <button id="settingsBtn" className="btn small-btn" onClick={openSettings}>
@@ -632,7 +620,7 @@ export default function MainPageZh(){
               <li onClick={() => clickToChangeLang("/lo")}>ລາວ / 老挝语</li>
             </ul>
           </div>
-        <main className="app-main">
+        <main className="app-main" ref={mainApp}>
           <div id="how-to-play">
             <h2>玩法:</h2>
             <ol>
@@ -677,7 +665,7 @@ export default function MainPageZh(){
             <h2>加载中...</h2>
           </div>
         </main>
-        <footer className="app-foot">
+        <footer className="app-foot" ref={footApp}>
           <h2>准备好了吗？</h2>
           <button onClick={playNow} className="btn">玩吧</button>
         </footer>
