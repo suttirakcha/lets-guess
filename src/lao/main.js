@@ -146,7 +146,7 @@ export default function MainPageLao(){
       selectLists.style.display = "none";
       allCates.style.display = "none";
       loadingTxt.style.display = "block";
-      mainApp.style.animation = "mainAnimOut 900ms forwards"
+      mainApp.current.style.animation = "mainAnimOut 900ms forwards"
     }
 
     const hideLoading = () => {

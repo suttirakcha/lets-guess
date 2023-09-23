@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck,faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -10,6 +10,10 @@ export default function QuestionsLao(props){
   } else {
     document.body.style.backgroundColor = "#E0E4FF";
   }
+
+  const headApp = useRef(null);
+  const mainApp = useRef(null);
+
   var words = props.answers;
   var randomWord = words[Math.floor(Math.random() * words.length)];
 
@@ -168,10 +172,8 @@ export default function QuestionsLao(props){
   }
 
   const showScoreResult = () => {
-    let headApp = document.querySelector(".app-head");
-    headApp.style.animation = "headAnim 900ms forwards";
-    let mainApp = document.querySelector(".words-in-screen");
-    mainApp.style.animation = "mainAnim 1.5s forwards";
+    headApp.current.style.animation = "headAnim 900ms forwards";
+    mainApp.current.style.animation = "mainAnim 1.5s forwards";
     let answerHidden = document.getElementById("answer-hidden");
     answerHidden.style.animation = "mainAnim 1.5s forwards";
     let scoreResult = document.getElementById("score-result");
@@ -226,7 +228,7 @@ export default function QuestionsLao(props){
 
   return (
     <div className="App lao">
-      <header className="app-head head-game">
+      <header className="app-head head-game" ref={headApp}>
         <div className="sec-left">
           <h1 id="category">ໝວດໝູ່: {props.category}</h1>
           <h1 id="get-point">ຄະແນນ +1</h1>
@@ -239,7 +241,7 @@ export default function QuestionsLao(props){
           <button className="btn" onClick={clickToGoBack}>ກັບໄປໜ້າຫຼັກ</button>
         </div>
       </header>
-      <main className="app-main words-in-screen">
+      <main className="app-main words-in-screen" ref={mainApp}>
         <h1 id="words">{word}</h1>
         <footer className="foot-main btns-check">
           <button className="btn incorrect" onClick={randomizeWords}><FontAwesomeIcon icon={faXmark}/></button>
