@@ -3,7 +3,7 @@ import "../../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck,faXmark } from "@fortawesome/free-solid-svg-icons";
 
-export default function QuestionsLao(props){
+export default function QuestionsDe(props){
   if (localStorage.getItem("dark-mode") === 'true'){
     document.body.style.backgroundColor = "#272d60";
     document.body.classList.add("dark-mode");
@@ -217,12 +217,13 @@ export default function QuestionsLao(props){
       localStorage.setItem("text-hidden", "")
       localStorage.setItem("text-hidden-th", "")
       localStorage.setItem("text-hidden-lo", "")
+      localStorage.setItem("text-hidden-de", "")
       localStorage.setItem("point", 0);
     }
     countTime();
   }
 
-  const afterGameText = ['ມ່ວນບໍ່?','ໄວ້ມາຫຼິ້ນອີກເດີ','ຢາກຫຼິ້ນອີກບໍ່?','ບໍ່ເປັນຫຍັງ ເທື່ອໜ້າເອົາໃຫມ່']
+  const afterGameText = ['Machen Sie Spaß?','Wollen Sie wieder spielen?','Viel Glück beim nächsten Mal']
 
   useEffect(()=> {loadPage()},[])
 
@@ -230,8 +231,8 @@ export default function QuestionsLao(props){
     <div className="App lao">
       <header className="app-head head-game" ref={headApp}>
         <div className="sec-left">
-          <h1 id="category">ໝວດໝູ່: {props.category}</h1>
-          <h1 id="get-point">ຄະແນນ +1</h1>
+          <h1 id="category">Kategorie: {props.category}</h1>
+          <h1 id="get-point">Punkt +1</h1>
         </div>
         <div className="sec-middle">
           <h1 id="timer">{getTimer}</h1>
@@ -257,27 +258,27 @@ export default function QuestionsLao(props){
 
       <div className="center">
         <div id="want-to-quit-modal">
-          <h1>ເຈົ້າຕ້ອງການກັບໄປທີ່ໜ້າຫຼັກບໍ່?</h1>
+          <h1>Sind Sie sicher, dass Sie um Startseite zu zurückgehen wollen?</h1>
           <div className="btns-check">
-            <button className="btn" onClick={answerYes}>ແມ່ນ</button>
-            <button className="btn" onClick={answerNo}>ບໍ່</button>
+            <button className="btn" onClick={answerYes}>Ja</button>
+            <button className="btn" onClick={answerNo}>Nein</button>
           </div>
         </div>
       </div>
 
       <div id="times-up-bg"></div>
       <div id="times-up" className="block-space">
-        <h1 className="times-up-text">ໝົດເວລາ!</h1>
+        <h1 className="times-up-text">Die Zeit ist um!</h1>
       </div>
 
       <div className="center">
         <div id="score-result">
-          <h1 style={{fontSize:"60px",marginTop:0}}>ຜົນໄດ້ຮັບ</h1>
-          <h1 style={{fontSize:"48px"}}>ຄະແນນ: {numPoint}</h1>
+          <h1 style={{fontSize:"60px",marginTop:0}}>Ergebnis</h1>
+          <h1 style={{fontSize:"48px"}}>Punkte: {numPoint}</h1>
           <h2>{afterGameText[Math.floor(Math.random() * afterGameText.length)]}</h2>
           <div className="btns-check">
-            <button className="btn" onClick={scoreResultBackToHomepage}>ກັບ</button>
-            <button className="btn" onClick={scoreResultPlayAgain}>ຫຼິ້ນອີກຄັ້ງ</button>
+            <button className="btn" onClick={scoreResultBackToHomepage}>Zurückgehen</button>
+            <button className="btn" onClick={scoreResultPlayAgain}>Wiederspielen</button>
           </div>
         </div>
       </div>

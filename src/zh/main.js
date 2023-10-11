@@ -454,6 +454,12 @@ export default function MainPageZh(){
         link: "/zh/drinks"
       }
     ],
+    geographyZh: [
+      {
+        category: "世界上的国家",
+        link: "/zh/countries-in-the-world"
+      }
+    ],
     otherZh: [
       {
         category: "动物",
@@ -539,6 +545,7 @@ export default function MainPageZh(){
       <div className="select-lists">
         <CardCate category="动物" link="/zh/animals"/>
         <CardCate category="食物" link="/zh/foods"/>
+        <CardCate category="世界上的国家" link="/zh/countries-in-the-world"/>
         <CardCate category="饮料" link="/zh/drinks"/>
       </div>
     )
@@ -627,15 +634,15 @@ export default function MainPageZh(){
               <li>暗示人只可以见答案，也可以暗示答案，所以玩家可以猜在屏幕上的答案。</li>
               <li>暗示人可以在屏幕的右上角按 ”隐藏答案“ 隐藏答案。</li>
               <li>如果玩家猜正确，按 “<FontAwesomeIcon icon={faCheck}/>” 转到下一个的单词。</li>
-              <li>如果玩家猜错或者不知道答案是什么，按 “<FontAwesomeIcon icon={faXmark}/>” 跳过到下一步的单词。</li>
-              <li>你有60或者120秒（根据你的设置）暗示答案。</li>
+              <li>如果玩家猜不正确或不知道答案是什么，按 “<FontAwesomeIcon icon={faXmark}/>” 跳过到下一步的单词。</li>
+              <li>你有60或120秒（根据你的设置）暗示答案。</li>
             </ol>
           </div>
           <div id="all-cates">
             <AllCates />
             <div id="no-result">
               <FontAwesomeIcon icon={faExclamationCircle} style={{fontSize:"54px"}}/>
-              <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>没有结果</h1>
+              <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>无结果</h1>
               <p style={{fontSize:"calc(12px + 0.5vw)"}}>请试试其他的关键词</p>
             </div>
           </div>
@@ -644,6 +651,15 @@ export default function MainPageZh(){
             <div className="select-lists">
               {
                 cateLists.foodsZh.map((cate) => (
+                  <CardCate category={cate.category} link={cate.link}/>
+                ))
+              }
+            </div>
+
+            <h2 className="list-titles">地理</h2>
+            <div className="select-lists">
+              {
+                cateLists.geographyZh.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
@@ -677,7 +693,7 @@ export default function MainPageZh(){
         </div>
         <div id="settings-drawer">
           <h1>设置</h1>
-          <p style={{marginBottom:0}}><strong>注意: </strong>你关这个边栏的时候，你的设置将自动保存。</p>
+          <p style={{marginBottom:0}}><strong>注意: </strong>你关此边栏时，你的设置将自动保存。</p>
           <div className="setting-sec">
             <h2>定时器</h2>
             <label className="switch" htmlFor="switch-timer">
@@ -689,7 +705,7 @@ export default function MainPageZh(){
               </div>
             </label>
             <div id="block" className={`${timerSwitch ? "active" : ""}`}></div>
-            <p>玩游戏的时候，定时器在屏幕的上边展示。</p>
+            <p>定时器玩游戏时在屏幕上展示。</p>
           </div>
           <div className="setting-sec">
             <h2>屏幕出现</h2>

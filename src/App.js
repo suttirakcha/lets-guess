@@ -97,6 +97,7 @@ import MainPageZh from "./zh/main";
 import AnimalsZh from "./zh/categories/animals";
 import FoodsZh from "./zh/categories/foods";
 import DrinksZh from "./zh/categories/drinks";
+import CountriesZh from "./zh/categories/countries";
 
 import MainPageDe from "./de/main";
 export default function App(){
@@ -203,6 +204,7 @@ export default function App(){
         <Route path="/zh/animals" element={<AnimalsZh />} />
         <Route path="/zh/foods" element={<FoodsZh />} />
         <Route path="/zh/drinks" element={<DrinksZh />} />
+        <Route path="/zh/countries-in-the-world" element={<CountriesZh />}/>
 
         {/* German
         <Route path="/de" element={<MainPageDe />}/> */}
