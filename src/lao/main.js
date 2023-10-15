@@ -3,6 +3,8 @@ import "../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck,faXmark,faChevronLeft,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faChevronDown,faLanguage, faEarthAsia } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { cateLists } from "./components/categories";
+import SearchBar from "./components/searchbar";
 
 export default function MainPageLao(){
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
@@ -442,43 +444,6 @@ export default function MainPageLao(){
     localStorage.setItem('dark-mode', 'false');
   }
 
-  const cateLists = {
-    eatingLo: [
-      {
-        category: "ເຂົ້າໜົມຫວານ",
-        link: "/lo/desserts"
-      },
-      {
-        category: "ເຄື່ອງດື່ມ",
-        link: "/lo/drinks"
-      },
-      {
-        category: "ອາຫານ",
-        link: "/lo/foods"
-      },
-    ],
-    geographyLo: [
-      {
-        category: "ແຂວງໃນປະເທດລາວ",
-        link: "/lo/laos-provinces"
-      },
-      {
-        category: "ສະຖານທີ່",
-        link: "/lo/places"
-      }
-    ],
-    otherLo: [
-      {
-        category: "ເຄື່ອງຄົວ",
-        link: "/lo/kitchenware"
-      },
-      {
-        category: "ສັດຕ່າງໆ",
-        link: "/lo/animals"
-      },
-    ],
-  }
-
   const openSearch = () => {
     let searchBtn = document.getElementById("searchBtn");
     let closeBtn = document.getElementById("searchCloseBtn");
@@ -618,16 +583,7 @@ export default function MainPageLao(){
             <div id="settings-tooltip" className="tooltips">
               <p>ການຕັ້ງຄ່າ</p>
             </div>
-            <button id="searchBtn" className="btn small-btn" onClick={openSearch}>
-              <FontAwesomeIcon icon={faSearch}/>
-            </button>
-            <div id="search-tooltip" className="tooltips">
-              <p>ຊອກຫາໝວດໝູ່</p>
-            </div>
-            <button id="searchCloseBtn" className="btn small-btn" onClick={closeSearch}>
-              <FontAwesomeIcon icon={faClose}/>
-            </button>
-            <input type="text" id="search-input" onKeyUp={searchCate} className="text-input" placeholder="ຊອກຫາໝວດໝູ່"/>
+            <SearchBar onOpen={openSearch} onClose={closeSearch} onSearch={searchCate}/>
           </div>
           <div id="changeLangBtn">
             <button onClick={changeLang} className="btn small-btn">

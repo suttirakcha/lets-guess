@@ -3,6 +3,8 @@ import "../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck,faChevronLeft,faXmark,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faLanguage } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { cateLists } from "./components/categories";
+import SearchBar from "./components/searchbar";
 
 export default function MainPageZh(){
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
@@ -443,31 +445,6 @@ export default function MainPageZh(){
     localStorage.setItem('dark-mode', 'false');
   }
 
-  const cateLists = {
-    foodsZh: [
-      {
-        category: "食物",
-        link: "/zh/foods"
-      },
-      {
-        category: "饮料",
-        link: "/zh/drinks"
-      }
-    ],
-    geographyZh: [
-      {
-        category: "世界上的国家",
-        link: "/zh/countries-in-the-world"
-      }
-    ],
-    otherZh: [
-      {
-        category: "动物",
-        link: "/zh/animals"
-      },
-    ]
-  }
-
   const openSearch = () => {
     let searchBtn = document.getElementById("searchBtn");
     let closeBtn = document.getElementById("searchCloseBtn");
@@ -601,13 +578,7 @@ export default function MainPageZh(){
             <button id="settingsBtn" className="btn small-btn" onClick={openSettings}>
               <FontAwesomeIcon icon={faGear}/>
             </button>
-            <button id="searchBtn" className="btn small-btn" onClick={openSearch}>
-              <FontAwesomeIcon icon={faSearch}/>
-            </button>
-            <button id="searchCloseBtn" className="btn small-btn" onClick={closeSearch}>
-              <FontAwesomeIcon icon={faClose}/>
-            </button>
-            <input type="text" id="search-input" onKeyUp={searchCate} className="text-input" placeholder="搜索类别"/>
+            <SearchBar onOpen={openSearch} onClose={closeSearch} onSearch={searchCate}/>
           </div>
           <div id="changeLangBtn">
             <button onClick={changeLang} className="btn">
