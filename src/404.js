@@ -32,15 +32,17 @@ export default function NotFound(){
   }, [])
 
   return (
-    <div id="not-found">
-      <div>
+    <>
+      <div style={{padding:"20px",position:"absolute",width:"100%",top:0,display:"flex",gap:"8px"}}>
         <button class="btn" onClick={() => changeLang('en')}>Eng</button>
         <button class="btn" onClick={() => changeLang('th')}>ไทย</button>
       </div>
-      <FontAwesomeIcon icon={faFaceFrownOpen} style={{fontSize:"60px",marginBottom:"20px"}}/>
-      <h1 id="not-found-heading">{heading}</h1>
-      <p id="not-found-para" style={{marginBottom:"30px"}}>{para}</p>
-      <button class="btn" onClick={clickToGoBack} id="not-found-btn">{btn}</button>
-    </div>
+      <div id="not-found">
+        <FontAwesomeIcon icon={faFaceFrownOpen} style={{fontSize:"60px",marginBottom:"20px"}}/>
+        <h1 id="not-found-heading">{heading}</h1>
+        <p id="not-found-para" style={{marginBottom:"30px"}}>{para}</p>
+        <button class="btn" onClick={clickToGoBack} id="not-found-btn">{btn}</button>
+      </div>
+    </>
   )
 }
