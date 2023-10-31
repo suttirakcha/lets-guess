@@ -3,7 +3,7 @@ import "../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck,faXmark,faChevronLeft,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faChevronDown,faLanguage, faEarthAsia } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { cateLists } from "./components/categories";
+import { cateLists, sortedCategories } from "./components/categories";
 import SearchBar from "./components/searchbar";
 
 export default function MainPageLao(){
@@ -519,13 +519,9 @@ export default function MainPageLao(){
   const AllCates = () => {
     return (
       <div className="select-lists">
-        <CardCate category="ແຂວງໃນປະເທດລາວ" link="/lo/laos-provinces"/>
-        <CardCate category="ເຂົ້າໜົມຫວານ" link="/lo/desserts"/>
-        <CardCate category="ເຄື່ອງຄົວ" link="/lo/kitchenware"/>
-        <CardCate category="ເຄື່ອງດື່ມ" link="/lo/drinks"/>
-        <CardCate category="ສະຖານທີ່" link="/lo/places"/>
-        <CardCate category="ສັດຕ່າງໆ" link="/lo/animals"/>
-        <CardCate category="ອາຫານ" link="/lo/foods"/>
+        {sortedCategories.map((s) => (
+          <CardCate category={s.category} link={s.link}/>
+        ))}
       </div>
     )
   }

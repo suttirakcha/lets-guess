@@ -13,3 +13,14 @@ export const cateLists = {
     {category: "ສັດຕ່າງໆ",link: "/lo/animals"},
   ],
 }
+
+const flattenedCategories = Object.values(cateLists).reduce(
+  (accumulator, currentCategory) => [...accumulator, ...currentCategory],
+  []
+);
+
+export const sortedCategories = flattenedCategories.sort((a, b) => {
+  const cateA = a.category.toLowerCase();
+  const cateB = b.category.toLowerCase();
+  return cateA.localeCompare(cateB);
+});

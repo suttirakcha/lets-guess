@@ -3,7 +3,7 @@ import "./App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck,faXmark,faChevronLeft,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faChevronDown,faLanguage, faEarthAsia } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { cateLists } from "./components/categories";
+import { cateLists, sortedCategories } from "./components/categories";
 import SearchBar from "./components/searchbar";
 
 export default function MainPage(){
@@ -447,49 +447,9 @@ export default function MainPage(){
   const AllCates = () => {    
     return (
       <div className="select-lists">
-        <CardCate category="Action Film Actors" link="/action-film-actors"/>
-        <CardCate category="Albert Posis's Songs" link="/albert-posis-songs"/>
-        <CardCate category="Animals" link="/animals"/>
-        <CardCate category="Blackpink" link="/blackpink"/>
-        <CardCate category="Capital Cities" link="/capital-cities"/>
-        <CardCate category="Clothing" link="/clothing"/>
-        <CardCate category="Characters in Mario Games" link="/characters-in-mario-games"/>
-        <CardCate category="Common Names" link="/common-names"/>
-        <CardCate category="Cosmetics Brands" link="/cosmetics-brands"/>
-        <CardCate category="Countries in the World" link="/countries-in-the-world"/>
-        <CardCate category="Despicable Me" link="/despicable-me"/>
-        <CardCate category="Desserts" link="/desserts"/>
-        <CardCate category="Disney Films (2010s)" link="/disney-films-2010s"/>
-        <CardCate category="Drinks" link="/drinks"/>
-        <CardCate category="Driving" link="/driving"/>
-        <CardCate category="Education" link="/education"/>
-        <CardCate category="English Actors" link="/english-actors"/>
-        <CardCate category="Fashion Brands" link="/fashion-brands"/>
-        <CardCate category="Fast and Furious Characters" link="/fast-and-furious-characters"/>
-        <CardCate category="Film Genres" link="/film-genres"/>
-        <CardCate category="Foods" link="/foods"/>
-        <CardCate category="Girls' Generation" link="/girls-generation"/>
-        <CardCate category="Google Services" link="/google-services"/>
-        <CardCate category="Harry Potter Characters" link="/harry-potter-characters"/>
-        <CardCate category="Information Technology" link="/information-technology"/>
-        <CardCate category="K-Pop Bands" link="/kpop-bands"/>
-        <CardCate category="Landmarks" link="/landmarks"/>
-        <CardCate category="Latin-used Languages" link="/latin-used-languages"/>
-        <CardCate category="Mobile Games" link="/mobile-games"/>
-        <CardCate category="Music Genres" link="/music-genres"/>
-        <CardCate category="Musical Instruments" link="/musical-instruments"/>
-        <CardCate category="Phone Brands" link="/phone-brands"/>
-        <CardCate category="Places" link="/places"/>
-        <CardCate category="Puzzle Games" link="/puzzle-games"/>
-        <CardCate category="Restaurant Chains" link="/restaurant-chains"/>
-        <CardCate category="Sauces" link="/sauces"/>
-        <CardCate category="Social Media" link="/social-media"/>
-        <CardCate category="Space" link="/space"/>
-        <CardCate category="Sports" link="/sports"/>
-        <CardCate category="Weather" link="/weather"/>
-        <CardCate category="Words in Airline" link="/words-in-airline"/>
-        <CardCate category="Words in Graphic Design" link="/words-in-graphic-design"/>
-        <CardCate category="Words in Marketing" link="/words-in-marketing"/>
+        {sortedCategories.map((s) => (
+          <CardCate category={s.category} link={s.link}/>
+        ))}
       </div>
     )
   }

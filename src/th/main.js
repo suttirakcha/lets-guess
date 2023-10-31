@@ -3,7 +3,7 @@ import "../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck,faChevronLeft,faXmark,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faChevronDown,faLanguage, faEarthAsia } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { cateLists } from "./components/categories";
+import { cateLists, sortedCategories } from "./components/categories";
 import SearchBar from "./components/searchbar";
 
 export default function MainPage(){
@@ -519,42 +519,9 @@ export default function MainPage(){
   const AllCates = () => {
     return (
       <div className="select-lists">
-        <CardCate category="การศึกษา" link="/th/education"/>
-        <CardCate category="ขนมไทย" link="/th/thai-desserts"/>
-        <CardCate category="ขนมหวาน" link="/th/desserts"/>
-        <CardCate category="ของใช้ในบ้าน" link="/th/household-items"/>
-        <CardCate category="เขตและแขวงในกรุงเทพ" link="/th/bangkok-districts-and-subdistricts"/>
-        <CardCate category="คำที่มาจากภาษาจีน" link="/th/chinese-loanwords"/>
-        <CardCate category="คำที่มาจากภาษาบาลี-สันสกฤต" link="/th/bali-sanskrit-loanwords"/>
-        <CardCate category="คำที่มาจากภาษาอังกฤษ" link="/th/english-loanwords"/>
-        <CardCate category="คำศัพท์เกี่ยวกับการตลาด" link="/th/marketing-words"/>
-        <CardCate category="เครื่องครัว" link="/th/kitchenware"/>
-        <CardCate category="เครื่องดนตรี" link="/th/musical-instruments"/>
-        <CardCate category="เครื่องดื่ม" link="/th/drinks"/>
-        <CardCate category="เครื่องแต่งกาย" link="/th/clothing"/>
-        <CardCate category="เครื่องปรุง" link="/th/seasoning"/>
-        <CardCate category="จังหวัดในประเทศไทย" link="/th/provinces-in-thailand"/>
-        <CardCate category="ตัวละครในเกม ROV" link="/th/characters-in-rov"/>
-        <CardCate category="นักร้องไทย" link="/th/thai-singers"/>
-        <CardCate category="ประเทศในโลก" link="/th/countries-in-the-world"/>
-        <CardCate category="ไปต่างประเทศ" link="/th/travel-to-foreign-countries"/>
-        <CardCate category="ผลไม้ต่างๆ" link="/th/fruits"/>
-        <CardCate category="เพลงของ BOWKYLION" link="/th/bowkylion-songs"/>
-        <CardCate category="เพลงยุค 2000s" link="/th/2000s-songs"/>
-        <CardCate category="เพลงวง Cocktail" link="/th/cocktail-songs"/>
-        <CardCate category="เพลงวง ETC" link="/th/etc-songs"/>
-        <CardCate category="เพลงวง Tattoo Colour" link="/th/tattoo-colour"/>
-        <CardCate category="ภาพยนตร์ตลกไทย" link="/th/thai-comedy-films"/>
-        <CardCate category="ภาษาที่ใช้อักษรละติน" link="/th/latin-used-languages"/>
-        <CardCate category="มหาวิทยาลัยในไทย" link="/th/universities-in-thailand"/>
-        <CardCate category="วันสำคัญ" link="/th/holidays"/>
-        <CardCate category="สถานที่" link="/th/places"/>
-        <CardCate category="สถานที่ท่องเที่ยวในกรุงเทพ" link="/th/places-in-bangkok"/>
-        <CardCate category="สภาพอากาศ" link="/th/weather"/>
-        <CardCate category="สัตว์ต่างๆ" link="/th/animals"/>
-        <CardCate category="อวกาศ" link="/th/space"/>
-        <CardCate category="อาชีพ" link="/th/occupations"/>
-        <CardCate category="อาหาร" link="/th/foods"/>
+        {sortedCategories.map((s) => (
+          <CardCate category={s.category} link={s.link}/>
+        ))}
       </div>
     )
   }

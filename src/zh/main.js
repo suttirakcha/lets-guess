@@ -3,7 +3,7 @@ import "../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck,faChevronLeft,faXmark,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faLanguage } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { cateLists } from "./components/categories";
+import { cateLists, sortedCategories } from "./components/categories";
 import SearchBar from "./components/searchbar";
 
 export default function MainPageZh(){
@@ -520,10 +520,9 @@ export default function MainPageZh(){
   const AllCates = () => {
     return (
       <div className="select-lists">
-        <CardCate category="动物" link="/zh/animals"/>
-        <CardCate category="食物" link="/zh/foods"/>
-        <CardCate category="世界上的国家" link="/zh/countries-in-the-world"/>
-        <CardCate category="饮料" link="/zh/drinks"/>
+        {sortedCategories.map((s) => (
+          <CardCate category={s.category} link={s.link}/>
+        ))}
       </div>
     )
   }

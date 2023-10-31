@@ -63,3 +63,14 @@ export const cateLists = {
     {category: "Weather",link: "/weather"}
   ]
 }
+
+const flattenedCategories = Object.values(cateLists).reduce(
+  (accumulator, currentCategory) => [...accumulator, ...currentCategory],
+  []
+);
+
+export const sortedCategories = flattenedCategories.sort((a, b) => {
+  const cateA = a.category.toLowerCase();
+  const cateB = b.category.toLowerCase();
+  return cateA.localeCompare(cateB);
+});
