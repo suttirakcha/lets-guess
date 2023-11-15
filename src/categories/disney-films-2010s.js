@@ -1,8 +1,0 @@
-import React from "react";
-import "../App.scss";
-import Questions from "../components/questions";
-
-export default function DisneyFilms2010s(){
-  const words = ["Moana","Frozen","Frozen II","Alice in Wonderland","Prince of Persia: The Sands of Time","Toy Story 3","The Sorcerer's Apprentice","Tinker Bell and the Great Fairy Rescue","Secretariat","Tangled","Tron: Legacy","Mars Needs Moms","Prom","Pirates of the Caribbean: On Stranger Tides","Cars 2","Winnie the Pooh","The Muppets","John Carter","Brave","The Odd Life of Timothy Green","Frankenweenie","Secret of the Wings","Wreck-It Ralph","Oz the Great and Powerful","Monsters University","The Lone Ranger","Planes","Saving Mr. Banks","Muppets Most Wanted","The Pirate Fairy","Maleficent","Million Dollar Arm","Planes: Fire & Rescue","Alexander and the Terrible, Horrible, No Good, Very Bad Day","Big Hero 6","Into the Woods","McFarland, USA","Tinker Bell and the Legend of the NeverBeast","Cinderella (2015)","Tomorrowland","Inside Out","The Good Dinosaur","The Finest Hours","Zootopia","The Jungle Book","Alice Through the Looking Glass","Finding Dory","The BFG","Pete's Dragon","Moana","Beauty and the Beast (2017)","Pirates of the Caribbean: Dead Men Tell No Tales","Cars 3","Coco","Incredibles 2","Christopher Robin","The Nutcracker and the Four Realms","Ralph Breaks the Internet","Mary Poppins Returns","Dumbo (2019)","Aladdin (2019)","Toy Story 4","The Lion King (2019)","Maleficent: Mistress of Evil"];
-  return (<Questions answers={words} category="Disney Films (2010s)" redirect="/disney-films-2010s"/>)
-}

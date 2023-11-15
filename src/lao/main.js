@@ -152,7 +152,7 @@ export default function MainPageLao(){
     }
 
     const hideLoading = () => {
-        mainApp.style.animation = "mainAnim 900ms forwards";
+      mainApp.current.style.animation = "mainAnim 900ms forwards";
     }
 
     setTimeout(showLoading,890);

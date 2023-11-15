@@ -2,8 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import "../../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck,faXmark } from "@fortawesome/free-solid-svg-icons";
+import { useParams } from "react-router-dom";
+import { sortedCategories } from "./categories";
 
 export default function QuestionsTh(props){
+  const { id } = useParams()
   if (localStorage.getItem("dark-mode") === 'true'){
     document.body.style.backgroundColor = "#272d60";
     document.body.classList.add("dark-mode");
@@ -14,7 +17,8 @@ export default function QuestionsTh(props){
   const headApp = useRef(null);
   const mainApp = useRef(null);
 
-  var words = props.answers;
+  var hook = sortedCategories.find(item => item.link == `/th/${id}`)
+  var words = hook.words
   var randomWord = words[Math.floor(Math.random() * words.length)];
 
   let textAnswerHidden = localStorage.getItem("text-hidden-th");
@@ -205,12 +209,11 @@ export default function QuestionsTh(props){
   const scoreResultPlayAgain = () => {
     scoreResultUp();
     localStorage.setItem("point", 0);
-    setTimeout(() => window.location.replace(props.redirect), 2000);
+    setTimeout(() => window.location.replace(`/th/${id}`), 2000);
   }
 
   const loadPage = () => {
-    let headApp = document.querySelector(".app-head");
-    headApp.style.animation = "headAnimOut 900ms forwards";
+    headApp.current.style.animation = "headAnimOut 900ms forwards";
     if(localStorage.length == 0){
       localStorage.setItem("timer",60);
       localStorage.setItem("timer-continue",60);
@@ -229,7 +232,7 @@ export default function QuestionsTh(props){
     <div className="App">
       <header className="app-head head-game" ref={headApp}>
         <div className="sec-left">
-          <h1 id="category">หมวดหมู่: {props.category}</h1>
+          <h1 id="category">หมวดหมู่: {hook.category}</h1>
           <h1 id="get-point">คะแนน +1</h1>
         </div>
         <div className="sec-middle">
