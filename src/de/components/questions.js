@@ -2,8 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import "../../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck,faXmark } from "@fortawesome/free-solid-svg-icons";
+import { useParams } from "react-router-dom";
+import { sortedCategories } from "./categories";
 
-export default function QuestionsDe(props){
+export default function QuestionsDe(){
+  const { id } = useParams()
   if (localStorage.getItem("dark-mode") === 'true'){
     document.body.style.backgroundColor = "#272d60";
     document.body.classList.add("dark-mode");
@@ -14,7 +17,8 @@ export default function QuestionsDe(props){
   const headApp = useRef(null);
   const mainApp = useRef(null);
 
-  var words = props.answers;
+  var hook = sortedCategories.find(item => item.link == `/de/${id}`)
+  var words = hook.words
   var randomWord = words[Math.floor(Math.random() * words.length)];
 
   let textAnswerHidden = localStorage.getItem("text-hidden-lo");
@@ -112,16 +116,16 @@ export default function QuestionsDe(props){
   const clickToHideAnswer = () => {
     let answerBtn = document.getElementById("toggle-hide-show");
     let answerHidden = document.getElementById("answer-hidden");
-    if (answerBtn.innerText == "ເຊື່ອງຄຳຕອບ"){
+    if (answerBtn.innerText == "Antwort verbergen"){
       answerHidden.style.display = "flex";
       answerHidden.style.animation = "openModal 400ms forwards";
-      answerBtn.innerText = "ສະແດງຄຳຕອບ";
+      answerBtn.innerText = "Antwort anzeigen";
       answerBtn.disabled = true;
       setTimeout(() => answerBtn.disabled = false, 500);
     } else {
       answerBtn.disabled = true;
       setTimeout(() => answerBtn.disabled = false, 500);
-      answerBtn.innerText = "ເຊື່ອງຄຳຕອບ";
+      answerBtn.innerText = "Antwort verbergen";
       answerHidden.style.animation = "closeModal 500ms forwards";
       setTimeout(() => answerHidden.style.display = "none", 500);
     }
@@ -166,7 +170,7 @@ export default function QuestionsDe(props){
     localStorage.setItem("point", 0);
 
     setTimeout(() => {
-      window.location.replace("/lo");
+      window.location.replace("/de");
       localStorage.setItem("timer-continue", countStart);
     }, 3000)
   }
@@ -197,7 +201,7 @@ export default function QuestionsDe(props){
       document.body.style.animation = "changeBgToFront 1s forwards";
     }
     setTimeout(() => {
-      window.location.replace("/lo");
+      window.location.replace("/de");
       localStorage.setItem("point", 0);
     }, 2000);
   }
@@ -205,12 +209,11 @@ export default function QuestionsDe(props){
   const scoreResultPlayAgain = () => {
     scoreResultUp();
     localStorage.setItem("point", 0);
-    setTimeout(() => window.location.replace(props.redirect), 2000);
+    setTimeout(() => window.location.replace(`/de/${id}`), 2000);
   }
 
   const loadPage = () => {
-    let headApp = document.querySelector(".app-head");
-    headApp.style.animation = "headAnimOut 900ms forwards";
+    headApp.current.style.animation = "headAnimOut 900ms forwards";
     if(localStorage.length == 0){
       localStorage.setItem("timer",60);
       localStorage.setItem("timer-continue",60);
@@ -223,23 +226,23 @@ export default function QuestionsDe(props){
     countTime();
   }
 
-  const afterGameText = ['Machen Sie Spaß?','Wollen Sie wieder spielen?','Viel Glück beim nächsten Mal']
+  const afterGameText = ['Macht das Ihnen Spaß?','Wollen Sie wieder spielen?','Viel Glück beim nächsten Mal']
 
   useEffect(()=> {loadPage()},[])
 
   return (
-    <div className="App lao">
+    <div className="App">
       <header className="app-head head-game" ref={headApp}>
         <div className="sec-left">
-          <h1 id="category">Kategorie: {props.category}</h1>
+          <h1 id="category">Kategorie: {hook.category}</h1>
           <h1 id="get-point">Punkt +1</h1>
         </div>
         <div className="sec-middle">
           <h1 id="timer">{getTimer}</h1>
         </div>
         <div className="sec-right">
-          <button className="btn" id="toggle-hide-show" onClick={clickToHideAnswer}>ເຊື່ອງຄຳຕອບ</button>
-          <button className="btn" onClick={clickToGoBack}>ກັບໄປໜ້າຫຼັກ</button>
+          <button className="btn" id="toggle-hide-show" onClick={clickToHideAnswer}>Antwort verbergen</button>
+          <button className="btn" onClick={clickToGoBack}>Zurückgehen</button>
         </div>
       </header>
       <main className="app-main words-in-screen" ref={mainApp}>
@@ -251,7 +254,7 @@ export default function QuestionsDe(props){
       </main>
 
       <div id="answer-hidden" className="block-space">
-        <h1>{localStorage.getItem("text-hidden-lo") === "" ? "ຄຳຕອບຖືກເຊື່ອງໄວ້" : textAnswerHidden}</h1>
+        <h1>{localStorage.getItem("text-hidden-de") === "" ? "Die Antwort wird verborgen" : textAnswerHidden}</h1>
       </div>
 
       <div id="want-to-quit" onClick={answerNo}></div>

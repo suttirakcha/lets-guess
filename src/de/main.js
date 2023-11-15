@@ -3,11 +3,12 @@ import "../App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck,faXmark,faChevronLeft,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faChevronDown,faLanguage, faEarthAsia } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { cateLists, sortedCategories } from "./components/categories";
 
 export default function MainPageDe(){
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
   const [timerSixty, setTimerSixty] = useState(localStorage.getItem("timer-sixty") === 'true');
-  const [title, setTitle] = useState('ມາທາຍຄຳກັນເດີ');
+  const [title, setTitle] = useState('Lass uns erraten');
 
   const headApp = useRef(null);
   const mainApp = useRef(null);
@@ -150,7 +151,7 @@ export default function MainPageDe(){
     }
 
     const hideLoading = () => {
-        mainApp.style.animation = "mainAnim 900ms forwards";
+      mainApp.current.style.animation = "mainAnim 900ms forwards";
     }
 
     setTimeout(showLoading,890);
@@ -249,6 +250,8 @@ export default function MainPageDe(){
       hiddenText.value.toUpperCase().includes("bastard".toUpperCase()) ||
       hiddenText.value.toUpperCase().includes("slut".toUpperCase()) ||
       hiddenText.value.toUpperCase().includes("dick".toUpperCase()) ||
+      hiddenText.value.toUpperCase().includes("arschloch".toUpperCase()) ||
+      hiddenText.value.toUpperCase().includes("fick".toUpperCase()) ||
       hiddenText.value.includes("@")
     ){
       hiddenText.focus();
@@ -320,12 +323,14 @@ export default function MainPageDe(){
       hiddenText.value.toUpperCase().includes("bastard".toUpperCase()) ||
       hiddenText.value.toUpperCase().includes("slut".toUpperCase()) ||
       hiddenText.value.toUpperCase().includes("dick".toUpperCase()) ||
+      hiddenText.value.toUpperCase().includes("arschloch".toUpperCase()) ||
+      hiddenText.value.toUpperCase().includes("fick".toUpperCase()) ||
       (hiddenText.value.includes("@"))
     ){
       if (hiddenText.value.includes("@")){
-        warning.innerHTML = "*ບໍ່ອະນຸຍາດໃຫ້ໃຊ້ @ ໃນພື້ນທີ່ຂໍ້ຄວາມນີ້.";
+        warning.innerHTML = "*@ ist in diesem Textfeld nicht erlaubt.";
       } else {
-        warning.innerHTML = "*ກະລຸນາຫຼີກລ່ຽງການນຳໃຊ້ຄຳທີ່ບໍ່ສຸພາບ ຫຼືຄຳທີ່ອ່ອນໄຫວ.";
+        warning.innerHTML = "*Bitte vermeiden Sie unhöfliche oder einfühlsame Wörter.";
       }
       hiddenText.classList.add("warning");
       localStorage.setItem("text-hidden-lo", "");
@@ -375,10 +380,11 @@ export default function MainPageDe(){
       localStorage.setItem("text-hidden-th", "")
       localStorage.setItem("text-hidden-lo", "")
       localStorage.setItem("text-hidden-zh", "")
+      localStorage.setItem("text-hidden-de", "")
       localStorage.setItem("point", 0);
-      hiddenText.value = localStorage.setItem("text-hidden-lo", "");
+      hiddenText.value = localStorage.setItem("text-hidden-de", "");
     }
-    hiddenText.value = localStorage.getItem("text-hidden-lo");
+    hiddenText.value = localStorage.getItem("text-hidden-de");
   }, [])
   window.addEventListener("keydown", pressToCloseSettings);
 
@@ -400,9 +406,9 @@ export default function MainPageDe(){
     console.log(localStorage);
   }
 
-  const typeHiddenTextLo = () => {
+  const typeHiddenTextDe = () => {
     let hiddenText = document.getElementById("hidden-text").value;
-    localStorage.setItem("text-hidden-lo", hiddenText);
+    localStorage.setItem("text-hidden-de", hiddenText);
   }
   const changeLang = () => {
     let langList = document.getElementById("langList");
@@ -440,43 +446,6 @@ export default function MainPageDe(){
     document.body.style.backgroundColor = "#FFE0FD";
     document.body.style.transition = "all 300ms";
     localStorage.setItem('dark-mode', 'false');
-  }
-
-  const cateLists = {
-    eatingLo: [
-      {
-        category: "ເຂົ້າໜົມຫວານ",
-        link: "/lo/desserts"
-      },
-      {
-        category: "ເຄື່ອງດື່ມ",
-        link: "/lo/drinks"
-      },
-      {
-        category: "ອາຫານ",
-        link: "/lo/foods"
-      },
-    ],
-    geographyLo: [
-      {
-        category: "ແຂວງໃນປະເທດລາວ",
-        link: "/lo/laos-provinces"
-      },
-      {
-        category: "ສະຖານທີ່",
-        link: "/lo/places"
-      }
-    ],
-    otherLo: [
-      {
-        category: "ເຄື່ອງຄົວ",
-        link: "/lo/kitchenware"
-      },
-      {
-        category: "ສັດຕ່າງໆ",
-        link: "/lo/animals"
-      },
-    ],
   }
 
   const openSearch = () => {
@@ -554,13 +523,9 @@ export default function MainPageDe(){
   const AllCates = () => {
     return (
       <div className="select-lists">
-        <CardCate category="ແຂວງໃນປະເທດລາວ" link="/lo/laos-provinces"/>
-        <CardCate category="ເຂົ້າໜົມຫວານ" link="/lo/desserts"/>
-        <CardCate category="ເຄື່ອງຄົວ" link="/lo/kitchenware"/>
-        <CardCate category="ເຄື່ອງດື່ມ" link="/lo/drinks"/>
-        <CardCate category="ສະຖານທີ່" link="/lo/places"/>
-        <CardCate category="ສັດຕ່າງໆ" link="/lo/animals"/>
-        <CardCate category="ອາຫານ" link="/lo/foods"/>
+        {sortedCategories.map((s) => (
+          <CardCate category={s.category} link={s.link}/>
+        ))}
       </div>
     )
   }
@@ -627,7 +592,7 @@ export default function MainPageDe(){
             <button id="searchCloseBtn" className="btn small-btn" onClick={closeSearch}>
               <FontAwesomeIcon icon={faClose}/>
             </button>
-            <input type="text" id="search-input" onKeyUp={searchCate} className="text-input" placeholder="ຊອກຫາໝວດໝູ່"/>
+            <input type="text" id="search-input" onKeyUp={searchCate} className="text-input" placeholder="Kategorie suchen"/>
           </div>
           <div id="changeLangBtn">
             <button onClick={changeLang} className="btn small-btn">
@@ -662,33 +627,24 @@ export default function MainPageDe(){
             <AllCates />
             <div id="no-result">
               <FontAwesomeIcon icon={faExclamationCircle} style={{fontSize:"54px"}}/>
-              <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>ບໍ່ພົບຜົນໄດ້ຮັບ</h1>
-              <p style={{fontSize:"calc(12px + 0.5vw)"}}>ກະລຸນາລອງຄີເວິດອື່ນ</p>
+              <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>Keine Ergebnisse</h1>
+              <p style={{fontSize:"calc(12px + 0.5vw)"}}>Bitte versuchen Sie mit einem anderen Stichwort.</p>
             </div>
           </div>
           <div id="select-list">
-            <h2 className="list-titles">ອາຫານ</h2>
+            <h2 className="list-titles">Essen</h2>
             <div className="select-lists">
               {
-                cateLists.eatingLo.map((cate) => (
+                cateLists.eatingDe.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className="list-titles">ພູມສາດ</h2>
+            <h2 className="list-titles">Geografie</h2>
             <div className="select-lists">
               {
-                cateLists.geographyLo.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">ອື່ນໆ</h2>
-            <div className="select-lists">
-              {
-                cateLists.otherLo.map((cate) => (
+                cateLists.geographyDe.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
@@ -737,9 +693,9 @@ export default function MainPageDe(){
             </button>
           </div>
           <div className="setting-sec">
-            <h2>ຂໍ້ຄວາມເມື່ອເຊື່ອງຄຳຕອບ</h2>
-            <input type="text" id="hidden-text" className="text-input" placeholder="ຄຳຕອບຖືກເຊື່ອງໄວ້" onInput={checkHiddenText} onChange={typeHiddenTextLo} autoComplete="off"/>
-            <p>ຂໍ້ຄວາມຈະຖືກສະແດງເມື່ອຄົນໃບ້ຄຳກົດປຸ່ມ "ເຊື່ອງຄຳຕອບ". <br/>ຂໍ້ຄວາມເລິ່ມຕົ້ນຄື "ຄຳຕອບຖືກເຊື່ອງໄວ້"</p>
+            <h2>Verborgener Antworttext</h2>
+            <input type="text" id="hidden-text" className="text-input" placeholder="Die Antwort wird verborgen" onInput={checkHiddenText} onChange={typeHiddenTextDe} autoComplete="off"/>
+            <p>Der Text wird angezeigt, wenn die Hint-Spieler auf „Antwort verbergen“ klicken. <br/>Der Standardtext ist „Die Antwort wird verborgen“.</p>
             <p id="warning-hidden-text"></p>
           </div>
         </div>

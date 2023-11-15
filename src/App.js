@@ -11,12 +11,10 @@ import MainPageLao from "./lao/main";
 import QuestionsLao from "./lao/components/questions";
 
 import MainPageZh from "./zh/main";
-import AnimalsZh from "./zh/categories/animals";
-import FoodsZh from "./zh/categories/foods";
-import DrinksZh from "./zh/categories/drinks";
-import CountriesZh from "./zh/categories/countries";
+import QuestionsZh from "./zh/components/questions";
 
 import MainPageDe from "./de/main";
+import QuestionsDe from "./de/components/questions";
 
 export default function App(){
   return (
@@ -32,15 +30,12 @@ export default function App(){
         <Route path="/lo" element={<MainPageLao />} />
         <Route path="/lo/:id" element={<QuestionsLao />}/>
 
-        {/* Chinese */}
         <Route path="/zh" element={<MainPageZh />} />
-        <Route path="/zh/animals" element={<AnimalsZh />} />
-        <Route path="/zh/foods" element={<FoodsZh />} />
-        <Route path="/zh/drinks" element={<DrinksZh />} />
-        <Route path="/zh/countries-in-the-world" element={<CountriesZh />}/>
+        <Route path="/zh/:id" element={<QuestionsZh />}/>
 
-        {/* German
-        <Route path="/de" element={<MainPageDe />}/> */}
+        {/* German*/}
+        {/* <Route path="/de" element={<MainPageDe />}/> 
+        <Route path="/de/:id" element={<QuestionsDe />}/> */}
       </Routes>
     </Router>
   )
