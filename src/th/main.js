@@ -10,6 +10,7 @@ export default function MainPage(){
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
   const [timerSixty, setTimerSixty] = useState(localStorage.getItem("timer-sixty") === 'true');
   const [title, setTitle] = useState('มาทายคำกันเถอะ')
+  const [search, setSearch] = useState('');
 
   const headApp = useRef(null);
   const mainApp = useRef(null);
@@ -399,7 +400,6 @@ export default function MainPage(){
       localStorage.setItem("timer", 60);
       localStorage.setItem("timer-continue", 60);
     }
-    console.log(localStorage);
   }
 
   const typeHiddenTextTh = () => {
@@ -517,48 +517,14 @@ export default function MainPage(){
   }
 
   const AllCates = () => {
+    const cates = sortedCategories.filter(item => item.category.toUpperCase().includes(search.toUpperCase()))
     return (
       <div className="select-lists">
-        {sortedCategories.map((s) => (
+        {cates.map((s) => (
           <CardCate category={s.category} link={s.link}/>
         ))}
       </div>
     )
-  }
-
-  const showNoResult = () => {
-    let selectList = document.getElementById("all-cates");
-    let cards = selectList.querySelectorAll(".card");
-    let cardsNone = selectList.querySelectorAll(".card[style='display: none;']");
-    let noResult = document.getElementById("no-result");
-    if (cardsNone.length === cards.length){
-      noResult.style.display = "block";
-      setTimeout(() => {
-        noResult.classList.add("active");
-      }, 1)
-    } else {
-      noResult.style.display = "none";
-      noResult.classList.remove("active");
-    }
-  }
-
-  const searchCate = () => {
-    let searchInput = document.getElementById("search-input");
-    let searchValue = searchInput.value.toUpperCase();
-    let selectList = document.getElementById("all-cates");
-    let cards = selectList.querySelectorAll(".card");
-
-    for (let k = 0; k < cards.length; k++){
-      let cardHead = cards[k].getElementsByTagName("h2")[0];
-      let cardText = cardHead.innerText;
-      console.log(cardText);
-      if (cardText.toUpperCase().indexOf(searchValue) < 0){
-        cards[k].style.display = "none";
-      } else {
-        cards[k].style.display = "block";
-      }
-    }
-    showNoResult();
   }
 
   return (
@@ -579,7 +545,7 @@ export default function MainPage(){
             <div id="settings-tooltip" className="tooltips">
               <p>การตั้งค่า</p>
             </div>
-            <SearchBar onOpen={openSearch} onClose={closeSearch} onSearch={searchCate}/>
+            <SearchBar onOpen={openSearch} onClose={closeSearch} onSearch={e => setSearch(e.target.value)}/>
           </div>
           <div id="changeLangBtn">
             <button onClick={changeLang} className="btn">
