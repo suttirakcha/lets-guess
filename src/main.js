@@ -1,23 +1,24 @@
 import React, { useEffect, useState, useRef } from "react";
-import "./App.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck,faXmark,faChevronLeft,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faChevronDown,faLanguage, faEarthAsia } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { cateLists, sortedCategories } from "./components/categories";
+import { cateLists, sortedCategories, cateTitles } from "./components/categories";
+import { CardCate, CardCateWithTitle } from "./components/card";
 import SearchBar from "./components/searchbar";
+import { Button, ButtonWithIcon } from "./components/button";
+import Loading from "./components/loading";
+import TextInput from "./components/textinput";
+import DrawerCircle from "./components/drawers/drawerCircle";
+import Settings from "./components/settings";
 
 export default function MainPage(){
-  const [clicked, setClicked] = useState(false);
-  const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
-  const [timerSixty, setTimerSixty] = useState(localStorage.getItem("timer-sixty") === 'true');
-  const [title, setTitle] = useState("Let's Guess");
-  const [search, setSearch] = useState('');
-
-  const headApp = useRef(null);
-  const mainApp = useRef(null);
-  const footApp = useRef(null);
-
-  const navigate = useNavigate();
+  const [title, setTitle] = useState("Let's Guess")
+  const [currentSec, setCurrentSec] = useState(0)
+  const [searchCate, setSearchCate] = useState(false);
+  const [switching, setSwitching] = useState(false);
+  const [loadPage, setLoadPage] = useState(false)
+  const [openSettings, setOpenSettings] = useState(false)
+  const [startPage, setStartPage] = useState(true)
 
   localStorage.getItem('dark-mode');
 
@@ -25,542 +26,66 @@ export default function MainPage(){
     document.body.classList.add("dark-mode");
   }
 
-  const [settings, setSettings] = useState(false);
-
-  const loadGame = () => {
-    let howToPlay = document.getElementById("how-to-play");
-    let selectLists = document.getElementById("select-list");
-    let changeLangBtn = document.getElementById("changeLangBtn");
-    headApp.current.style.animation = "headAnimOut 900ms forwards"
-    mainApp.current.style.animation = "mainAnimOut 900ms forwards";
-    footApp.current.style.display = "block";
-    footApp.current.style.animation = "footAnimOut 900ms forwards";
-    howToPlay.style.display = "block";
-    selectLists.style.display = "none";
-    changeLangBtn.style.animation = "mainAnimOut 900ms forwards";
-    setTitle("Let's Guess");
-  }
-
-  const goBack = () => {
-    let goBackBtn = document.getElementById("goBackBtn");
-    let rightBtns = document.getElementById("right-btns-sec");
-    let preventBlock = document.getElementById("prevent");
-    headApp.current.style.animation = "headAnim 900ms forwards";
-    mainApp.current.style.animation = "mainAnim 900ms forwards";
-    footApp.current.style.animation = "footAnim 900ms forwards";
-    goBackBtn.style.animation = "mainAnim 900ms forwards";
-    rightBtns.style.animation = "mainAnim 900ms forwards";
-    preventBlock.style.visibility = "visible";
+  const switchSec = (title, index, animation, bg) => {
+    document.body.style.animation = animation;
+    setSwitching(true);
     setTimeout(() => {
-      preventBlock.style.visibility = "hidden";
-    },900)
-
-    if (document.body.classList.contains("dark-mode")){
-      document.body.style.animation = "changeBgGoBackDarkMode 1.8s forwards";
-    } else {
-      document.body.style.animation = "changeBgGoBack 1.8s forwards";
-    }
-
-    const selectBack = () => {loadGame()}
-    setTimeout(selectBack, 890)
-    if (clicked){
-      closeSearch();
-    }
+      setTitle(title);
+      setCurrentSec(index);
+      setSwitching(false);
+      document.body.style.backgroundColor = bg
+    }, 900)
   }
 
-  const playNow = () => {
-    let howToPlay = document.getElementById("how-to-play");
-    let selectLists = document.getElementById("select-list");
-    let goBackBtn = document.getElementById("goBackBtn");
-    let rightBtns = document.getElementById("right-btns-sec");
-    let changeLangBtn = document.getElementById("changeLangBtn");
-    let preventBlock = document.getElementById("prevent");
-    headApp.current.style.animation = "headAnim 900ms forwards";
-    mainApp.current.style.animation = "mainAnim 900ms forwards";
-    footApp.current.style.animation = "footAnim 900ms forwards";
-    changeLangBtn.style.animation = "mainAnim 900ms forwards";
-    preventBlock.style.visibility = "visible";
+  const selectedCate = () => {
+    document.body.style.animation = "pink_to_blue 900ms forwards"
+    setSwitching(true);
     setTimeout(() => {
-      preventBlock.style.visibility = "hidden";
-    },900)
-    
-    if (document.body.classList.contains("dark-mode")){
-      document.body.style.animation = "changeBgSelectCateDarkMode 1.8s";
-      setTimeout(() => {
-        document.body.style.backgroundColor = "#3f1b3c";
-      },1790)
-    } else {
-      document.body.style.animation = "changeBgSelectCate 1.8s";
-      setTimeout(() => {
-        document.body.style.backgroundColor = "#FFE0FD";
-      },1790)
-    }
-
-    const selectCate = () => {
-      headApp.current.style.animation = "headAnimOut 900ms forwards";
-      mainApp.current.style.animation = "mainAnimOut 900ms forwards";
-      footApp.current.style.display = "none";
-      goBackBtn.style.animation = "mainAnimOut 900ms forwards";
-      rightBtns.style.animation = "mainAnimOut 900ms forwards";
-      howToPlay.style.display = "none";
-      selectLists.style.display = "block";
-      setTitle('Select category')
-    }
-
-    setTimeout(selectCate, 890)
-  }
-
-  const clickToChangeLang = (lang) => {
-    closeChangeLang();
-    let changeLangBtn = document.getElementById("changeLangBtn");
-    headApp.current.style.animation = "headAnim 900ms forwards";
-    mainApp.current.style.animation = "mainAnim 900ms forwards";
-    footApp.current.style.animation = "footAnim 900ms forwards";
-    changeLangBtn.style.animation = "mainAnim 900ms forwards";
-
-    setTimeout(() => navigate(lang, {replace:true}), 800)
-  }
-
-  const clickToCate = () => {
-    let goBackBtn = document.getElementById("goBackBtn");
-    let selectLists = document.getElementById("select-list");
-    let loadingTxt = document.getElementById("loading");
-    let rightBtns = document.getElementById("right-btns-sec");
-    let preventBlock = document.getElementById("prevent");
-    let allCates = document.getElementById("all-cates");
-    headApp.current.style.animation = "headAnim 900ms forwards";
-    mainApp.current.style.animation = "mainAnim 900ms forwards";
-    footApp.current.style.animation = "footAnim 900ms forwards";
-    goBackBtn.style.animation = "mainAnim 900ms forwards";
-    rightBtns.style.animation = "mainAnim 900ms forwards";
-    preventBlock.style.visibility = "visible";
-    setTimeout(() => {
-      preventBlock.style.visibility = "hidden";
-    },900)
-
-    if (document.body.classList.contains("dark-mode")){
-      document.body.style.animation = "changeBgCateDarkMode 1.8s forwards";
-    } else {
-      document.body.style.animation = "changeBgCate 1.8s forwards";
-    }
-
-    const showLoading = () => {
-      selectLists.style.display = "none";
-      allCates.style.display = "none";
-      loadingTxt.style.display = "block";
-      mainApp.current.style.animation = "mainAnimOut 900ms forwards"
-    }
-
-    const hideLoading = () => {
-        mainApp.current.style.animation = "mainAnim 900ms forwards";
-    }
-    setTimeout(showLoading,890);
-    setTimeout(hideLoading,4000);
-  }
-
-  const CardCate = (props) => {
-    const clickCate = () => {
-      clickToCate();
-      const setLink = () => navigate(props.link, {replace:true})
-      setTimeout(setLink, 5000);
-    }
-    return (
-      <div className="card" onClick={clickCate}>
-        <h2>{props.category}</h2>
-      </div>
-    )
-  }
-
-  const openSettings = () => {
-    setSettings(true);
-    if (clicked){
-      closeSearch();
-    }
-    let settingsDrawer = document.getElementById("settings-drawer");
-    let settingsDrawerMask = document.getElementById("settings-drawer-mask");
-    let settingsDrawerBg = document.getElementById("settings-drawer-anim");
-    let settingsDrawerAnim = document.getElementById("circle");
-    let closeBtn = document.getElementById("close-settings-btn");
-
-    settingsDrawerMask.style.animation = "mainAnimOut 400ms forwards";
-    settingsDrawerAnim.style.animation = "settingsDrawerBg 800ms forwards";
-    settingsDrawerBg.style.display = "block";
-    closeBtn.style.animation = "mainAnimOut 300ms forwards";
-    setTimeout(() => {
-      settingsDrawer.style.display = "block";
-      settingsDrawer.style.animation = "settingsDrawerOpen 500ms forwards";
-    }, 200)
-  }
-
-  const closeSettings = (e) => {
-    let hiddenText = document.getElementById("hidden-text");
-    let warning = document.getElementById("warning-hidden-text");
-    const accept = () => {
-      setSettings(false);
-      let settingsDrawer = document.getElementById("settings-drawer");
-      let settingsDrawerMask = document.getElementById("settings-drawer-mask");
-      let settingsDrawerBg = document.getElementById("settings-drawer-anim");
-      let settingsDrawerAnim = document.getElementById("circle");
-      let closeBtn = document.getElementById("close-settings-btn");
-  
-      settingsDrawer.style.animation = "settingsDrawerClose 400ms forwards";
-      setTimeout(() => settingsDrawer.style.display = "none",400); 
-      setTimeout(() => settingsDrawerBg.style.display = "none",600);
-      
-      setTimeout(() => {
-        settingsDrawerMask.style.animation = "mainAnim 400ms forwards";
-        settingsDrawerAnim.style.animation = "settingsDrawerBgClose 400ms ease-out forwards";
-        closeBtn.style.animation = "mainAnim 300ms ease-in forwards";
-      }, 200)
-    }
-    if (
-      hiddenText.value.includes("ควย") ||
-      hiddenText.value.includes("เย็ด") ||
-      hiddenText.value.includes("เหี้ย") ||
-      hiddenText.value.includes("หี") ||
-      hiddenText.value.includes("แตด") ||
-      hiddenText.value.includes("สัส") ||
-      hiddenText.value.includes("ดอกทอง") ||
-      hiddenText.value.includes("มึง") ||
-      hiddenText.value.includes("โง่") ||
-      hiddenText.value.includes("ตาย") ||
-      hiddenText.value.includes("แดก") ||
-      hiddenText.value.includes("อีดอก") ||
-      hiddenText.value.includes("นรก") ||
-      hiddenText.value.includes("พ่อง") ||
-      hiddenText.value.includes("แม่ม") ||
-      hiddenText.value.includes("แม่ง") ||
-      hiddenText.value.includes("ดาก") ||
-      hiddenText.value.includes("หัวดอ") ||
-      hiddenText.value.includes("ตีน") ||
-      hiddenText.value.includes("ตอแหล") ||
-      hiddenText.value.includes("ฆ่า") ||
-      hiddenText.value.includes("เงิน") ||
-      hiddenText.value.includes("ห่า") ||
-      hiddenText.value.includes("เสือก") ||
-      hiddenText.value.includes("หำ") ||
-      hiddenText.value.toUpperCase().includes("fuck".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("shit".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("damn".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("cunt".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("cum".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("hell".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("bitch".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("ass".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("bastard".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("slut".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("dick".toUpperCase()) ||
-      hiddenText.value.includes("@")
-    ){
-      hiddenText.focus();
-      warning.classList.add("active");
-      setTimeout(() => warning.classList.remove("active"), 400);
-    } else {
-      accept();
-    }
-
-    if(
-      hiddenText.value.toUpperCase().includes("circum".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("hello".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("pass".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("mass".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("bass".toUpperCase()) ||
-      hiddenText.value.includes("ห่าน") ||
-      hiddenText.value.includes("ห่าง") ||
-      hiddenText.value.includes("หีบ")
-    ){
-      accept();
-    }
-  }
-
-  const pressToCloseSettings = e => {
-    let key = e.key;
-    if (key == "Escape" && settings){
-      closeSettings(e);
-    }
-  }
-
-  const checkHiddenText = () => {
-    let hiddenText = document.getElementById("hidden-text");
-    let warning = document.getElementById("warning-hidden-text");
-
-    if (
-      hiddenText.value.includes("ควย") ||
-      hiddenText.value.includes("เย็ด") ||
-      hiddenText.value.includes("เหี้ย") ||
-      hiddenText.value.includes("หี") ||
-      hiddenText.value.includes("แตด") ||
-      hiddenText.value.includes("สัส") ||
-      hiddenText.value.includes("ดอกทอง") ||
-      hiddenText.value.includes("มึง") ||
-      hiddenText.value.includes("โง่") ||
-      hiddenText.value.includes("ตาย") ||
-      hiddenText.value.includes("แดก") ||
-      hiddenText.value.includes("อีดอก") ||
-      hiddenText.value.includes("นรก") ||
-      hiddenText.value.includes("พ่อง") ||
-      hiddenText.value.includes("แม่ม") ||
-      hiddenText.value.includes("แม่ง") ||
-      hiddenText.value.includes("ดาก") ||
-      hiddenText.value.includes("หัวดอ") ||
-      hiddenText.value.includes("ตีน") ||
-      hiddenText.value.includes("ตอแหล") ||
-      hiddenText.value.includes("ฆ่า") ||
-      hiddenText.value.includes("เงิน") ||
-      hiddenText.value.includes("ห่า") ||
-      hiddenText.value.includes("เสือก") ||
-      hiddenText.value.includes("หำ") ||
-      hiddenText.value.toUpperCase().includes("fuck".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("shit".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("damn".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("cunt".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("cum".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("hell".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("bitch".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("ass".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("bastard".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("slut".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("dick".toUpperCase()) ||
-      hiddenText.value.includes("@")
-    ){
-      localStorage.setItem("text-hidden", "");
-      if (hiddenText.value.includes("@")){
-        warning.innerHTML = "*@ is not allowed in this text field.";
-      } else {
-        warning.innerHTML = "*Please avoid using impolite or sensitive words.";
-      }
-      hiddenText.classList.add("warning");
-      warning.style.opacity = "1";
-      warning.style.visibility = "visible";
-      warning.style.transform = "translateY(0px)";
-      warning.style.transition = "all 200ms";
-    } else {
-      warning.style.opacity = "0";
-      warning.style.visibility = "hidden";
-      warning.style.transform = "translateY(5px)";
-      warning.style.transition = "all 200ms";
-      hiddenText.classList.remove("warning");
-    }
-
-    if (
-      hiddenText.value.toUpperCase().includes("circum".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("hello".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("pass".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("mass".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("bass".toUpperCase()) ||
-      hiddenText.value.includes("ห่าน") ||
-      hiddenText.value.includes("ห่าง") ||
-      hiddenText.value.includes("หีบ")
-    ){
-      warning.style.opacity = "0";
-      warning.style.visibility = "hidden";
-      warning.style.transition = "all 200ms";
-      warning.style.transform = "translateY(5px)";
-      hiddenText.classList.remove("warning");
-    }
+      setCurrentSec(2)
+      setLoadPage(true)
+      setSwitching(false);
+    }, 900)
   }
 
   useEffect(() => {
-    loadGame();
-    let hiddenText = document.getElementById("hidden-text");
-    if (localStorage.getItem("timer") == 60){
-      setTimeout(()=>localStorage.setItem("timer-continue",60),1)
-    }
-    if (localStorage.getItem("timer") == 120){
-      setTimeout(()=>localStorage.setItem("timer-continue",120),1)
-    }
-    if(localStorage.length == 0 || localStorage.getItem("timer-continue") == 'null'){
-      localStorage.setItem("timer",60);
-      localStorage.setItem("timer-continue",60);
-      localStorage.setItem("text-hidden", "")
-      localStorage.setItem("text-hidden-th", "")
-      localStorage.setItem("text-hidden-lo", "")
-      localStorage.setItem("text-hidden-zh", "")
-      localStorage.setItem("point", 0);
-      localStorage.setItem("dark-mode", 'false')
-      hiddenText.value = localStorage.setItem("text-hidden", "");
-    }
-    hiddenText.value = localStorage.getItem("text-hidden");
+    setTimeout(() => {
+      setStartPage(false)
+    }, 900)
   }, [])
-  window.addEventListener("keydown", pressToCloseSettings);
-
-  const toggleTimer = (e) => {
-    localStorage.setItem("timer-switch", timerSwitch);
-    localStorage.setItem("timer-sixty", timerSixty);
-    setTimerSwitch(e.target.checked);
-    if (!timerSwitch){
-      setTimerSixty(true);
-      setTimerSwitch(true);
-      localStorage.setItem("timer", 120);
-      localStorage.setItem("timer-continue", 120);
-    } else {
-      setTimerSixty(false);
-      setTimerSwitch(false);
-      localStorage.setItem("timer", 60);
-      localStorage.setItem("timer-continue", 60);
-    }
-  }
-
-  const typeHiddenText = () => {
-    let hiddenText = document.getElementById("hidden-text").value;
-    localStorage.setItem("text-hidden", hiddenText);
-  }
-  
-  const changeLang = () => {
-    let langList = document.getElementById("langList");
-    let langListBg = document.getElementById("langList-bg");
-    let closeBtn = document.getElementById("close-changeLang-btn");
-    let langListOverlay = document.getElementById("langList-overlay");
-    langList.classList.add("active");
-    langListBg.classList.add("active");
-    langList.style.transitionDelay = "300ms";
-    langListBg.style.transitionDelay = "0ms";
-    closeBtn.classList.add("active");
-    langListOverlay.classList.add("active");
-  }
-  const closeChangeLang = () => {
-    let langList = document.getElementById("langList");
-    let langListBg = document.getElementById("langList-bg");
-    let closeBtn = document.getElementById("close-changeLang-btn");
-    let langListOverlay = document.getElementById("langList-overlay");
-    langList.classList.remove("active");
-    langList.style.transitionDelay = "0ms";
-    langListBg.classList.remove("active");
-    langListBg.style.transitionDelay = "200ms";
-    closeBtn.classList.remove("active");
-    langListOverlay.classList.remove("active");
-  }
-  const darkMode = () => {
-    document.body.classList.add("dark-mode");
-    document.body.style.backgroundColor = "#3f1b3c";
-    document.body.style.transition = "all 300ms";
-    localStorage.setItem('dark-mode', 'true');
-  }
-
-  const lightMode = () => {
-    document.body.classList.remove("dark-mode");
-    document.body.style.backgroundColor = "#FFE0FD";
-    document.body.style.transition = "all 300ms";
-    localStorage.setItem('dark-mode', 'false');
-  }
-
-  const AllCates = () => {    
-    const cates = sortedCategories.filter(item => item.category.toUpperCase().includes(search.toUpperCase()))
-    return (
-      <div className="select-lists">
-        {cates.map((s) => (
-          <CardCate category={s.category} link={s.link}/>
-        ))}
-      </div>
-    )
-  }
-
-  const openSearch = () => {
-    let searchBtn = document.getElementById("searchBtn");
-    let closeBtn = document.getElementById("searchCloseBtn");
-    let searchInput = document.getElementById("search-input");
-    let searchList = document.getElementById("select-list");
-    let allCates = document.getElementById("all-cates");
-    let heading = document.getElementById("heading");
-
-    heading.classList.add("active");
-    searchList.style.opacity = "0";
-    searchList.style.transition = "all 200ms";
-    setTimeout(() => {
-      searchList.style.display = "none";
-      allCates.style.display = "block";
-    }, 200);
-    setTimeout(() => {
-      allCates.style.opacity = "1";
-      allCates.style.transition = "opacity 300ms";
-    },300)
-
-    searchBtn.style.animation = "mainAnim 100ms forwards";
-    searchInput.style.width = "40%";
-    searchInput.style.visibility = "visible";
-    searchInput.style.transition = "all 400ms";
-    setTimeout(() => {
-      searchInput.classList.add("place");
-      closeBtn.style.animation = "mainAnimOut 300ms forwards";
-    },300)
-    setClicked(true);
-  }
-
-  const closeSearch = () => {
-    let searchBtn = document.getElementById("searchBtn");
-    let closeBtn = document.getElementById("searchCloseBtn");
-    let searchInput = document.getElementById("search-input");
-    let searchList = document.getElementById("select-list");
-    let allCates = document.getElementById("all-cates");
-    let noResult = document.getElementById("no-result");
-    let heading = document.getElementById("heading");
-
-    heading.classList.remove("active");
-    searchInput.value = "";
-    searchInput.classList.remove("place");
-    noResult.style.display = "none";
-
-    allCates.style.opacity = "0";
-    allCates.style.transition = "all 200ms";
-    setTimeout(() => {
-      allCates.style.display = "none";
-      searchList.style.display = "block";
-    }, 200);
-    setTimeout(() => {
-      searchList.style.opacity = "1";
-      searchList.style.transition = "opacity 300ms";
-    },300)
-
-    closeBtn.style.animation = "mainAnim 100ms forwards";
-    searchInput.style.width = "55.2px";
-    searchInput.style.transition = "width 400ms";
-    setTimeout(() => {
-      searchInput.style.visibility = "hidden";
-      searchBtn.style.animation = "mainAnimOut 200ms forwards"
-    },300)
-
-    setSearch('')
-  }
 
   return (
     <div className="App">
-      <div id="prevent" className="invisible-block"></div>
-      <div id="lets-start">
-      <button onClick={goBack} id="goBackBtn" className="btn">
-        <FontAwesomeIcon icon={faChevronLeft} className="back-arrow"/>
-        Go back
-      </button>
-        <header className="app-head" ref={headApp}>
-          <h1 id="heading">{title}</h1>
-        </header>
-          <div id="right-btns-sec">
-            <button id="settingsBtn" className="btn small-btn" onClick={openSettings}>
-              <FontAwesomeIcon icon={faGear}/>
-            </button>
-            <div id="settings-tooltip" className="tooltips">
-              <p>Settings</p>
+      <Settings open={openSettings} onClose={() => setOpenSettings(false)}/>
+
+      {!loadPage && (
+        <>
+          <div className={`header-btns${currentSec === 1 ? ' fade-in' : ''}`}>
+            <ButtonWithIcon text="Go back" icon={faChevronLeft} onClick={() => switchSec("Let's Guess", 0, "pink_to_green 900ms forwards")}/>
+            <div className="right-menu-top">
+              <SearchBar open={searchCate} onOpen={setSearchCate} onClose={() => setSearchCate(false)}/>
+              <Button size='small' onClick={setOpenSettings}>
+                <FontAwesomeIcon icon={faGear}/>
+              </Button>
             </div>
-            <SearchBar onOpen={openSearch} onClose={closeSearch} onSearch={e => setSearch(e.target.value)}/>
           </div>
-        <div id="changeLangBtn">
-          <button onClick={changeLang} className="btn">
-            <FontAwesomeIcon icon={faLanguage} />
-            Select language
-          </button>
-        </div>
-        <div id="langList-bg"></div>
-        <div id="langList-overlay" onClick={closeChangeLang}></div>
-        <div id="langList">
-          <h1>Select language</h1>
-          <FontAwesomeIcon icon={faClose} id="close-changeLang-btn" onClick={closeChangeLang}/>
-          <ul className="langs">
-            <li className="active">English</li>
-            <li onClick={() => clickToChangeLang("/th")}>ไทย / Thai</li>
-            <li onClick={() => clickToChangeLang("/lo")}>ລາວ / Lao</li>
-            <li onClick={() => clickToChangeLang("/zh")}>中文 / Chinese</li>
-          </ul>
-        </div>
-        <main className="app-main" ref={mainApp}>
+          <header className={`app-head ${switching ? 'active' : 'inactive'}${startPage ? ' start' : ''}`}>
+            <h1 id="heading">{title}</h1>
+          </header>
+        </>
+      )}
+
+      <main className={`app-main ${switching ? 'active' : 'inactive'}${startPage ? ' start' : ''}`}>
+        {currentSec === 1 ? (
+          <section id="select-list">
+            {cateTitles.map((cate) => (
+              <CardCateWithTitle key={cate} title={cate} data={cateLists[cate.toLowerCase()]} onSelect={selectedCate}/>
+            ))};
+          </section>
+        ) : currentSec === 2 ? (
+          <div className="">
+            <Loading text='Loading...'/>
+          </div>
+        ) : (
           <div id="how-to-play">
             <h2>How to play:</h2>
             <ol>
@@ -571,155 +96,12 @@ export default function MainPage(){
               <li>You have 60 or 120 seconds, depending on your setting, to hint the answers.</li>
             </ol>
           </div>
-          <div id="all-cates">
-            <AllCates />
-            <div id="no-result">
-              <FontAwesomeIcon icon={faExclamationCircle} style={{fontSize:"54px"}}/>
-              <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>No search results</h1>
-              <p style={{fontSize:"calc(12px + 0.5vw)"}}>Please try another keyword.</p>
-            </div>
-          </div>
-          <div id="select-list">
-            <h2 className="list-titles">Eating</h2>
-            <div className="select-lists">
-              {
-                cateLists.eating.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">Geography</h2>
-            <div className="select-lists">
-              {
-                cateLists.geography.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">Languages</h2>
-            <div className="select-lists">
-              {
-                cateLists.languages.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">Films</h2>
-            <div className="select-lists">
-              {
-                cateLists.films.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">Music</h2>
-            <div className="select-lists">
-              {
-                cateLists.music.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">Games</h2>
-            <div className="select-lists">
-              {
-                cateLists.games.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">Sports</h2>
-            <div className="select-lists">
-              {
-                cateLists.sports.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">Businesses</h2>
-            <div className="select-lists">
-              {
-                cateLists.businesses.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">Science</h2>
-            <div className="select-lists">
-              {
-                cateLists.science.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">Other</h2>
-            <div className="select-lists">
-              {
-                cateLists.other.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-          </div>
-          <div id="loading">
-            <div className="loading-icon">
-              <div className="inner-icon"></div>
-            </div>
-            <h2>Loading...</h2>
-          </div>
-        </main>
-        <footer className="app-foot" ref={footApp}>
-          <h2>Are you ready?</h2>
-          <button onClick={playNow} className="btn">Play now</button>
-        </footer>
-
-        <div id="settings-drawer-mask" onClick={closeSettings}></div>
-        <div id="settings-drawer-anim">
-          <div id="circle"></div>
-          <FontAwesomeIcon icon={faClose} id="close-settings-btn" onClick={closeSettings}/>
-        </div>
-        <div id="settings-drawer">
-          <h1>Settings</h1>
-          <p style={{marginBottom:0}}><strong>Note: </strong> Your settings will be automatically saved when you close this sidebar.</p>
-          <div className="setting-sec">
-            <h2>Timer</h2>
-            <label className="switch" htmlFor="switch-timer">
-              <input type="checkbox" id="switch-timer" checked={timerSwitch} onChange={toggleTimer}/>
-              <span className="switch-toggle"></span>
-              <div className="setting-text">
-                <p className="second">60 seconds</p>
-                <p className="second">120 seconds</p>
-              </div>
-            </label>
-            <div id="block" className={`${timerSwitch ? "active" : ""}`}></div>
-            <p>The timer is displayed at the top of the screen when playing the game.</p>
-          </div>
-          <div className="setting-sec">
-            <h2>Screen appearance</h2>
-            <button className="appear light-btn" onClick={lightMode}>
-            <FontAwesomeIcon icon={faSun} style={{marginRight:"8px"}}/> Light Mode
-            </button>
-            <button className="appear dark-btn" onClick={darkMode}>
-            <FontAwesomeIcon icon={faMoon} style={{marginRight:"8px"}}/> Dark Mode
-            </button>
-          </div>
-          <div className="setting-sec">
-            <h2>Hidden answer text</h2>
-            <input type="text" id="hidden-text" className="text-input" placeholder="The answer is hidden" onInput={checkHiddenText} onChange={typeHiddenText} autoComplete="off"/>
-            <p>This text will be shown when the hint giver presses 'Hide answer' button, the default text is 'The answer is hidden'.</p>
-            <p id="warning-hidden-text"></p>
-          </div>
-        </div>
-      </div>
+        )}
+      </main>
+      <footer className={`app-foot ${switching ? 'active' : currentSec > 0 ? 'hide-footer' : 'inactive'}${startPage ? ' start' : ''}`}>
+        <h2>Are you ready?</h2>
+        <Button onClick={() => switchSec('Select category', 1, "green_to_pink 900ms forwards", "$pink_bg")}>Play now</Button>
+      </footer>
     </div>
-  );
+  )
 }

@@ -57,6 +57,19 @@ export const cateLists = {
   ]
 }
 
+export const cateTitles = [
+  {key: 'อาหาร', title:'อาหาร', dataKey: 'eatingTh'},
+  {key: 'ภูมิศาสตร์', title:'ภูมิศาสตร์', dataKey: 'geographyTh'},
+  {key: 'ดนตรี', title:'ดนตรี', dataKey: 'musicTh'},
+  {key: 'ภาพยนตร์', title:'ภาพยนตร์', dataKey: 'filmsTh'},
+  {key: 'เกม', title:'เกม', dataKey: 'gamesTh'},
+  {key: 'ธุรกิจ', title:'ะุรกิจ', dataKey: 'businessesTh'},
+  {key: 'ภาษา', title:'ภาษา', dataKey: 'languagesTh'},
+  {key: 'สิ่งของ', title:'สิ่งของ', dataKey: 'thingsTh'},
+  {key: 'วิทยาศาสตร์', title:'วิทยาศาสตร์', dataKey: 'scienceTh'},
+  {key: 'อื่นๆ', title:'อื่นๆ', dataKey: 'otherTh'}
+]
+
 const flattenedCategories = Object.values(cateLists).reduce(
   (accumulator, currentCategory) => [...accumulator, ...currentCategory],
   []

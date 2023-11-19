@@ -64,6 +64,8 @@ export const cateLists = {
   ]
 }
 
+export const cateTitles = ["Eating", "Geography", "Languages", "Films", "Music", "Games", "Sports", "Businesses", "Science", "Other"]
+
 const flattenedCategories = Object.values(cateLists).reduce(
   (accumulator, currentCategory) => [...accumulator, ...currentCategory],
   []

@@ -4,7 +4,7 @@ import MainPage from "./main";
 import NotFound from "./404";
 import Questions from "./components/questions";
 
-import MainPageTh from "./th/main"
+import MainPageTh from "./th/main-new"
 import QuestionsTh from "./th/components/questions";
 
 import MainPageLao from "./lao/main";
@@ -15,6 +15,7 @@ import QuestionsZh from "./zh/components/questions";
 
 import MainPageDe from "./de/main";
 import QuestionsDe from "./de/components/questions";
+import "./App-new.scss"
 
 export default function App(){
   return (

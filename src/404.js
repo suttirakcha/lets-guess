@@ -1,7 +1,6 @@
 import { faFaceFrownOpen } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
-import "./App.scss";
 
 export default function NotFound(){
   const [darkMode, setDarkMode] = useState(localStorage.getItem("dark-mode") == "true");
