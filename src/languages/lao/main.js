@@ -1,20 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck,faChevronLeft,faXmark,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faLanguage } from "@fortawesome/free-solid-svg-icons";
+import { faCheck,faXmark,faChevronLeft,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faChevronDown,faLanguage, faEarthAsia } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { cateLists, sortedCategories } from "./components/categories";
-import SearchBar from "./components/searchbar";
+import { cateLists, sortedCategories } from "./categories";
 
-export default function MainPageZh(){
+export default function MainPageLao(){
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
   const [timerSixty, setTimerSixty] = useState(localStorage.getItem("timer-sixty") === 'true');
-  const [title, setTitle] = useState('我们猜吧')
+  const [title, setTitle] = useState('ມາທາຍຄຳກັນເດີ');
 
   const headApp = useRef(null);
   const mainApp = useRef(null);
   const footApp = useRef(null);
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const [clicked, setClicked] = useState(false);
 
@@ -37,7 +36,7 @@ export default function MainPageZh(){
     howToPlay.style.display = "block";
     selectLists.style.display = "none";
     changeLangBtn.style.animation = "mainAnimOut 900ms forwards";
-    setTitle("我们猜吧");
+    setTitle('ມາທາຍຄຳກັນເດີ');
   }
 
   const goBack = () => {
@@ -103,7 +102,7 @@ export default function MainPageZh(){
       rightBtns.style.animation = "mainAnimOut 900ms forwards";
       howToPlay.style.display = "none";
       selectLists.style.display = "block";
-      setTitle("选择类别");
+      setTitle("ເລືອກໝວດໝູ່");
     }
 
     setTimeout(selectCate, 890)
@@ -321,16 +320,15 @@ export default function MainPageZh(){
       hiddenText.value.toUpperCase().includes("bastard".toUpperCase()) ||
       hiddenText.value.toUpperCase().includes("slut".toUpperCase()) ||
       hiddenText.value.toUpperCase().includes("dick".toUpperCase()) ||
-      hiddenText.value.includes("草泥马") ||
       (hiddenText.value.includes("@"))
     ){
       if (hiddenText.value.includes("@")){
-        warning.innerHTML = "*此文本字段中不允许用 @。";
+        warning.innerHTML = "*ບໍ່ອະນຸຍາດໃຫ້ໃຊ້ @ ໃນພື້ນທີ່ຂໍ້ຄວາມນີ້.";
       } else {
-        warning.innerHTML = "*请避免用不礼貌或敏感的词。";
+        warning.innerHTML = "*ກະລຸນາຫຼີກລ່ຽງການນຳໃຊ້ຄຳທີ່ບໍ່ສຸພາບ ຫຼືຄຳທີ່ອ່ອນໄຫວ.";
       }
       hiddenText.classList.add("warning");
-      localStorage.setItem("text-hidden-th", "");
+      localStorage.setItem("text-hidden-lo", "");
       warning.style.opacity = "1";
       warning.style.visibility = "visible";
       warning.style.transform = "translateY(0px)";
@@ -378,9 +376,9 @@ export default function MainPageZh(){
       localStorage.setItem("text-hidden-lo", "")
       localStorage.setItem("text-hidden-zh", "")
       localStorage.setItem("point", 0);
-      hiddenText.value = localStorage.setItem("text-hidden-zh", "");
+      hiddenText.value = localStorage.setItem("text-hidden-lo", "");
     }
-    hiddenText.value = localStorage.getItem("text-hidden-zh");
+    hiddenText.value = localStorage.getItem("text-hidden-lo");
   }, [])
   window.addEventListener("keydown", pressToCloseSettings);
 
@@ -402,9 +400,9 @@ export default function MainPageZh(){
     console.log(localStorage);
   }
 
-  const typeHiddenTextZh = () => {
+  const typeHiddenTextLo = () => {
     let hiddenText = document.getElementById("hidden-text").value;
-    localStorage.setItem("text-hidden-zh", hiddenText);
+    localStorage.setItem("text-hidden-lo", hiddenText);
   }
   const changeLang = () => {
     let langList = document.getElementById("langList");
@@ -470,7 +468,7 @@ export default function MainPageZh(){
     searchInput.style.transition = "all 400ms";
     setTimeout(() => {
       searchInput.classList.add("place");
-      closeBtn.style.animation = "mainAnimOut 300ms forwards";
+      closeBtn.style.animation = "mainAnimOut 300ms forwards"
     },300)
     setClicked(true);
   }
@@ -562,12 +560,12 @@ export default function MainPageZh(){
   }
 
   return (
-    <div className="App">
+    <div className="App lao">
       <div id="prevent" className="invisible-block"></div>
       <div id="lets-start">
       <button onClick={goBack} id="goBackBtn" className="btn">
         <FontAwesomeIcon icon={faChevronLeft} className="back-arrow"/>
-        回去
+        ກັບ
       </button>
         <header className="app-head" ref={headApp}>
           <h1 id="heading">{title}</h1>
@@ -576,68 +574,70 @@ export default function MainPageZh(){
             <button id="settingsBtn" className="btn small-btn" onClick={openSettings}>
               <FontAwesomeIcon icon={faGear}/>
             </button>
-            <SearchBar onOpen={openSearch} onClose={closeSearch} onSearch={searchCate}/>
+            <div id="settings-tooltip" className="tooltips">
+              <p>ການຕັ້ງຄ່າ</p>
+            </div>
           </div>
           <div id="changeLangBtn">
-            <button onClick={changeLang} className="btn">
+            <button onClick={changeLang} className="btn small-btn">
               <FontAwesomeIcon icon={faLanguage} />
-              选择语言
+              ເລືອກພາສາ
             </button>
           </div>
           <div id="langList-bg"></div>
           <div id="langList-overlay" onClick={closeChangeLang}></div>
           <div id="langList">
-            <h1>选择语言</h1>
+            <h1>ເລືອກພາສາ</h1>
             <FontAwesomeIcon icon={faClose} id="close-changeLang-btn" onClick={closeChangeLang}/>
             <ul className="langs">
-              <li className="active">中文</li>
-              <li onClick={() => clickToChangeLang("/")}>English / 英文</li>
-              <li onClick={() => clickToChangeLang("/th")}>ไทย / 泰文</li>
-              <li onClick={() => clickToChangeLang("/lo")}>ລາວ / 老挝语</li>
+              <li className="active">ລາວ</li>
+              <li onClick={() => clickToChangeLang("/")}>English / ອັງກິດ</li>
+              <li onClick={() => clickToChangeLang("/th")}>ไทย / ໄທ</li>
+              <li onClick={() => clickToChangeLang("/zh")}>中文 / ຈີນ</li>
             </ul>
           </div>
         <main className="app-main" ref={mainApp}>
           <div id="how-to-play">
-            <h2>玩法:</h2>
+            <h2>ວິທີຫຼິ້ນ:</h2>
             <ol>
-              <li>暗示人只可以见答案，也可以暗示答案，所以玩家可以猜在屏幕上的答案。</li>
-              <li>暗示人可以在屏幕的右上角按 ”隐藏答案“ 隐藏答案。</li>
-              <li>如果玩家猜正确，按 “<FontAwesomeIcon icon={faCheck}/>” 转到下一个的单词。</li>
-              <li>如果玩家猜不正确或不知道答案是什么，按 “<FontAwesomeIcon icon={faXmark}/>” 跳过到下一步的单词。</li>
-              <li>你有60或120秒（根据你的设置）暗示答案。</li>
+              <li>ຄົນໃບ້ຄຳສາມາດເຫັນຄຳຕອບໄດ້ເທົ່ານັ້ນ ແລະໃຫ້ໃບ້ຄຳຕອບເພື່ອໃຫ້ຄົນຫຼິ້ນສາມາດເດົາຄຳຕອບທີ່ປະກົດໃນໜ້າຈໍໄດ້.</li>
+              <li>ຄົນໃບ້ຄຳສາມາດເຊື່ອງຄຳຕອບໄດ້ໂດຍກົດປຸ່ມ "ເຊື່ອງຄຳຕອບ" ໃນມຸມຂວາຂອງຈໍ.</li>
+              <li>ຖ້າຄົນຫຼິ້ນເດົາຖືກ ໃຫ້ກົດປຸ່ມ <FontAwesomeIcon icon={faCheck}/> ເພື່ອໄປຍັງຄຳຕໍ່ໄປ.</li>
+              <li>ຖ້າຄົນຫຼິ້ນເດົາຜິດ ຫຼືບໍ່ຮູ້ຄຳຕອບ ໃຫ້ກົດປຸ່ມ <FontAwesomeIcon icon={faXmark}/> ເພື່ອຂ້າມຄຳຕອບ.</li>
+              <li>ເຈົ້າມີເວລາ 60 ຫຼື 120 ວິນາທີ (ຂຶ້ນຢູ່ກັບການຕັ້ງຄ່າຂອງເຈົ້າ) ໃນການເດົາຄຳຕອບ.</li>
             </ol>
           </div>
           <div id="all-cates">
             <AllCates />
             <div id="no-result">
               <FontAwesomeIcon icon={faExclamationCircle} style={{fontSize:"54px"}}/>
-              <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>无结果</h1>
-              <p style={{fontSize:"calc(12px + 0.5vw)"}}>请试试其他的关键词</p>
+              <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>ບໍ່ພົບຜົນໄດ້ຮັບ</h1>
+              <p style={{fontSize:"calc(12px + 0.5vw)"}}>ກະລຸນາລອງຄີເວິດອື່ນ</p>
             </div>
           </div>
           <div id="select-list">
-            <h2 className="list-titles">食物</h2>
+            <h2 className="list-titles">ອາຫານ</h2>
             <div className="select-lists">
               {
-                cateLists.foodsZh.map((cate) => (
+                cateLists.eatingLo.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className="list-titles">地理</h2>
+            <h2 className="list-titles">ພູມສາດ</h2>
             <div className="select-lists">
               {
-                cateLists.geographyZh.map((cate) => (
+                cateLists.geographyLo.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className="list-titles">其他</h2>
+            <h2 className="list-titles">ອື່ນໆ</h2>
             <div className="select-lists">
               {
-                cateLists.otherZh.map((cate) => (
+                cateLists.otherLo.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
@@ -647,12 +647,12 @@ export default function MainPageZh(){
             <div className="loading-icon">
                 <div className="inner-icon"></div>
             </div>
-            <h2>加载中...</h2>
+            <h2>ກຳລັງໂຫຼດ...</h2>
           </div>
         </main>
         <footer className="app-foot" ref={footApp}>
-          <h2>准备好了吗？</h2>
-          <button onClick={playNow} className="btn">玩吧</button>
+          <h2>ພ້ອມແລ້ວບໍ່?</h2>
+          <button onClick={playNow} className="btn">ຫຼິ້ນເລີຍ</button>
         </footer>
 
         <div id="settings-drawer-mask" onClick={closeSettings}></div>
@@ -661,34 +661,34 @@ export default function MainPageZh(){
           <FontAwesomeIcon icon={faClose} id="close-settings-btn" onClick={closeSettings}/>
         </div>
         <div id="settings-drawer">
-          <h1>设置</h1>
-          <p style={{marginBottom:0}}><strong>注意: </strong>你关此边栏时，你的设置将自动保存。</p>
+          <h1>ການຕັ້ງຄ່າ</h1>
+          <p style={{marginBottom:0}}><strong>ໝາຍເຫດ: </strong> ການຕັ້ງຄ່າຂອງເຈົ້າຈະຖືກບັນທຶກໂດຍອັດຕະໂນມັດເມື່ອເຈົ້າປິດແຖບດ້ານຂ້າງນີ້.</p>
           <div className="setting-sec">
-            <h2>定时器</h2>
+            <h2>ໂມງຈັບເວລາ</h2>
             <label className="switch" htmlFor="switch-timer">
               <input type="checkbox" id="switch-timer" checked={timerSwitch} onChange={toggleTimer}/>
               <span className="switch-toggle"></span>
               <div className="setting-text">
-                <p className="second-th">60 秒</p>
-                <p className="second-th">120 秒</p>
+                <p className="second-th">60 ວິນາທີ</p>
+                <p className="second-th">120 ວິນາທີ</p>
               </div>
             </label>
             <div id="block" className={`${timerSwitch ? "active" : ""}`}></div>
-            <p>定时器玩游戏时在屏幕上展示。</p>
+            <p>ໂມງຈັບເວລາຈະຖືກສະແດງດ້ານເທິງຂອງຈໍເມື່ອຫຼິ້ນເກມ.</p>
           </div>
           <div className="setting-sec">
-            <h2>屏幕出现</h2>
+            <h2>ໂໝດໜ້າຈໍ</h2>
             <button className="appear light-btn" onClick={lightMode}>
-            <FontAwesomeIcon icon={faSun} style={{marginRight:"8px"}}/> 灯光模式
+            <FontAwesomeIcon icon={faSun} style={{marginRight:"8px"}}/> ໂໝດສີສະຫວ່າງ
             </button>
             <button className="appear dark-btn" onClick={darkMode}>
-            <FontAwesomeIcon icon={faMoon} style={{marginRight:"8px"}}/> 黑暗模式
+            <FontAwesomeIcon icon={faMoon} style={{marginRight:"8px"}}/> ໂໝດສີເຂົ້ມ
             </button>
           </div>
           <div className="setting-sec">
-            <h2>隐藏答案的本文</h2>
-            <input type="text" id="hidden-text" className="text-input" placeholder="答案被隐藏" onInput={checkHiddenText} onChange={typeHiddenTextZh} autoComplete="off"/>
-            <p>暗示人按 “隐藏答案” 的时候，<br/>文本会展示。默认文本是 “答案被隐藏”</p>
+            <h2>ຂໍ້ຄວາມເມື່ອເຊື່ອງຄຳຕອບ</h2>
+            <input type="text" id="hidden-text" className="text-input" placeholder="ຄຳຕອບຖືກເຊື່ອງໄວ້" onInput={checkHiddenText} onChange={typeHiddenTextLo} autoComplete="off"/>
+            <p>ຂໍ້ຄວາມຈະຖືກສະແດງເມື່ອຄົນໃບ້ຄຳກົດປຸ່ມ "ເຊື່ອງຄຳຕອບ". <br/>ຂໍ້ຄວາມເລິ່ມຕົ້ນຄື "ຄຳຕອບຖືກເຊື່ອງໄວ້"</p>
             <p id="warning-hidden-text"></p>
           </div>
         </div>

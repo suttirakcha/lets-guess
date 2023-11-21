@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export function Button({children, size, ...props}){
   return (
-    <button className={`${size === 'small' ? 'small-btn' : 'btn'}`} {...props}>{children}</button>
+    <button className={`${size === 'small' ? 'small-btn' : size === 'medium' ? 'medium-btn' : 'btn'}`} {...props}>{children}</button>
   )
 }
 

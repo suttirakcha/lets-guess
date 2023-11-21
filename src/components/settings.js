@@ -1,12 +1,15 @@
 import DrawerCircle from "./drawers/drawerCircle";
 import ToggleSelect from "./toggleSelect";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck,faXmark,faChevronLeft,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faChevronDown,faLanguage, faEarthAsia } from "@fortawesome/free-solid-svg-icons";
+import { ThemeContext } from "./provider/themeProvider";
 
 export default function Settings({open, onClose}){
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
   const [timerSixty, setTimerSixty] = useState(localStorage.getItem("timer-sixty") === 'true');
+
+  const theme = useContext(ThemeContext)
 
   const toggleTimer = (e) => {
     localStorage.setItem("timer-switch", timerSwitch);
@@ -27,11 +30,15 @@ export default function Settings({open, onClose}){
 
   const darkMode = () => {
     document.body.classList.add("dark-mode");
+    document.body.style.backgroundColor = "#3f1b3c";
+    document.body.style.transition = "all 300ms";
     localStorage.setItem('dark-mode', 'true');
   }
 
   const lightMode = () => {
     document.body.classList.remove("dark-mode");
+    document.body.style.backgroundColor = "#FFE0FD";
+    document.body.style.transition = "all 300ms";
     localStorage.setItem('dark-mode', 'false');
   }
 
@@ -47,12 +54,14 @@ export default function Settings({open, onClose}){
       </div>
       <div className="setting-sec">
         <h2>Screen appearance</h2>
-        <button className="appear light-btn" onClick={lightMode}>
-          <FontAwesomeIcon icon={faSun} /> Light Mode
-        </button>
-        <button className="appear dark-btn" onClick={darkMode}>
-          <FontAwesomeIcon icon={faMoon} /> Dark Mode
-        </button>
+        <div className="screen-appearance">
+          <button className="appear light-btn" onClick={lightMode}>
+            <FontAwesomeIcon icon={faSun} /> Light Mode
+          </button>
+          <button className="appear dark-btn" onClick={darkMode}>
+            <FontAwesomeIcon icon={faMoon} /> Dark Mode
+          </button>
+        </div>
       </div>
     </DrawerCircle>
   )

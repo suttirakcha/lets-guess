@@ -1,15 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck,faChevronLeft,faXmark,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faChevronDown,faLanguage, faEarthAsia } from "@fortawesome/free-solid-svg-icons";
+import { faCheck,faXmark,faChevronLeft,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faChevronDown,faLanguage, faEarthAsia } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { cateLists, sortedCategories } from "./components/categories";
-import SearchBar from "./components/searchbar";
+import { cateLists, sortedCategories } from "./categories";
 
-export default function MainPage(){
+export default function MainPageDe(){
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
   const [timerSixty, setTimerSixty] = useState(localStorage.getItem("timer-sixty") === 'true');
-  const [title, setTitle] = useState('มาทายคำกันเถอะ')
-  const [search, setSearch] = useState('');
+  const [title, setTitle] = useState('Lass uns erraten');
 
   const headApp = useRef(null);
   const mainApp = useRef(null);
@@ -38,7 +36,7 @@ export default function MainPage(){
     howToPlay.style.display = "block";
     selectLists.style.display = "none";
     changeLangBtn.style.animation = "mainAnimOut 900ms forwards";
-    setTitle('มาทายคำกันเถอะ')
+    setTitle('Lass uns erraten');
   }
 
   const goBack = () => {
@@ -104,7 +102,7 @@ export default function MainPage(){
       rightBtns.style.animation = "mainAnimOut 900ms forwards";
       howToPlay.style.display = "none";
       selectLists.style.display = "block";
-      setTitle("เลือกหมวดหมู่");
+      setTitle("Kategorie auswählen");
     }
 
     setTimeout(selectCate, 890)
@@ -152,7 +150,7 @@ export default function MainPage(){
     }
 
     const hideLoading = () => {
-        mainApp.current.style.animation = "mainAnim 900ms forwards";
+      mainApp.current.style.animation = "mainAnim 900ms forwards";
     }
 
     setTimeout(showLoading,890);
@@ -251,6 +249,8 @@ export default function MainPage(){
       hiddenText.value.toUpperCase().includes("bastard".toUpperCase()) ||
       hiddenText.value.toUpperCase().includes("slut".toUpperCase()) ||
       hiddenText.value.toUpperCase().includes("dick".toUpperCase()) ||
+      hiddenText.value.toUpperCase().includes("arschloch".toUpperCase()) ||
+      hiddenText.value.toUpperCase().includes("fick".toUpperCase()) ||
       hiddenText.value.includes("@")
     ){
       hiddenText.focus();
@@ -322,15 +322,17 @@ export default function MainPage(){
       hiddenText.value.toUpperCase().includes("bastard".toUpperCase()) ||
       hiddenText.value.toUpperCase().includes("slut".toUpperCase()) ||
       hiddenText.value.toUpperCase().includes("dick".toUpperCase()) ||
+      hiddenText.value.toUpperCase().includes("arschloch".toUpperCase()) ||
+      hiddenText.value.toUpperCase().includes("fick".toUpperCase()) ||
       (hiddenText.value.includes("@"))
     ){
       if (hiddenText.value.includes("@")){
-        warning.innerHTML = "*ไม่อนุญาตให้ใช้ @ ในพื้นที่ข้อความนี้";
+        warning.innerHTML = "*@ ist in diesem Textfeld nicht erlaubt.";
       } else {
-        warning.innerHTML = "*โปรดหลีกเลี่ยงการใช้คำที่ไม่สุภาพ หรือคำที่อ่อนไหว";
+        warning.innerHTML = "*Bitte vermeiden Sie unhöfliche oder einfühlsame Wörter.";
       }
       hiddenText.classList.add("warning");
-      localStorage.setItem("text-hidden-th", "");
+      localStorage.setItem("text-hidden-lo", "");
       warning.style.opacity = "1";
       warning.style.visibility = "visible";
       warning.style.transform = "translateY(0px)";
@@ -377,10 +379,11 @@ export default function MainPage(){
       localStorage.setItem("text-hidden-th", "")
       localStorage.setItem("text-hidden-lo", "")
       localStorage.setItem("text-hidden-zh", "")
+      localStorage.setItem("text-hidden-de", "")
       localStorage.setItem("point", 0);
-      hiddenText.value = localStorage.setItem("text-hidden-th", "");
+      hiddenText.value = localStorage.setItem("text-hidden-de", "");
     }
-    hiddenText.value = localStorage.getItem("text-hidden-th");
+    hiddenText.value = localStorage.getItem("text-hidden-de");
   }, [])
   window.addEventListener("keydown", pressToCloseSettings);
 
@@ -399,11 +402,12 @@ export default function MainPage(){
       localStorage.setItem("timer", 60);
       localStorage.setItem("timer-continue", 60);
     }
+    console.log(localStorage);
   }
 
-  const typeHiddenTextTh = () => {
+  const typeHiddenTextDe = () => {
     let hiddenText = document.getElementById("hidden-text").value;
-    localStorage.setItem("text-hidden-th", hiddenText);
+    localStorage.setItem("text-hidden-de", hiddenText);
   }
   const changeLang = () => {
     let langList = document.getElementById("langList");
@@ -516,14 +520,48 @@ export default function MainPage(){
   }
 
   const AllCates = () => {
-    const cates = sortedCategories.filter(item => item.category.toUpperCase().includes(search.toUpperCase()))
     return (
       <div className="select-lists">
-        {cates.map((s) => (
+        {sortedCategories.map((s) => (
           <CardCate category={s.category} link={s.link}/>
         ))}
       </div>
     )
+  }
+
+  const showNoResult = () => {
+    let selectList = document.getElementById("all-cates");
+    let cards = selectList.querySelectorAll(".card");
+    let cardsNone = selectList.querySelectorAll(".card[style='display: none;']");
+    let noResult = document.getElementById("no-result");
+    if (cardsNone.length === cards.length){
+      noResult.style.display = "block";
+      setTimeout(() => {
+        noResult.classList.add("active");
+      }, 1)
+    } else {
+      noResult.style.display = "none";
+      noResult.classList.remove("active");
+    }
+  }
+
+  const searchCate = () => {
+    let searchInput = document.getElementById("search-input");
+    let searchValue = searchInput.value.toUpperCase();
+    let selectList = document.getElementById("all-cates");
+    let cards = selectList.querySelectorAll(".card");
+
+    for (let k = 0; k < cards.length; k++){
+      let cardHead = cards[k].getElementsByTagName("h2")[0];
+      let cardText = cardHead.innerText;
+      console.log(cardText);
+      if (cardText.toUpperCase().indexOf(searchValue) < 0){
+        cards[k].style.display = "none";
+      } else {
+        cards[k].style.display = "block";
+      }
+    }
+    showNoResult();
   }
 
   return (
@@ -532,7 +570,7 @@ export default function MainPage(){
       <div id="lets-start">
       <button onClick={goBack} id="goBackBtn" className="btn">
         <FontAwesomeIcon icon={faChevronLeft} className="back-arrow"/>
-        กลับ
+        Zurückgehen
       </button>
         <header className="app-head" ref={headApp}>
           <h1 id="heading">{title}</h1>
@@ -542,133 +580,70 @@ export default function MainPage(){
               <FontAwesomeIcon icon={faGear}/>
             </button>
             <div id="settings-tooltip" className="tooltips">
-              <p>การตั้งค่า</p>
+              <p>Einstellungen</p>
             </div>
-            <SearchBar onOpen={openSearch} onClose={closeSearch} onSearch={e => setSearch(e.target.value)}/>
+            <button id="searchBtn" className="btn small-btn" onClick={openSearch}>
+              <FontAwesomeIcon icon={faSearch}/>
+            </button>
+            <div id="search-tooltip" className="tooltips">
+              <p>Kategorie suchen</p>
+            </div>
+            <button id="searchCloseBtn" className="btn small-btn" onClick={closeSearch}>
+              <FontAwesomeIcon icon={faClose}/>
+            </button>
+            <input type="text" id="search-input" onKeyUp={searchCate} className="text-input" placeholder="Kategorie suchen"/>
           </div>
           <div id="changeLangBtn">
-            <button onClick={changeLang} className="btn">
+            <button onClick={changeLang} className="btn small-btn">
               <FontAwesomeIcon icon={faLanguage} />
-              เลือกภาษา
+              Sprache auswählen
             </button>
           </div>
           <div id="langList-bg"></div>
           <div id="langList-overlay" onClick={closeChangeLang}></div>
           <div id="langList">
-            <h1>เลือกภาษา</h1>
+            <h1>Sprache auswählen</h1>
             <FontAwesomeIcon icon={faClose} id="close-changeLang-btn" onClick={closeChangeLang}/>
             <ul className="langs">
-              <li className="active">ไทย</li>
-              <li onClick={() => clickToChangeLang("/")}>English / อังกฤษ</li>
-              <li onClick={() => clickToChangeLang("/lo")}>ລາວ / ลาว</li>
-              <li onClick={() => clickToChangeLang("/zh")}>中文 / จีน</li>
+              <li className="active">ລາວ</li>
+              <li onClick={() => clickToChangeLang("/")}>English / Englisch</li>
+              <li onClick={() => clickToChangeLang("/th")}>ไทย / Thailändisch</li>
+              <li onClick={() => clickToChangeLang("/zh")}>中文 / Chinesisch</li>
             </ul>
           </div>
         <main className="app-main" ref={mainApp}>
           <div id="how-to-play">
-            <h2>วิธีเล่น:</h2>
+            <h2>Spielanleitung:</h2>
             <ol>
-              <li>ผู้บอกใบ้สามารถที่จะเห็นคำตอบได้เท่านั้น และให้ใบ้คำตอบเพื่อที่ผู้เล่นจะสามารถเดาคำตอบที่ปรากฏบนจอได้</li>
-              <li>ผู้บอกใบ้สามารถซ่อนคำตอบโดยกดปุ่ม 'ซ่อนคำตอบ' ตรงมุมขวาบนของจอ</li>
-              <li>ถ้าผู้เล่นทายถูก ให้กดปุ่ม <FontAwesomeIcon icon={faCheck}/> เพื่อไปยังคำต่อไป</li>
-              <li>ถ้าผู้เล่นทายผิด หรือไม่รู้คำตอบ ให้กดปุ่ม <FontAwesomeIcon icon={faXmark}/> เพื่อข้ามคำตอบ</li>
-              <li>คุณมีเวลา 60 หรือ 120 วินาที (ขึ้นอยู่กับการตั้งค่าของคุณ) ในการทายคำตอบ</li>
+              <li>Die Hint-Spieler(innen) können nur die Antwort sehen und anzudeuten, damit die Spieler(innen) die Antwort auf dem Bildschirm erraten können.</li>
+              <li>Die Hint-Spieler(innen) können die Antwort ausblenden, indem sie „Die Antwort ausblenden“ Schaltfläche klicken.</li>
+              <li>Wenn Spieler(innen) richtig erraten, klicken Sie <FontAwesomeIcon icon={faCheck}/> um zu nächster Antwort zu fortsetzen.</li>
+              <li>Wenn Spieler(innen) unrichtig erraten, oder die Antwort nicht kennen, klicken Sie <FontAwesomeIcon icon={faXmark}/>, um zu nächster Antwort zu springen.</li>
+              <li>Sie haben 60 oder 120 Sekunden, abhängig von Ihrer Erstellung, um Frage zu erraten.</li>
             </ol>
           </div>
           <div id="all-cates">
             <AllCates />
             <div id="no-result">
               <FontAwesomeIcon icon={faExclamationCircle} style={{fontSize:"54px"}}/>
-              <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>ไม่พบผลลัพธ์</h1>
-              <p style={{fontSize:"calc(12px + 0.5vw)"}}>กรุณาลองคีย์เวิร์ดอื่น</p>
+              <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>Keine Ergebnisse</h1>
+              <p style={{fontSize:"calc(12px + 0.5vw)"}}>Bitte versuchen Sie mit einem anderen Stichwort.</p>
             </div>
           </div>
           <div id="select-list">
-            <h2 className="list-titles">อาหาร</h2>
+            <h2 className="list-titles">Essen</h2>
             <div className="select-lists">
               {
-                cateLists.eatingTh.map((cate) => (
+                cateLists.eatingDe.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className="list-titles">ภูมิศาสตร์</h2>
+            <h2 className="list-titles">Geografie</h2>
             <div className="select-lists">
               {
-                cateLists.geographyTh.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">ดนตรี</h2>
-            <div className="select-lists">
-              {
-                cateLists.musicTh.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">ภาพยนตร์</h2>
-            <div className="select-lists">
-              {
-                cateLists.filmsTh.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">เกม</h2>
-            <div className="select-lists">
-              {
-                cateLists.gamesTh.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">ธุรกิจ</h2>
-            <div className="select-lists">
-              {
-                cateLists.businessesTh.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">สิ่งของ</h2>
-            <div className="select-lists">
-              {
-                cateLists.thingsTh.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">ภาษา</h2>
-            <div className="select-lists">
-              {
-                cateLists.languagesTh.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">วิทยาศาสตร์</h2>
-            <div className="select-lists">
-              {
-                cateLists.scienceTh.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">อื่นๆ</h2>
-            <div className="select-lists">
-              {
-                cateLists.otherTh.map((cate) => (
+                cateLists.geographyDe.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
@@ -678,12 +653,12 @@ export default function MainPage(){
             <div className="loading-icon">
                 <div className="inner-icon"></div>
             </div>
-            <h2>กำลังโหลด...</h2>
+            <h2>Wird geladen...</h2>
           </div>
         </main>
         <footer className="app-foot" ref={footApp}>
-          <h2>พร้อมหรือยัง?</h2>
-          <button onClick={playNow} className="btn">เล่นเลย</button>
+          <h2>Sind Sie bereit?</h2>
+          <button onClick={playNow} className="btn">Jetzt spielen</button>
         </footer>
 
         <div id="settings-drawer-mask" onClick={closeSettings}></div>
@@ -692,34 +667,34 @@ export default function MainPage(){
           <FontAwesomeIcon icon={faClose} id="close-settings-btn" onClick={closeSettings}/>
         </div>
         <div id="settings-drawer">
-          <h1>การตั้งค่า</h1>
-          <p style={{marginBottom:0}}><strong>หมายเหตุ: </strong> การตั้งค่าของคุณจะถูกบันทึกโดยอัตโนมัติเมื่อคุณปิดแถบด้านข้างนี้</p>
+          <h1>Einstellungen</h1>
+          <p style={{marginBottom:0}}><strong>Notiz: </strong>Ihre Einstellungen werden gespeichert, wenn Sie diese Seitenleiste schließen.</p>
           <div className="setting-sec">
-            <h2>ตัวจับเวลา</h2>
+            <h2>Timer</h2>
             <label className="switch" htmlFor="switch-timer">
               <input type="checkbox" id="switch-timer" checked={timerSwitch} onChange={toggleTimer}/>
               <span className="switch-toggle"></span>
               <div className="setting-text">
-                <p className="second-th">60 วินาที</p>
-                <p className="second-th">120 วินาที</p>
+                <p className="second-th">60 Sekunden</p>
+                <p className="second-th">120 Sekunden</p>
               </div>
             </label>
             <div id="block" className={`${timerSwitch ? "active" : ""}`}></div>
-            <p>ตัวจับเวลาจะถูกแสดงด้านบนของจอเมื่อเล่นเกม</p>
+            <p>Der Timer wird über dem Bildschirm angezeigt, wenn Sie spielen.</p>
           </div>
           <div className="setting-sec">
-            <h2>โหมดหน้าจอ</h2>
+            <h2>Bildschirmdastellung</h2>
             <button className="appear light-btn" onClick={lightMode}>
-            <FontAwesomeIcon icon={faSun} style={{marginRight:"8px"}}/> โหมดสีสว่าง
+            <FontAwesomeIcon icon={faSun} style={{marginRight:"8px"}}/> Heller Modus
             </button>
             <button className="appear dark-btn" onClick={darkMode}>
-            <FontAwesomeIcon icon={faMoon} style={{marginRight:"8px"}}/> โหมดสีเข้ม
+            <FontAwesomeIcon icon={faMoon} style={{marginRight:"8px"}}/> Dunkler Modus
             </button>
           </div>
           <div className="setting-sec">
-            <h2>ข้อความเมื่อซ่อนคำตอบ</h2>
-            <input type="text" id="hidden-text" className="text-input" placeholder="คำตอบถูกซ่อนไว้" onInput={checkHiddenText} onChange={typeHiddenTextTh} autoComplete="off"/>
-            <p>ข้อความจะถูกแสดงเมื่อผู้บอกใบ้กดปุ่ม 'ซ่อนคำตอบ'<br/> ข้อความเริ่มต้นคือ 'คำตอบถูกซ่อนไว้'</p>
+            <h2>Verborgener Antworttext</h2>
+            <input type="text" id="hidden-text" className="text-input" placeholder="Die Antwort wird verborgen" onInput={checkHiddenText} onChange={typeHiddenTextDe} autoComplete="off"/>
+            <p>Der Text wird angezeigt, wenn die Hint-Spieler auf „Antwort verbergen“ klicken. <br/>Der Standardtext ist „Die Antwort wird verborgen“.</p>
             <p id="warning-hidden-text"></p>
           </div>
         </div>

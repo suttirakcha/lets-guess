@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck,faXmark,faChevronLeft,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faChevronDown,faLanguage, faEarthAsia } from "@fortawesome/free-solid-svg-icons";
+import { faCheck,faChevronLeft,faXmark,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faChevronDown,faLanguage, faEarthAsia } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { cateLists, sortedCategories } from "./components/categories";
-import SearchBar from "./components/searchbar";
+import { cateLists, sortedCategories } from "./categories";
 
-export default function MainPageLao(){
+export default function MainPage(){
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
   const [timerSixty, setTimerSixty] = useState(localStorage.getItem("timer-sixty") === 'true');
-  const [title, setTitle] = useState('ມາທາຍຄຳກັນເດີ');
+  const [title, setTitle] = useState('มาทายคำกันเถอะ')
+  const [search, setSearch] = useState('');
 
   const headApp = useRef(null);
   const mainApp = useRef(null);
@@ -37,7 +37,7 @@ export default function MainPageLao(){
     howToPlay.style.display = "block";
     selectLists.style.display = "none";
     changeLangBtn.style.animation = "mainAnimOut 900ms forwards";
-    setTitle('ມາທາຍຄຳກັນເດີ');
+    setTitle('มาทายคำกันเถอะ')
   }
 
   const goBack = () => {
@@ -103,7 +103,7 @@ export default function MainPageLao(){
       rightBtns.style.animation = "mainAnimOut 900ms forwards";
       howToPlay.style.display = "none";
       selectLists.style.display = "block";
-      setTitle("ເລືອກໝວດໝູ່");
+      setTitle("เลือกหมวดหมู่");
     }
 
     setTimeout(selectCate, 890)
@@ -151,7 +151,7 @@ export default function MainPageLao(){
     }
 
     const hideLoading = () => {
-      mainApp.current.style.animation = "mainAnim 900ms forwards";
+        mainApp.current.style.animation = "mainAnim 900ms forwards";
     }
 
     setTimeout(showLoading,890);
@@ -324,12 +324,12 @@ export default function MainPageLao(){
       (hiddenText.value.includes("@"))
     ){
       if (hiddenText.value.includes("@")){
-        warning.innerHTML = "*ບໍ່ອະນຸຍາດໃຫ້ໃຊ້ @ ໃນພື້ນທີ່ຂໍ້ຄວາມນີ້.";
+        warning.innerHTML = "*ไม่อนุญาตให้ใช้ @ ในพื้นที่ข้อความนี้";
       } else {
-        warning.innerHTML = "*ກະລຸນາຫຼີກລ່ຽງການນຳໃຊ້ຄຳທີ່ບໍ່ສຸພາບ ຫຼືຄຳທີ່ອ່ອນໄຫວ.";
+        warning.innerHTML = "*โปรดหลีกเลี่ยงการใช้คำที่ไม่สุภาพ หรือคำที่อ่อนไหว";
       }
       hiddenText.classList.add("warning");
-      localStorage.setItem("text-hidden-lo", "");
+      localStorage.setItem("text-hidden-th", "");
       warning.style.opacity = "1";
       warning.style.visibility = "visible";
       warning.style.transform = "translateY(0px)";
@@ -377,9 +377,9 @@ export default function MainPageLao(){
       localStorage.setItem("text-hidden-lo", "")
       localStorage.setItem("text-hidden-zh", "")
       localStorage.setItem("point", 0);
-      hiddenText.value = localStorage.setItem("text-hidden-lo", "");
+      hiddenText.value = localStorage.setItem("text-hidden-th", "");
     }
-    hiddenText.value = localStorage.getItem("text-hidden-lo");
+    hiddenText.value = localStorage.getItem("text-hidden-th");
   }, [])
   window.addEventListener("keydown", pressToCloseSettings);
 
@@ -398,12 +398,11 @@ export default function MainPageLao(){
       localStorage.setItem("timer", 60);
       localStorage.setItem("timer-continue", 60);
     }
-    console.log(localStorage);
   }
 
-  const typeHiddenTextLo = () => {
+  const typeHiddenTextTh = () => {
     let hiddenText = document.getElementById("hidden-text").value;
-    localStorage.setItem("text-hidden-lo", hiddenText);
+    localStorage.setItem("text-hidden-th", hiddenText);
   }
   const changeLang = () => {
     let langList = document.getElementById("langList");
@@ -516,57 +515,23 @@ export default function MainPageLao(){
   }
 
   const AllCates = () => {
+    const cates = sortedCategories.filter(item => item.category.toUpperCase().includes(search.toUpperCase()))
     return (
       <div className="select-lists">
-        {sortedCategories.map((s) => (
+        {cates.map((s) => (
           <CardCate category={s.category} link={s.link}/>
         ))}
       </div>
     )
   }
 
-  const showNoResult = () => {
-    let selectList = document.getElementById("all-cates");
-    let cards = selectList.querySelectorAll(".card");
-    let cardsNone = selectList.querySelectorAll(".card[style='display: none;']");
-    let noResult = document.getElementById("no-result");
-    if (cardsNone.length === cards.length){
-      noResult.style.display = "block";
-      setTimeout(() => {
-        noResult.classList.add("active");
-      }, 1)
-    } else {
-      noResult.style.display = "none";
-      noResult.classList.remove("active");
-    }
-  }
-
-  const searchCate = () => {
-    let searchInput = document.getElementById("search-input");
-    let searchValue = searchInput.value.toUpperCase();
-    let selectList = document.getElementById("all-cates");
-    let cards = selectList.querySelectorAll(".card");
-
-    for (let k = 0; k < cards.length; k++){
-      let cardHead = cards[k].getElementsByTagName("h2")[0];
-      let cardText = cardHead.innerText;
-      console.log(cardText);
-      if (cardText.toUpperCase().indexOf(searchValue) < 0){
-        cards[k].style.display = "none";
-      } else {
-        cards[k].style.display = "block";
-      }
-    }
-    showNoResult();
-  }
-
   return (
-    <div className="App lao">
+    <div className="App">
       <div id="prevent" className="invisible-block"></div>
       <div id="lets-start">
       <button onClick={goBack} id="goBackBtn" className="btn">
         <FontAwesomeIcon icon={faChevronLeft} className="back-arrow"/>
-        ກັບ
+        กลับ
       </button>
         <header className="app-head" ref={headApp}>
           <h1 id="heading">{title}</h1>
@@ -576,70 +541,133 @@ export default function MainPageLao(){
               <FontAwesomeIcon icon={faGear}/>
             </button>
             <div id="settings-tooltip" className="tooltips">
-              <p>ການຕັ້ງຄ່າ</p>
+              <p>การตั้งค่า</p>
             </div>
-            <SearchBar onOpen={openSearch} onClose={closeSearch} onSearch={searchCate}/>
+
           </div>
           <div id="changeLangBtn">
-            <button onClick={changeLang} className="btn small-btn">
+            <button onClick={changeLang} className="btn">
               <FontAwesomeIcon icon={faLanguage} />
-              ເລືອກພາສາ
+              เลือกภาษา
             </button>
           </div>
           <div id="langList-bg"></div>
           <div id="langList-overlay" onClick={closeChangeLang}></div>
           <div id="langList">
-            <h1>ເລືອກພາສາ</h1>
+            <h1>เลือกภาษา</h1>
             <FontAwesomeIcon icon={faClose} id="close-changeLang-btn" onClick={closeChangeLang}/>
             <ul className="langs">
-              <li className="active">ລາວ</li>
-              <li onClick={() => clickToChangeLang("/")}>English / ອັງກິດ</li>
-              <li onClick={() => clickToChangeLang("/th")}>ไทย / ໄທ</li>
-              <li onClick={() => clickToChangeLang("/zh")}>中文 / ຈີນ</li>
+              <li className="active">ไทย</li>
+              <li onClick={() => clickToChangeLang("/")}>English / อังกฤษ</li>
+              <li onClick={() => clickToChangeLang("/lo")}>ລາວ / ลาว</li>
+              <li onClick={() => clickToChangeLang("/zh")}>中文 / จีน</li>
             </ul>
           </div>
         <main className="app-main" ref={mainApp}>
           <div id="how-to-play">
-            <h2>ວິທີຫຼິ້ນ:</h2>
+            <h2>วิธีเล่น:</h2>
             <ol>
-              <li>ຄົນໃບ້ຄຳສາມາດເຫັນຄຳຕອບໄດ້ເທົ່ານັ້ນ ແລະໃຫ້ໃບ້ຄຳຕອບເພື່ອໃຫ້ຄົນຫຼິ້ນສາມາດເດົາຄຳຕອບທີ່ປະກົດໃນໜ້າຈໍໄດ້.</li>
-              <li>ຄົນໃບ້ຄຳສາມາດເຊື່ອງຄຳຕອບໄດ້ໂດຍກົດປຸ່ມ "ເຊື່ອງຄຳຕອບ" ໃນມຸມຂວາຂອງຈໍ.</li>
-              <li>ຖ້າຄົນຫຼິ້ນເດົາຖືກ ໃຫ້ກົດປຸ່ມ <FontAwesomeIcon icon={faCheck}/> ເພື່ອໄປຍັງຄຳຕໍ່ໄປ.</li>
-              <li>ຖ້າຄົນຫຼິ້ນເດົາຜິດ ຫຼືບໍ່ຮູ້ຄຳຕອບ ໃຫ້ກົດປຸ່ມ <FontAwesomeIcon icon={faXmark}/> ເພື່ອຂ້າມຄຳຕອບ.</li>
-              <li>ເຈົ້າມີເວລາ 60 ຫຼື 120 ວິນາທີ (ຂຶ້ນຢູ່ກັບການຕັ້ງຄ່າຂອງເຈົ້າ) ໃນການເດົາຄຳຕອບ.</li>
+              <li>ผู้บอกใบ้สามารถที่จะเห็นคำตอบได้เท่านั้น และให้ใบ้คำตอบเพื่อที่ผู้เล่นจะสามารถเดาคำตอบที่ปรากฏบนจอได้</li>
+              <li>ผู้บอกใบ้สามารถซ่อนคำตอบโดยกดปุ่ม 'ซ่อนคำตอบ' ตรงมุมขวาบนของจอ</li>
+              <li>ถ้าผู้เล่นทายถูก ให้กดปุ่ม <FontAwesomeIcon icon={faCheck}/> เพื่อไปยังคำต่อไป</li>
+              <li>ถ้าผู้เล่นทายผิด หรือไม่รู้คำตอบ ให้กดปุ่ม <FontAwesomeIcon icon={faXmark}/> เพื่อข้ามคำตอบ</li>
+              <li>คุณมีเวลา 60 หรือ 120 วินาที (ขึ้นอยู่กับการตั้งค่าของคุณ) ในการทายคำตอบ</li>
             </ol>
           </div>
           <div id="all-cates">
             <AllCates />
             <div id="no-result">
               <FontAwesomeIcon icon={faExclamationCircle} style={{fontSize:"54px"}}/>
-              <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>ບໍ່ພົບຜົນໄດ້ຮັບ</h1>
-              <p style={{fontSize:"calc(12px + 0.5vw)"}}>ກະລຸນາລອງຄີເວິດອື່ນ</p>
+              <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>ไม่พบผลลัพธ์</h1>
+              <p style={{fontSize:"calc(12px + 0.5vw)"}}>กรุณาลองคีย์เวิร์ดอื่น</p>
             </div>
           </div>
           <div id="select-list">
-            <h2 className="list-titles">ອາຫານ</h2>
+            <h2 className="list-titles">อาหาร</h2>
             <div className="select-lists">
               {
-                cateLists.eatingLo.map((cate) => (
+                cateLists.eatingTh.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className="list-titles">ພູມສາດ</h2>
+            <h2 className="list-titles">ภูมิศาสตร์</h2>
             <div className="select-lists">
               {
-                cateLists.geographyLo.map((cate) => (
+                cateLists.geographyTh.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className="list-titles">ອື່ນໆ</h2>
+            <h2 className="list-titles">ดนตรี</h2>
             <div className="select-lists">
               {
-                cateLists.otherLo.map((cate) => (
+                cateLists.musicTh.map((cate) => (
+                  <CardCate category={cate.category} link={cate.link}/>
+                ))
+              }
+            </div>
+
+            <h2 className="list-titles">ภาพยนตร์</h2>
+            <div className="select-lists">
+              {
+                cateLists.filmsTh.map((cate) => (
+                  <CardCate category={cate.category} link={cate.link}/>
+                ))
+              }
+            </div>
+
+            <h2 className="list-titles">เกม</h2>
+            <div className="select-lists">
+              {
+                cateLists.gamesTh.map((cate) => (
+                  <CardCate category={cate.category} link={cate.link}/>
+                ))
+              }
+            </div>
+
+            <h2 className="list-titles">ธุรกิจ</h2>
+            <div className="select-lists">
+              {
+                cateLists.businessesTh.map((cate) => (
+                  <CardCate category={cate.category} link={cate.link}/>
+                ))
+              }
+            </div>
+
+            <h2 className="list-titles">สิ่งของ</h2>
+            <div className="select-lists">
+              {
+                cateLists.thingsTh.map((cate) => (
+                  <CardCate category={cate.category} link={cate.link}/>
+                ))
+              }
+            </div>
+
+            <h2 className="list-titles">ภาษา</h2>
+            <div className="select-lists">
+              {
+                cateLists.languagesTh.map((cate) => (
+                  <CardCate category={cate.category} link={cate.link}/>
+                ))
+              }
+            </div>
+
+            <h2 className="list-titles">วิทยาศาสตร์</h2>
+            <div className="select-lists">
+              {
+                cateLists.scienceTh.map((cate) => (
+                  <CardCate category={cate.category} link={cate.link}/>
+                ))
+              }
+            </div>
+
+            <h2 className="list-titles">อื่นๆ</h2>
+            <div className="select-lists">
+              {
+                cateLists.otherTh.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
@@ -649,12 +677,12 @@ export default function MainPageLao(){
             <div className="loading-icon">
                 <div className="inner-icon"></div>
             </div>
-            <h2>ກຳລັງໂຫຼດ...</h2>
+            <h2>กำลังโหลด...</h2>
           </div>
         </main>
         <footer className="app-foot" ref={footApp}>
-          <h2>ພ້ອມແລ້ວບໍ່?</h2>
-          <button onClick={playNow} className="btn">ຫຼິ້ນເລີຍ</button>
+          <h2>พร้อมหรือยัง?</h2>
+          <button onClick={playNow} className="btn">เล่นเลย</button>
         </footer>
 
         <div id="settings-drawer-mask" onClick={closeSettings}></div>
@@ -663,34 +691,34 @@ export default function MainPageLao(){
           <FontAwesomeIcon icon={faClose} id="close-settings-btn" onClick={closeSettings}/>
         </div>
         <div id="settings-drawer">
-          <h1>ການຕັ້ງຄ່າ</h1>
-          <p style={{marginBottom:0}}><strong>ໝາຍເຫດ: </strong> ການຕັ້ງຄ່າຂອງເຈົ້າຈະຖືກບັນທຶກໂດຍອັດຕະໂນມັດເມື່ອເຈົ້າປິດແຖບດ້ານຂ້າງນີ້.</p>
+          <h1>การตั้งค่า</h1>
+          <p style={{marginBottom:0}}><strong>หมายเหตุ: </strong> การตั้งค่าของคุณจะถูกบันทึกโดยอัตโนมัติเมื่อคุณปิดแถบด้านข้างนี้</p>
           <div className="setting-sec">
-            <h2>ໂມງຈັບເວລາ</h2>
+            <h2>ตัวจับเวลา</h2>
             <label className="switch" htmlFor="switch-timer">
               <input type="checkbox" id="switch-timer" checked={timerSwitch} onChange={toggleTimer}/>
               <span className="switch-toggle"></span>
               <div className="setting-text">
-                <p className="second-th">60 ວິນາທີ</p>
-                <p className="second-th">120 ວິນາທີ</p>
+                <p className="second-th">60 วินาที</p>
+                <p className="second-th">120 วินาที</p>
               </div>
             </label>
             <div id="block" className={`${timerSwitch ? "active" : ""}`}></div>
-            <p>ໂມງຈັບເວລາຈະຖືກສະແດງດ້ານເທິງຂອງຈໍເມື່ອຫຼິ້ນເກມ.</p>
+            <p>ตัวจับเวลาจะถูกแสดงด้านบนของจอเมื่อเล่นเกม</p>
           </div>
           <div className="setting-sec">
-            <h2>ໂໝດໜ້າຈໍ</h2>
+            <h2>โหมดหน้าจอ</h2>
             <button className="appear light-btn" onClick={lightMode}>
-            <FontAwesomeIcon icon={faSun} style={{marginRight:"8px"}}/> ໂໝດສີສະຫວ່າງ
+            <FontAwesomeIcon icon={faSun} style={{marginRight:"8px"}}/> โหมดสีสว่าง
             </button>
             <button className="appear dark-btn" onClick={darkMode}>
-            <FontAwesomeIcon icon={faMoon} style={{marginRight:"8px"}}/> ໂໝດສີເຂົ້ມ
+            <FontAwesomeIcon icon={faMoon} style={{marginRight:"8px"}}/> โหมดสีเข้ม
             </button>
           </div>
           <div className="setting-sec">
-            <h2>ຂໍ້ຄວາມເມື່ອເຊື່ອງຄຳຕອບ</h2>
-            <input type="text" id="hidden-text" className="text-input" placeholder="ຄຳຕອບຖືກເຊື່ອງໄວ້" onInput={checkHiddenText} onChange={typeHiddenTextLo} autoComplete="off"/>
-            <p>ຂໍ້ຄວາມຈະຖືກສະແດງເມື່ອຄົນໃບ້ຄຳກົດປຸ່ມ "ເຊື່ອງຄຳຕອບ". <br/>ຂໍ້ຄວາມເລິ່ມຕົ້ນຄື "ຄຳຕອບຖືກເຊື່ອງໄວ້"</p>
+            <h2>ข้อความเมื่อซ่อนคำตอบ</h2>
+            <input type="text" id="hidden-text" className="text-input" placeholder="คำตอบถูกซ่อนไว้" onInput={checkHiddenText} onChange={typeHiddenTextTh} autoComplete="off"/>
+            <p>ข้อความจะถูกแสดงเมื่อผู้บอกใบ้กดปุ่ม 'ซ่อนคำตอบ'<br/> ข้อความเริ่มต้นคือ 'คำตอบถูกซ่อนไว้'</p>
             <p id="warning-hidden-text"></p>
           </div>
         </div>

@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck,faXmark,faChevronLeft,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faChevronDown,faLanguage, faEarthAsia } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { cateLists, sortedCategories, cateTitles } from "./components/categories";
+import { cateLists, sortedCategories, cateTitles } from "./categories";
 import { CardCate, CardCateWithTitle } from "../components/card";
 import SearchBar from "./components/searchbar";
 import { Button, ButtonWithIcon } from "../components/button";

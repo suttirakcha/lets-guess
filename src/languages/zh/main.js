@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck,faXmark,faChevronLeft,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faChevronDown,faLanguage, faEarthAsia } from "@fortawesome/free-solid-svg-icons";
+import { faCheck,faChevronLeft,faXmark,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faLanguage } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { cateLists, sortedCategories } from "./components/categories";
+import { cateLists, sortedCategories } from "./categories";
 
-export default function MainPageDe(){
+export default function MainPageZh(){
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
   const [timerSixty, setTimerSixty] = useState(localStorage.getItem("timer-sixty") === 'true');
-  const [title, setTitle] = useState('Lass uns erraten');
+  const [title, setTitle] = useState('我们猜吧')
 
   const headApp = useRef(null);
   const mainApp = useRef(null);
   const footApp = useRef(null);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [clicked, setClicked] = useState(false);
 
@@ -36,7 +36,7 @@ export default function MainPageDe(){
     howToPlay.style.display = "block";
     selectLists.style.display = "none";
     changeLangBtn.style.animation = "mainAnimOut 900ms forwards";
-    setTitle('Lass uns erraten');
+    setTitle("我们猜吧");
   }
 
   const goBack = () => {
@@ -102,7 +102,7 @@ export default function MainPageDe(){
       rightBtns.style.animation = "mainAnimOut 900ms forwards";
       howToPlay.style.display = "none";
       selectLists.style.display = "block";
-      setTitle("Kategorie auswählen");
+      setTitle("选择类别");
     }
 
     setTimeout(selectCate, 890)
@@ -249,8 +249,6 @@ export default function MainPageDe(){
       hiddenText.value.toUpperCase().includes("bastard".toUpperCase()) ||
       hiddenText.value.toUpperCase().includes("slut".toUpperCase()) ||
       hiddenText.value.toUpperCase().includes("dick".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("arschloch".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("fick".toUpperCase()) ||
       hiddenText.value.includes("@")
     ){
       hiddenText.focus();
@@ -322,17 +320,16 @@ export default function MainPageDe(){
       hiddenText.value.toUpperCase().includes("bastard".toUpperCase()) ||
       hiddenText.value.toUpperCase().includes("slut".toUpperCase()) ||
       hiddenText.value.toUpperCase().includes("dick".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("arschloch".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("fick".toUpperCase()) ||
+      hiddenText.value.includes("草泥马") ||
       (hiddenText.value.includes("@"))
     ){
       if (hiddenText.value.includes("@")){
-        warning.innerHTML = "*@ ist in diesem Textfeld nicht erlaubt.";
+        warning.innerHTML = "*此文本字段中不允许用 @。";
       } else {
-        warning.innerHTML = "*Bitte vermeiden Sie unhöfliche oder einfühlsame Wörter.";
+        warning.innerHTML = "*请避免用不礼貌或敏感的词。";
       }
       hiddenText.classList.add("warning");
-      localStorage.setItem("text-hidden-lo", "");
+      localStorage.setItem("text-hidden-th", "");
       warning.style.opacity = "1";
       warning.style.visibility = "visible";
       warning.style.transform = "translateY(0px)";
@@ -379,11 +376,10 @@ export default function MainPageDe(){
       localStorage.setItem("text-hidden-th", "")
       localStorage.setItem("text-hidden-lo", "")
       localStorage.setItem("text-hidden-zh", "")
-      localStorage.setItem("text-hidden-de", "")
       localStorage.setItem("point", 0);
-      hiddenText.value = localStorage.setItem("text-hidden-de", "");
+      hiddenText.value = localStorage.setItem("text-hidden-zh", "");
     }
-    hiddenText.value = localStorage.getItem("text-hidden-de");
+    hiddenText.value = localStorage.getItem("text-hidden-zh");
   }, [])
   window.addEventListener("keydown", pressToCloseSettings);
 
@@ -405,9 +401,9 @@ export default function MainPageDe(){
     console.log(localStorage);
   }
 
-  const typeHiddenTextDe = () => {
+  const typeHiddenTextZh = () => {
     let hiddenText = document.getElementById("hidden-text").value;
-    localStorage.setItem("text-hidden-de", hiddenText);
+    localStorage.setItem("text-hidden-zh", hiddenText);
   }
   const changeLang = () => {
     let langList = document.getElementById("langList");
@@ -473,7 +469,7 @@ export default function MainPageDe(){
     searchInput.style.transition = "all 400ms";
     setTimeout(() => {
       searchInput.classList.add("place");
-      closeBtn.style.animation = "mainAnimOut 300ms forwards"
+      closeBtn.style.animation = "mainAnimOut 300ms forwards";
     },300)
     setClicked(true);
   }
@@ -570,7 +566,7 @@ export default function MainPageDe(){
       <div id="lets-start">
       <button onClick={goBack} id="goBackBtn" className="btn">
         <FontAwesomeIcon icon={faChevronLeft} className="back-arrow"/>
-        Zurückgehen
+        回去
       </button>
         <header className="app-head" ref={headApp}>
           <h1 id="heading">{title}</h1>
@@ -579,71 +575,67 @@ export default function MainPageDe(){
             <button id="settingsBtn" className="btn small-btn" onClick={openSettings}>
               <FontAwesomeIcon icon={faGear}/>
             </button>
-            <div id="settings-tooltip" className="tooltips">
-              <p>Einstellungen</p>
-            </div>
-            <button id="searchBtn" className="btn small-btn" onClick={openSearch}>
-              <FontAwesomeIcon icon={faSearch}/>
-            </button>
-            <div id="search-tooltip" className="tooltips">
-              <p>Kategorie suchen</p>
-            </div>
-            <button id="searchCloseBtn" className="btn small-btn" onClick={closeSearch}>
-              <FontAwesomeIcon icon={faClose}/>
-            </button>
-            <input type="text" id="search-input" onKeyUp={searchCate} className="text-input" placeholder="Kategorie suchen"/>
           </div>
           <div id="changeLangBtn">
-            <button onClick={changeLang} className="btn small-btn">
+            <button onClick={changeLang} className="btn">
               <FontAwesomeIcon icon={faLanguage} />
-              Sprache auswählen
+              选择语言
             </button>
           </div>
           <div id="langList-bg"></div>
           <div id="langList-overlay" onClick={closeChangeLang}></div>
           <div id="langList">
-            <h1>Sprache auswählen</h1>
+            <h1>选择语言</h1>
             <FontAwesomeIcon icon={faClose} id="close-changeLang-btn" onClick={closeChangeLang}/>
             <ul className="langs">
-              <li className="active">ລາວ</li>
-              <li onClick={() => clickToChangeLang("/")}>English / Englisch</li>
-              <li onClick={() => clickToChangeLang("/th")}>ไทย / Thailändisch</li>
-              <li onClick={() => clickToChangeLang("/zh")}>中文 / Chinesisch</li>
+              <li className="active">中文</li>
+              <li onClick={() => clickToChangeLang("/")}>English / 英文</li>
+              <li onClick={() => clickToChangeLang("/th")}>ไทย / 泰文</li>
+              <li onClick={() => clickToChangeLang("/lo")}>ລາວ / 老挝语</li>
             </ul>
           </div>
         <main className="app-main" ref={mainApp}>
           <div id="how-to-play">
-            <h2>Spielanleitung:</h2>
+            <h2>玩法:</h2>
             <ol>
-              <li>Die Hint-Spieler(innen) können nur die Antwort sehen und anzudeuten, damit die Spieler(innen) die Antwort auf dem Bildschirm erraten können.</li>
-              <li>Die Hint-Spieler(innen) können die Antwort ausblenden, indem sie „Die Antwort ausblenden“ Schaltfläche klicken.</li>
-              <li>Wenn Spieler(innen) richtig erraten, klicken Sie <FontAwesomeIcon icon={faCheck}/> um zu nächster Antwort zu fortsetzen.</li>
-              <li>Wenn Spieler(innen) unrichtig erraten, oder die Antwort nicht kennen, klicken Sie <FontAwesomeIcon icon={faXmark}/>, um zu nächster Antwort zu springen.</li>
-              <li>Sie haben 60 oder 120 Sekunden, abhängig von Ihrer Erstellung, um Frage zu erraten.</li>
+              <li>暗示人只可以见答案，也可以暗示答案，所以玩家可以猜在屏幕上的答案。</li>
+              <li>暗示人可以在屏幕的右上角按 ”隐藏答案“ 隐藏答案。</li>
+              <li>如果玩家猜正确，按 “<FontAwesomeIcon icon={faCheck}/>” 转到下一个的单词。</li>
+              <li>如果玩家猜不正确或不知道答案是什么，按 “<FontAwesomeIcon icon={faXmark}/>” 跳过到下一步的单词。</li>
+              <li>你有60或120秒（根据你的设置）暗示答案。</li>
             </ol>
           </div>
           <div id="all-cates">
             <AllCates />
             <div id="no-result">
               <FontAwesomeIcon icon={faExclamationCircle} style={{fontSize:"54px"}}/>
-              <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>Keine Ergebnisse</h1>
-              <p style={{fontSize:"calc(12px + 0.5vw)"}}>Bitte versuchen Sie mit einem anderen Stichwort.</p>
+              <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>无结果</h1>
+              <p style={{fontSize:"calc(12px + 0.5vw)"}}>请试试其他的关键词</p>
             </div>
           </div>
           <div id="select-list">
-            <h2 className="list-titles">Essen</h2>
+            <h2 className="list-titles">食物</h2>
             <div className="select-lists">
               {
-                cateLists.eatingDe.map((cate) => (
+                cateLists.foodsZh.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
             </div>
 
-            <h2 className="list-titles">Geografie</h2>
+            <h2 className="list-titles">地理</h2>
             <div className="select-lists">
               {
-                cateLists.geographyDe.map((cate) => (
+                cateLists.geographyZh.map((cate) => (
+                  <CardCate category={cate.category} link={cate.link}/>
+                ))
+              }
+            </div>
+
+            <h2 className="list-titles">其他</h2>
+            <div className="select-lists">
+              {
+                cateLists.otherZh.map((cate) => (
                   <CardCate category={cate.category} link={cate.link}/>
                 ))
               }
@@ -653,12 +645,12 @@ export default function MainPageDe(){
             <div className="loading-icon">
                 <div className="inner-icon"></div>
             </div>
-            <h2>Wird geladen...</h2>
+            <h2>加载中...</h2>
           </div>
         </main>
         <footer className="app-foot" ref={footApp}>
-          <h2>Sind Sie bereit?</h2>
-          <button onClick={playNow} className="btn">Jetzt spielen</button>
+          <h2>准备好了吗？</h2>
+          <button onClick={playNow} className="btn">玩吧</button>
         </footer>
 
         <div id="settings-drawer-mask" onClick={closeSettings}></div>
@@ -667,34 +659,34 @@ export default function MainPageDe(){
           <FontAwesomeIcon icon={faClose} id="close-settings-btn" onClick={closeSettings}/>
         </div>
         <div id="settings-drawer">
-          <h1>Einstellungen</h1>
-          <p style={{marginBottom:0}}><strong>Notiz: </strong>Ihre Einstellungen werden gespeichert, wenn Sie diese Seitenleiste schließen.</p>
+          <h1>设置</h1>
+          <p style={{marginBottom:0}}><strong>注意: </strong>你关此边栏时，你的设置将自动保存。</p>
           <div className="setting-sec">
-            <h2>Timer</h2>
+            <h2>定时器</h2>
             <label className="switch" htmlFor="switch-timer">
               <input type="checkbox" id="switch-timer" checked={timerSwitch} onChange={toggleTimer}/>
               <span className="switch-toggle"></span>
               <div className="setting-text">
-                <p className="second-th">60 Sekunden</p>
-                <p className="second-th">120 Sekunden</p>
+                <p className="second-th">60 秒</p>
+                <p className="second-th">120 秒</p>
               </div>
             </label>
             <div id="block" className={`${timerSwitch ? "active" : ""}`}></div>
-            <p>Der Timer wird über dem Bildschirm angezeigt, wenn Sie spielen.</p>
+            <p>定时器玩游戏时在屏幕上展示。</p>
           </div>
           <div className="setting-sec">
-            <h2>Bildschirmdastellung</h2>
+            <h2>屏幕出现</h2>
             <button className="appear light-btn" onClick={lightMode}>
-            <FontAwesomeIcon icon={faSun} style={{marginRight:"8px"}}/> Heller Modus
+            <FontAwesomeIcon icon={faSun} style={{marginRight:"8px"}}/> 灯光模式
             </button>
             <button className="appear dark-btn" onClick={darkMode}>
-            <FontAwesomeIcon icon={faMoon} style={{marginRight:"8px"}}/> Dunkler Modus
+            <FontAwesomeIcon icon={faMoon} style={{marginRight:"8px"}}/> 黑暗模式
             </button>
           </div>
           <div className="setting-sec">
-            <h2>Verborgener Antworttext</h2>
-            <input type="text" id="hidden-text" className="text-input" placeholder="Die Antwort wird verborgen" onInput={checkHiddenText} onChange={typeHiddenTextDe} autoComplete="off"/>
-            <p>Der Text wird angezeigt, wenn die Hint-Spieler auf „Antwort verbergen“ klicken. <br/>Der Standardtext ist „Die Antwort wird verborgen“.</p>
+            <h2>隐藏答案的本文</h2>
+            <input type="text" id="hidden-text" className="text-input" placeholder="答案被隐藏" onInput={checkHiddenText} onChange={typeHiddenTextZh} autoComplete="off"/>
+            <p>暗示人按 “隐藏答案” 的时候，<br/>文本会展示。默认文本是 “答案被隐藏”</p>
             <p id="warning-hidden-text"></p>
           </div>
         </div>
