@@ -7,9 +7,17 @@ import { Button } from "../../components/button";
 import { BlockSpace } from "../../components/blockspace";
 import Modal from "../../components/drawers/modal";
 import InvisibleOverlay from "../../components/drawers/invisible-overlay";
+import { startStorages } from "../../components/lists/storage";
 
 export default function Questions(){
   const { id } = useParams()
+
+  if (localStorage.getItem("dark-mode") === 'true'){
+    document.body.style.backgroundColor = "#272d60";
+    document.body.classList.add("dark-mode");
+  } else {
+    document.body.style.backgroundColor = "#E0E4FF";
+  }
 
   const getTimer = localStorage.getItem("timer-continue");
   const numPoint = localStorage.getItem("point");
@@ -33,13 +41,6 @@ export default function Questions(){
 
   const afterGameTexts = ['Having fun?','Better luck next time','Wanna play again?','Hope you have enjoyed the game']
   const [afterGameText, setAfterGameText] = useState(afterGameTexts[Math.floor(Math.random() * afterGameTexts.length)])
-
-  if (localStorage.getItem("dark-mode") === 'true'){
-    document.body.style.backgroundColor = "#272d60";
-    document.body.classList.add("dark-mode");
-  } else {
-    document.body.style.backgroundColor = "#E0E4FF";
-  }
 
   var hook = sortedCategories.find(item => item.link == `/${id}`)
   var words = hook.words
@@ -67,12 +68,11 @@ export default function Questions(){
     handleWordChange();
     switch (type){
       case 'correct':
-        setCorrect(true)
         const plusOne = () => {
           setSavedPoint(savedPoint + 1);
           localStorage.setItem("point", savedPoint + 1);
         }
-
+        setCorrect(true)
         setTimeout(plusOne, 500)
         setTimeout(() => setCorrect(false), 600)
         break;
@@ -89,7 +89,6 @@ export default function Questions(){
     } else {
       setHideAnswerBtn('Hide answer')
     }
-
     setHideAnswer(!hideAnswer)
   }
 
@@ -101,7 +100,11 @@ export default function Questions(){
     localStorage.setItem("point", 0)
     setGoBackModal(false);
     setIsGoingBack(true);
-    document.body.style.animation = "blue_to_green 2s forwards"
+    if (document.body.classList.contains("dark-mode")){
+      document.body.style.animation = "blue_to_green_dark 2s forwards";
+    } else {
+      document.body.style.animation = "blue_to_green 2s forwards";
+    }
 
     setTimeout(() => {
       window.location.replace("/");
@@ -124,20 +127,20 @@ export default function Questions(){
 
   const playAgain = () => {
     setScoreResult(false);
-    localStorage.setItem("point", 0);
+    setTimeout(() => {
+      localStorage.setItem("point", 0);
+      localStorage.setItem("timer-continue", countStart);
+    }, 500)
     setTimeout(() => window.location.replace(`/${id}`), 2000);
   }
 
   useEffect(()=> {
+    document.title = `${id} - Let's Guess`
     setTimeout(() => {
       setStartPage(false)
     }, 1000)
     if(localStorage.length == 0){
-      localStorage.setItem("timer",60);
-      localStorage.setItem("timer-continue",60);
-      localStorage.setItem("text-hidden", "")
-      localStorage.setItem("text-hidden-th", "")
-      localStorage.setItem("point", 0);
+      startStorages()
     }
   },[])
 
@@ -145,11 +148,13 @@ export default function Questions(){
     const timer = setInterval(() => {
       if (count > 0){
         setCount(count - 1)
+        localStorage.setItem("timer-continue", count - 1)
       }
       if (count === 0){
         setTimesUp(true);
         setTimeout(() => {
           setTimesUp(false)
+          setHideAnswer(false);
           setClearGame(true);
           clearInterval(timer)
         }, 2000)
@@ -175,8 +180,8 @@ export default function Questions(){
       <main className={`app-main words-in-screen${clearGame ? ' active' : ' inactive'}${startPage ? ' start' : ''}`}>
         <h1 id="words" className={`${wrong ? 'wrong-word ' : ''}${correct ? 'correct-word ' : ''}${skipWord}`}>{word}</h1>
         <footer className="checks-btns with-top-space">
-          <button className="btn incorrect" onClick={() => answer('wrong')} disabled={correct || wrong ? true : false}><FontAwesomeIcon icon={faXmark}/></button>
-          <button className="btn correct" onClick={() => answer('correct')} disabled={correct || wrong ? true : false}><FontAwesomeIcon icon={faCheck}/></button>
+          <Button className="incorrect" onClick={() => answer('wrong')} disabled={correct || wrong ? true : false}><FontAwesomeIcon icon={faXmark}/></Button>
+          <Button className="correct" onClick={() => answer('correct')} disabled={correct || wrong ? true : false}><FontAwesomeIcon icon={faCheck}/></Button>
         </footer>
       </main>
 

@@ -16,31 +16,28 @@ import QuestionsZh from "./languages/zh/questions";
 import MainPageDe from "./languages/de/main";
 import QuestionsDe from "./languages/de/questions";
 import "./App-new.scss"
-import { ThemeProvider } from "./components/provider/themeProvider";
 
 export default function App(){
   return (
-    <ThemeProvider>
-      <Router>
-        <Routes>
-          <Route path="*" element={<NotFound />}/>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/:id" element={<Questions />}/>
+    <Router>
+      <Routes>
+        <Route path="*" element={<NotFound />}/>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/:id" element={<Questions />}/>
 
-          <Route path="/th" element={<MainPageTh />} />
-          <Route path="/th/:id" element={<QuestionsTh />}/>
+        <Route path="/th" element={<MainPageTh />} />
+        <Route path="/th/:id" element={<QuestionsTh />}/>
 
-          <Route path="/lo" element={<MainPageLao />} />
-          <Route path="/lo/:id" element={<QuestionsLao />}/>
+        <Route path="/lo" element={<MainPageLao />} />
+        <Route path="/lo/:id" element={<QuestionsLao />}/>
 
-          <Route path="/zh" element={<MainPageZh />} />
-          <Route path="/zh/:id" element={<QuestionsZh />}/>
+        <Route path="/zh" element={<MainPageZh />} />
+        <Route path="/zh/:id" element={<QuestionsZh />}/>
 
-          {/* German*/}
-          {/* <Route path="/de" element={<MainPageDe />}/> 
-          <Route path="/de/:id" element={<QuestionsDe />}/> */}
-        </Routes>
-      </Router>
-    </ThemeProvider>
+        {/* German*/}
+        {/* <Route path="/de" element={<MainPageDe />}/> 
+        <Route path="/de/:id" element={<QuestionsDe />}/> */}
+      </Routes>
+    </Router>
   )
 }

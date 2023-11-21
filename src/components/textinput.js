@@ -1,5 +1,5 @@
-export default function TextInput({...props}){
+export default function TextInput({className, ...props}){
   return (
-    <input type="text" className="text-input" {...props}/>
+    <input type="text" className={`text-input ${className}`} {...props}/>
   )
 }
