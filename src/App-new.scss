@@ -13,7 +13,6 @@ $modal-bg-dark:#202020;
   width:100vw;
   top:0;
   z-index:99;
-  visibility:hidden;
   &.inactive {
     opacity:0;
     visibility:hidden;
@@ -450,6 +449,32 @@ body{
   display:none;
 }
 
+#hidden-answer-text {
+  width:100%;
+}
+
+#warning-hidden-text {
+  color:red;
+  opacity:0;
+  visibility:hidden;
+  &.inactive {
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(5px);
+    transition:all 300ms;
+  }
+  &.active {
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+    transition:all 300ms;
+  }
+  &.check-first{
+    animation: warningText 200ms;
+    animation-iteration-count: 2;
+  }
+}
+
 .tooltips{
   position:absolute;
   background-color:#00000099;
@@ -505,6 +530,21 @@ body{
 @keyframes footerAnim {
   from {transform:translateY(300%)}
   to {transform:translateY(0)}
+}
+
+@keyframes warningText{
+  0%{
+    transform:translateX(0px);
+    font-weight:700;
+  }
+  50%{
+    transform:translateX(5px);
+    font-weight:700;
+  }
+  100%{
+    transform:translateX(0px);
+    font-weight:700;
+  }
 }
 
 .loading-icon{
@@ -958,7 +998,7 @@ input:checked + .switch-toggle:before{
   background-color:$green-bg-dark;
   color:white;
   .btn,.small-btn,.icon-btn,.medium-btn {@include btn-style-dark}
-  .inner-modal,.drawer-bg-circle,.block-space{
+  .inner-modal,.drawer-bg-circle,.block-space,.score-result{
     background-color:$modal-bg-dark;
   }
   .drawer-bg-circle {
@@ -1000,5 +1040,23 @@ input:checked + .switch-toggle:before{
 
   .inner-icon {
     background:$blue-bg-dark;
+  }
+
+  .switch-toggle{
+    background-color:#606060;
+    &:before{
+      content:"";
+      background-color:#202020;
+    }
+  }
+
+  #warning-hidden-text{color:#ff9e9e}
+
+  .drawer-close,.close-search-btn {
+    color:white;
+    &:hover{
+      color:#C0C0C0;
+      transition:all 300ms;
+    }
   }
 }

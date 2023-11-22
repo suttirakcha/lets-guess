@@ -149,7 +149,7 @@ export default function Questions(){
         setCount(count - 1)
         localStorage.setItem("timer-continue", count - 1)
       }
-      if (count === 0){
+      if (count == 0){
         setTimesUp(true);
         setTimeout(() => {
           setTimesUp(false)

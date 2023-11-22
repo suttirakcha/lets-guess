@@ -7,4 +7,5 @@ export const startStorages = () => {
   localStorage.setItem("text-hidden-zh", "")
   localStorage.setItem("text-hidden-de", "")
   localStorage.setItem("point", 0);
+  localStorage.setItem("mode", "light")
 }

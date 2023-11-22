@@ -12,7 +12,7 @@ import { startStorages } from "../../components/lists/storage";
 export default function Questions(){
   const { id } = useParams()
 
-  if (localStorage.getItem("dark-mode") === 'true'){
+  if (localStorage.mode === 'dark'){
     document.body.style.backgroundColor = "#272d60";
     document.body.classList.add("dark-mode");
   } else {
@@ -150,7 +150,7 @@ export default function Questions(){
         setCount(count - 1)
         localStorage.setItem("timer-continue", count - 1)
       }
-      if (count === 0){
+      if (count == 0){
         setTimesUp(true);
         setTimeout(() => {
           setTimesUp(false)
