@@ -11,6 +11,12 @@ export const cateLists = {
   ]
 }
 
+export const cateTitles = [
+  {key: '食物', title:'食物', dataKey: 'foodsZh'},
+  {key: '地理', title:'地理', dataKey: 'geographyZh'},
+  {key: '其他', title:'其他', dataKey: 'otherZh'},
+]
+
 const flattenedCategories = Object.values(cateLists).reduce(
   (accumulator, currentCategory) => [...accumulator, ...currentCategory],
   []

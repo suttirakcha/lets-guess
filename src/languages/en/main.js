@@ -1,19 +1,22 @@
 import React, { useEffect, useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck,faXmark,faChevronLeft,faGear,faLanguage,faSun,faMoon } from "@fortawesome/free-solid-svg-icons";
+import { faCheck,faXmark,faChevronLeft,faGear,faLanguage,faSun,faMoon,faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import { cateLists, sortedCategories, cateTitles } from "./categories";
 import { CardCate, CardCateWithTitle } from "../../components/card";
 import SearchBar from "../../components/searchbar";
 import { Button, ButtonWithIcon } from "../../components/button";
 import Loading from "../../components/loading";
-import { startStorages } from "../../components/lists/storage";
+import { getStorages, startStorages } from "../../components/lists/storage";
 import InvisibleOverlay from "../../components/drawers/invisible-overlay";
 import TextInput from "../../components/textinput";
 import { sensitiveWords } from "../../components/lists/sensitiveWords";
 import DrawerCircle from "../../components/drawers/drawerCircle";
 import ToggleSelect from "../../components/toggleSelect";
+import { useNavigate } from "react-router";
+import Tooltip from "../../components/tooltip";
 
 export default function MainPage(){
+  const navigate = useNavigate()
   const [title, setTitle] = useState("Let's Guess")
   const [currentSec, setCurrentSec] = useState(0)
   const [search, setSearch] = useState('');
@@ -25,12 +28,14 @@ export default function MainPage(){
   const [headerFading, setHeaderFading] = useState(true)
   const [switchToSearchAnim, setSwitchToSearchAnim] = useState(false);
   const [switchToSearch, setSwitchToSearch] = useState(false);
+  const [openSelectLang, setOpenSelectLang] = useState(false);
+  const [tooltipAppear, setTooltipAppear] = useState(false);
 
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
   const [timerSixty, setTimerSixty] = useState(localStorage.getItem("timer-sixty") === 'true');
   const [warning, setWarning] = useState(false);
   const [warningText, setWarningText] = useState('')
-  const [typeHiddenText, setTypeHiddenText] = useState('');
+  const [typeHiddenText, setTypeHiddenText] = useState(localStorage.getItem('text-hidden'));
 
   const toggleTimer = (e) => {
     localStorage.setItem("timer-switch", timerSwitch);
@@ -133,12 +138,13 @@ export default function MainPage(){
       setStartPage(false)
     }, 900)
 
-    if(localStorage.length == 0){
+    if (localStorage.length === 0){
       startStorages()
     }
   }, [])
 
   useEffect(() => {
+    document.title = title;
     const textErrors = {
       containSensitiveWords: sensitiveWords.some(word => typeHiddenText.toUpperCase().includes(word.toUpperCase())),
       containAtSign: typeHiddenText.includes('@')
@@ -164,25 +170,37 @@ export default function MainPage(){
     document.body.classList.remove("dark-mode");
   }
 
+  const clickToChangeLang = (lang) => {
+    setHeaderFading(false);
+    setOpenSelectLang(false);
+    setSwitching(true);
+    setTimeout(() => navigate(lang, {replace:true}), 900)
+  }
+
+  const filterSearch = sortedCategories.filter(cate => cate.category.toUpperCase().includes(search.toUpperCase()))
+
   return (
     <div className="App">
       {switching && <InvisibleOverlay />}
 
       {!loadPage && (
         <>
-          <div className={`header-btns${headerFading ? ' active' : ' inactive'}${startPage ? ' start' : ''}`}>
+          <div className={`header-btns${currentSec === 1 ? ' between' : ' end'}${headerFading ? ' active' : ' inactive'}${startPage ? ' start' : ''}`}>
             {currentSec === 1 ? (
               <>
                 <ButtonWithIcon text="Go back" icon={faChevronLeft} onClick={switchPage.first}/>
                 <div className="right-menu-top">
                   <SearchBar open={searchCate} onOpen={clickSearch.open} onClose={clickSearch.close} isActive={searchCate} onSearch={(e) => setSearch(e.target.value)} placeholder="Search category"/>
-                  <Button size='icon' onClick={() => setOpenSettings(true)}>
-                    <FontAwesomeIcon icon={faGear}/>
-                  </Button>
+                  <div className="searchbar-sec">
+                    <Button size='icon' onClick={() => setOpenSettings(true)} onMouseEnter={() => setTooltipAppear(true)} onMouseLeave={() => setTooltipAppear(false)}>
+                      <FontAwesomeIcon icon={faGear}/>
+                    </Button>
+                    <Tooltip text='Settings' appear={tooltipAppear}/>
+                  </div>
                 </div>
               </>
             ) : (
-              <Button size='small' className='icon-front'>
+              <Button size='small' className='icon-front' onClick={() => setOpenSelectLang(true)}>
                 <FontAwesomeIcon icon={faLanguage}/>
                 Select language
               </Button>
@@ -198,11 +216,22 @@ export default function MainPage(){
         {currentSec === 1 ? (
           <section className={`select-list ${switchToSearchAnim ? 'switching' : ''}`}>
             {switchToSearch ? (
-              <div className="select-lists">
-                {sortedCategories.filter(cate => cate.category.toUpperCase().includes(search.toUpperCase())).map((cate) => (
-                  <CardCate key={cate.category} category={cate.category} link={cate.link} onSelect={switchPage.third}/>
-                ))}
-              </div>
+              <>
+                <div className="select-lists">
+                  {filterSearch.map((cate) => (
+                    <CardCate key={cate.category} category={cate.category} link={cate.link} onSelect={switchPage.third}/>
+                  ))}
+
+                </div>
+
+                {filterSearch.length < 1 && (
+                  <div id="no-result">
+                    <FontAwesomeIcon icon={faExclamationCircle} style={{fontSize:"54px"}}/>
+                    <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>No search results</h1>
+                    <p style={{fontSize:"calc(12px + 0.5vw)"}}>Please try another keyword.</p>
+                  </div>
+                )}
+              </>
             ) : (
               <>
                 {cateTitles.map((cate) => (
@@ -232,6 +261,19 @@ export default function MainPage(){
         <h2>Are you ready?</h2>
         <Button onClick={switchPage.second}>Play now</Button>
       </footer>
+
+      <DrawerCircle open={openSelectLang} onClose={() => setOpenSelectLang(false)}>
+        <h1>Select language</h1>
+        <div id='langList'>
+          <ul className="langs">
+            <li className="active">English</li>
+            <li onClick={() => clickToChangeLang("/de")}>Deutsch / German</li>
+            <li onClick={() => clickToChangeLang("/lo")}>ລາວ / Lao</li>
+            <li onClick={() => clickToChangeLang("/th")}>ไทย / Thai</li>
+            <li onClick={() => clickToChangeLang("/zh")}>中文 / Chinese</li>
+          </ul>
+        </div>
+      </DrawerCircle>
 
       <DrawerCircle open={openSettings} onClose={handleCloseSettings}>
         <h1>Settings</h1>

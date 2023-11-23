@@ -35,4 +35,7 @@ export const sensitiveWords = [
   "bastard",
   "slut",
   "dick",
+  "scheiße",
+  "fick",
+  "arschloch"
 ]

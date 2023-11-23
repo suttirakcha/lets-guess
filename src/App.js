@@ -15,7 +15,7 @@ import QuestionsZh from "./languages/zh/questions";
 
 import MainPageDe from "./languages/de/main";
 import QuestionsDe from "./languages/de/questions";
-import "./App-new.scss"
+import "./App.scss"
 
 export default function App(){
   return (
@@ -34,9 +34,8 @@ export default function App(){
         <Route path="/zh" element={<MainPageZh />} />
         <Route path="/zh/:id" element={<QuestionsZh />}/>
 
-        {/* German*/}
-        {/* <Route path="/de" element={<MainPageDe />}/> 
-        <Route path="/de/:id" element={<QuestionsDe />}/> */}
+        <Route path="/de" element={<MainPageDe />}/> 
+        <Route path="/de/:id" element={<QuestionsDe />}/>
       </Routes>
     </Router>
   )

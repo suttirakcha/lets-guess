@@ -2,8 +2,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faClose } from "@fortawesome/free-solid-svg-icons"
 import { Button } from "./button";
 import TextInput from "./textinput";
+import Tooltip from "./tooltip";
+import { useState } from "react";
 
 export default function SearchBar({open, onOpen, onClose, onSearch, placeholder}){
+  const [hover, setHover] = useState(false)
   return (
     <div className="searchbar-sec">
       <div className="searchbar">
@@ -12,10 +15,13 @@ export default function SearchBar({open, onOpen, onClose, onSearch, placeholder}
         </button>
         <TextInput onInput={onSearch} className={`${open ? 'active' : 'inactive'}`} placeholder={placeholder} id='search-input'/>
       </div>
-      <div className={`open-search-btn ${open ? 'inactive' : 'active'}`}>
-        <Button size='icon' onClick={onOpen}>
-          <FontAwesomeIcon icon={faSearch}/>
-        </Button>
+      <div className="search-btn">
+        <div className={`open-search-btn ${open ? 'inactive' : 'active'}`}>
+          <Button size='icon' onClick={onOpen} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+            <FontAwesomeIcon icon={faSearch}/>
+          </Button>
+          <Tooltip text={placeholder} appear={hover}/>
+        </div>
       </div>
     </div>
   )

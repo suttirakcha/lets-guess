@@ -120,8 +120,9 @@ export default function Questions(){
       document.body.style.animation = "blue_to_green 1s forwards";
     }
     setTimeout(() => {
-      window.location.replace("/");
       localStorage.setItem("point", 0);
+      localStorage.setItem("timer-continue", countStart);
+      window.location.replace("/");
     }, 2000);
   }
 
@@ -135,7 +136,7 @@ export default function Questions(){
   }
 
   useEffect(()=> {
-    document.title = `${id} - Let's Guess`
+    document.title = `${hook.category} - Let's Guess`
     setTimeout(() => {
       setStartPage(false)
     }, 1000)
@@ -195,7 +196,7 @@ export default function Questions(){
         </div>
       </Modal>
 
-      {timesUp && <InvisibleOverlay />}
+      {timesUp || isGoingBack && <InvisibleOverlay />}
       <BlockSpace isActive={timesUp} text="Time's up!"/>
 
       <div className="modal-center">

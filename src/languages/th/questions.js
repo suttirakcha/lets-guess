@@ -113,8 +113,9 @@ export default function Questions(){
       document.body.style.animation = "blue_to_green 1s forwards";
     }
     setTimeout(() => {
-      window.location.replace("/th");
       localStorage.setItem("point", 0);
+      localStorage.setItem("timer-continue", countStart);
+      window.location.replace("/th");
     }, 2000);
   }
 
@@ -124,10 +125,11 @@ export default function Questions(){
       localStorage.setItem("point", 0);
       localStorage.setItem("timer-continue", countStart);
     }, 500)
-    setTimeout(() => window.location.replace(`/${id}`), 2000);
+    setTimeout(() => window.location.replace(`/th/${id}`), 2000);
   }
 
   useEffect(()=> {
+    document.title = `${hook.category} - มาทายคำกันเถอะ`
     setTimeout(() => {
       setStartPage(false)
     }, 1000)
@@ -184,7 +186,7 @@ export default function Questions(){
         </footer>
       </main>
 
-      <BlockSpace isActive={hideAnswer} text={localStorage.getItem("text-hidden") === "" ? "คำตอบถูกซ่อนไว้" : textAnswerHidden}/>
+      <BlockSpace isActive={hideAnswer} text={localStorage.getItem("text-hidden-th") === "" ? "คำตอบถูกซ่อนไว้" : textAnswerHidden}/>
 
       <Modal open={goBackModal} onClose={answerNo}>
         <h1 className="modal-question">คุณต้องการกลับไปที่<br/>หน้าแรกหรือไม่</h1>
@@ -194,8 +196,8 @@ export default function Questions(){
         </div>
       </Modal>
 
-      {timesUp && <InvisibleOverlay />}
-      <BlockSpace isActive={timesUp} text="Time's up!"/>
+      {timesUp || isGoingBack && <InvisibleOverlay />}
+      <BlockSpace isActive={timesUp} text="หมดเวลา!"/>
 
       <div className="modal-center">
         <div className={`score-result${scoreResult ? ' active' : ''}`}>
