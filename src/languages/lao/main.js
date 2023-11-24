@@ -14,6 +14,7 @@ import DrawerCircle from "../../components/drawers/drawerCircle";
 import ToggleSelect from "../../components/toggleSelect";
 import { useNavigate } from "react-router";
 import Tooltip from "../../components/tooltip";
+import setColorMap from "../../components/lists/colorMap";
 
 export default function MainPageLao(){
   const navigate = useNavigate()
@@ -35,7 +36,7 @@ export default function MainPageLao(){
   const [timerSixty, setTimerSixty] = useState(localStorage.getItem("timer-sixty") === 'true');
   const [warning, setWarning] = useState(false);
   const [warningText, setWarningText] = useState('')
-  const [typeHiddenText, setTypeHiddenText] = useState(localStorage.getItem('text-hidden-th'));
+  const [typeHiddenText, setTypeHiddenText] = useState(localStorage.getItem('text-hidden-lo') || '');
 
   const toggleTimer = (e) => {
     localStorage.setItem("timer-switch", timerSwitch);
@@ -77,7 +78,9 @@ export default function MainPageLao(){
   const switchPage = {
     first: () => {
       setHeaderFading(false)
-      clickSearch.close();
+      if (searchCate){
+        clickSearch.close();
+      }
       switchSec("ມາທາຍຄຳກັນເດີ", 0, localStorage.mode == 'dark' ? "pink_to_green_dark 900ms forwards" : "pink_to_green 900ms forwards", localStorage.mode == 'dark' ? "#313c26" : "#D4FFA8");
       setTimeout(() => {
         setHeaderFading(true)
@@ -145,8 +148,8 @@ export default function MainPageLao(){
 
   useEffect(() => {
     const textErrors = {
-      containSensitiveWords: typeHiddenText !== null && sensitiveWords.some(word => typeHiddenText.toUpperCase().includes(word.toUpperCase())),
-      containAtSign: typeHiddenText !== null && typeHiddenText.includes('@')
+      containSensitiveWords: sensitiveWords.some(word => typeHiddenText.toUpperCase().includes(word.toUpperCase())),
+      containAtSign: typeHiddenText.includes('@')
     }
     document.title = title;
     if (textErrors.containSensitiveWords){
@@ -162,6 +165,10 @@ export default function MainPageLao(){
       localStorage.setItem('text-hidden-lo', typeHiddenText)
     }
   }, [typeHiddenText])
+
+  useEffect(() => {
+    setColorMap(currentSec)
+  }, [localStorage.mode])
 
   localStorage.getItem('dark-mode');
   if (localStorage.mode == 'dark'){

@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function DrawerCircle({open, onClose, children}){
   const [isDrawerActive, setIsDrawerActive] = useState(false)
@@ -16,6 +16,13 @@ export default function DrawerCircle({open, onClose, children}){
     }
     return isDrawerActive
   }
+
+  window.addEventListener('keydown', e => {
+    if (e.key === 'Escape'){
+      e.preventDefault()
+      onClose()
+    }
+  })
 
   return (
     <>
