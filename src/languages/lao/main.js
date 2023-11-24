@@ -144,11 +144,11 @@ export default function MainPageLao(){
   }, [])
 
   useEffect(() => {
-    document.title = title;
     const textErrors = {
-      containSensitiveWords: sensitiveWords.some(word => typeHiddenText.toUpperCase().includes(word.toUpperCase())),
-      containAtSign: typeHiddenText.includes('@')
+      containSensitiveWords: typeHiddenText !== null && sensitiveWords.some(word => typeHiddenText.toUpperCase().includes(word.toUpperCase())),
+      containAtSign: typeHiddenText !== null && typeHiddenText.includes('@')
     }
+    document.title = title;
     if (textErrors.containSensitiveWords){
       setWarning(true);
       setWarningText('*ກະລຸນາຫຼີກລ່ຽງການນຳໃຊ້ຄຳທີ່ບໍ່ສຸພາບ ຫຼືຄຳທີ່ອ່ອນໄຫວ') 

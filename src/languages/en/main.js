@@ -144,11 +144,11 @@ export default function MainPage(){
   }, [])
 
   useEffect(() => {
-    document.title = title;
     const textErrors = {
-      containSensitiveWords: sensitiveWords.some(word => typeHiddenText.toUpperCase().includes(word.toUpperCase())),
-      containAtSign: typeHiddenText.includes('@')
+      containSensitiveWords: typeHiddenText !== null && sensitiveWords.some(word => typeHiddenText.toUpperCase().includes(word.toUpperCase())),
+      containAtSign: typeHiddenText !== null && typeHiddenText.includes('@')
     }
+    document.title = title;
     if (textErrors.containSensitiveWords){
       setWarning(true);
       setWarningText('*Please avoid using impolite or sensitive words.')

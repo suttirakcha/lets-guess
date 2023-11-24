@@ -144,11 +144,11 @@ export default function MainPageTh(){
   }, [])
 
   useEffect(() => {
-    document.title = title;
     const textErrors = {
-      containSensitiveWords: sensitiveWords.some(word => typeHiddenText.toUpperCase().includes(word.toUpperCase())),
-      containAtSign: typeHiddenText.includes('@')
+      containSensitiveWords: typeHiddenText !== null && sensitiveWords.some(word => typeHiddenText.toUpperCase().includes(word.toUpperCase())),
+      containAtSign: typeHiddenText !== null && typeHiddenText.includes('@')
     }
+    document.title = title;
     if (textErrors.containSensitiveWords){
       setWarning(true);
       setWarningText('*โปรดหลีกเลี่ยงการใช้คำที่ไม่สุภาพ หรือคำที่อ่อนไหว')
