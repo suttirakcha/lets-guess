@@ -15,7 +15,7 @@ import ToggleSelect from "../../components/toggleSelect";
 import { useNavigate } from "react-router";
 import Tooltip from "../../components/tooltip";
 
-export default function MainPage(){
+export default function MainPageZh(){
   const navigate = useNavigate()
   const [title, setTitle] = useState("我们猜吧")
   const [currentSec, setCurrentSec] = useState(0)

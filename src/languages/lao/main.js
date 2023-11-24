@@ -15,7 +15,7 @@ import ToggleSelect from "../../components/toggleSelect";
 import { useNavigate } from "react-router";
 import Tooltip from "../../components/tooltip";
 
-export default function MainPage(){
+export default function MainPageLao(){
   const navigate = useNavigate()
   const [title, setTitle] = useState("ມາທາຍຄຳກັນເດີ")
   const [currentSec, setCurrentSec] = useState(0)

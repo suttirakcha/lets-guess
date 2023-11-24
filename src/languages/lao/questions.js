@@ -9,7 +9,7 @@ import Modal from "../../components/drawers/modal";
 import InvisibleOverlay from "../../components/drawers/invisible-overlay";
 import { startStorages } from "../../components/lists/storage";
 
-export default function Questions(){
+export default function QuestionsLao(){
   const { id } = useParams()
 
   const getTimer = localStorage.getItem("timer-continue");

@@ -9,7 +9,7 @@ import Modal from "../../components/drawers/modal";
 import InvisibleOverlay from "../../components/drawers/invisible-overlay";
 import { startStorages } from "../../components/lists/storage";
 
-export default function QuestionsDe(){
+export default function QuestionsZh(){
   const { id } = useParams()
 
   if (localStorage.mode === 'dark'){
