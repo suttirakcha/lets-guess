@@ -1,20 +1,39 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck,faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router-dom";
 import { sortedCategories } from "./categories";
+import { Button } from "../../components/button";
+import { BlockSpace } from "../../components/blockspace";
+import Modal from "../../components/drawers/modal";
+import InvisibleOverlay from "../../components/drawers/invisible-overlay";
+import { startStorages } from "../../components/lists/storage";
 
-export default function QuestionsLao(props){
+export default function Questions(){
   const { id } = useParams()
-  if (localStorage.getItem("dark-mode") === 'true'){
-    document.body.style.backgroundColor = "#272d60";
-    document.body.classList.add("dark-mode");
-  } else {
-    document.body.style.backgroundColor = "#E0E4FF";
-  }
 
-  const headApp = useRef(null);
-  const mainApp = useRef(null);
+  const getTimer = localStorage.getItem("timer-continue");
+  const numPoint = localStorage.getItem("point");
+
+  const countStart = localStorage.getItem("timer");
+
+  const [count, setCount] = useState(parseInt(getTimer).toFixed());
+  const [hideAnswer, setHideAnswer] = useState(false);
+  const [hideAnswerBtn, setHideAnswerBtn] = useState('ເຊື່ອງຄຳຕອບ');
+  const [startPage, setStartPage] = useState(true)
+  const [savedPoint, setSavedPoint] = useState(parseInt(localStorage.getItem("point")));
+  const [timesUp, setTimesUp] = useState(false)
+  const [skipWord, setSkipWord] = useState('');
+  const [goBackModal, setGoBackModal] = useState(false);
+  const [scoreResult, setScoreResult] = useState(false);
+  const [isGoingBack, setIsGoingBack] = useState(false);
+  const [clearGame, setClearGame] = useState(false);
+
+  const [correct, setCorrect] = useState(false);
+  const [wrong, setWrong] = useState(false);
+
+  const afterGameTexts = ['ມ່ວນບໍ່?','ໄວ້ມາຫຼິ້ນອີກເດີ','ຢາກຫຼິ້ນອີກບໍ່?','ບໍ່ເປັນຫຍັງ ເທື່ອໜ້າເອົາໃຫມ່']
+  const [afterGameText, setAfterGameText] = useState(afterGameTexts[Math.floor(Math.random() * afterGameTexts.length)])
 
   var hook = sortedCategories.find(item => item.link == `/lo/${id}`)
   var words = hook.words
@@ -24,149 +43,61 @@ export default function QuestionsLao(props){
 
   const [word, setWord] = useState(randomWord);
 
-  const randomizeWords = () => {
+  const handleWordChange = () => {
     var [...guessWord] = words;
     var randomWord = guessWord[Math.floor(Math.random() * words.length)];
-    let wordTxt = document.getElementById("words");
-    wordTxt.style.color = "#E00000";
-    wordTxt.style.animation = "randomWordsOut 600ms forwards";
+    setSkipWord('out');
 
     const newWord = () => {
-      wordTxt.style.animation = "randomWordsIn 600ms forwards";
-      if (localStorage.getItem("dark-mode") === 'true'){
-        wordTxt.style.color = "white";
-      } else {
-        wordTxt.style.color = "black";
-      }
-      setWord(randomWord);
+      setWord(randomWord)
+      setSkipWord('in')
     }
-    setTimeout(newWord, 600);
+
+    setTimeout(newWord, 600)
+    setTimeout(() => setSkipWord(''), 1200)
   }
 
-  const getTimer = localStorage.getItem("timer-continue");
-  const numPoint = localStorage.getItem("point");
-
-  const countStart = localStorage.getItem("timer");
-  var count = parseInt(getTimer).toFixed();
-
-  const countTime = () => {
-    let timer = document.getElementById("timer");
-    let timesUp = document.getElementById("times-up");
-    let timesUpBg = document.getElementById("times-up-bg");
-
-    setInterval(function(){  
-      count -= 1;
-      localStorage.setItem("timer-continue", count);
-      if (count < 20){
-        timer.style.color = "#E63737";
-        timer.style.transition = "color 20s";
-      }
-      if (count == 0){
-        timesUp.style.display = "flex";
-      }
-      if (count < 0) {
-        clearInterval(countTime);
-        timesUp.style.animation = "openModal 400ms forwards";
-        timesUpBg.style.visibility = "visible";
-
-        const moveTimesUp = () => {
-          timesUp.style.animation = "closeModal 400ms forwards";
-          setTimeout(() => timesUp.style.display = "none", 500);
-          showScoreResult();
+  const answer = (type) => {
+    handleWordChange();
+    switch (type){
+      case 'correct':
+        const plusOne = () => {
+          setSavedPoint(savedPoint + 1);
+          localStorage.setItem("point", savedPoint + 1);
         }
-        setTimeout(moveTimesUp, 2000)
-        return;
-      }
-      timer.innerHTML = count;
-    }, 1000)
-  }
-  const [num, setNum] = useState(parseInt(localStorage.getItem("point")));
-
-  const countPoint = () => {
-    var [...guessWord] = words;
-    var randomWord = guessWord[Math.floor(Math.random() * words.length)];
-    let wordTxt = document.getElementById("words");
-    wordTxt.style.color = "#00D604";
-    wordTxt.style.animation = "randomWordsOut 600ms forwards";
-    let getPoint = document.getElementById("get-point");
-
-    const newWord = () => {
-      wordTxt.style.animation = "randomWordsIn 600ms forwards";
-      if (localStorage.getItem("dark-mode") === 'true'){
-        wordTxt.style.color = "white";
-      } else {
-        wordTxt.style.color = "black";
-      }
-      setWord(randomWord);
+        setCorrect(true)
+        setTimeout(plusOne, 500)
+        setTimeout(() => setCorrect(false), 600)
+        break;
+      case 'wrong':
+        setWrong(true)
+        setTimeout(() => setWrong(false), 600)
+        break
     }
-
-    const plusOne = () => {
-      setNum(num + 1);
-      localStorage.setItem("point", num + 1);
-    }
-
-    setTimeout(() => getPoint.classList.add("animate"),300)
-
-    setTimeout(newWord, 600);
-    setTimeout(() => plusOne(), 500)
-    setTimeout(() => getPoint.classList.remove("animate"),1100);
   }
 
-  const clickToHideAnswer = () => {
-    let answerBtn = document.getElementById("toggle-hide-show");
-    let answerHidden = document.getElementById("answer-hidden");
-    if (answerBtn.innerText == "ເຊື່ອງຄຳຕອບ"){
-      answerHidden.style.display = "flex";
-      answerHidden.style.animation = "openModal 400ms forwards";
-      answerBtn.innerText = "ສະແດງຄຳຕອບ";
-      answerBtn.disabled = true;
-      setTimeout(() => answerBtn.disabled = false, 500);
+  const handleHideOrShowAnswer = () => {
+    if (hideAnswerBtn === 'ເຊື່ອງຄຳຕອບ'){
+      setHideAnswerBtn('ສະແດງຄຳຕອບ');
     } else {
-      answerBtn.disabled = true;
-      setTimeout(() => answerBtn.disabled = false, 500);
-      answerBtn.innerText = "ເຊື່ອງຄຳຕອບ";
-      answerHidden.style.animation = "closeModal 500ms forwards";
-      setTimeout(() => answerHidden.style.display = "none", 500);
+      setHideAnswerBtn('ເຊື່ອງຄຳຕອບ')
     }
-  }
-
-  const clickToGoBack = () => {
-    let modal = document.getElementById("want-to-quit-modal");
-    let mask = document.getElementById("want-to-quit");
-
-    modal.style.display = "block";
-
-    modal.style.animation = "openModal 400ms forwards";
-    mask.style.animation = "mainAnimOut 400ms forwards";
+    setHideAnswer(!hideAnswer)
   }
 
   const answerNo = () => {
-    let modal = document.getElementById("want-to-quit-modal");
-    let mask = document.getElementById("want-to-quit");
-
-    modal.style.animation = "closeModal 400ms forwards";
-    mask.style.animation = "mainAnim 400ms forwards";
-
-    setTimeout(() => modal.style.display = "none", 400)
+    setGoBackModal(false)
   }
 
   const answerYes = () => {
-    let modal = document.getElementById("want-to-quit-modal");
-    let mask = document.getElementById("want-to-quit");
-    let timesUpBg = document.getElementById("times-up-bg");
-
-    modal.style.animation = "closeModal 400ms forwards";
-    mask.style.backgroundColor = "#00000000";
-    mask.style.transition = "all 400ms";
-    timesUpBg.style.visibility = "visible";
-
-    document.querySelector(".App").style.animation = "mainAnim 2s forwards";
+    localStorage.setItem("point", 0)
+    setGoBackModal(false);
+    setIsGoingBack(true);
     if (document.body.classList.contains("dark-mode")){
-      document.body.style.animation = "changeBgToFrontDarkMode 2s forwards";
+      document.body.style.animation = "blue_to_green_dark 2s forwards";
     } else {
-      document.body.style.animation = "changeBgToFront 2s forwards";
+      document.body.style.animation = "blue_to_green 2s forwards";
     }
-    localStorage.setItem("point", 0);
 
     setTimeout(() => {
       window.location.replace("/lo");
@@ -174,111 +105,108 @@ export default function QuestionsLao(props){
     }, 3000)
   }
 
-  const showScoreResult = () => {
-    headApp.current.style.animation = "headAnim 900ms forwards";
-    mainApp.current.style.animation = "mainAnim 1.5s forwards";
-    let answerHidden = document.getElementById("answer-hidden");
-    answerHidden.style.animation = "mainAnim 1.5s forwards";
-    let scoreResult = document.getElementById("score-result");
-    scoreResult.style.animation = "scoreResultIn 1.5s forwards";
-    scoreResult.style.animationDelay = "1000ms";
-    localStorage.setItem("timer-continue", countStart);
-    localStorage.setItem("point", 0);
-  }
-
-  const scoreResultUp = () => {
-    let scoreResult = document.getElementById("score-result");
-    setTimeout(() => scoreResult.style.display = "none", 1510);
-    scoreResult.style.animation = "scoreResultOut 1.5s forwards";
-  }
-
-  const scoreResultBackToHomepage = () => {
-    scoreResultUp();
+  const backToHomepage = () => {
+    setScoreResult(false);
     if (document.body.classList.contains("dark-mode")){
-      document.body.style.animation = "changeBgToFrontDarkMode 1s forwards";
+      document.body.style.animation = "blue_to_green_dark 1s forwards";
     } else {
-      document.body.style.animation = "changeBgToFront 1s forwards";
+      document.body.style.animation = "blue_to_green 1s forwards";
     }
     setTimeout(() => {
-      window.location.replace("/lo");
       localStorage.setItem("point", 0);
+      localStorage.setItem("timer-continue", countStart);
+      window.location.replace("/lo");
     }, 2000);
   }
 
-  const scoreResultPlayAgain = () => {
-    scoreResultUp();
-    localStorage.setItem("point", 0);
+  const playAgain = () => {
+    setScoreResult(false);
+    setTimeout(() => {
+      localStorage.setItem("point", 0);
+      localStorage.setItem("timer-continue", countStart);
+    }, 500)
     setTimeout(() => window.location.replace(`/lo/${id}`), 2000);
   }
 
-  const loadPage = () => {
-    headApp.current.style.animation = "headAnimOut 900ms forwards";
+  useEffect(()=> {
+    document.title = `${hook.category} - ມາທາຍຄຳກັນເດີ`
+    setTimeout(() => {
+      setStartPage(false)
+    }, 1000)
     if(localStorage.length == 0){
-      localStorage.setItem("timer",60);
-      localStorage.setItem("timer-continue",60);
-      localStorage.setItem("text-hidden", "")
-      localStorage.setItem("text-hidden-lo", "")
-      localStorage.setItem("point", 0);
+      startStorages()
     }
-    countTime();
-  }
 
-  const afterGameText = ['ມ່ວນບໍ່?','ໄວ້ມາຫຼິ້ນອີກເດີ','ຢາກຫຼິ້ນອີກບໍ່?','ບໍ່ເປັນຫຍັງ ເທື່ອໜ້າເອົາໃຫມ່']
+    if (localStorage.getItem("dark-mode") === 'true'){
+      document.body.style.backgroundColor = "#272d60";
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.style.backgroundColor = "#E0E4FF";
+    }
+  },[])
 
-  useEffect(()=> {loadPage()},[])
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (count > 0){
+        setCount(count - 1)
+        localStorage.setItem("timer-continue", count - 1)
+      }
+      if (count == 0){
+        setTimesUp(true);
+        setTimeout(() => {
+          setTimesUp(false)
+          setHideAnswer(false);
+          setClearGame(true);
+          clearInterval(timer)
+        }, 2000)
+        setTimeout(() => setScoreResult(true), 3000)
+      }
+    }, 1000)
+    return () => {clearInterval(timer)}
+  }, [count])
 
   return (
-    <div className="App lao">
-      <header className="app-head head-game" ref={headApp}>
+    <div className={`App${isGoingBack ? ' fade-out-game' : ''}`}>
+      <header className={`head-game${clearGame ? ' active' : ' inactive'}${startPage ? ' start' : ''}`}>
         <div className="sec-left">
           <h1 id="category">ໝວດໝູ່: {hook.category}</h1>
-          <h1 id="get-point">ຄະແນນ +1</h1>
+          <h1 id="get-point" className={`${correct ? 'animate' : ''}`}>ຄະແນນ +1</h1>
         </div>
-        <div className="sec-middle">
-          <h1 id="timer">{getTimer}</h1>
-        </div>
-        <div className="sec-right">
-          <button className="btn" id="toggle-hide-show" onClick={clickToHideAnswer}>ເຊື່ອງຄຳຕອບ</button>
-          <button className="btn" onClick={clickToGoBack}>ກັບໄປໜ້າຫຼັກ</button>
+        <h1 id="timer">{count}</h1>
+        <div className="checks-btns">
+          <Button size='medium' onClick={handleHideOrShowAnswer}>{hideAnswerBtn}</Button>
+          <Button size='medium' onClick={() => setGoBackModal(true)}>ກັບໄປໜ້າຫຼັກ</Button>
         </div>
       </header>
-      <main className="app-main words-in-screen" ref={mainApp}>
-        <h1 id="words">{word}</h1>
-        <footer className="foot-main btns-check">
-          <button className="btn incorrect" onClick={randomizeWords}><FontAwesomeIcon icon={faXmark}/></button>
-          <button className="btn correct" onClick={countPoint}><FontAwesomeIcon icon={faCheck}/></button>
+      <main className={`app-main words-in-screen${clearGame ? ' active' : ' inactive'}${startPage ? ' start' : ''}`}>
+        <h1 id="words" className={`${wrong ? 'wrong-word ' : ''}${correct ? 'correct-word ' : ''}${skipWord}`}>{word}</h1>
+        <footer className="checks-btns with-top-space">
+          <Button className="incorrect" onClick={() => answer('wrong')} disabled={correct || wrong ? true : false}><FontAwesomeIcon icon={faXmark}/></Button>
+          <Button className="correct" onClick={() => answer('correct')} disabled={correct || wrong ? true : false}><FontAwesomeIcon icon={faCheck}/></Button>
         </footer>
       </main>
 
-      <div id="answer-hidden" className="block-space">
-        <h1>{localStorage.getItem("text-hidden-lo") === "" ? "ຄຳຕອບຖືກເຊື່ອງໄວ້" : textAnswerHidden}</h1>
-      </div>
+      <BlockSpace isActive={hideAnswer} text={localStorage.getItem("text-hidden-lo") === "" ? "ຄຳຕອບຖືກເຊື່ອງໄວ້" : textAnswerHidden}/>
 
-      <div id="want-to-quit" onClick={answerNo}></div>
-
-      <div className="center">
-        <div id="want-to-quit-modal">
-          <h1>ເຈົ້າຕ້ອງການກັບໄປທີ່ໜ້າຫຼັກບໍ່?</h1>
-          <div className="btns-check">
-            <button className="btn" onClick={answerYes}>ແມ່ນ</button>
-            <button className="btn" onClick={answerNo}>ບໍ່</button>
-          </div>
+      <Modal open={goBackModal} onClose={answerNo}>
+        <h1 className="modal-question">ເຈົ້າຕ້ອງການກັບໄປທີ່ໜ້າຫຼັກບໍ່?</h1>
+        <div className="checks-btns with-top-space">
+          <Button onClick={answerYes}>ແມ່ນ</Button>
+          <Button onClick={answerNo}>ບໍ່</Button>
         </div>
-      </div>
+      </Modal>
 
-      <div id="times-up-bg"></div>
-      <div id="times-up" className="block-space">
-        <h1 className="times-up-text">ໝົດເວລາ!</h1>
-      </div>
+      {timesUp || isGoingBack && <InvisibleOverlay />}
+      <BlockSpace isActive={timesUp} text="ໝົດເວລາ!"/> 
 
-      <div className="center">
-        <div id="score-result">
-          <h1 style={{fontSize:"60px",marginTop:0}}>ຜົນໄດ້ຮັບ</h1>
-          <h1 style={{fontSize:"48px"}}>ຄະແນນ: {numPoint}</h1>
-          <h2>{afterGameText[Math.floor(Math.random() * afterGameText.length)]}</h2>
-          <div className="btns-check">
-            <button className="btn" onClick={scoreResultBackToHomepage}>ກັບ</button>
-            <button className="btn" onClick={scoreResultPlayAgain}>ຫຼິ້ນອີກຄັ້ງ</button>
+      <div className="modal-center">
+        <div className={`score-result${scoreResult ? ' active' : ''}`}>
+          <h1 className='result-title'>ຜົນໄດ້ຮັບ</h1>
+          <h1 id='score'>ຄະແນນ: {numPoint}</h1>
+          <h2 className="after-game-text">{afterGameText}</h2>
+          <div className="checks-btns with-top-space">
+            <Button size='medium' onClick={backToHomepage}>ກັບ</Button>
+            <Button size='medium' onClick={playAgain}>ຫຼິ້ນອີກຄັ້ງ</Button>
           </div>
         </div>
       </div>

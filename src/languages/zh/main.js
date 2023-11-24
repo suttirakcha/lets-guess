@@ -265,10 +265,11 @@ export default function MainPage(){
         <h1>选择语言</h1>
         <div id='langList'>
           <ul className="langs">
-            <li className="active">ไทย</li>
-            <li onClick={() => clickToChangeLang("/")}>English / อังกฤษ</li>
-            <li onClick={() => clickToChangeLang("/lo")}>ລາວ / ลาว</li>
-            <li onClick={() => clickToChangeLang("/zh")}>中文 / จีน</li>
+            <li className="active">中文</li>
+            <li onClick={() => clickToChangeLang("/")}>English / 英文</li>
+            <li onClick={() => clickToChangeLang("/th")}>ไทย / 泰语</li>
+            <li onClick={() => clickToChangeLang("/lo")}>ລາວ / 老挝语</li>
+            <li onClick={() => clickToChangeLang("/de")}>Deutsch / 德文</li>
           </ul>
         </div>
       </DrawerCircle>

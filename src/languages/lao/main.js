@@ -1,386 +1,41 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck,faXmark,faChevronLeft,faGear,faClose,faSun,faMoon,faSearch,faExclamationCircle,faChevronDown,faLanguage, faEarthAsia } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
-import { cateLists, sortedCategories } from "./categories";
+import { faCheck,faXmark,faChevronLeft,faGear,faLanguage,faSun,faMoon,faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
+import { cateLists, sortedCategories, cateTitles } from "./categories";
+import { CardCate, CardCateWithTitle } from "../../components/card";
+import SearchBar from "../../components/searchbar";
+import { Button, ButtonWithIcon } from "../../components/button";
+import Loading from "../../components/loading";
+import { startStorages } from "../../components/lists/storage";
+import InvisibleOverlay from "../../components/drawers/invisible-overlay";
+import TextInput from "../../components/textinput";
+import { sensitiveWords } from "../../components/lists/sensitiveWords";
+import DrawerCircle from "../../components/drawers/drawerCircle";
+import ToggleSelect from "../../components/toggleSelect";
+import { useNavigate } from "react-router";
+import Tooltip from "../../components/tooltip";
 
-export default function MainPageLao(){
+export default function MainPage(){
+  const navigate = useNavigate()
+  const [title, setTitle] = useState("ມາທາຍຄຳກັນເດີ")
+  const [currentSec, setCurrentSec] = useState(0)
+  const [search, setSearch] = useState('');
+  const [searchCate, setSearchCate] = useState(false);
+  const [switching, setSwitching] = useState(false);
+  const [loadPage, setLoadPage] = useState(false)
+  const [openSettings, setOpenSettings] = useState(false)
+  const [startPage, setStartPage] = useState(true)
+  const [headerFading, setHeaderFading] = useState(true)
+  const [switchToSearchAnim, setSwitchToSearchAnim] = useState(false);
+  const [switchToSearch, setSwitchToSearch] = useState(false);
+  const [openSelectLang, setOpenSelectLang] = useState(false)
+  const [tooltipAppear, setTooltipAppear] = useState(false);
+
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer-switch") === 'false');
   const [timerSixty, setTimerSixty] = useState(localStorage.getItem("timer-sixty") === 'true');
-  const [title, setTitle] = useState('ມາທາຍຄຳກັນເດີ');
-
-  const headApp = useRef(null);
-  const mainApp = useRef(null);
-  const footApp = useRef(null);
-
-  const navigate = useNavigate()
-
-  const [clicked, setClicked] = useState(false);
-
-  const [settings, setSettings] = useState(false);
-
-  localStorage.getItem('dark-mode');
-
-  if (localStorage.getItem('dark-mode') == 'true'){
-    document.body.classList.add("dark-mode");
-  }
-
-  const loadGame = () => {
-    let howToPlay = document.getElementById("how-to-play");
-    let selectLists = document.getElementById("select-list");
-    let changeLangBtn = document.getElementById("changeLangBtn");
-    headApp.current.style.animation = "headAnimOut 900ms forwards";
-    mainApp.current.style.animation = "mainAnimOut 900ms forwards";
-    footApp.current.style.display = "block";
-    footApp.current.style.animation = "footAnimOut 900ms forwards";
-    howToPlay.style.display = "block";
-    selectLists.style.display = "none";
-    changeLangBtn.style.animation = "mainAnimOut 900ms forwards";
-    setTitle('ມາທາຍຄຳກັນເດີ');
-  }
-
-  const goBack = () => {
-    let goBackBtn = document.getElementById("goBackBtn");
-    let rightBtns = document.getElementById("right-btns-sec");
-    let preventBlock = document.getElementById("prevent");
-    headApp.current.style.animation = "headAnim 900ms forwards";
-    mainApp.current.style.animation = "mainAnim 900ms forwards";
-    footApp.current.style.animation = "footAnim 900ms forwards";
-    goBackBtn.style.animation = "mainAnim 900ms forwards";
-    rightBtns.style.animation = "mainAnim 900ms forwards";
-    preventBlock.style.visibility = "visible";
-    setTimeout(() => {
-      preventBlock.style.visibility = "hidden";
-    },900)
-
-    if (document.body.classList.contains("dark-mode")){
-      document.body.style.animation = "changeBgGoBackDarkMode 1.8s forwards";
-    } else {
-      document.body.style.animation = "changeBgGoBack 1.8s forwards";
-    }
-
-    const selectBack = () => {loadGame()}
-    setTimeout(selectBack, 890)
-    if (clicked){
-      closeSearch();
-    }
-  }
-
-  const playNow = () => {
-    let howToPlay = document.getElementById("how-to-play");
-    let selectLists = document.getElementById("select-list");
-    let goBackBtn = document.getElementById("goBackBtn");
-    let rightBtns = document.getElementById("right-btns-sec");
-    let changeLangBtn = document.getElementById("changeLangBtn");
-    let preventBlock = document.getElementById("prevent");
-    headApp.current.style.animation = "headAnim 900ms forwards";
-    mainApp.current.style.animation = "mainAnim 900ms forwards";
-    footApp.current.style.animation = "footAnim 900ms forwards";
-    changeLangBtn.style.animation = "mainAnim 900ms forwards";
-    preventBlock.style.visibility = "visible";
-    setTimeout(() => {
-      preventBlock.style.visibility = "hidden";
-    },900)
-    
-    if (document.body.classList.contains("dark-mode")){
-      document.body.style.animation = "changeBgSelectCateDarkMode 1.8s";
-      setTimeout(() => {
-        document.body.style.backgroundColor = "#3f1b3c";
-      },1790)
-    } else {
-      document.body.style.animation = "changeBgSelectCate 1.8s";
-      setTimeout(() => {
-        document.body.style.backgroundColor = "#FFE0FD";
-      },1790)
-    }
-
-    const selectCate = () => {
-      headApp.current.style.animation = "headAnimOut 900ms forwards";
-      mainApp.current.style.animation = "mainAnimOut 900ms forwards";
-      footApp.current.style.display = "none";
-      goBackBtn.style.animation = "mainAnimOut 900ms forwards";
-      rightBtns.style.animation = "mainAnimOut 900ms forwards";
-      howToPlay.style.display = "none";
-      selectLists.style.display = "block";
-      setTitle("ເລືອກໝວດໝູ່");
-    }
-
-    setTimeout(selectCate, 890)
-  }
-
-  const clickToChangeLang = (lang) => {
-    closeChangeLang();
-    let changeLangBtn = document.getElementById("changeLangBtn");
-    headApp.current.style.animation = "headAnim 900ms forwards";
-    mainApp.current.style.animation = "mainAnim 900ms forwards";
-    footApp.current.style.animation = "footAnim 900ms forwards";
-    changeLangBtn.style.animation = "mainAnim 900ms forwards";
-
-    setTimeout(() => navigate(lang, {replace:true}), 800)
-  }
-
-  const clickToCate = () => {
-    let goBackBtn = document.getElementById("goBackBtn");
-    let selectLists = document.getElementById("select-list");
-    let allCates = document.getElementById("all-cates");
-    let loadingTxt = document.getElementById("loading");
-    let rightBtns = document.getElementById("right-btns-sec");
-    let preventBlock = document.getElementById("prevent");
-    headApp.current.style.animation = "headAnim 900ms forwards";
-    mainApp.current.style.animation = "mainAnim 900ms forwards";
-    footApp.current.style.animation = "footAnim 900ms forwards";
-    goBackBtn.style.animation = "mainAnim 900ms forwards";
-    rightBtns.style.animation = "mainAnim 900ms forwards";
-    preventBlock.style.visibility = "visible";
-    setTimeout(() => {
-      preventBlock.style.visibility = "hidden";
-    },900)
-
-    if (document.body.classList.contains("dark-mode")){
-      document.body.style.animation = "changeBgCateDarkMode 1.8s forwards";
-    } else {
-      document.body.style.animation = "changeBgCate 1.8s forwards";
-    }
-
-    const showLoading = () => {
-      selectLists.style.display = "none";
-      allCates.style.display = "none";
-      loadingTxt.style.display = "block";
-      mainApp.current.style.animation = "mainAnimOut 900ms forwards"
-    }
-
-    const hideLoading = () => {
-      mainApp.current.style.animation = "mainAnim 900ms forwards";
-    }
-
-    setTimeout(showLoading,890);
-    setTimeout(hideLoading,4000);
-  }
-
-  const CardCate = (props) => {
-    const clickCate = () => {
-      clickToCate();
-      const setLink = () => navigate(props.link,{replace:true})
-      setTimeout(setLink, 5000);
-    }
-    return (
-      <div className="card" onClick={clickCate}>
-        <h2>{props.category}</h2>
-      </div>
-    )
-  }
-
-  const openSettings = () => {
-    setSettings(true);
-    if (clicked) {
-      closeSearch();
-    }
-    let settingsDrawer = document.getElementById("settings-drawer");
-    let settingsDrawerMask = document.getElementById("settings-drawer-mask");
-    let settingsDrawerBg = document.getElementById("settings-drawer-anim");
-    let settingsDrawerAnim = document.getElementById("circle");
-    let closeBtn = document.getElementById("close-settings-btn");
-
-    settingsDrawerMask.style.animation = "mainAnimOut 400ms forwards";
-    settingsDrawerAnim.style.animation = "settingsDrawerBg 800ms forwards";
-    settingsDrawerBg.style.display = "block";
-    closeBtn.style.animation = "mainAnimOut 300ms forwards";
-    setTimeout(() => {
-      settingsDrawer.style.display = "block";
-      settingsDrawer.style.animation = "settingsDrawerOpen 500ms forwards";
-    }, 200)
-  }
-
-  const closeSettings = (e) => {
-    let hiddenText = document.getElementById("hidden-text");
-    let warning = document.getElementById("warning-hidden-text");
-    const accept = () => {
-      setSettings(false);
-      let settingsDrawer = document.getElementById("settings-drawer");
-      let settingsDrawerMask = document.getElementById("settings-drawer-mask");
-      let settingsDrawerBg = document.getElementById("settings-drawer-anim");
-      let settingsDrawerAnim = document.getElementById("circle");
-      let closeBtn = document.getElementById("close-settings-btn");
-  
-      settingsDrawer.style.animation = "settingsDrawerClose 400ms forwards";
-      setTimeout(() => settingsDrawer.style.display = "none",400); 
-      setTimeout(() => settingsDrawerBg.style.display = "none",600);
-      
-      setTimeout(() => {
-        settingsDrawerMask.style.animation = "mainAnim 400ms forwards";
-        settingsDrawerAnim.style.animation = "settingsDrawerBgClose 400ms ease-out forwards";
-        closeBtn.style.animation = "mainAnim 300ms ease-in forwards";
-      }, 200)
-    }
-    if (
-      hiddenText.value.includes("ควย") ||
-      hiddenText.value.includes("เย็ด") ||
-      hiddenText.value.includes("เหี้ย") ||
-      hiddenText.value.includes("หี") ||
-      hiddenText.value.includes("แตด") ||
-      hiddenText.value.includes("สัส") ||
-      hiddenText.value.includes("ดอกทอง") ||
-      hiddenText.value.includes("มึง") ||
-      hiddenText.value.includes("โง่") ||
-      hiddenText.value.includes("ตาย") ||
-      hiddenText.value.includes("แดก") ||
-      hiddenText.value.includes("อีดอก") ||
-      hiddenText.value.includes("นรก") ||
-      hiddenText.value.includes("พ่อง") ||
-      hiddenText.value.includes("แม่ม") ||
-      hiddenText.value.includes("แม่ง") ||
-      hiddenText.value.includes("ดาก") ||
-      hiddenText.value.includes("หัวดอ") ||
-      hiddenText.value.includes("ตีน") ||
-      hiddenText.value.includes("ตอแหล") ||
-      hiddenText.value.includes("ฆ่า") ||
-      hiddenText.value.includes("เงิน") ||
-      hiddenText.value.includes("ห่า") ||
-      hiddenText.value.includes("เสือก") ||
-      hiddenText.value.includes("หำ") ||
-      hiddenText.value.toUpperCase().includes("fuck".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("shit".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("damn".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("cunt".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("cum".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("hell".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("bitch".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("ass".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("bastard".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("slut".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("dick".toUpperCase()) ||
-      hiddenText.value.includes("@")
-    ){
-      hiddenText.focus();
-      warning.classList.add("active");
-      setTimeout(() => warning.classList.remove("active"), 400);
-    } else {
-      accept();
-    }
-
-    if (
-      hiddenText.value.toUpperCase().includes("circum".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("hello".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("pass".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("mass".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("bass".toUpperCase()) ||
-      hiddenText.value.includes("ห่าง") ||
-      hiddenText.value.includes("ห่าน") ||
-      hiddenText.value.includes("หีบ")
-    ){
-      accept();
-    }
-  }
-
-  const pressToCloseSettings = e => {
-    let key = e.key;
-    if (key == "Escape" && settings){
-      closeSettings(e);
-    }
-  }
-
-  const checkHiddenText = () => {
-    let hiddenText = document.getElementById("hidden-text");
-    let warning = document.getElementById("warning-hidden-text");
-
-    if (
-      hiddenText.value.includes("ควย") ||
-      hiddenText.value.includes("เย็ด") ||
-      hiddenText.value.includes("เหี้ย") ||
-      hiddenText.value.includes("หี") ||
-      hiddenText.value.includes("แตด") ||
-      hiddenText.value.includes("สัส") ||
-      hiddenText.value.includes("ดอกทอง") ||
-      hiddenText.value.includes("มึง") ||
-      hiddenText.value.includes("โง่") ||
-      hiddenText.value.includes("ตาย") ||
-      hiddenText.value.includes("แดก") ||
-      hiddenText.value.includes("อีดอก") ||
-      hiddenText.value.includes("นรก") ||
-      hiddenText.value.includes("พ่อง") ||
-      hiddenText.value.includes("แม่ม") ||
-      hiddenText.value.includes("แม่ง") ||
-      hiddenText.value.includes("ดาก") ||
-      hiddenText.value.includes("หัวดอ") ||
-      hiddenText.value.includes("ตีน") ||
-      hiddenText.value.includes("ตอแหล") ||
-      hiddenText.value.includes("ฆ่า") ||
-      hiddenText.value.includes("เงิน") ||
-      hiddenText.value.includes("ห่า") ||
-      hiddenText.value.includes("เสือก") ||
-      hiddenText.value.includes("หำ") ||
-      hiddenText.value.toUpperCase().includes("fuck".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("shit".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("damn".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("cunt".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("cum".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("hell".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("bitch".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("ass".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("bastard".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("slut".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("dick".toUpperCase()) ||
-      (hiddenText.value.includes("@"))
-    ){
-      if (hiddenText.value.includes("@")){
-        warning.innerHTML = "*ບໍ່ອະນຸຍາດໃຫ້ໃຊ້ @ ໃນພື້ນທີ່ຂໍ້ຄວາມນີ້.";
-      } else {
-        warning.innerHTML = "*ກະລຸນາຫຼີກລ່ຽງການນຳໃຊ້ຄຳທີ່ບໍ່ສຸພາບ ຫຼືຄຳທີ່ອ່ອນໄຫວ.";
-      }
-      hiddenText.classList.add("warning");
-      localStorage.setItem("text-hidden-lo", "");
-      warning.style.opacity = "1";
-      warning.style.visibility = "visible";
-      warning.style.transform = "translateY(0px)";
-      warning.style.transition = "all 200ms";
-    } else {
-      hiddenText.classList.remove("warning");
-      warning.style.opacity = "0";
-      warning.style.visibility = "hidden";
-      warning.style.transform = "translateY(5px)";
-      warning.style.transition = "all 200ms";
-    }
-
-    if (
-      hiddenText.value.toUpperCase().includes("circum".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("hello".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("pass".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("mass".toUpperCase()) ||
-      hiddenText.value.toUpperCase().includes("bass".toUpperCase()) ||
-      hiddenText.value.includes("ห่าง") ||
-      hiddenText.value.includes("ห่าน") ||
-      hiddenText.value.includes("หีบ")
-    ){
-      warning.style.opacity = "0";
-      warning.style.visibility = "hidden";
-      warning.style.transition = "all 200ms";
-      warning.style.transform = "translateY(5px)";
-      hiddenText.classList.remove("warning");
-    }
-  }
-  
-  useEffect(() => {
-    loadGame();
-    let hiddenText = document.getElementById("hidden-text");
-    if (localStorage.getItem("timer") == 60){
-      setTimeout(()=>localStorage.setItem("timer-continue",60),1)
-    }
-    if (localStorage.getItem("timer") == 120){
-      setTimeout(()=>localStorage.setItem("timer-continue",120),1)
-    }
-    if(localStorage.length == 0 || localStorage.getItem("timer-continue") == 'null'){
-      localStorage.setItem("timer",60);
-      localStorage.setItem("timer-continue", 60);
-      localStorage.setItem("text-hidden", "")
-      localStorage.setItem("text-hidden-th", "")
-      localStorage.setItem("text-hidden-lo", "")
-      localStorage.setItem("text-hidden-zh", "")
-      localStorage.setItem("point", 0);
-      hiddenText.value = localStorage.setItem("text-hidden-lo", "");
-    }
-    hiddenText.value = localStorage.getItem("text-hidden-lo");
-  }, [])
-  window.addEventListener("keydown", pressToCloseSettings);
+  const [warning, setWarning] = useState(false);
+  const [warningText, setWarningText] = useState('')
+  const [typeHiddenText, setTypeHiddenText] = useState(localStorage.getItem('text-hidden-th'));
 
   const toggleTimer = (e) => {
     localStorage.setItem("timer-switch", timerSwitch);
@@ -397,206 +52,198 @@ export default function MainPageLao(){
       localStorage.setItem("timer", 60);
       localStorage.setItem("timer-continue", 60);
     }
-    console.log(localStorage);
   }
 
-  const typeHiddenTextLo = () => {
-    let hiddenText = document.getElementById("hidden-text").value;
-    localStorage.setItem("text-hidden-lo", hiddenText);
-  }
-  const changeLang = () => {
-    let langList = document.getElementById("langList");
-    let langListBg = document.getElementById("langList-bg");
-    let closeBtn = document.getElementById("close-changeLang-btn");
-    let langListOverlay = document.getElementById("langList-overlay");
-    langList.classList.add("active");
-    langListBg.classList.add("active");
-    langList.style.transitionDelay = "300ms";
-    langListBg.style.transitionDelay = "0ms";
-    closeBtn.classList.add("active");
-    langListOverlay.classList.add("active");
-  }
-  const closeChangeLang = () => {
-    let langList = document.getElementById("langList");
-    let langListBg = document.getElementById("langList-bg");
-    let closeBtn = document.getElementById("close-changeLang-btn");
-    let langListOverlay = document.getElementById("langList-overlay");
-    langList.classList.remove("active");
-    langList.style.transitionDelay = "0ms";
-    langListBg.classList.remove("active");
-    langListBg.style.transitionDelay = "200ms";
-    closeBtn.classList.remove("active");
-    langListOverlay.classList.remove("active");
-  }
   const darkMode = () => {
     document.body.classList.add("dark-mode");
     document.body.style.backgroundColor = "#3f1b3c";
     document.body.style.transition = "all 300ms";
-    localStorage.setItem('dark-mode', 'true');
+    localStorage.setItem('mode', 'dark')
   }
 
   const lightMode = () => {
     document.body.classList.remove("dark-mode");
     document.body.style.backgroundColor = "#FFE0FD";
     document.body.style.transition = "all 300ms";
-    localStorage.setItem('dark-mode', 'false');
+    localStorage.setItem('mode', 'light')
   }
 
-  const openSearch = () => {
-    let searchBtn = document.getElementById("searchBtn");
-    let closeBtn = document.getElementById("searchCloseBtn");
-    let searchInput = document.getElementById("search-input");
-    let searchList = document.getElementById("select-list");
-    let allCates = document.getElementById("all-cates");
-    let heading = document.getElementById("heading");
-
-    heading.classList.add("active");
-    searchList.style.opacity = "0";
-    searchList.style.transition = "all 200ms";
-    setTimeout(() => {
-      searchList.style.display = "none";
-      allCates.style.display = "block";
-    }, 200);
-    setTimeout(() => {
-      allCates.style.opacity = "1";
-      allCates.style.transition = "opacity 300ms";
-    },300)
-
-    searchBtn.style.animation = "mainAnim 100ms forwards";
-    searchInput.style.width = "40%";
-    searchInput.style.visibility = "visible";
-    searchInput.style.transition = "all 400ms";
-    setTimeout(() => {
-      searchInput.classList.add("place");
-      closeBtn.style.animation = "mainAnimOut 300ms forwards"
-    },300)
-    setClicked(true);
-  }
-
-  const closeSearch = () => {
-    let searchBtn = document.getElementById("searchBtn");
-    let closeBtn = document.getElementById("searchCloseBtn");
-    let searchInput = document.getElementById("search-input");
-    let searchList = document.getElementById("select-list");
-    let allCates = document.getElementById("all-cates");
-    let noResult = document.getElementById("no-result");
-    let heading = document.getElementById("heading");
-
-    heading.classList.remove("active");
-    searchInput.value = "";
-    searchInput.classList.remove("place");
-    noResult.style.display = "none";
-
-    allCates.style.opacity = "0";
-    allCates.style.transition = "all 200ms";
-    setTimeout(() => {
-      allCates.style.display = "none";
-      searchList.style.display = "block";
-    }, 200);
-    setTimeout(() => {
-      searchList.style.opacity = "1";
-      searchList.style.transition = "opacity 300ms";
-    },300)
-
-    closeBtn.style.animation = "mainAnim 100ms forwards";
-    searchInput.style.width = "55.2px";
-    searchInput.style.transition = "width 400ms";
-    setTimeout(() => {
-      searchInput.style.visibility = "hidden";
-      searchBtn.style.animation = "mainAnimOut 200ms forwards"
-    },300)
-
-    let selectList = document.getElementById("all-cates");
-    let cards = selectList.querySelectorAll(".card");
-
-    for (let k = 0; k < cards.length; k++){
-      cards[k].style.display = "block";
+  const handleCloseSettings = () => {
+    if (!warning){
+      setOpenSettings(false)
     }
   }
 
-  const AllCates = () => {
-    return (
-      <div className="select-lists">
-        {sortedCategories.map((s) => (
-          <CardCate category={s.category} link={s.link}/>
-        ))}
-      </div>
-    )
-  }
-
-  const showNoResult = () => {
-    let selectList = document.getElementById("all-cates");
-    let cards = selectList.querySelectorAll(".card");
-    let cardsNone = selectList.querySelectorAll(".card[style='display: none;']");
-    let noResult = document.getElementById("no-result");
-    if (cardsNone.length === cards.length){
-      noResult.style.display = "block";
+  const switchPage = {
+    first: () => {
+      setHeaderFading(false)
+      clickSearch.close();
+      switchSec("ມາທາຍຄຳກັນເດີ", 0, localStorage.mode == 'dark' ? "pink_to_green_dark 900ms forwards" : "pink_to_green 900ms forwards", localStorage.mode == 'dark' ? "#313c26" : "#D4FFA8");
       setTimeout(() => {
-        noResult.classList.add("active");
-      }, 1)
+        setHeaderFading(true)
+      }, 900)
+    },
+    second: () => {
+      setHeaderFading(false)
+      switchSec('ເລືອກໝວດໝູ່', 1,  localStorage.mode == 'dark' ? "green_to_pink_dark 900ms forwards" : "green_to_pink 900ms forwards", localStorage.mode == 'dark' ? "#3f1b3c" : "#FFE0FD")
+      setTimeout(() => {
+        setHeaderFading(true)
+      }, 900)
+    },
+    third: () => {
+      setHeaderFading(false)
+      document.body.style.animation = localStorage.mode === 'dark' ? "pink_to_blue_dark 900ms forwards" : "pink_to_blue 900ms forwards"
+      setSwitching(true);
+      setTimeout(() => {
+        setCurrentSec(2)
+        setLoadPage(true)
+        setSwitching(false);
+      }, 900)
+    }
+  }
+
+  const clickSearch = {
+    open: () => {
+      setSearchCate(true);
+      setSwitchToSearchAnim(true);
+      setTimeout(() => {
+        setSwitchToSearchAnim(false);
+        setSwitchToSearch(true);
+      }, 300)
+    },
+    close: () => {
+      setSearchCate(false);
+      setSwitchToSearchAnim(true);
+      setTimeout(() => {
+        setSwitchToSearchAnim(false);
+        setSwitchToSearch(false);
+      }, 300)
+    }
+  }
+
+  const switchSec = (title, index, animation, bg) => {
+    document.body.style.animation = animation;
+    setSwitching(true);
+    setTimeout(() => {
+      setTitle(title);
+      setCurrentSec(index);
+      setSwitching(false);
+      document.body.style.animation = 'none';
+      document.body.style.backgroundColor = bg
+    }, 900)
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      setStartPage(false)
+    }, 900)
+
+    if (localStorage.length === 0){
+      startStorages()
+    }
+  }, [])
+
+  useEffect(() => {
+    document.title = title;
+    const textErrors = {
+      containSensitiveWords: sensitiveWords.some(word => typeHiddenText.toUpperCase().includes(word.toUpperCase())),
+      containAtSign: typeHiddenText.includes('@')
+    }
+    if (textErrors.containSensitiveWords){
+      setWarning(true);
+      setWarningText('*ກະລຸນາຫຼີກລ່ຽງການນຳໃຊ້ຄຳທີ່ບໍ່ສຸພາບ ຫຼືຄຳທີ່ອ່ອນໄຫວ') 
+      localStorage.setItem('text-hidden-lo', '')
+    } else if (textErrors.containAtSign){
+      setWarning(true);
+      setWarningText('*ບໍ່ອະນຸຍາດໃຫ້ໃຊ້ @ ໃນພື້ນທີ່ຂໍ້ຄວາມນີ້')
+      localStorage.setItem('text-hidden-lo', '')
     } else {
-      noResult.style.display = "none";
-      noResult.classList.remove("active");
+      setWarning(false);
+      localStorage.setItem('text-hidden-lo', typeHiddenText)
     }
+  }, [typeHiddenText])
+
+  localStorage.getItem('dark-mode');
+  if (localStorage.mode == 'dark'){
+    document.body.classList.add("dark-mode");
+  } else {
+    document.body.classList.remove("dark-mode");
   }
 
-  const searchCate = () => {
-    let searchInput = document.getElementById("search-input");
-    let searchValue = searchInput.value.toUpperCase();
-    let selectList = document.getElementById("all-cates");
-    let cards = selectList.querySelectorAll(".card");
-
-    for (let k = 0; k < cards.length; k++){
-      let cardHead = cards[k].getElementsByTagName("h2")[0];
-      let cardText = cardHead.innerText;
-      console.log(cardText);
-      if (cardText.toUpperCase().indexOf(searchValue) < 0){
-        cards[k].style.display = "none";
-      } else {
-        cards[k].style.display = "block";
-      }
-    }
-    showNoResult();
+  const clickToChangeLang = (lang) => {
+    setHeaderFading(false);
+    setOpenSelectLang(false);
+    setSwitching(true);
+    setTimeout(() => navigate(lang, {replace:true}), 900)
   }
+
+  const filterSearch = sortedCategories.filter(cate => cate.category.toUpperCase().includes(search.toUpperCase()))
 
   return (
     <div className="App lao">
-      <div id="prevent" className="invisible-block"></div>
-      <div id="lets-start">
-      <button onClick={goBack} id="goBackBtn" className="btn">
-        <FontAwesomeIcon icon={faChevronLeft} className="back-arrow"/>
-        ກັບ
-      </button>
-        <header className="app-head" ref={headApp}>
-          <h1 id="heading">{title}</h1>
-        </header>
-          <div id="right-btns-sec">
-            <button id="settingsBtn" className="btn small-btn" onClick={openSettings}>
-              <FontAwesomeIcon icon={faGear}/>
-            </button>
-            <div id="settings-tooltip" className="tooltips">
-              <p>ການຕັ້ງຄ່າ</p>
-            </div>
+      {switching && <InvisibleOverlay />}
+
+      {!loadPage && (
+        <>
+          <div className={`header-btns${currentSec === 1 ? ' between' : ' end'}${headerFading ? ' active' : ' inactive'}${startPage ? ' start' : ''}`}>
+            {currentSec === 1 ? (
+              <>
+                <ButtonWithIcon text="ກັບ" icon={faChevronLeft} onClick={switchPage.first}/>
+                <div className="right-menu-top">
+                  <SearchBar open={searchCate} onOpen={clickSearch.open} onClose={clickSearch.close} isActive={searchCate} onSearch={(e) => setSearch(e.target.value)} placeholder="ຊອກຫາໝວດໝູ່"/>
+                  <div className="searchbar-sec">
+                    <Button size='icon' onClick={() => setOpenSettings(true)} onMouseEnter={() => setTooltipAppear(true)} onMouseLeave={() => setTooltipAppear(false)}>
+                      <FontAwesomeIcon icon={faGear}/>
+                    </Button>
+                    <Tooltip text='ການຕັ້ງຄ່າ' appear={tooltipAppear}/>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <Button size='small' className='icon-front' onClick={() => setOpenSelectLang(true)}>
+                <FontAwesomeIcon icon={faLanguage}/>
+                ເລືອກພາສາ
+              </Button>
+            )}
           </div>
-          <div id="changeLangBtn">
-            <button onClick={changeLang} className="btn small-btn">
-              <FontAwesomeIcon icon={faLanguage} />
-              ເລືອກພາສາ
-            </button>
+          <header className={`app-head ${switching ? 'active' : 'inactive'}${startPage ? ' start' : ''}`}>
+            <h1 id="heading">{title}</h1>
+          </header>
+        </>
+      )}
+
+      <main className={`app-main ${switching ? 'active' : 'inactive'}${startPage ? ' start' : ''}`}>
+        {currentSec === 1 ? (
+          <section className={`select-list ${switchToSearchAnim ? 'switching' : ''}`}>
+            {switchToSearch ? (
+              <>
+                <div className="select-lists">
+                  {filterSearch.map((cate) => (
+                    <CardCate key={cate.category} category={cate.category} link={cate.link} onSelect={switchPage.third}/>
+                  ))}
+                </div>
+
+                {filterSearch.length < 1 && (
+                  <div id="no-result">
+                    <FontAwesomeIcon icon={faExclamationCircle} style={{fontSize:"54px"}}/>
+                    <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>ບໍ່ພົບຜົນໄດ້ຮັບ</h1>
+                    <p style={{fontSize:"calc(12px + 0.5vw)"}}>ກະລຸນາລອງຄີເວິດອື່ນ</p>
+                  </div>
+                )}
+              </>
+            ) : (
+              <>
+                {cateTitles.map((cate) => (
+                  <CardCateWithTitle key={cate.key} title={cate.title} data={cateLists[cate.dataKey]} onSelect={switchPage.third}/>
+                ))}
+              </>
+            )}
+          </section>
+        ) : currentSec === 2 ? (
+          <div className="loading-center">
+            <Loading text='ກຳລັງໂຫຼດ...'/>
           </div>
-          <div id="langList-bg"></div>
-          <div id="langList-overlay" onClick={closeChangeLang}></div>
-          <div id="langList">
-            <h1>ເລືອກພາສາ</h1>
-            <FontAwesomeIcon icon={faClose} id="close-changeLang-btn" onClick={closeChangeLang}/>
-            <ul className="langs">
-              <li className="active">ລາວ</li>
-              <li onClick={() => clickToChangeLang("/")}>English / ອັງກິດ</li>
-              <li onClick={() => clickToChangeLang("/th")}>ไทย / ໄທ</li>
-              <li onClick={() => clickToChangeLang("/zh")}>中文 / ຈີນ</li>
-            </ul>
-          </div>
-        <main className="app-main" ref={mainApp}>
+        ) : (
           <div id="how-to-play">
             <h2>ວິທີຫຼິ້ນ:</h2>
             <ol>
@@ -607,92 +254,53 @@ export default function MainPageLao(){
               <li>ເຈົ້າມີເວລາ 60 ຫຼື 120 ວິນາທີ (ຂຶ້ນຢູ່ກັບການຕັ້ງຄ່າຂອງເຈົ້າ) ໃນການເດົາຄຳຕອບ.</li>
             </ol>
           </div>
-          <div id="all-cates">
-            <AllCates />
-            <div id="no-result">
-              <FontAwesomeIcon icon={faExclamationCircle} style={{fontSize:"54px"}}/>
-              <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>ບໍ່ພົບຜົນໄດ້ຮັບ</h1>
-              <p style={{fontSize:"calc(12px + 0.5vw)"}}>ກະລຸນາລອງຄີເວິດອື່ນ</p>
-            </div>
-          </div>
-          <div id="select-list">
-            <h2 className="list-titles">ອາຫານ</h2>
-            <div className="select-lists">
-              {
-                cateLists.eatingLo.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
+        )}
+      </main>
+      <footer className={`app-foot ${switching ? 'active' : currentSec > 0 ? 'hide-footer' : 'inactive'}${startPage ? ' start' : ''}`}>
+        <h2>ພ້ອມແລ້ວບໍ່?</h2>
+        <Button onClick={switchPage.second}>ຫຼິ້ນເລີຍ</Button>
+      </footer>
 
-            <h2 className="list-titles">ພູມສາດ</h2>
-            <div className="select-lists">
-              {
-                cateLists.geographyLo.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-
-            <h2 className="list-titles">ອື່ນໆ</h2>
-            <div className="select-lists">
-              {
-                cateLists.otherLo.map((cate) => (
-                  <CardCate category={cate.category} link={cate.link}/>
-                ))
-              }
-            </div>
-          </div>
-          <div id="loading">
-            <div className="loading-icon">
-                <div className="inner-icon"></div>
-            </div>
-            <h2>ກຳລັງໂຫຼດ...</h2>
-          </div>
-        </main>
-        <footer className="app-foot" ref={footApp}>
-          <h2>ພ້ອມແລ້ວບໍ່?</h2>
-          <button onClick={playNow} className="btn">ຫຼິ້ນເລີຍ</button>
-        </footer>
-
-        <div id="settings-drawer-mask" onClick={closeSettings}></div>
-        <div id="settings-drawer-anim">
-          <div id="circle"></div>
-          <FontAwesomeIcon icon={faClose} id="close-settings-btn" onClick={closeSettings}/>
+      <DrawerCircle open={openSelectLang} onClose={() => setOpenSelectLang(false)}>
+        <h1>ເລືອກພາສາ</h1>
+        <div id='langList'>
+          <ul className="langs">
+            <li className="active">ລາວ</li>
+            <li onClick={() => clickToChangeLang("/")}>English / ອັງກິດ</li>
+            <li onClick={() => clickToChangeLang("/th")}>ไทย / ໄທ</li>
+            <li onClick={() => clickToChangeLang("/zh")}>中文 / ຈົນ</li>
+            <li onClick={() => clickToChangeLang("/de")}>Deutsch / ເຢຍລະມັນ</li>
+          </ul>
         </div>
-        <div id="settings-drawer">
-          <h1>ການຕັ້ງຄ່າ</h1>
-          <p style={{marginBottom:0}}><strong>ໝາຍເຫດ: </strong> ການຕັ້ງຄ່າຂອງເຈົ້າຈະຖືກບັນທຶກໂດຍອັດຕະໂນມັດເມື່ອເຈົ້າປິດແຖບດ້ານຂ້າງນີ້.</p>
-          <div className="setting-sec">
-            <h2>ໂມງຈັບເວລາ</h2>
-            <label className="switch" htmlFor="switch-timer">
-              <input type="checkbox" id="switch-timer" checked={timerSwitch} onChange={toggleTimer}/>
-              <span className="switch-toggle"></span>
-              <div className="setting-text">
-                <p className="second-th">60 ວິນາທີ</p>
-                <p className="second-th">120 ວິນາທີ</p>
-              </div>
-            </label>
-            <div id="block" className={`${timerSwitch ? "active" : ""}`}></div>
-            <p>ໂມງຈັບເວລາຈະຖືກສະແດງດ້ານເທິງຂອງຈໍເມື່ອຫຼິ້ນເກມ.</p>
-          </div>
-          <div className="setting-sec">
-            <h2>ໂໝດໜ້າຈໍ</h2>
+      </DrawerCircle>
+
+      <DrawerCircle open={openSettings} onClose={handleCloseSettings}>
+        <h1>ການຕັ້ງຄ່າ</h1>
+        <p style={{marginBottom:0}}><strong>ໝາຍເຫດ: </strong> ການຕັ້ງຄ່າຂອງເຈົ້າຈະຖືກບັນທຶກໂດຍອັດຕະໂນມັດເມື່ອເຈົ້າປິດແຖບດ້ານຂ້າງນີ້.</p>
+        <div className="setting-sec">
+          <h2>ໂມງຈັບເວລາ</h2>
+
+          <ToggleSelect id='switch-timer' checked={timerSwitch} onChange={toggleTimer} valueOne="60 ວິນາທີ" valueTwo="120 ວິນາທີ"/>
+          <p>ໂມງຈັບເວລາຈະຖືກສະແດງດ້ານເທິງຂອງຈໍເມື່ອຫຼິ້ນເກມ.</p>
+        </div>
+        <div className="setting-sec">
+          <h2>ໂໝດໜ້າຈໍ</h2>
+          <div className="screen-appearance">
             <button className="appear light-btn" onClick={lightMode}>
-            <FontAwesomeIcon icon={faSun} style={{marginRight:"8px"}}/> ໂໝດສີສະຫວ່າງ
+              <FontAwesomeIcon icon={faSun} /> ໂໝດສີສະຫວ່າງ
             </button>
             <button className="appear dark-btn" onClick={darkMode}>
-            <FontAwesomeIcon icon={faMoon} style={{marginRight:"8px"}}/> ໂໝດສີເຂົ້ມ
+              <FontAwesomeIcon icon={faMoon} /> ໂໝດສີເຂົ້ມ
             </button>
           </div>
-          <div className="setting-sec">
-            <h2>ຂໍ້ຄວາມເມື່ອເຊື່ອງຄຳຕອບ</h2>
-            <input type="text" id="hidden-text" className="text-input" placeholder="ຄຳຕອບຖືກເຊື່ອງໄວ້" onInput={checkHiddenText} onChange={typeHiddenTextLo} autoComplete="off"/>
-            <p>ຂໍ້ຄວາມຈະຖືກສະແດງເມື່ອຄົນໃບ້ຄຳກົດປຸ່ມ "ເຊື່ອງຄຳຕອບ". <br/>ຂໍ້ຄວາມເລິ່ມຕົ້ນຄື "ຄຳຕອບຖືກເຊື່ອງໄວ້"</p>
-            <p id="warning-hidden-text"></p>
-          </div>
         </div>
-      </div>
+        <div className="setting-sec">
+          <h2>ຂໍ້ຄວາມເມື່ອເຊື່ອງຄຳຕອບ</h2>
+          <TextInput className={`${warning ? 'warning' : ''}`} placeholder="ຄຳຕອບຖືກເຊື່ອງໄວ້" id="hidden-answer-text" value={typeHiddenText} onChange={e => setTypeHiddenText(e.target.value)} autoComplete="off"/>
+          <p>ຂໍ້ຄວາມຈະຖືກສະແດງເມື່ອຄົນໃບ້ຄຳກົດປຸ່ມ 'ເຊື່ອງຄຳຕອບ'<br/> ຂໍ້ຄວາມເລິ່ມຕົ້ນຄື 'ຄຳຕອບຖືກເຊື່ອງໄວ້'</p>
+          <p id="warning-hidden-text" className={`${warning ? 'active' : 'inactive'}`}>{warningText}</p>
+        </div>
+      </DrawerCircle>
     </div>
-  );
+  )
 }

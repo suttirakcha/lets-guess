@@ -35,7 +35,7 @@ export default function MainPage(){
   const [timerSixty, setTimerSixty] = useState(localStorage.getItem("timer-sixty") === 'true');
   const [warning, setWarning] = useState(false);
   const [warningText, setWarningText] = useState('')
-  const [typeHiddenText, setTypeHiddenText] = useState('');
+  const [typeHiddenText, setTypeHiddenText] = useState(localStorage.getItem('text-hidden-th'));
 
   const toggleTimer = (e) => {
     localStorage.setItem("timer-switch", timerSwitch);
@@ -267,6 +267,7 @@ export default function MainPage(){
           <ul className="langs">
             <li className="active">ไทย</li>
             <li onClick={() => clickToChangeLang("/")}>English / อังกฤษ</li>
+            <li onClick={() => clickToChangeLang("/de")}>Deutsch / เยอรมัน</li>
             <li onClick={() => clickToChangeLang("/lo")}>ລາວ / ลาว</li>
             <li onClick={() => clickToChangeLang("/zh")}>中文 / จีน</li>
           </ul>
