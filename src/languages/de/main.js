@@ -115,6 +115,7 @@ export default function MainPageDe(){
       }, 300)
     },
     close: () => {
+      setSearch('')
       setSearchCate(false);
       setSwitchToSearchAnim(true);
       setTimeout(() => {
@@ -214,7 +215,7 @@ export default function MainPageDe(){
             )}
           </div>
           <header className={`app-head ${switching ? 'active' : 'inactive'}${startPage ? ' start' : ''}`}>
-            <h1 id="heading">{title}</h1>
+            <h1 id="heading" className={`${searchCate ? 'active' : ''}`}>{title}</h1>
           </header>
         </>
       )}
@@ -228,16 +229,17 @@ export default function MainPageDe(){
                   {filterSearch.map((cate) => (
                     <CardCate key={cate.category} category={cate.category} link={cate.link} onSelect={switchPage.third}/>
                   ))}
-
                 </div>
 
-                {filterSearch.length < 1 && (
-                  <div id="no-result">
-                    <FontAwesomeIcon icon={faExclamationCircle} style={{fontSize:"54px"}}/>
-                    <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>Keine Ergebnisse</h1>
-                    <p style={{fontSize:"calc(12px + 0.5vw)"}}>Bitte versuchen Sie mit einem anderen Stichwort.</p>
-                  </div>
-                )}
+                <div id="no-result" className={`${filterSearch.length < 1 ? 'active' : ''}`}>
+                  {filterSearch.length < 1 && (
+                    <>
+                      <FontAwesomeIcon icon={faExclamationCircle} style={{fontSize:"54px"}}/>
+                      <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>Keine Ergebnisse</h1>
+                      <p style={{fontSize:"calc(12px + 0.5vw)"}}>Bitte versuchen Sie mit einem anderen Stichwort.</p>
+                    </>
+                  )}
+                </div>
               </>
             ) : (
               <>

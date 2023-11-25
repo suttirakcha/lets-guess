@@ -197,7 +197,7 @@ export default function QuestionsZh(){
       </Modal>
 
       {timesUp || isGoingBack && <InvisibleOverlay />}
-      <BlockSpace isActive={timesUp} text="时间到了!"/>
+      <BlockSpace isActive={timesUp} text={(<span style={{color:"#E63737"}}>时间到了!</span>)}/>
 
       <div className="modal-center">
         <div className={`score-result${scoreResult ? ' active' : ''}`}>

@@ -474,6 +474,16 @@ body{
   display:none;
 }
 
+#no-result {
+  @include invisible;
+  transform:translateY(5px);
+  &.active {
+    @include visible;
+    transform:translateY(0);
+    transition:all 300ms;
+  }
+}
+
 #hidden-answer-text {
   width:100%;
 }

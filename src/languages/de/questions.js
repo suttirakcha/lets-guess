@@ -197,7 +197,7 @@ export default function QuestionsDe(){
       </Modal>
 
       {timesUp || isGoingBack && <InvisibleOverlay />}
-      <BlockSpace isActive={timesUp} text="Die Zeit ist um!!"/>
+      <BlockSpace isActive={timesUp} text={(<span style={{color:"#E63737"}}>Die Zeit ist um!</span>)}/>
 
       <div className="modal-center">
         <div className={`score-result${scoreResult ? ' active' : ''}`}>

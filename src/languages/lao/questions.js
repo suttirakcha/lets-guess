@@ -197,7 +197,7 @@ export default function QuestionsLao(){
       </Modal>
 
       {timesUp || isGoingBack && <InvisibleOverlay />}
-      <BlockSpace isActive={timesUp} text="ໝົດເວລາ!"/> 
+      <BlockSpace isActive={timesUp} text={(<span style={{color:"#E63737"}}>ໝົດເວລາ!</span>)}/> 
 
       <div className="modal-center">
         <div className={`score-result${scoreResult ? ' active' : ''}`}>

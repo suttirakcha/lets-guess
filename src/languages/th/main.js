@@ -115,6 +115,7 @@ export default function MainPageTh(){
       }, 300)
     },
     close: () => {
+      setSearch('')
       setSearchCate(false);
       setSwitchToSearchAnim(true);
       setTimeout(() => {
@@ -197,7 +198,7 @@ export default function MainPageTh(){
               <>
                 <ButtonWithIcon text="กลับ" icon={faChevronLeft} onClick={switchPage.first}/>
                 <div className="right-menu-top">
-                  <SearchBar open={searchCate} onOpen={clickSearch.open} onClose={clickSearch.close} isActive={searchCate} onSearch={(e) => setSearch(e.target.value)} placeholder="ค้นหาหมวดหมู่"/>
+                  <SearchBar open={searchCate} value={search} onOpen={clickSearch.open} onClose={clickSearch.close} isActive={searchCate} onSearch={(e) => setSearch(e.target.value)} placeholder="ค้นหาหมวดหมู่"/>
                   <div className="relative">
                     <Button size='icon' onClick={() => setOpenSettings(true)} onMouseEnter={() => setTooltipAppear(true)} onMouseLeave={() => setTooltipAppear(false)}>
                       <FontAwesomeIcon icon={faGear}/>
@@ -214,7 +215,7 @@ export default function MainPageTh(){
             )}
           </div>
           <header className={`app-head ${switching ? 'active' : 'inactive'}${startPage ? ' start' : ''}`}>
-            <h1 id="heading">{title}</h1>
+            <h1 id="heading" className={`${searchCate ? 'active' : ''}`}>{title}</h1>
           </header>
         </>
       )}
@@ -230,13 +231,15 @@ export default function MainPageTh(){
                   ))}
                 </div>
 
-                {filterSearch.length < 1 && (
-                  <div id="no-result">
-                    <FontAwesomeIcon icon={faExclamationCircle} style={{fontSize:"54px"}}/>
-                    <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>ไม่พบผลลัพธ์</h1>
-                    <p style={{fontSize:"calc(12px + 0.5vw)"}}>กรุณาลองคีย์เวิร์ดอื่น</p>
-                  </div>
-                )}
+                <div id="no-result" className={`${filterSearch.length < 1 ? 'active' : ''}`}>
+                  {filterSearch.length < 1 && (
+                    <>
+                      <FontAwesomeIcon icon={faExclamationCircle} style={{fontSize:"54px"}}/>
+                      <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>ไม่พบผลลัพธ์</h1>
+                      <p style={{fontSize:"calc(12px + 0.5vw)"}}>กรุณาลองคีย์เวิร์ดอื่น</p>
+                    </>
+                  )}
+                </div>
               </>
             ) : (
               <>

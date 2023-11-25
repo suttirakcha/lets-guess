@@ -3,9 +3,9 @@ import { faSearch, faClose } from "@fortawesome/free-solid-svg-icons"
 import { Button } from "./button";
 import TextInput from "./textinput";
 import Tooltip from "./tooltip";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export default function SearchBar({open, onOpen, onClose, onSearch, placeholder}){
+export default function SearchBar({open, onOpen, onClose, onSearch, placeholder, value}){
   const [hover, setHover] = useState(false)
 
   const openSearch = e => {
@@ -29,7 +29,7 @@ export default function SearchBar({open, onOpen, onClose, onSearch, placeholder}
         <button className={`close-search-btn ${open ? 'active' : 'inactive'}`} onClick={onClose}>
           <FontAwesomeIcon icon={faClose}/>
         </button>
-        <TextInput onInput={onSearch} className={`${open ? 'active' : 'inactive'}`} placeholder={placeholder} id='search-input' onKeyDown={closeSearch}/>
+        <TextInput value={value} onInput={onSearch} className={`${open ? 'active' : 'inactive'}`} placeholder={placeholder} id='search-input' onKeyDown={closeSearch} autocomplete='off'/>
       </div>
       <div className="search-btn">
         <div className={`open-search-btn ${open ? 'inactive' : 'active'}`}>
