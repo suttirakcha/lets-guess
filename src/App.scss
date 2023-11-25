@@ -7,21 +7,41 @@ $pink-bg-dark:#3f1b3c;
 $blue-bg-dark:#272d60;
 $modal-bg-dark:#202020;
 
+body,button,input,code{font-family:"IBM Plex Sans Thai","Noto Sans Lao",sans-serif}
+body{
+  background-color:#D4FFA8;
+  overflow:hidden;
+  position:fixed;
+  width:100%;
+  height:100%;
+  margin:0;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+@mixin invisible {
+  opacity:0;
+  visibility:hidden;
+}
+
+@mixin visible {
+  opacity:1;
+  visibility:visible;
+}
+
 @mixin invisible-bg{
   position:absolute;
-  height:100vh;
-  width:100vw;
+  height:100%;
+  width:100%;
   top:0;
   z-index:99;
   &.inactive {
-    opacity:0;
-    visibility:hidden;
+    @include invisible;
     transition:opacity 400ms, visibility 400ms, background-color 400ms;
   }
   &.active {
+    @include visible;
     background-color:#00000099;
-    opacity:1;
-    visibility:visible;
     transition:opacity 400ms, visibility 400ms, background-color 400ms;
   }
 }
@@ -102,14 +122,6 @@ $modal-bg-dark:#202020;
   }
 }
 
-body,button,input,code{font-family:"IBM Plex Sans Thai","Noto Sans Lao",sans-serif}
-body{
-  background-color:#D4FFA8;
-  overflow:hidden;
-  margin:0;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-}
 .App{
   text-align:center;
   ol{
@@ -137,23 +149,15 @@ body{
   }
 }
 
-.btn{
+.btn, .medium-btn, .small-btn, .icon-btn{
   @include btn-style;
-  padding:10px 60px;
 }
 
-.medium-btn {
-  @include btn-style;
-  padding:10px 40px;
-}
+.btn{padding:10px 60px}
+.medium-btn{padding:10px 40px}
+.small-btn{padding:10px 20px}
 
-.small-btn {
-  @include btn-style;
-  padding:10px 20px;
-}
-
-.icon-btn {
-  @include btn-style;
+.icon-btn{
   padding:10px 20px;
   width:52px;
   display:flex;
@@ -164,25 +168,19 @@ body{
 .header-btns {
   position:absolute;
   display:flex;
-  &.between {
-    justify-content:space-between;
-  }
-  &.end {
-    justify-content:flex-end;
-  }
+  &.between{justify-content:space-between}
+  &.end{justify-content:flex-end}
   width:calc(100% - 80px);
   align-items:center;
   top:0;
   padding:25px 40px;
   z-index:9;
   &.inactive {
-    opacity:0;
-    visibility:hidden;
+    @include invisible;
     transition:opacity 900ms, visibility 900ms;
   }
   &.active {
-    opacity:1;
-    visibility:visible;
+    @include visible;
     transition:opacity 900ms, visibility 900ms;
   }
   &.start {
@@ -308,7 +306,7 @@ body{
   line-height:40px;
 }
 
-.searchbar-sec {
+.relative {
   position:relative;
 }
 
@@ -320,13 +318,11 @@ body{
 
 .open-search-btn,.close-search-btn {
   &.inactive {
-    opacity:0;
-    visibility:hidden;
+    @include invisible;
     transition:opacity 200ms, visibility 200ms;
   }
   &.active {
-    opacity:1;
-    visibility:visible;
+    @include visible;
     transition:opacity 300ms, visibility 300ms;
     transition-delay:300ms;
   }
@@ -345,13 +341,11 @@ body{
   left:50%;
   transform:translate(-50%, 0);
   &.inactive {
-    opacity:0;
-    visibility:hidden;
+    @include invisible;
     transition:visibility 300ms,opacity 300ms,transform 300ms;
   }
   &.active {
-    opacity:1;
-    visibility:visible;
+    @include visible;
     transform:translate(-50%, 5px);
     transition:visibility 300ms,opacity 300ms,transform 300ms;
     transition-delay:500ms;
@@ -489,14 +483,12 @@ body{
   opacity:0;
   visibility:hidden;
   &.inactive {
-    opacity:0;
-    visibility:hidden;
+    @include invisible;
     transform:translateY(5px);
     transition:all 300ms;
   }
   &.active {
-    opacity:1;
-    visibility:visible;
+    @include visible;
     transform:translateY(0);
     transition:all 300ms;
   }
@@ -508,12 +500,10 @@ body{
 
 @keyframes fadeAnim{
   from{
-    opacity:0;
-    visibility:hidden;
+    @include invisible;
   }
   to{
-    opacity:1;
-    visibility:visible;
+    @include visible;
   }
 }
 
@@ -694,7 +684,7 @@ input:checked + .switch-toggle:before{
   width:90%;
   top:30%;
   &.inactive {
-    transform:translateX(-300%);
+    transform:translateX(300%);
     transition:transform 400ms;
   }
   &.active {
@@ -728,7 +718,7 @@ input:checked + .switch-toggle:before{
   min-width:480px;
   right:0;top:0;
   width:35%;
-  height:100vh;
+  height:100%;
   overflow:hidden;
   &.inactive {
     visibility:hidden;
@@ -776,36 +766,32 @@ input:checked + .switch-toggle:before{
     transition:color 300ms;
   }
   &.inactive {
-    visibility:hidden;
-    opacity:0;
+    @include invisible;
     transition:visibility 300ms, opacity 300ms;
   }
   &.active {
-    visibility:visible;
-    opacity:1;
+    @include visible;
     transition:visibility 300ms, opacity 300ms;
   }
 }
 
 .drawer-sec {
   position:absolute;
-  overflow:hidden;
   min-width:480px;
   box-sizing:border-box;
   width:35%;
-  height:100vh;
+  height:100%;
   background-color:transparent;
   top:0;
-  right:0;
+  right:-100%;
   z-index:99;
-  transform:translateX(200%);
   padding:0 40px;
   text-align:left;
-  transition:transform 500ms;
+  transition:right 500ms;
   h1{margin-top:30px}
   &.active {
-    transform:translateX(0%);
-    transition:transform 500ms;
+    right:0;
+    transition:right 500ms;
   }
 }
 
@@ -866,13 +852,14 @@ input:checked + .switch-toggle:before{
         transition:all 300ms;
       }
       &.active{
-        visibility:visible;
-        opacity:1;
+        @include visible;
         transition:all 400ms;
       }
     }
   }
 }
+
+.hidden {display:none}
 
 @keyframes light_to_dark_mode{
   from {background-color:$pink-bg}
@@ -924,12 +911,10 @@ input:checked + .switch-toggle:before{
 @keyframes get_point{
   0%{
     transform:translateY(120%);
-    opacity:1;
-    visibility:visible;
+    @include visible;
   }
   75%{
-    opacity:0;
-    visibility:hidden;
+    @include invisible;
   }
   100%{
     transform:translateY(0%);
@@ -1031,7 +1016,7 @@ input:checked + .switch-toggle:before{
   z-index:9;
   top:150px;
   &.inactive {
-    transform:translateX(-200%);
+    transform:translateX(200%);
     transition:transform 400ms;
   }
   &.active {
@@ -1114,13 +1099,9 @@ input:checked + .switch-toggle:before{
 }
 
 @media (min-width:1536px){
-  .select-lists{
-    grid-template-columns:repeat(4, 1fr);
-  }
+  .select-lists{grid-template-columns:repeat(4, 1fr)}
 }
 
 @media (max-width:1024px){
-  .select-lists{
-    grid-template-columns:repeat(2, 1fr);
-  }
+  .select-lists{grid-template-columns:repeat(2, 1fr)}
 }

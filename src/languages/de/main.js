@@ -198,7 +198,7 @@ export default function MainPageDe(){
                 <ButtonWithIcon text="Zurückgehen" icon={faChevronLeft} onClick={switchPage.first}/>
                 <div className="right-menu-top">
                   <SearchBar open={searchCate} onOpen={clickSearch.open} onClose={clickSearch.close} isActive={searchCate} onSearch={(e) => setSearch(e.target.value)} placeholder="Kategorie suchen"/>
-                  <div className="searchbar-sec">
+                  <div className="relative">
                     <Button size='icon' onClick={() => setOpenSettings(true)} onMouseEnter={() => setTooltipAppear(true)} onMouseLeave={() => setTooltipAppear(false)}>
                       <FontAwesomeIcon icon={faGear}/>
                     </Button>
@@ -284,7 +284,7 @@ export default function MainPageDe(){
 
       <DrawerCircle open={openSettings} onClose={handleCloseSettings}>
         <h1>Einstellungen</h1>
-        <p style={{marginBottom:0}}><strong>Notiz: </strong>Ihre Einstellungen werden gespeichert, wenn Sie diese Seitenleiste schließen.</p>
+        <p style={{marginBottom:0}}><strong>Notiz: </strong>Ihre Einstellungen werden automatisch gespeichert, wenn Sie diese Seitenleiste schließen.</p>
         <div className="setting-sec">
           <h2>Schaltuhr</h2>
 

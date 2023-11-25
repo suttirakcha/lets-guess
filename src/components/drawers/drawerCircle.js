@@ -25,7 +25,7 @@ export default function DrawerCircle({open, onClose, children}){
   })
 
   return (
-    <>
+    <div>
       <div className={`drawer-mask${open ? ' active' : ' inactive'}`} onClick={onClose}></div>
       <div className={`drawer-anim${open ? ' active' : ' inactive'}`}>
         <div className={`drawer-bg-circle${open ? ' active' : ' inactive'}`} />
@@ -34,6 +34,6 @@ export default function DrawerCircle({open, onClose, children}){
       <main className={`drawer-sec${activeDrawer() ? ' active' : ''}`}>
         {children}
       </main>
-    </>
+    </div>
   )
 }

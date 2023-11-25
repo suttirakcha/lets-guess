@@ -198,7 +198,7 @@ export default function MainPageZh(){
                 <ButtonWithIcon text="回去" icon={faChevronLeft} onClick={switchPage.first}/>
                 <div className="right-menu-top">
                   <SearchBar open={searchCate} onOpen={clickSearch.open} onClose={clickSearch.close} isActive={searchCate} onSearch={(e) => setSearch(e.target.value)} placeholder="搜索分类"/>
-                  <div className="searchbar-sec">
+                  <div className="relative">
                     <Button size='icon' onClick={() => setOpenSettings(true)} onMouseEnter={() => setTooltipAppear(true)} onMouseLeave={() => setTooltipAppear(false)}>
                       <FontAwesomeIcon icon={faGear}/>
                     </Button>
