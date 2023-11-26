@@ -8,7 +8,7 @@ import { Button, ButtonWithIcon } from "../../components/button";
 import Loading from "../../components/loading";
 import { startStorages } from "../../components/lists/storage";
 import InvisibleOverlay from "../../components/drawers/invisible-overlay";
-import TextInput from "../../components/textinput";
+import { TextInput } from "../../components/textinput";
 import { sensitiveWords } from "../../components/lists/sensitiveWords";
 import DrawerCircle from "../../components/drawers/drawerCircle";
 import ToggleSelect from "../../components/toggleSelect";
@@ -198,7 +198,7 @@ export default function MainPageDe(){
               <>
                 <ButtonWithIcon text="Zurückgehen" icon={faChevronLeft} onClick={switchPage.first}/>
                 <div className="right-menu-top">
-                  <SearchBar open={searchCate} onOpen={clickSearch.open} onClose={clickSearch.close} isActive={searchCate} onSearch={(e) => setSearch(e.target.value)} placeholder="Kategorie suchen"/>
+                  <SearchBar open={searchCate} value={search} onOpen={clickSearch.open} onClose={clickSearch.close} isActive={searchCate} onSearch={(e) => setSearch(e.target.value)} placeholder="Kategorie suchen"/>
                   <div className="relative">
                     <Button size='icon' onClick={() => setOpenSettings(true)} onMouseEnter={() => setTooltipAppear(true)} onMouseLeave={() => setTooltipAppear(false)}>
                       <FontAwesomeIcon icon={faGear}/>

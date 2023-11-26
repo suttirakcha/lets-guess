@@ -39,3 +39,14 @@ export const sensitiveWords = [
   "fick",
   "arschloch"
 ]
+
+export const acceptableWords = [
+  "circum",
+  "hello",
+  "pass",
+  "mass",
+  "bass",
+  "ห่าน",
+  "ห่าง",
+  "หีบ"
+]

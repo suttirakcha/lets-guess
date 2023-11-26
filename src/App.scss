@@ -549,7 +549,7 @@ body{
 
 @keyframes warningText{
   0%{
-    transform:translateX(0px);
+    transform:translateX(0);
     font-weight:700;
   }
   50%{
@@ -557,7 +557,7 @@ body{
     font-weight:700;
   }
   100%{
-    transform:translateX(0px);
+    transform:translateX(0);
     font-weight:700;
   }
 }
@@ -710,7 +710,7 @@ input:checked + .switch-toggle:before{
 }
 
 .loading-center {
-  height:100vh;
+  height:80vh;
   display:flex;
   align-items:center;
   justify-content:center;

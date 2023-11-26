@@ -8,7 +8,7 @@ import { Button, ButtonWithIcon } from "../../components/button";
 import Loading from "../../components/loading";
 import { startStorages } from "../../components/lists/storage";
 import InvisibleOverlay from "../../components/drawers/invisible-overlay";
-import TextInput from "../../components/textinput";
+import { TextInput } from "../../components/textinput";
 import { sensitiveWords } from "../../components/lists/sensitiveWords";
 import DrawerCircle from "../../components/drawers/drawerCircle";
 import ToggleSelect from "../../components/toggleSelect";
