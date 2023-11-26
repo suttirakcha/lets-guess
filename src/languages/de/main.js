@@ -286,7 +286,7 @@ export default function MainPageDe(){
 
       <DrawerCircle open={openSettings} onClose={handleCloseSettings}>
         <h1>Einstellungen</h1>
-        <p style={{marginBottom:0}}><strong>Notiz: </strong>Ihre Einstellungen werden automatisch gespeichert, wenn Sie diese Seitenleiste schließen.</p>
+        <p style={{marginBottom:0}}><strong>Hinweis: </strong>Ihre Einstellungen werden automatisch gespeichert, wenn Sie diese Seitenleiste schließen.</p>
         <div className="setting-sec">
           <h2>Schaltuhr</h2>
 
