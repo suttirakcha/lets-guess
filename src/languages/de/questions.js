@@ -175,7 +175,7 @@ export default function QuestionsDe(){
         <h1 id="timer">{count}</h1>
         <div className="checks-btns">
           <Button size='medium' onClick={handleHideOrShowAnswer}>{hideAnswerBtn}</Button>
-          <Button size='medium' onClick={() => setGoBackModal(true)}>Zurückgehen</Button>
+          <Button size='medium' onClick={() => setGoBackModal(true)}>Zur Startseite zurückgehen</Button>
         </div>
       </header>
       <main className={`app-main words-in-screen${clearGame ? ' active' : ' inactive'}${startPage ? ' start' : ''}`}>

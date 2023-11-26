@@ -39,7 +39,7 @@ export default function SearchBar({open, onOpen, onClose, onSearch, placeholder,
         <button className={`close-search-btn ${open ? 'active' : 'inactive'}`} onClick={onClose}>
           <FontAwesomeIcon icon={faClose}/>
         </button>
-        <TextInput value={value} ref={searchRef} onInput={onSearch} className={`text-input ${open ? 'active' : 'inactive'}`} placeholder={placeholder} id='search-input' onKeyDown={closeSearch} autoComplete='off'/>
+        <TextInput value={value} ref={searchRef} onInput={onSearch} className={`${open ? 'active' : 'inactive'}`} placeholder={placeholder} id='search-input' onKeyDown={closeSearch} autoComplete='off'/>
       </div>
       <div className="search-btn">
         <div className={`open-search-btn ${open ? 'inactive' : 'active'}`}>

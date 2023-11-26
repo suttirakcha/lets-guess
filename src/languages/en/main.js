@@ -307,7 +307,7 @@ export default function MainPage(){
         <div className="setting-sec">
           <h2>Hidden answer text</h2>
           <TextInput className={`${warning ? 'warning' : ''}`} placeholder="The answer is hidden" id="hidden-answer-text" value={typeHiddenText} onChange={e => setTypeHiddenText(e.target.value)} autoComplete="off"/>
-          <p>This text will be shown when the hint giver presses 'Hide answer' button, the default text is 'The answer is hidden'.</p>
+          <p>This text will be shown when the hint giver presses the 'Hide answer' button, the default text is 'The answer is hidden'.</p>
           <p id="warning-hidden-text" className={`${warning ? 'active' : 'inactive'}`}>{warningText}</p>
         </div>
       </DrawerCircle>

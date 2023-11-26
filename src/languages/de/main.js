@@ -258,10 +258,10 @@ export default function MainPageDe(){
             <h2>Spielanleitung:</h2>
             <ol>
               <li>Die Hint-Spieler(innen) können nur die Antwort sehen und anzudeuten, damit die Spieler(innen) die Antwort auf dem Bildschirm erraten können.</li>
-              <li>Die Hint-Spieler(innen) können die Antwort ausblenden, indem sie „Die Antwort ausblenden“ Schaltfläche klicken.</li>
-              <li>Wenn Spieler(innen) richtig erraten, klicken Sie <FontAwesomeIcon icon={faCheck}/> um zu nächster Antwort zu fortsetzen.</li>
-              <li>Wenn Spieler(innen) unrichtig erraten, oder die Antwort nicht kennen, klicken Sie <FontAwesomeIcon icon={faXmark}/>, um zu nächster Antwort zu springen.</li>
-              <li>Sie haben 60 oder 120 Sekunden, abhängig von Ihrer Erstellung, um Frage zu erraten.</li>
+              <li>Die Hint-Spieler(innen) können die Antwort verbergen, indem sie die „Antwort verbergen“-Schaltfläche drücken.</li>
+              <li>Wenn Spieler(innen) richtig erraten, drücken Sie <FontAwesomeIcon icon={faCheck}/>-Schaltfläche um zu nächster Antwort zu fortsetzen.</li>
+              <li>Wenn Spieler(innen) unrichtig erraten, oder die Antwort nicht kennen, drücken Sie <FontAwesomeIcon icon={faXmark}/>-Schaltfläche, um zu nächster Antwort zu springen.</li>
+              <li>Sie haben 60 oder 120 Sekunden, abhängig von Ihrer Einstellung, um Frage zu erraten.</li>
             </ol>
           </div>
         )}
@@ -307,7 +307,7 @@ export default function MainPageDe(){
         <div className="setting-sec">
           <h2>Verborgener Antworttext</h2>
           <TextInput className={`${warning ? 'warning' : ''}`} placeholder="Die Antwort wird verborgen" id="hidden-answer-text" value={typeHiddenText} onChange={e => setTypeHiddenText(e.target.value)} autoComplete="off"/>
-          <p>Der Text wird angezeigt, wenn die Hint-Spieler auf „Antwort verbergen“ klicken. <br/>Der Standardtext ist „Die Antwort wird verborgen“.</p>
+          <p>Dieser Text wird angezeigt, wenn die Hint-Spieler auf der „Antwort verbergen“-Schaltfläche drücken. Der Standardtext ist „Die Antwort wird verborgen“.</p>
           <p id="warning-hidden-text" className={`${warning ? 'active' : 'inactive'}`}>{warningText}</p>
         </div>
       </DrawerCircle>
