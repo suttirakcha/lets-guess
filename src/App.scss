@@ -60,10 +60,8 @@ body{
   border-radius:99px;
   cursor:pointer;
   transition-duration:300ms;
-  font-size:1.2em;
   z-index:2;
   position:relative;
-  height:52px;
   &.correct{
     background-color:#00D604;
     &:hover{
@@ -151,6 +149,8 @@ body{
 
 .btn, .medium-btn, .small-btn, .icon-btn{
   @include btn-style;
+  font-size:1.2em;
+  height:52px;
 }
 
 .btn{padding:10px 60px}
@@ -793,7 +793,7 @@ input:checked + .switch-toggle:before{
   height:100%;
   background-color:transparent;
   top:0;
-  right:-100%;
+  right:-1024px;
   z-index:99;
   padding:0 40px;
   text-align:left;
@@ -976,7 +976,7 @@ input:checked + .switch-toggle:before{
   @include modal;
   max-width:540px;
   width:90%;
-  top:-100%;
+  top:-1024px;
   transition:top 1s;
   &.active {
     top:15%;
@@ -1112,6 +1112,75 @@ input:checked + .switch-toggle:before{
   .select-lists{grid-template-columns:repeat(4, 1fr)}
 }
 
+@media (max-width:1200px){
+  .head-game {
+    display:flex;
+    justify-content:inherit;
+    flex-direction:column;
+    padding-top:80px;
+    transform:translateY(-150%);
+  }
+}
+
 @media (max-width:1024px){
   .select-lists{grid-template-columns:repeat(2, 1fr)}
+  .score-result.active {
+    top:50%;
+    transform:translateY(-50%)
+  }
+  .block-space {
+    bottom:4%;
+    top:inherit;
+  }
+}
+
+@media (max-width:768px){
+  .drawer-sec {
+    max-width:480px;
+    min-width:auto;
+    width:100%;
+  }
+  #heading {
+    font-size:64px;
+    margin-top:80px;
+  }
+  .close-search-btn {
+    width:40px;
+    height:40px;
+  }
+
+  .btn, .small-btn, .medium-btn, .icon-btn {
+    font-size:0.8em;
+    height:40px;
+  }
+  .icon-btn {
+    width:40px;
+  }
+  .text-input {
+    height:40px;
+  }
+  #search-input.active {
+    width:300px;
+  }
+  .btn-with-icon {
+    padding:10px 16px !important;
+  }
+
+  .btn{padding:10px 40px}
+  .medium-btn{padding:10px 20px}
+  .small-btn{padding:10px}
+
+  #words {
+    font-size:3em;
+  }
+  .block-space {
+    height:60%;
+  }
+  .modal-question {
+    font-size:24px;
+    line-height:32px;
+  }
+  .result-title {
+    font-size:48px;
+  }
 }

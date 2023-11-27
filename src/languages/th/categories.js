@@ -63,7 +63,7 @@ export const cateTitles = [
   {key: 'ดนตรี', title:'ดนตรี', dataKey: 'musicTh'},
   {key: 'ภาพยนตร์', title:'ภาพยนตร์', dataKey: 'filmsTh'},
   {key: 'เกม', title:'เกม', dataKey: 'gamesTh'},
-  {key: 'ธุรกิจ', title:'ะุรกิจ', dataKey: 'businessesTh'},
+  {key: 'ธุรกิจ', title:'ธุรกิจ', dataKey: 'businessesTh'},
   {key: 'ภาษา', title:'ภาษา', dataKey: 'languagesTh'},
   {key: 'สิ่งของ', title:'สิ่งของ', dataKey: 'thingsTh'},
   {key: 'วิทยาศาสตร์', title:'วิทยาศาสตร์', dataKey: 'scienceTh'},

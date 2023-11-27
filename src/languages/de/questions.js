@@ -136,7 +136,7 @@ export default function QuestionsDe(){
   }
 
   useEffect(()=> {
-    document.title = `${hook.category} - Let's Guess`
+    document.title = `${hook.category} - Lass uns erraten`
     setTimeout(() => {
       setStartPage(false)
     }, 1000)
