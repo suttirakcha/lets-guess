@@ -186,10 +186,10 @@ export default function QuestionsDe(){
         </footer>
       </main>
 
-      <BlockSpace isActive={hideAnswer} text={localStorage.getItem("text-hidden-de") === "" ? "Die Antwort wird verborgen" : textAnswerHidden}/>
+      <BlockSpace isActive={hideAnswer} text={localStorage.getItem("text-hidden-de") === "" ? "Die Antwort ist verborgen" : textAnswerHidden}/>
 
       <Modal open={goBackModal} onClose={answerNo}>
-        <h1 className="modal-question">Sind Sie sicher, dass Sie um Startseite zu zurückgehen wollen?</h1>
+        <h1 className="modal-question">Sind Sie sicher, dass Sie um Startseite zurückzugehen wollen?</h1>
         <div className="checks-btns with-top-space">
           <Button onClick={answerYes}>Ja</Button>
           <Button onClick={answerNo}>Nein</Button>

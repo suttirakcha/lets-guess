@@ -306,8 +306,8 @@ export default function MainPageDe(){
         </div>
         <div className="setting-sec">
           <h2>Verborgener Antworttext</h2>
-          <TextInput className={`${warning ? 'warning' : ''}`} placeholder="Die Antwort wird verborgen" id="hidden-answer-text" value={typeHiddenText} onChange={e => setTypeHiddenText(e.target.value)} autoComplete="off"/>
-          <p>Dieser Text wird angezeigt, wenn die Hint-Spieler auf der „Antwort verbergen“-Schaltfläche drücken. Der Standardtext ist „Die Antwort wird verborgen“.</p>
+          <TextInput className={`${warning ? 'warning' : ''}`} placeholder="Die Antwort ist verborgen" id="hidden-answer-text" value={typeHiddenText} onChange={e => setTypeHiddenText(e.target.value)} autoComplete="off"/>
+          <p>Dieser Text wird angezeigt, wenn die Hint-Spieler auf der „Antwort verbergen“-Schaltfläche drücken. Der Standardtext ist „Die Antwort ist verborgen“.</p>
           <p id="warning-hidden-text" className={`${warning ? 'active' : 'inactive'}`}>{warningText}</p>
         </div>
       </DrawerCircle>
