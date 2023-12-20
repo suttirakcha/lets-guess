@@ -39,7 +39,7 @@ export default function QuestionsDe(){
   const [correct, setCorrect] = useState(false);
   const [wrong, setWrong] = useState(false);
 
-  const afterGameTexts = ['Macht das Ihnen Spaß?','Wollen Sie wieder spielen?','Viel Glück beim nächsten Mal']
+  const afterGameTexts = ['Macht das Ihnen Spaß?','Wollen Sie wiederspielen?','Viel Glück beim nächsten Mal']
   const [afterGameText, setAfterGameText] = useState(afterGameTexts[Math.floor(Math.random() * afterGameTexts.length)])
 
   var hook = sortedCategories.find(item => item.link == `/de/${id}`)
