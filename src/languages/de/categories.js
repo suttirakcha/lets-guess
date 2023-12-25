@@ -1,7 +1,7 @@
 export const cateLists = {
   eatingDe: [
     {category: "Essen",link: "/de/foods", words:["Suppe","Schnitzel","Sandwich","Salat","Pizza","Wurst","Brot","Steak","Bratwurst","Currywurst","Nudeln","Sushi","Pommes frites","Coleslaw","Ramyeon","Hamburger","Sauerkraut","Paella","Kimchi","Gebratenes Huhn","Gebratener Reis","Omelett","Ramen","Bibimbap","Tom Yum Kung","Schinken","Brezel","Curry"]},
-    {category: "Getränke",link: "/de/drinks", words:["Wasser","Orangensaft","Apfelsaft","Saft","Apfelschorle","Bier","Wein","Soda","Milch","Tee","Kaffee","Rotwein","Limonade","Mojito","Milchtee","Glühwein"]},
+    {category: "Getränke",link: "/de/drinks", words:["Wasser","Orangensaft","Apfelsaft","Saft","Apfelschorle","Bier","Wein","Soda","Milch","Tee","Kaffee","Rotwein","Limonade","Mojito","Milchtee","Glühwein","Sekt"]},
     {category: "Nachtische",link: "/de/desserts", words:["Kuchen","Macaron","Keks","Strudel","Torte","Berliner","Krapfen","Schokolade","Pudding","Mousse","Eiscreme","Gelato","Bingsu","Brownie","Mochi","Daifuku","Bananenkuchen","Apfelkuchen"]}
   ],
   geographyDe: [

@@ -951,15 +951,11 @@ input:checked + .switch-toggle:before{
 }
 
 #words{
-  font-size:5em;
+  font-size:calc(3em + 2vw);
   line-height:90px;
   padding:0 40px;
-  &.in {
-    animation:random_words_in 600ms forwards;
-  }
-  &.out {
-    animation:random_words_out 600ms forwards;
-  }
+  &.in{animation:random_words_in 600ms forwards}
+  &.out{animation:random_words_out 600ms forwards}
 }
 
 #score {

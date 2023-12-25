@@ -15,8 +15,6 @@ export default function SearchBar({open, onOpen, onClose, onSearch, placeholder,
     }
   }
 
-  console.log(searchRef)
-
   const openSearch = e => {
     if (e.ctrlKey && e.key === 's'){
       e.preventDefault()

@@ -235,7 +235,7 @@ export default function MainPageDe(){
                   {filterSearch.length < 1 && (
                     <>
                       <FontAwesomeIcon icon={faExclamationCircle} style={{fontSize:"54px"}}/>
-                      <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>Keine Ergebnisse</h1>
+                      <h1 style={{marginBottom:0,fontSize:"calc(30px + 0.5vw)"}}>Keine Ergebnisse gefunden</h1>
                       <p style={{fontSize:"calc(12px + 0.5vw)"}}>Bitte versuchen Sie mit einem anderen Stichwort.</p>
                     </>
                   )}

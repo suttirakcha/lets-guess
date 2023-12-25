@@ -31,13 +31,16 @@ export const sensitiveWords = [
   "cum",
   "hell",
   "bitch",
+  "money",
   "ass",
+  "kill",
   "bastard",
   "slut",
   "dick",
   "scheiße",
   "fick",
-  "arschloch"
+  "arschloch",
+  "schlampe",
 ]
 
 export const acceptableWords = [
