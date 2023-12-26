@@ -9,6 +9,7 @@ export const cateLists = {
     {category: "Plätze",link: "/de/places", words:["Theater","Hotel","Schule","Haus","Museum","Bahnhof","Universität","Gebäude","Kino","Fitnessstudio","Laden","Restaurant","Kaffeeshop","Büro","Stadtzentrum","Krankenhaus","Bank","Supermarkt","Park","Garten","Station","Stadion","Polizeistation","Tankstelle","Flughafen","Apotheke","Bibliothek","Buchladen","Kirche","Zoo","Schloss","Wald","Höhle","Parkplatz"]},
   ],
   otherDe: [
+    {category: "Kleidung", link: "/de/clothing", words:["Hemd","Rock","Hose","Schuhe","Socken","Jacke","Sakko","Schal","Pullover","Bluse","Handschuhe","Hut","Brille","Krone","Halskette"]},
     {category: "Tiere", link: "/de/animals", words:["Hund","Katze","Pferd","Vogel","Schnecke","Schlange","Spinne","Tiger","Löwe","Fisch","Ameise","Kuh","Schaf","Ente","Eule","Kaninchen","Hähnchen","Auster","Krabbe","Moskito","Schildkröte","Krokodil","Giraffe","Biene","Schwein","Qualle","Skorpion","Maus","Elefant","Schwan","Eidechse"]}
   ]
 }

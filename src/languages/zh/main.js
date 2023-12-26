@@ -165,7 +165,7 @@ export default function MainPageZh(){
       setWarning(false);
       localStorage.setItem('text-hidden-zh', typeHiddenText)
     }
-  }, [typeHiddenText])
+  }, [typeHiddenText, title])
 
   useEffect(() => {
     setColorMap(currentSec)

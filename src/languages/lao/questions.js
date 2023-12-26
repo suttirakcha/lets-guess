@@ -12,6 +12,13 @@ import { startStorages } from "../../components/lists/storage";
 export default function QuestionsLao(){
   const { id } = useParams()
 
+  if (localStorage.mode === 'dark'){
+    document.body.style.backgroundColor = "#272d60";
+    document.body.classList.add("dark-mode");
+  } else {
+    document.body.style.backgroundColor = "#E0E4FF";
+  }
+
   const getTimer = localStorage.getItem("timer-continue");
   const numPoint = localStorage.getItem("point");
 
@@ -135,13 +142,6 @@ export default function QuestionsLao(){
     }, 1000)
     if(localStorage.length == 0){
       startStorages()
-    }
-
-    if (localStorage.getItem("dark-mode") === 'true'){
-      document.body.style.backgroundColor = "#272d60";
-      document.body.classList.add("dark-mode");
-    } else {
-      document.body.style.backgroundColor = "#E0E4FF";
     }
   },[])
 

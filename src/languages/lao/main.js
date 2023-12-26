@@ -165,7 +165,7 @@ export default function MainPageLao(){
       setWarning(false);
       localStorage.setItem('text-hidden-lo', typeHiddenText)
     }
-  }, [typeHiddenText])
+  }, [typeHiddenText, title])
 
   useEffect(() => {
     setColorMap(currentSec)
