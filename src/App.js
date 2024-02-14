@@ -21,6 +21,7 @@ export default function App(){
   return (
     <Router>
       <Routes>
+        <Route path="/404" element={<NotFound />}/>
         <Route path="*" element={<NotFound />}/>
         <Route path="/" element={<MainPage />} />
         <Route path="/:id" element={<Questions />}/>
