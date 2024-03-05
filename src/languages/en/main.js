@@ -277,7 +277,6 @@ export default function MainPage(){
           <ul className="langs">
             <li className="active">English</li>
             <li onClick={() => clickToChangeLang("/de")}>Deutsch / German</li>
-            <li onClick={() => clickToChangeLang("/lo")}>ລາວ / Lao</li>
             <li onClick={() => clickToChangeLang("/th")}>ไทย / Thai</li>
             <li onClick={() => clickToChangeLang("/zh")}>中文 / Chinese</li>
           </ul>

@@ -7,9 +7,6 @@ import Questions from "./languages/en/questions";
 import MainPageTh from "./languages/th/main"
 import QuestionsTh from "./languages/th/questions";
 
-import MainPageLao from "./languages/lao/main";
-import QuestionsLao from "./languages/lao/questions";
-
 import MainPageZh from "./languages/zh/main";
 import QuestionsZh from "./languages/zh/questions";
 
@@ -28,9 +25,6 @@ export default function App(){
 
         <Route path="/th" element={<MainPageTh />} />
         <Route path="/th/:id" element={<QuestionsTh />}/>
-
-        <Route path="/lo" element={<MainPageLao />} />
-        <Route path="/lo/:id" element={<QuestionsLao />}/>
 
         <Route path="/zh" element={<MainPageZh />} />
         <Route path="/zh/:id" element={<QuestionsZh />}/>

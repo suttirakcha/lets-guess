@@ -278,7 +278,6 @@ export default function MainPageDe(){
             <li className="active">Deutsch</li>
             <li onClick={() => clickToChangeLang("/zh")}>中文 / Chinesisch</li>
             <li onClick={() => clickToChangeLang("/")}>English / Englisch</li>
-            <li onClick={() => clickToChangeLang("/lo")}>ລາວ / Laotisch</li>
             <li onClick={() => clickToChangeLang("/th")}>ไทย / Thailändisch</li>
           </ul>
         </div>

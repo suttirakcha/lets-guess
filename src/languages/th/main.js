@@ -278,7 +278,6 @@ export default function MainPageTh(){
             <li className="active">ไทย</li>
             <li onClick={() => clickToChangeLang("/")}>English / อังกฤษ</li>
             <li onClick={() => clickToChangeLang("/de")}>Deutsch / เยอรมัน</li>
-            <li onClick={() => clickToChangeLang("/lo")}>ລາວ / ลาว</li>
             <li onClick={() => clickToChangeLang("/zh")}>中文 / จีน</li>
           </ul>
         </div>
