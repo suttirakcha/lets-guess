@@ -7,7 +7,7 @@ $pink-bg-dark:#3f1b3c;
 $blue-bg-dark:#272d60;
 $modal-bg-dark:#202020;
 
-body,button,input,code{font-family:"IBM Plex Sans Thai","Noto Sans Lao",sans-serif}
+body,button,input,code{font-family:"IBM Plex Sans Thai",sans-serif}
 body{
   background-color:#D4FFA8;
   overflow:hidden;
@@ -138,13 +138,6 @@ body{
     margin:auto;
     display:inline-block;
     li{text-align:left;font-size:17px}
-  }
-}
-
-.lao{
-  font-family:"Noto Sans Lao","IBM Plex Sans Thai";
-  button,input,code{
-    font-family:"Noto Sans Lao","IBM Plex Sans Thai";
   }
 }
 
