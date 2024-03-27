@@ -23,6 +23,8 @@ export const englishText = {
   settings_note: <p style={{ marginBottom: 0 }}><strong>Note: </strong> Your settings will be automatically saved when you close this sidebar.</p>,
   timer: "Timer",
   timer_note: "The timer is displayed at the top of the screen when playing the game.",
+  sixty_seconds: "60 seconds",
+  hundred_twenty_seconds: "120 seconds",
   go_back: "Go back",
   no_results: "No search results",
   try_another_keyword: "Please try another keyword."
@@ -50,6 +52,8 @@ export const thaiText = {
   settings_note: <p style={{ marginBottom: 0 }}><strong>หมายเหตุ: </strong> การตั้งค่าของคุณจะถูกบันทึกโดยอัตโนมัติเมื่อคุณปิดแถบด้านข้างนี้</p>,
   timer: "ตัวจับเวลา",
   timer_note: "ตัวจับเวลาจะถูกแสดงด้านบนของจอเมื่อเล่นเกม",
+  sixty_seconds: "60 วินาที",
+  hundred_twenty_seconds: "120 วินาที",
   go_back: "กลับ",
   no_results: "ไม่พบผลลัพธ์",
   try_another_keyword: "กรุณาลองคีย์เวิร์ดอื่น"

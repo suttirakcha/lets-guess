@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { Navigate, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { englishText, thaiText } from "../data/languages";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck,faXmark,faChevronLeft,faGear,faLanguage,faSun,faMoon,faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
@@ -20,8 +20,8 @@ import ToggleSelect from "../components/toggle-select";
 export default function MainPage(){
 
   const { lang } = useParams()
-  const navigate = useNavigate()
 
+  const checkLang = lang === undefined || lang === LanguagesEnum.Thai || lang === LanguagesEnum.Chinese || lang === LanguagesEnum.German
   const mainLang = lang === LanguagesEnum.Thai ? {
     language: thaiText,
     categories: cateTitlesThai,
@@ -48,12 +48,11 @@ export default function MainPage(){
     result: "",
   })
 
-  const [timerSwitch, setTimerSwitch] = useState(false)
+  const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer") == "120" ? true : false)
   const [tooltipAppear, setTooltipAppear] = useState(false);
   const [openSettings, setOpenSettings] = useState(false)
 
   const toggleTimer = (e: ChangeEvent<HTMLInputElement>) => {
-    localStorage.setItem("timer-switch", String(timerSwitch));
     setTimerSwitch(e.target.checked);
 
     if (!timerSwitch){
@@ -65,11 +64,13 @@ export default function MainPage(){
     }
   }
 
-  const changePage = (page: number, animation: string) => {
+  const changePage = (page: number, animation: string, bgColor?: string) => {
     setPageSec(prev => ({...prev, isChanging: true, headerFading: true}))
     document.body.style.animation = animation
     setTimeout(() => {
       setPageSec(prev => ({...prev, current: page, isChanging: false, headerFading: false}))
+      document.body.style.animation = "none"
+      if (bgColor) document.body.style.backgroundColor = bgColor
     }, 900)
   }
 
@@ -106,9 +107,21 @@ export default function MainPage(){
     }, 900)
   }, [pageSec])
 
+  const changeMode = (mode: string) => {
+    if (mode == "dark"){  
+      document.body.classList.add("dark-mode");
+      document.body.style.backgroundColor = "#3f1b3c";
+    } else {
+      document.body.classList.remove("dark-mode");
+      document.body.style.backgroundColor = "#FFE0FD";
+    }
+    document.body.style.transition = "all 300ms";
+    localStorage.setItem('mode', mode)
+  }
+
   return (
     <>
-      {lang === undefined || lang === LanguagesEnum.Thai || lang === LanguagesEnum.Chinese || lang === LanguagesEnum.German ? (
+      {checkLang ? (
         <div className="App">
           {pageSec.isChanging && <InvisibleOverlay />}
     
@@ -175,14 +188,13 @@ export default function MainPage(){
                 <h2>{mainLang.language.how_to_play_title}</h2>
     
                 {mainLang.language.how_to_play_desc}
-    
               </div>
             )}
           </main>
     
           <footer className={`app-foot ${pageSec.isChanging ? 'active' : pageSec.current > 0 ? 'hide-footer' : 'inactive'}${pageSec.isLoaded ? ' start' : ''}`}>
             <h2>{mainLang.language.ready}</h2>
-            <Button onClick={() => changePage(1, BackgroundChange.GreenToPink)}>{mainLang.language.play_now}</Button>
+            <Button onClick={() => changePage(1, BackgroundChange.GreenToPink, "#FFE0FD")}>{mainLang.language.play_now}</Button>
           </footer>
     
           <DrawerCircle open={openSettings} onClose={() => setOpenSettings(false)}>
@@ -193,21 +205,22 @@ export default function MainPage(){
             <div className="setting-sec">
               <h2>{mainLang.language.timer}</h2>
     
-              <ToggleSelect id='switch-timer' checked={timerSwitch} onChange={toggleTimer} valueOne="60 วินาที" valueTwo="120 วินาที"/>
+              <ToggleSelect id='switch-timer' checked={timerSwitch} onChange={toggleTimer} valueOne={mainLang.language.sixty_seconds} valueTwo={mainLang.language.hundred_twenty_seconds}/>
               <p>{mainLang.language.timer_note}</p>
             </div>
-            {/* <div className="setting-sec">
+            <div className="setting-sec">
               <h2>โหมดหน้าจอ</h2>
               <div className="screen-appearance">
-                <button className="appear light-btn" onClick={lightMode}>
+                <button className="appear light-btn" onClick={() => changeMode('light')}>
                   <FontAwesomeIcon icon={faSun} /> โหมดสีสว่าง
                 </button>
-                <button className="appear dark-btn" onClick={darkMode}>
+                <button className="appear dark-btn" onClick={() => changeMode('dark')}>
                   <FontAwesomeIcon icon={faMoon} /> โหมดสีเข้ม
                 </button>
               </div>
             </div>
-            <div className="setting-sec">
+           
+            {/* <div className="setting-sec">
               <h2>ข้อความเมื่อซ่อนคำตอบ</h2>
               <TextInput className={`${warning ? 'warning' : ''}`} placeholder="คำตอบถูกซ่อนไว้" id="hidden-answer-text" value={typeHiddenText} onChange={e => setTypeHiddenText(e.target.value)} autoComplete="off"/>
               <p>ข้อความจะถูกแสดงเมื่อผู้บอกใบ้กดปุ่ม 'ซ่อนคำตอบ'<br/> ข้อความเริ่มต้นคือ 'คำตอบถูกซ่อนไว้'</p>
