@@ -1,6 +1,6 @@
 import { ChangeEvent } from "react"
 
-interface ToggleSelectProps {
+interface ToggleSwitchProps {
   checked: boolean
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
   id: string
@@ -8,7 +8,7 @@ interface ToggleSelectProps {
   valueTwo: string
 }
 
-export default function ToggleSelect({ checked, onChange, id, valueOne, valueTwo } : ToggleSelectProps){
+export default function ToggleSwitch({ checked, onChange, id, valueOne, valueTwo } : ToggleSwitchProps){
   return (
     <>
       <label className="switch" htmlFor={id}>
