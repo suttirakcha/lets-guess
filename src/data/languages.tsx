@@ -27,7 +27,10 @@ export const englishText = {
   hundred_twenty_seconds: "120 seconds",
   go_back: "Go back",
   no_results: "No search results",
-  try_another_keyword: "Please try another keyword."
+  try_another_keyword: "Please try another keyword.",
+  screen_appearance: "Screen appearance",
+  light_mode: "Light mode",
+  dark_mode: "Dark mode"
 }
 
 export const thaiText = {
@@ -56,5 +59,8 @@ export const thaiText = {
   hundred_twenty_seconds: "120 วินาที",
   go_back: "กลับ",
   no_results: "ไม่พบผลลัพธ์",
-  try_another_keyword: "กรุณาลองคีย์เวิร์ดอื่น"
+  try_another_keyword: "กรุณาลองคีย์เวิร์ดอื่น",
+  screen_appearance: "โหมดหน้าจอ",
+  light_mode: "โหมดสว่าง",
+  dark_mode: "โหมดมืด"
 }

@@ -1,11 +1,23 @@
 import { useParams } from "react-router-dom"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { Background } from "../types/main-page"
+import useChangeMode from "../hooks/use-change-mode"
+import useLanguage from "../hooks/use-language"
 
 const GamePage = () => {
 
   const { lang, cate } = useParams()
+  const { checkIfDarkMode } = useChangeMode()
+  const { mainLang } = useLanguage(lang)
 
-  const startedGame = {
+  document.body.style.backgroundColor = checkIfDarkMode ? Background.BlueDark : Background.Blue
+
+  const words = mainLang.sortedCate.find(item => item.link == `/${cate}`)?.words
+  const randomWord = words && words[Math.floor(Math.random() * words.length)]
+
+  const [word, setWord] = useState(randomWord)
+
+  const gameData = {
     timer: localStorage.getItem("timer-continue"),
     point: localStorage.getItem("point"),
     count: localStorage.getItem("timer")

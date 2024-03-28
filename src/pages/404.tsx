@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 
 export default function NotFound(){
-  const [darkMode, setDarkMode] = useState(localStorage.getItem("dark-mode") == "true");
   const clickToGoBack = () => {
     window.location.replace("/");
   }
@@ -11,12 +10,6 @@ export default function NotFound(){
   const [heading, setHeading] = useState("This page is not found")
   const [para, setPara] = useState(<>It seems that the page you are accessing is not found. <br/>Please click 'Go back' to go to the homepage.</>)
   const [btn, setBtn] = useState("Go back")
-
-  useEffect(() => {
-    if (darkMode){
-      document.body.classList.add("dark-mode");
-    }
-  }, [])
 
   return (
     <div id="not-found">

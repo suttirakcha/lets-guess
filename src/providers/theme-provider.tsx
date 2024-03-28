@@ -1,11 +1,13 @@
 import { createContext, ReactNode, useState } from "react"
 
-interface ThemeProviderProps {
-  children: ReactNode
-}
+const ThemeProvider = ({ children } : { children: ReactNode }) => {
+  const [theme, setTheme] = useState(localStorage.mode === 'dark' ? 'dark' : 'light')
 
-const ThemeProvider = ({ children } : ThemeProviderProps) => {
-  const [theme, setTheme] = useState('light')
+  if (theme === 'dark'){
+    document.body.classList.add("dark-mode");
+  } else {
+    document.body.classList.remove("dark-mode");
+  }
 
   const ThemeContext = createContext(theme)
 

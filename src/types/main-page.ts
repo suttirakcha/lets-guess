@@ -18,7 +18,7 @@ export enum LanguagesEnum {
   Chinese = "zh",
   German = "de"
 }
-  
+
 export enum BackgroundChange {
   GreenToPink = "green_to_pink 900ms forwards",
   GreenToPinkDark = "green_to_pink_dark 900ms forwards",
@@ -26,4 +26,13 @@ export enum BackgroundChange {
   PinkToGreenDark = "pink_to_green_dark 900ms forwards",
   PinkToBlue = "pink_to_blue 900ms forwards",
   PinkToBlueDark = "pink_to_blue_dark 900ms forwards"
+}
+
+export enum Background {
+  Green = "#D4FFA8",
+  Pink = "#FFE0FD",
+  Blue = "#E0E4FF",
+  GreenDark = "#313c26",
+  PinkDark = "#3f1b3c",
+  BlueDark = "#272d60"
 }
