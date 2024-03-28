@@ -1,22 +1,21 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faClose } from "@fortawesome/free-solid-svg-icons"
-import { Button } from "./button";
-import { TextInput } from "./textinput";
-import Tooltip from "./tooltip";
-import { FormEvent, useRef, useState } from "react";
+import { Button } from "./Button";
+import { TextInput } from "./TextInput";
+import Tooltip from "./Tooltip";
+import { ChangeEvent, useRef, useState } from "react";
 
 interface SearchBarProps {
   open: boolean
   onOpen: () => void
   onClose: () => void
-  onSearch: (e: FormEvent<HTMLInputElement>) => void
+  onSearch: (e: ChangeEvent<HTMLInputElement>) => void
   placeholder: string
   value: string
 }
 
 export default function SearchBar({ open, onOpen, onClose, onSearch, placeholder, value } : SearchBarProps){
   const [hover, setHover] = useState(false)
-  const searchRef = useRef(null)
 
   const openSearch = (e: KeyboardEvent) => {
     if (e.ctrlKey && e.key === 's'){

@@ -34,7 +34,7 @@ export function CardCateWithTitle({ title, data, onSelect } : CardCateWithTitleP
     <>
       <h2 className="list-titles">{title}</h2>
       <div className="select-lists">
-        {data.map(d => <CardCate href={d.href} category={d.category} onSelect={onSelect}/>)}
+        {data.map(d => <CardCate key={d.category} href={d.link} category={d.category} onSelect={onSelect}/>)}
       </div>
     </>
   )

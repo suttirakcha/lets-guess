@@ -1,4 +1,4 @@
-import { Category, CateTitles } from "./categories";
+import { Category, CateTitles } from "../types/categories";
 
 export const cateListsThai: Category = {
   eatingTh: [

@@ -4,7 +4,7 @@ export type CateTitles = {
   dataKey: string
 }
 
-export type CateTitlesLatin = string[]
+export type CateTitlesEnglish = string[]
 
 export interface CateList {
   category: string

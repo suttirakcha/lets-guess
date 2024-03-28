@@ -30,7 +30,14 @@ export const englishText = {
   try_another_keyword: "Please try another keyword.",
   screen_appearance: "Screen appearance",
   light_mode: "Light mode",
-  dark_mode: "Dark mode"
+  dark_mode: "Dark mode",
+  warning_text: "*Please avoid using impolite or sensitive words.",
+  hidden_answer_text_title: "Hidden answer text",
+  hidden_answer_text_desc: "This text will be shown when the hint giver presses the 'Hide answer' button, the default text is 'The answer is hidden'.",
+  the_text_is_hidden: "The text is hidden",
+  english: "English",
+  thai: "Thai",
+  chinese: "Chinese"
 }
 
 export const thaiText = {
@@ -41,8 +48,8 @@ export const thaiText = {
   how_to_play_title: "วิธีเล่น:",
   how_to_play_desc: (
     <ol>
-      <li>ผู้บอกใบ้สามารถที่จะเห็นคำตอบได้เท่านั้น และให้ใบ้คำตอบเพื่อที่ผู้เล่นจะสามารถเดาคำตอบที่ปรากฏบนจอได้</li>
-      <li>ผู้บอกใบ้สามารถซ่อนคำตอบโดยกดปุ่ม 'ซ่อนคำตอบ' ตรงมุมขวาบนของจอ</li>
+      <li>ผู้ใบ้คำตอบสามารถที่จะเห็นคำตอบได้เท่านั้น และให้ใบ้คำตอบเพื่อที่ผู้เล่นจะสามารถเดาคำตอบที่ปรากฏบนจอได้</li>
+      <li>ผู้ใบ้คำตอบสามารถซ่อนคำตอบโดยกดปุ่ม 'ซ่อนคำตอบ' ตรงมุมขวาบนของจอ</li>
       <li>ถ้าผู้เล่นทายถูก ให้กดปุ่ม <FontAwesomeIcon icon={faCheck}/> เพื่อไปยังคำต่อไป</li>
       <li>ถ้าผู้เล่นทายผิด หรือไม่รู้คำตอบ ให้กดปุ่ม <FontAwesomeIcon icon={faXmark}/> เพื่อข้ามคำตอบ</li>
       <li>คุณมีเวลา 60 หรือ 120 วินาที (ขึ้นอยู่กับการตั้งค่าของคุณ) ในการทายคำตอบ</li>
@@ -62,5 +69,51 @@ export const thaiText = {
   try_another_keyword: "กรุณาลองคีย์เวิร์ดอื่น",
   screen_appearance: "โหมดหน้าจอ",
   light_mode: "โหมดสว่าง",
-  dark_mode: "โหมดมืด"
+  dark_mode: "โหมดมืด",
+  warning_text: "*โปรดหลีกเลี่ยงการใช้คำที่ไม่สุภาพ หรือคำที่อ่อนไหว",
+  hidden_answer_text_title: "ข้อความเมื่อซ่อนคำตอบ",
+  hidden_answer_text_desc: "ข้อความจะถูกแสดงเมื่อผู้ใบ้คำตอบกดปุ่ม 'ซ่อนคำตอบ' ข้อความเริ่มต้นคือ 'คำตอบถูกซ่อนไว้'",
+  the_text_is_hidden: "คำตอบถูกซ่อนไว้",
+  english: "อังกฤษ",
+  thai: "ไทย",
+  chinese: "จีน"
+}
+
+export const chineseText = {
+  title: "我们猜吧",
+  select_category: "选择类别",
+  loading: "加载中...",
+  select_language: "选择语言",
+  how_to_play_title: "玩法:",
+  how_to_play_desc: (
+    <ol>
+      <li>暗示人只可以见答案，也可以暗示答案，所以玩家可以猜在屏幕上的答案。</li>
+      <li>暗示人可以在屏幕的右上角按 ”隐藏答案“ 隐藏答案。</li>
+      <li>如果玩家猜正确，按 “<FontAwesomeIcon icon={faCheck}/>” 转到下一个的单词。</li>
+      <li>如果玩家猜不正确或不知道答案是什么，按 “<FontAwesomeIcon icon={faXmark}/>” 跳过到下一步的单词。</li>
+      <li>你有60或120秒（根据你的设置）暗示答案。</li>
+    </ol>
+  ),
+  ready: "准备好了吗？",
+  play_now: "玩吧",
+  search_category: "搜索类别",
+  settings: "设置",
+  settings_note: <p style={{ marginBottom:0 }}><strong>注意: </strong>你关此边栏时，你的设置将自动保存。</p>,
+  timer: "定时器",
+  timer_note: "定时器玩游戏时在屏幕上展示。",
+  sixty_seconds: "60 秒",
+  hundred_twenty_seconds: "120 秒",
+  go_back: "回去",
+  no_results: "无结果",
+  try_another_keyword: "请试试其他的关键词",
+  screen_appearance: "屏幕出现",
+  light_mode: "灯光模式",
+  dark_mode: "黑暗模式",
+  warning_text: "*请避免用不礼貌或敏感的词。",
+  hidden_answer_text_title: "隐藏答案的本文",
+  hidden_answer_text_desc: "暗示人按 “隐藏答案” 的时候，文本会展示。默认文本是 “答案被隐藏”",
+  the_text_is_hidden: "答案被隐藏",
+  english: "英文",
+  thai: "泰文",
+  chinese: "中文"
 }

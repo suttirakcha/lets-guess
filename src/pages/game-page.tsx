@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { Background } from "../types/main-page"
-import useChangeMode from "../hooks/use-change-mode"
-import useLanguage from "../hooks/use-language"
+import useChangeMode from "../hooks/useChangeMode"
+import useLanguage from "../hooks/useLanguage"
 
 const GamePage = () => {
 

@@ -13,7 +13,7 @@ export interface PageSec {
 }
 
 export enum LanguagesEnum {
-  English = "",
+  English = "en",
   Thai = "th",
   Chinese = "zh",
   German = "de"

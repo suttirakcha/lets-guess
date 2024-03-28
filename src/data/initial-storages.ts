@@ -1,4 +1,5 @@
 export const startStorages = () => {
+  localStorage.setItem("lang", "en")
   localStorage.setItem("timer", String(60));
   localStorage.setItem("timer-continue", String(60));
   localStorage.setItem("text-hidden", "")
@@ -10,6 +11,7 @@ export const startStorages = () => {
 }
 
 export const getStorages = () => {
+  localStorage.getItem("lang")
   localStorage.getItem("timer");
   localStorage.getItem("timer-continue");
   localStorage.getItem("text-hidden")

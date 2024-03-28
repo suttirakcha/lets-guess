@@ -10,9 +10,7 @@ function App() {
     <ThemeProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<MainPage />}/>
           <Route path="/:lang" element={<MainPage />}/>
-          <Route path="/:cate" element={<GamePage />}/>
           <Route path="/:lang/:cate" element={<GamePage />}/>
           <Route path="/404" element={<NotFound />}/>
         </Routes>

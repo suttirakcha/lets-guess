@@ -851,6 +851,7 @@ input:checked + .switch-toggle:before{
   flex-direction:column;
   .langs{
     padding:0;
+    margin-top:0;
     li{
       list-style:none;
       width:calc(100% - 80px);
@@ -858,7 +859,7 @@ input:checked + .switch-toggle:before{
       border-radius:99px;
       text-align:left;
       padding:12px 36px;
-      margin:8px 0;
+      margin:12px 0;
       transition:background-color 300ms, color 300ms;
       font-size:28px;
       &:hover,&.active{
