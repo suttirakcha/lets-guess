@@ -33,6 +33,7 @@ const Settings = ({ open, onClose, lang } : SettingsProps) => {
         <ToggleSelect id='switch-timer' checked={timerSwitch} onChange={toggleTimer} valueOne={mainLang.language.sixty_seconds} valueTwo={mainLang.language.hundred_twenty_seconds}/>
         <p>{mainLang.language.timer_note}</p>
       </div>
+
       <div className="setting-sec">
         <h2>{mainLang.language.screen_appearance}</h2>
         <div className="screen-appearance">
@@ -48,7 +49,7 @@ const Settings = ({ open, onClose, lang } : SettingsProps) => {
       <div className="setting-sec">
         <h2>{mainLang.language.hidden_answer_text_title}</h2>
         <TextInput className={`${hasSensitiveWords ? 'warning' : ''}`} placeholder={mainLang.language.the_text_is_hidden} id="hidden-answer-text" value={text} onChange={e => setText(e.target.value)} autoComplete="off"/>
-        <p>{mainLang.language.hidden_answer_text_desc}</p>
+        {mainLang.language.hidden_answer_text_desc}
         <p id="warning-hidden-text" className={`${hasSensitiveWords ? 'active' : 'inactive'}`}>{warningText}</p>
       </div>
     </DrawerCircle>

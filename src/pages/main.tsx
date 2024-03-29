@@ -70,7 +70,7 @@ export default function MainPage(){
     setTimeout(() => {
       navigate(link, {replace:true})
       setPageSec(prev => ({...prev, headerFading: false, isChanging: false}));
-      localStorage.setItem("lang", link)
+      lang && localStorage.setItem("lang", link)
     }, 900)
   }
 

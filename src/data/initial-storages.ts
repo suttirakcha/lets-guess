@@ -1,5 +1,5 @@
 export const startStorages = () => {
-  localStorage.setItem("lang", "en")
+  localStorage.setItem("lang", "/en")
   localStorage.setItem("timer", String(60));
   localStorage.setItem("timer-continue", String(60));
   localStorage.setItem("text-hidden", "")

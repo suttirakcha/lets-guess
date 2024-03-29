@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const Redirect = () => {
 
-  const [link, setLink] = useState("/")
+  const [link, setLink] = useState<string>('')
 
   useEffect(() => {
     if (localStorage.getItem("lang") !== null){
@@ -11,7 +11,7 @@ const Redirect = () => {
     } else {
       setLink('/en')
     }
-  }, [link])
+  }, [link, localStorage])
 
   return (
     <Navigate to={link}/>

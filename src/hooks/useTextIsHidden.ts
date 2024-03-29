@@ -8,7 +8,7 @@ const useTextIsHidden = (lang: string | undefined) => {
   const { mainLang } = useLanguage(lang)
 
   const defaultText: string = 
-    localStorage.getItem(
+    localStorage.length > 1 && localStorage.getItem(
       lang === LanguagesEnum.Thai ? "text-hidden-th" : 
       lang === LanguagesEnum.Chinese ? "text-hidden-zh" :
       lang === LanguagesEnum.German ? "text-hidden-de" :
@@ -38,7 +38,7 @@ const useTextIsHidden = (lang: string | undefined) => {
       setHasSensitiveWords(false)
       handleMessage(text)
     }
-  }, [hasSensitiveWords, text, handleMessage])
+  }, [hasSensitiveWords, text])
 
   return { hasSensitiveWords, text, warningText, setText, defaultText }
 }

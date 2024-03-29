@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { ChangeEvent } from "react";
 
+type Timer = number | null
+
 const useTimer = () => {
+  const checkIfTimer = localStorage.getItem("timer-continue")
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer") == "120" ? true : false)
+  const [timerStart, setTimerStart] = useState<Timer>(checkIfTimer !== null ? parseInt(checkIfTimer) : null)
+
+  const [isTimeUp, setIsTimeUp] = useState(false)
 
   const toggleTimer = (e: ChangeEvent<HTMLInputElement>) => {
     setTimerSwitch(e.target.checked);
@@ -16,7 +22,7 @@ const useTimer = () => {
     }
   }
 
-  return { timerSwitch, toggleTimer }
+  return { timerSwitch, toggleTimer, isTimeUp, timerStart, setIsTimeUp, setTimerStart }
 }
 
 export default useTimer
