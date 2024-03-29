@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck,faXmark,faChevronLeft,faGear,faLanguage,faSun,faMoon,faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft,faGear,faLanguage,faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "../components/Button";
 import InvisibleOverlay from "../components/drawers/InvisibleOverlay";
 import { startStorages, getStorages } from "../data/initial-storages";
@@ -9,10 +9,9 @@ import { CardCateWithTitle, CardCate } from "../components/Card";
 import { ButtonWithIcon } from "../components/Button";
 import SearchBar from "../components/SearchBar";
 import Tooltip from "../components/Tooltip";
-import { BackgroundChange, PageSec, Background, LanguagesEnum } from "../types/main-page";
+import { BackgroundChange, PageSec, Background } from "../types/main-page";
 import useLanguage from "../hooks/useLanguage";
 import useSearch from "../hooks/useSearch";
-import DrawerCircle from "../components/drawers/DrawerCircle";
 import useChangeMode from "../hooks/useChangeMode";
 import Loading from "../components/Loading";
 import useTextIsHidden from "../hooks/useTextIsHidden";
@@ -71,26 +70,9 @@ export default function MainPage(){
     setTimeout(() => {
       navigate(link, {replace:true})
       setPageSec(prev => ({...prev, headerFading: false, isChanging: false}));
+      localStorage.setItem("lang", link)
     }, 900)
   }
-
-  const langList = [
-    {
-      title: `English ${lang !== LanguagesEnum.English ? `(${mainLang.language.english})` : ''}`,
-      link: '/en',
-      isActive: lang === LanguagesEnum.English
-    },
-    {
-      title: `ไทย ${lang !== LanguagesEnum.Thai ? `(${mainLang.language.thai})` : ''}`,
-      link: '/th',
-      isActive: lang === LanguagesEnum.Thai
-    },
-    {
-      title: `中文 ${lang !== LanguagesEnum.Chinese ? `(${mainLang.language.chinese})` : ''}`,
-      link: '/zh',
-      isActive: lang === LanguagesEnum.Chinese
-    }
-  ]
 
   const filterSearch = mainLang.sortedCate.filter(cate => cate.category.toUpperCase().includes(searchSec.result.toUpperCase()))
 

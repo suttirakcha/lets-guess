@@ -3,6 +3,7 @@ import { cateListsThai, cateTitlesThai, sortedCategoriesThai } from "../data/cat
 import { LanguagesEnum } from "../types/main-page";
 import { thaiText, englishText, chineseText } from "../data/languages";
 import { cateListsChinese, cateTitlesChinese, sortedCategoriesChinese } from "../data/categories-zh";
+import { cateListsGerman, cateTitlesGerman, sortedCategoriesGerman } from "../data/categories-de";
 
 const useLanguage = (lang: string | undefined) => {
   const checkLang = lang === LanguagesEnum.English || 
@@ -22,6 +23,12 @@ const useLanguage = (lang: string | undefined) => {
     cateList: cateListsChinese,
     sortedCate: sortedCategoriesChinese
   } 
+  : lang === LanguagesEnum.German ? {
+    language: englishText,
+    categories: cateTitlesGerman,
+    cateList: cateListsGerman,
+    sortedCate: sortedCategoriesGerman
+  }
   : {
     language: englishText,
     categories: cateTitles,

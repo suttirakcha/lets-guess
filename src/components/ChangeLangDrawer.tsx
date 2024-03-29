@@ -34,6 +34,11 @@ const ChangeLangDrawer = ({ open, onClose, lang, onChange } : ChangeLangDrawerPr
       title: `中文 ${lang !== LanguagesEnum.Chinese ? `(${mainLang.language.chinese})` : ''}`,
       link: '/zh',
       isActive: lang === LanguagesEnum.Chinese
+    },
+    {
+      title: `Deutsch ${lang !== LanguagesEnum.German ? `(${mainLang.language.german})` : ''}`,
+      link: '/de',
+      isActive: lang === LanguagesEnum.German
     }
   ]
 

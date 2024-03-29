@@ -37,7 +37,8 @@ export const englishText = {
   the_text_is_hidden: "The text is hidden",
   english: "English",
   thai: "Thai",
-  chinese: "Chinese"
+  chinese: "Chinese",
+  german: "German"
 }
 
 export const thaiText = {
@@ -76,7 +77,8 @@ export const thaiText = {
   the_text_is_hidden: "คำตอบถูกซ่อนไว้",
   english: "อังกฤษ",
   thai: "ไทย",
-  chinese: "จีน"
+  chinese: "จีน",
+  german: "เยอรมัน"
 }
 
 export const chineseText = {
@@ -115,5 +117,6 @@ export const chineseText = {
   the_text_is_hidden: "答案被隐藏",
   english: "英文",
   thai: "泰文",
-  chinese: "中文"
+  chinese: "中文",
+  german: "德文"
 }
