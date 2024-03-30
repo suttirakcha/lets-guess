@@ -4,9 +4,10 @@ import { ChangeEvent } from "react";
 type Timer = number | null
 
 const useTimer = () => {
+  const timerStart = localStorage.getItem("timer")
   const checkIfTimer = localStorage.getItem("timer-continue")
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer") == "120" ? true : false)
-  const [timerStart, setTimerStart] = useState<Timer>(checkIfTimer !== null ? parseInt(checkIfTimer) : null)
+  const [timerContinue, setTimerContinue] = useState<Timer>(checkIfTimer !== null ? parseInt(checkIfTimer) : null)
 
   const [isTimeUp, setIsTimeUp] = useState(false)
 
@@ -22,7 +23,7 @@ const useTimer = () => {
     }
   }
 
-  return { timerSwitch, toggleTimer, isTimeUp, timerStart, setIsTimeUp, setTimerStart }
+  return { timerSwitch, toggleTimer, isTimeUp, timerContinue, setIsTimeUp, setTimerContinue, timerStart }
 }
 
 export default useTimer

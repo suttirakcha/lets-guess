@@ -3,7 +3,7 @@ import { faSearch, faClose } from "@fortawesome/free-solid-svg-icons"
 import { Button } from "./Button";
 import { TextInput } from "./TextInput";
 import Tooltip from "./Tooltip";
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useRef, useState, KeyboardEvent, useEffect } from "react";
 
 interface SearchBarProps {
   open: boolean
@@ -30,7 +30,7 @@ export default function SearchBar({ open, onOpen, onClose, onSearch, placeholder
     }
   }
 
-  document.addEventListener('keydown', openSearch)
+  // document.addEventListener('keydown', openSearch)
 
   return (
     <div className="relative">
@@ -38,7 +38,7 @@ export default function SearchBar({ open, onOpen, onClose, onSearch, placeholder
         <button className={`close-search-btn ${open ? 'active' : 'inactive'}`} onClick={onClose}>
           <FontAwesomeIcon icon={faClose}/>
         </button>
-        <TextInput value={value} onInput={onSearch} className={`${open ? 'active' : 'inactive'}`} placeholder={placeholder} id='search-input' autoComplete='off'/>
+        <TextInput value={value} onKeyDown={closeSearch} onInput={onSearch} className={`${open ? 'active' : 'inactive'}`} placeholder={placeholder} id='search-input' autoComplete='off'/>
       </div>
       <div className="search-btn">
         <div className={`open-search-btn ${open ? 'inactive' : 'active'}`}>

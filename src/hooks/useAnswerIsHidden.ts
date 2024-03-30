@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react"
-import { LanguagesEnum } from "../types/main-page"
+import { LangType, LanguagesEnum } from "../types/main-page"
 import { sensitiveWords } from "../data/sensitive-words"
 import useLanguage from "./useLanguage"
 
-const useTextIsHidden = (lang: string | undefined) => {
+const useAnswerIsHidden = (lang: LangType) => {
 
   const { mainLang } = useLanguage(lang)
 
   const defaultText: string = 
-    localStorage.length > 1 && localStorage.getItem(
+    localStorage.length > 0 && localStorage.getItem(
       lang === LanguagesEnum.Thai ? "text-hidden-th" : 
       lang === LanguagesEnum.Chinese ? "text-hidden-zh" :
       lang === LanguagesEnum.German ? "text-hidden-de" :
@@ -43,4 +43,4 @@ const useTextIsHidden = (lang: string | undefined) => {
   return { hasSensitiveWords, text, warningText, setText, defaultText }
 }
 
-export default useTextIsHidden
+export default useAnswerIsHidden

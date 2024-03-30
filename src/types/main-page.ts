@@ -12,6 +12,13 @@ export interface PageSec {
   headerFading: boolean
 }
 
+export interface SkipWord {
+  anim: string
+  correction: string
+}
+
+export type LangType = string | undefined
+
 export enum LanguagesEnum {
   English = "en",
   Thai = "th",

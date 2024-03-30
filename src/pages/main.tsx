@@ -14,15 +14,15 @@ import useLanguage from "../hooks/useLanguage";
 import useSearch from "../hooks/useSearch";
 import useChangeMode from "../hooks/useChangeMode";
 import Loading from "../components/Loading";
-import useTextIsHidden from "../hooks/useTextIsHidden";
-import Settings from "../components/Settings";
-import ChangeLangDrawer from "../components/ChangeLangDrawer";
+import useAnswerIsHidden from "../hooks/useAnswerIsHidden";
+import Settings from "../components/drawers/Settings";
+import ChangeLangDrawer from "../components/drawers/ChangeLangDrawer";
 
 export default function MainPage(){
 
   const { lang } = useParams()
   const navigate = useNavigate()
-  const { hasSensitiveWords } = useTextIsHidden(lang)
+  const { hasSensitiveWords } = useAnswerIsHidden(lang)
   const { mainLang, checkLang } = useLanguage(lang)
   const { searchSec, openSearch, closeSearch, handleSearch } = useSearch()
   const { checkIfDarkMode } = useChangeMode()
@@ -39,11 +39,7 @@ export default function MainPage(){
   const [openSelectLang, setOpenSelectLang] = useState(false)
 
   const closeSettings = () => {
-    if (hasSensitiveWords){
-      setOpenSettings(true)
-    } else {
-      setOpenSettings(false)
-    }
+    hasSensitiveWords ? setOpenSettings(true) : setOpenSettings(false)
   }
 
   const changePage = (page: number, animation: string, bgColor?: string) => {

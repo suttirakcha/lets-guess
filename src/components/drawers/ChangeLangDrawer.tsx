@@ -1,6 +1,6 @@
-import useLanguage from "../hooks/useLanguage"
-import DrawerCircle from "./drawers/DrawerCircle"
-import { LanguagesEnum } from "../types/main-page"
+import useLanguage from "../../hooks/useLanguage"
+import DrawerCircle from "./DrawerCircle"
+import { LanguagesEnum } from "../../types/main-page"
 
 interface ChangeLangDrawerProps {
   open: boolean

@@ -1,12 +1,12 @@
-import useLanguage from "../hooks/useLanguage"
-import DrawerCircle from "./drawers/DrawerCircle"
-import useTimer from "../hooks/useTimer"
+import useLanguage from "../../hooks/useLanguage"
+import DrawerCircle from "./DrawerCircle"
+import useTimer from "../../hooks/useTimer"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import ToggleSelect from "./ToggleSwitch"
-import useChangeMode from "../hooks/useChangeMode"
+import ToggleSelect from "../ToggleSwitch"
+import useChangeMode from "../../hooks/useChangeMode"
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
-import useTextIsHidden from "../hooks/useTextIsHidden"
-import { TextInput } from "./TextInput"
+import useTextIsHidden from "../../hooks/useAnswerIsHidden"
+import { TextInput } from "../TextInput"
 
 interface SettingsProps {
   lang: string | undefined
@@ -48,7 +48,7 @@ const Settings = ({ open, onClose, lang } : SettingsProps) => {
     
       <div className="setting-sec">
         <h2>{mainLang.language.hidden_answer_text_title}</h2>
-        <TextInput className={`${hasSensitiveWords ? 'warning' : ''}`} placeholder={mainLang.language.the_text_is_hidden} id="hidden-answer-text" value={text} onChange={e => setText(e.target.value)} autoComplete="off"/>
+        <TextInput className={`${hasSensitiveWords ? 'warning' : ''}`} placeholder={mainLang.language.the_answer_is_hidden} id="hidden-answer-text" value={text} onChange={e => setText(e.target.value)} autoComplete="off"/>
         {mainLang.language.hidden_answer_text_desc}
         <p id="warning-hidden-text" className={`${hasSensitiveWords ? 'active' : 'inactive'}`}>{warningText}</p>
       </div>

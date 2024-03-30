@@ -3,6 +3,7 @@ import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export const englishText = {
   title: "Let's Guess",
+  category: 'Category',
   select_category: "Select category",
   loading: "Loading...",
   select_language: "Select language",
@@ -34,15 +35,18 @@ export const englishText = {
   warning_text: "*Please avoid using impolite or sensitive words.",
   hidden_answer_text_title: "Hidden answer text",
   hidden_answer_text_desc: (<p>This text will be shown when the hint giver presses the 'Hide answer' button, the default text is 'The answer is hidden'.</p>),
-  the_text_is_hidden: "The answer is hidden",
+  the_answer_is_hidden: "The answer is hidden",
   english: "English",
   thai: "Thai",
   chinese: "Chinese",
-  german: "German"
+  german: "German",
+  hide_answer: "Hide Answer",
+  show_answer: "Show Answer"
 }
 
 export const thaiText = {
   title: "มาทายคำกันเถอะ",
+  category: 'หมวดหมู่',
   select_category: "เลือกหมวดหมู่",
   loading: "กำลังโหลด...",
   select_language: "เลือกภาษา",
@@ -74,15 +78,18 @@ export const thaiText = {
   warning_text: "*โปรดหลีกเลี่ยงการใช้คำที่ไม่สุภาพ หรือคำที่อ่อนไหว",
   hidden_answer_text_title: "ข้อความเมื่อซ่อนคำตอบ",
   hidden_answer_text_desc: (<p>ข้อความจะถูกแสดงเมื่อผู้บอกใบ้กดปุ่ม 'ซ่อนคำตอบ'<br/> ข้อความเริ่มต้นคือ 'คำตอบถูกซ่อนไว้'</p>),
-  the_text_is_hidden: "คำตอบถูกซ่อนไว้",
+  the_answer_is_hidden: "คำตอบถูกซ่อนไว้",
   english: "อังกฤษ",
   thai: "ไทย",
   chinese: "จีน",
-  german: "เยอรมัน"
+  german: "เยอรมัน",
+  hide_answer: "ซ่อนคำตอบ",
+  show_answer: "แสดงคำตอบ"
 }
 
 export const chineseText = {
   title: "我们猜吧",
+  category: '类别',
   select_category: "选择类别",
   loading: "加载中...",
   select_language: "选择语言",
@@ -114,9 +121,11 @@ export const chineseText = {
   warning_text: "*请避免用不礼貌或敏感的词。",
   hidden_answer_text_title: "隐藏答案的本文",
   hidden_answer_text_desc: (<p>暗示人按 “隐藏答案” 的时候，<br/>文本会展示。默认文本是 “答案被隐藏”</p>),
-  the_text_is_hidden: "答案被隐藏",
+  the_answer_is_hidden: "答案被隐藏",
   english: "英文",
   thai: "泰文",
   chinese: "中文",
-  german: "德文"
+  german: "德文",
+  hide_answer: "隐藏答案",
+  show_answer: "展示答案"
 }

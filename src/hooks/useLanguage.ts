@@ -1,11 +1,12 @@
 import { cateLists, cateTitles, sortedCategories } from "../data/categories-en";
 import { cateListsThai, cateTitlesThai, sortedCategoriesThai } from "../data/categories-th";
-import { LanguagesEnum } from "../types/main-page";
-import { thaiText, englishText, chineseText } from "../data/languages";
 import { cateListsChinese, cateTitlesChinese, sortedCategoriesChinese } from "../data/categories-zh";
 import { cateListsGerman, cateTitlesGerman, sortedCategoriesGerman } from "../data/categories-de";
 
-const useLanguage = (lang: string | undefined) => {
+import { LangType, LanguagesEnum } from "../types/main-page";
+import { thaiText, englishText, chineseText } from "../data/languages";
+
+const useLanguage = (lang: LangType) => {
   const checkLang = lang === LanguagesEnum.English || 
     lang === LanguagesEnum.Thai || 
     lang === LanguagesEnum.Chinese || 
