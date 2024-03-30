@@ -48,7 +48,7 @@ const ChangeLangDrawer = ({ open, onClose, lang, onChange } : ChangeLangDrawerPr
       <div id='langList'>
         <ul className="langs">
           {langList.map(list => (
-            <li className={`${list.isActive ? 'active' : ''}`} onClick={() => !list.isActive && onChange(list.link)}>{list.title}</li>
+            <li key={list.title} className={`${list.isActive ? 'active' : ''}`} onClick={() => !list.isActive && onChange(list.link)}>{list.title}</li>
           ))}
         </ul>
       </div>
