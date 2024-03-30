@@ -1,6 +1,7 @@
 import { useState } from "react"
 import useLanguage from "./useLanguage"
 import { LangType, SkipWord } from "../types/main-page"
+import usePoint from "./usePoint"
 
 const useRandomWord = (lang: LangType, cate: LangType) => {
 
@@ -11,6 +12,7 @@ const useRandomWord = (lang: LangType, cate: LangType) => {
   const category = findCate?.category
   const randomWord = words?.[Math.floor(Math.random() * words.length)]
 
+  const { countPoint } = usePoint()
   const [word, setWord] = useState(randomWord)
   const [skipWord, setSkipWord] = useState<SkipWord>({
     anim: '',
@@ -28,6 +30,7 @@ const useRandomWord = (lang: LangType, cate: LangType) => {
     correction === 'correct' ?
       setSkipWord(prev => ({...prev, correction: 'correct'})) :
       setSkipWord(prev => ({...prev, correction: ''}))
+      countPoint()
 
     setTimeout(() => {
       setWord(nextWord)

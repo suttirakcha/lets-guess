@@ -41,7 +41,8 @@ export const englishText = {
   chinese: "Chinese",
   german: "German",
   hide_answer: "Hide Answer",
-  show_answer: "Show Answer"
+  show_answer: "Show Answer",
+  times_up: "Time's up!"
 }
 
 export const thaiText = {
@@ -84,7 +85,8 @@ export const thaiText = {
   chinese: "จีน",
   german: "เยอรมัน",
   hide_answer: "ซ่อนคำตอบ",
-  show_answer: "แสดงคำตอบ"
+  show_answer: "แสดงคำตอบ",
+  times_up: "หมดเวลา!"
 }
 
 export const chineseText = {
@@ -127,5 +129,6 @@ export const chineseText = {
   chinese: "中文",
   german: "德文",
   hide_answer: "隐藏答案",
-  show_answer: "展示答案"
+  show_answer: "展示答案",
+  times_up: "时间到了!"
 }

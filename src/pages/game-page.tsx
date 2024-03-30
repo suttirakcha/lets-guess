@@ -10,6 +10,8 @@ import useTimer from "../hooks/useTimer"
 import { BlockSpace } from "../components/BlockSpace"
 import useAnswerIsHidden from "../hooks/useAnswerIsHidden"
 import useRandomWord from "../hooks/useRandomWord"
+import InvisibleOverlay from "../components/drawers/InvisibleOverlay"
+import usePoint from "../hooks/usePoint"
 
 const GamePage = () => {
 
@@ -19,6 +21,7 @@ const GamePage = () => {
   const { timerContinue, setTimerContinue, setIsTimeUp, isTimeUp, timerStart } = useTimer()
   const { defaultText } = useAnswerIsHidden(lang)
   const { word, category, changeWord, skipWord } = useRandomWord(lang, cate)
+  const { pointStart } = usePoint()
 
   document.body.style.backgroundColor = checkIfDarkMode ? Background.BlueDark : Background.Blue
 
@@ -26,8 +29,13 @@ const GamePage = () => {
   const [startPage, setStartPage] = useState(true)
   const [isGoingBack, setIsGoingBack] = useState(false)
   const [isAnswerHidden, setIsAnswerHidden] = useState(false)
+  const [scoreResult, setScoreResult] = useState(false)
 
   useEffect(() => {
+    setTimeout(() => {
+      setStartPage(false)
+    }, 900)
+
     const timer = setInterval(() => {
       if (timerContinue !== null){
         if (timerContinue > 0){
@@ -39,8 +47,13 @@ const GamePage = () => {
         setIsTimeUp(true)
         setTimeout(() => {
           setIsTimeUp(false)
+          setClearGame(true)
+          setIsAnswerHidden(false)
           clearInterval(timer)
         }, 2000)
+        setTimeout(() => {
+          setScoreResult(true)
+        }, 3000)
       }
     }, 1000)
 
@@ -52,6 +65,7 @@ const GamePage = () => {
 
   return (
     <div className={`App${isGoingBack ? ' fade-out-game' : ''}`}>
+
       <header className={`head-game${clearGame ? ' active' : ' inactive'}${startPage ? ' start' : ''}`}>
         <div className="sec-left">
           <h1 id="category">{mainLang.language.category}: {category}</h1>
@@ -78,6 +92,21 @@ const GamePage = () => {
       </main>
 
       <BlockSpace isActive={isAnswerHidden} text={defaultText !== "" ? defaultText : mainLang.language.the_answer_is_hidden}/>
+
+      {isTimeUp || clearGame || isGoingBack ? <InvisibleOverlay /> : null}
+      <BlockSpace isActive={isTimeUp} text={mainLang.language.times_up}/>
+
+      <div className="modal-center">
+        <div className={`score-result${scoreResult ? ' active' : ''}`}>
+          <h1 className='result-title'>Result</h1>
+          <h1 id='score'>Score: {pointStart}</h1>
+          <h2 className="after-game-text">{afterGameText}</h2>
+          <div className="checks-btns with-top-space">
+            <Button size='medium' onClick={() => {}}>Go back</Button>
+            <Button size='medium' onClick={() => {}}>Play again</Button>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

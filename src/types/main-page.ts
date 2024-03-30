@@ -19,6 +19,8 @@ export interface SkipWord {
 
 export type LangType = string | undefined
 
+export type CountType = number | null
+
 export enum LanguagesEnum {
   English = "en",
   Thai = "th",
