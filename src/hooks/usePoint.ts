@@ -1,9 +1,8 @@
 import { useState } from "react"
-import { CountType } from "../types/main-page"
 
 const usePoint = () => {
   const pointStart = localStorage.getItem("point")
-  const [point, setPoint] = useState<CountType>(pointStart !== null ? parseInt(pointStart) : 0)
+  const [point, setPoint] = useState<number>(parseInt(pointStart!))
 
   const countPoint = () => {
     setPoint(point! + 1)

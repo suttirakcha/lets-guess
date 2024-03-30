@@ -1,5 +1,7 @@
+import { ReactNode } from "react"
+
 interface BlockSpaceProps {
-  text: string
+  text: string | ReactNode
   isActive: boolean
 }
 

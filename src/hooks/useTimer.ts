@@ -1,12 +1,11 @@
 import { useCallback, useState } from "react";
 import { ChangeEvent } from "react";
-import { CountType } from "../types/main-page";
 
 const useTimer = () => {
   const timerStart = localStorage.getItem("timer")
   const checkIfTimer = localStorage.getItem("timer-continue")
   const [timerSwitch, setTimerSwitch] = useState(localStorage.getItem("timer") == "120" ? true : false)
-  const [timerContinue, setTimerContinue] = useState<CountType>(checkIfTimer !== null ? parseInt(checkIfTimer) : null)
+  const [timerContinue, setTimerContinue] = useState<number>(parseInt(checkIfTimer!))
 
   const [isTimeUp, setIsTimeUp] = useState(false)
 

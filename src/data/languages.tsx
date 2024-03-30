@@ -33,6 +33,7 @@ export const englishText = {
   light_mode: "Light mode",
   dark_mode: "Dark mode",
   warning_text: "*Please avoid using impolite or sensitive words.",
+  atsign_not_allowed: "*@ is not allowed in this text field.",
   hidden_answer_text_title: "Hidden answer text",
   hidden_answer_text_desc: (<p>This text will be shown when the hint giver presses the 'Hide answer' button, the default text is 'The answer is hidden'.</p>),
   the_answer_is_hidden: "The answer is hidden",
@@ -42,7 +43,19 @@ export const englishText = {
   german: "German",
   hide_answer: "Hide Answer",
   show_answer: "Show Answer",
-  times_up: "Time's up!"
+  times_up: "Time's up!",
+  get_point: "Point + 1",
+  back_to_homepage: "Back to Homepage",
+  score: "Score",
+  result: "Result",
+  play_again: "Play again",
+  go_back_title: "Are you sure you want to go back to the homepage?",
+  yes: "Yes",
+  no: "No",
+  after_game_text_1: "Have fun?",
+  after_game_text_2: "Better luck next time",
+  after_game_text_3: "Wanna play again?",
+  after_game_text_4: "Hope you have enjoyed the game"
 }
 
 export const thaiText = {
@@ -77,6 +90,7 @@ export const thaiText = {
   light_mode: "โหมดสว่าง",
   dark_mode: "โหมดมืด",
   warning_text: "*โปรดหลีกเลี่ยงการใช้คำที่ไม่สุภาพ หรือคำที่อ่อนไหว",
+  atsign_not_allowed: "*ไม่อนุญาตให้ใช้ @ ในพื้นที่ข้อความนี้",
   hidden_answer_text_title: "ข้อความเมื่อซ่อนคำตอบ",
   hidden_answer_text_desc: (<p>ข้อความจะถูกแสดงเมื่อผู้บอกใบ้กดปุ่ม 'ซ่อนคำตอบ'<br/> ข้อความเริ่มต้นคือ 'คำตอบถูกซ่อนไว้'</p>),
   the_answer_is_hidden: "คำตอบถูกซ่อนไว้",
@@ -86,7 +100,19 @@ export const thaiText = {
   german: "เยอรมัน",
   hide_answer: "ซ่อนคำตอบ",
   show_answer: "แสดงคำตอบ",
-  times_up: "หมดเวลา!"
+  times_up: "หมดเวลา!",
+  get_point: "คะแนน + 1",
+  back_to_homepage: "กลับไปหน้าแรก",
+  score: "คะแนน",
+  result: "ผลลัพธ์",
+  play_again: "เล่นอีกครั้ง",
+  go_back_title: "คุณต้องการกลับไปที่หน้าแรกหรือไม่",
+  yes: "ใช่",
+  no: "ไม่",
+  after_game_text_1: "สนุกมั้ย?",
+  after_game_text_2: "ไม่เป็นไร ครั้งหน้าเอาใหม่",
+  after_game_text_3: "อยากเล่นอีกมั้ย?",
+  after_game_text_4: "ไว้มาเล่นกันอีกนะ"
 }
 
 export const chineseText = {
@@ -121,6 +147,7 @@ export const chineseText = {
   light_mode: "灯光模式",
   dark_mode: "黑暗模式",
   warning_text: "*请避免用不礼貌或敏感的词。",
+  atsign_not_allowed: "*此文本字段中不允许用 @。",
   hidden_answer_text_title: "隐藏答案的本文",
   hidden_answer_text_desc: (<p>暗示人按 “隐藏答案” 的时候，<br/>文本会展示。默认文本是 “答案被隐藏”</p>),
   the_answer_is_hidden: "答案被隐藏",
@@ -130,5 +157,17 @@ export const chineseText = {
   german: "德文",
   hide_answer: "隐藏答案",
   show_answer: "展示答案",
-  times_up: "时间到了!"
+  times_up: "时间到了!",
+  get_point: "评分 + 1",
+  back_to_homepage: "返回首页",
+  score: "评分",
+  result: "结果",
+  play_again: "再玩一次",
+  go_back_title: "你想要返回首页吗？",
+  yes: "是",
+  no: "否",
+  after_game_text_1: "好玩吗？",
+  after_game_text_2: "下次好运",
+  after_game_text_3: "想再玩一次吗？",
+  after_game_text_4: "希望你喜欢这个游戏吧"
 }

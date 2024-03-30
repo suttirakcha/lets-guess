@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import ToggleSelect from "../ToggleSwitch"
 import useChangeMode from "../../hooks/useChangeMode"
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
-import useTextIsHidden from "../../hooks/useAnswerIsHidden"
+import useAnswerIsHidden from "../../hooks/useAnswerIsHidden"
 import { TextInput } from "../TextInput"
 
 interface SettingsProps {
@@ -19,7 +19,7 @@ const Settings = ({ open, onClose, lang } : SettingsProps) => {
   const { mainLang } = useLanguage(lang)
   const { timerSwitch, toggleTimer } = useTimer()
   const { changeMode } = useChangeMode()
-  const { hasSensitiveWords, warningText, text, setText } = useTextIsHidden(lang)
+  const { hasSensitiveWords, warningText, text, setText } = useAnswerIsHidden(lang)
 
   return (
     <DrawerCircle open={open} onClose={onClose}>

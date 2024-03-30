@@ -75,10 +75,15 @@ export default function MainPage(){
   useEffect(() => {
     localStorage.length == 0 ? startStorages() : getStorages()
 
+    document.title = 
+      pageSec.current === 1 ? `${mainLang.language.select_category} - ${mainLang.language.title}` : 
+      pageSec.current === 2 ? `${mainLang.language.loading} - ${mainLang.language.title}` : 
+      mainLang.language.title
+
     setTimeout(() => {
       setPageSec(prevSec => ({ ...prevSec, isLoaded: false }))
     }, 900)
-  }, [pageSec])
+  }, [pageSec, document.title])
 
   return (
     <>

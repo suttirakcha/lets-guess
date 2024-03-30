@@ -714,6 +714,10 @@ input:checked + .switch-toggle:before{
   justify-content:center;
 }
 
+.time-up-text {
+  color:#E63737
+}
+
 .loading-center {
   height:80vh;
   display:flex;
@@ -1082,6 +1086,22 @@ input:checked + .switch-toggle:before{
         box-shadow:0 0 5px #ff0000CC;
       }
     }
+  }
+
+  #langList .langs li {
+    &:hover,&.active{
+      background-color:white;
+      color:#202020;
+      transition:all 300ms;
+    }
+    &.active{
+      @include visible;
+      transition:all 400ms;
+    }
+  }
+
+  .time-up-text {
+    color:#ff9999
   }
 
   .inner-icon {

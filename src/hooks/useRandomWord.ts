@@ -25,12 +25,14 @@ const useRandomWord = (lang: LangType, cate: LangType) => {
 
     setSkipWord(prev => ({...prev, anim: 'out'}))
 
-    correction === 'wrong' ? 
-      setSkipWord(prev => ({...prev, correction: 'wrong'})) :
-    correction === 'correct' ?
-      setSkipWord(prev => ({...prev, correction: 'correct'})) :
-      setSkipWord(prev => ({...prev, correction: ''}))
+    if (correction === 'wrong'){ 
+      setSkipWord(prev => ({...prev, correction: 'wrong'}))
+    } else if (correction === 'correct'){
+      setSkipWord(prev => ({...prev, correction: 'correct'}))
       countPoint()
+    } else {
+      setSkipWord(prev => ({...prev, correction: ''}))
+    }
 
     setTimeout(() => {
       setWord(nextWord)

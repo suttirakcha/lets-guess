@@ -19,8 +19,6 @@ export interface SkipWord {
 
 export type LangType = string | undefined
 
-export type CountType = number | null
-
 export enum LanguagesEnum {
   English = "en",
   Thai = "th",
@@ -34,7 +32,11 @@ export enum BackgroundChange {
   PinkToGreen = "pink_to_green 900ms forwards",
   PinkToGreenDark = "pink_to_green_dark 900ms forwards",
   PinkToBlue = "pink_to_blue 900ms forwards",
-  PinkToBlueDark = "pink_to_blue_dark 900ms forwards"
+  PinkToBlueDark = "pink_to_blue_dark 900ms forwards",
+  GameToMain = "blue_to_green 1s forwards",
+  GameToMainDark = "blue_to_green_dark 1s forwards",
+  GameToMainSlow = "blue_to_green 2s forwards",
+  GameToMainSlowDark = "blue_to_green_dark 2s forwards"
 }
 
 export enum Background {

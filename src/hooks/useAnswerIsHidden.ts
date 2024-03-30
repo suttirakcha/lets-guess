@@ -34,6 +34,10 @@ const useAnswerIsHidden = (lang: LangType) => {
       setHasSensitiveWords(true)
       setWarningText(mainLang.language.warning_text)
       handleMessage("")
+    } else if (text.includes("@")){
+      setHasSensitiveWords(true)
+      setWarningText(mainLang.language.atsign_not_allowed)
+      handleMessage("")
     } else {
       setHasSensitiveWords(false)
       handleMessage(text)
