@@ -8,7 +8,7 @@ const useAnswerIsHidden = (lang: LangType) => {
   const { mainLang } = useLanguage(lang)
 
   const defaultText: string = 
-    localStorage.length > 0 && localStorage.getItem(
+    localStorage.length > 1 && localStorage.getItem(
       lang === LanguagesEnum.Thai ? "text-hidden-th" : 
       lang === LanguagesEnum.Chinese ? "text-hidden-zh" :
       lang === LanguagesEnum.German ? "text-hidden-de" :

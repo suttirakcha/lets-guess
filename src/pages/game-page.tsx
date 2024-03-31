@@ -34,34 +34,36 @@ const GamePage = () => {
   const [scoreResult, setScoreResult] = useState(false)
 
   const resetStorage = () => {
-    localStorage.setItem("point", String(0))
-    localStorage.setItem("timer-continue", timerStart!)
+    setTimeout(() => {
+      setScoreResult(false)
+      localStorage.setItem("point", String(0))
+      localStorage.setItem("timer-continue", timerStart!)
+    }, 500)
   }
 
   const goBackToHomePage = () => {
+    setScoreResult(false)
     setIsModalOpen(false)
     setIsGoingBack(true)
+    resetStorage()
     document.body.style.animation = checkIfDarkMode ? BackgroundChange.GameToMainSlowDark : BackgroundChange.GameToMainSlow
     setTimeout(() => {
       window.location.replace(`/${lang}`)
-      resetStorage()
     }, 3000)
   }
 
   const goBack = () => {
     setScoreResult(false)
     document.body.style.animation = checkIfDarkMode ? BackgroundChange.GameToMainDark : BackgroundChange.GameToMain
+    resetStorage()
     setTimeout(() => {
       window.location.replace(`/${lang}`)
-      resetStorage()
     }, 3000)
   }
 
   const playAgain = () => {
     setScoreResult(false)
-    setTimeout(() => {
-      resetStorage()
-    }, 500)
+    resetStorage()
     setTimeout(() => window.location.replace(`/${lang}/${cate}`), 2000)
   }
 

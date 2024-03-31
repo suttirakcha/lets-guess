@@ -6,9 +6,10 @@ interface DrawerCircleProps {
   open: boolean
   onClose: () => void
   children: ReactNode
+  title?: string | ReactNode
 }
 
-export default function DrawerCircle({ open, onClose, children } : DrawerCircleProps){
+export default function DrawerCircle({ open, onClose, children, title } : DrawerCircleProps){
   
   const [isDrawerActive, setIsDrawerActive] = useState(false)
   const activeDrawer = () => {
@@ -36,10 +37,13 @@ export default function DrawerCircle({ open, onClose, children } : DrawerCircleP
       <div className={`drawer-mask${open ? ' active' : ' inactive'}`} onClick={onClose}></div>
       <div className={`drawer-anim${open ? ' active' : ' inactive'}`}>
         <div className={`drawer-bg-circle${open ? ' active' : ' inactive'}`} />
-        <FontAwesomeIcon icon={faClose} className={`drawer-close${open ? ' active' : ' inactive'}`} onClick={onClose}/>
       </div>
 
       <main className={`drawer-sec${activeDrawer() ? ' active' : ''}`}>
+        <h1 className="drawer-header">
+          {title}
+          <FontAwesomeIcon icon={faClose} className={`drawer-close${open ? ' active' : ' inactive'}`} onClick={onClose}/>
+        </h1>
         {children}
       </main>
     </div>

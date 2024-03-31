@@ -43,8 +43,7 @@ const ChangeLangDrawer = ({ open, onClose, lang, onChange } : ChangeLangDrawerPr
   ]
 
   return (
-    <DrawerCircle open={open} onClose={onClose}>
-      <h1>{mainLang.language.select_language}</h1>
+    <DrawerCircle open={open} onClose={onClose} title={mainLang.language.select_language}>
       <div id='langList'>
         <ul className="langs">
           {langList.map(list => (
