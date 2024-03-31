@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.scss"
-import MainPage from "./main/main";
+import MainPage from "./mainPages/main";
 import ThemeProvider from "./providers/theme-provider";
-import GamePage from "./main/game-page";
-import NotFound from "./main/404";
-import Redirect from "./main/redirect";
+import GamePage from "./mainPages/game-page";
+import NotFound from "./mainPages/404";
+import Redirect from "./mainPages/redirect";
 
 function App() {
   return (
