@@ -1,6 +1,7 @@
 import { faFaceFrownOpen } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
+import useLanguage from "src/hooks/useLanguage";
 
 export default function NotFound(){
   const clickToGoBack = () => {

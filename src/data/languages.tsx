@@ -171,3 +171,60 @@ export const chineseText = {
   after_game_text_3: "想再玩一次吗？",
   after_game_text_4: "希望你喜欢这个游戏吧"
 }
+
+export const germanText = {
+  title: "Lass uns erraten",
+  category: 'Kategorie',
+  select_category: "Kategorie auswählen",
+  loading: "Wird geladen...",
+  select_language: "Sprache auswählen",
+  how_to_play_title: "Spielanleitung:",
+  how_to_play_desc: (
+    <ol>
+      <li>Die Hint-Spieler(innen) können nur die Antwort sehen und anzudeuten, damit die Spieler(innen) die Antwort auf dem Bildschirm erraten können.</li>
+      <li>Die Hint-Spieler(innen) können die Antwort verbergen, indem sie die „Antwort verbergen“-Schaltfläche drücken.</li>
+      <li>Wenn Spieler(innen) richtig erraten, drücken Sie <FontAwesomeIcon icon={faCheck}/>-Schaltfläche um mit der nächsten Antwort fortzusetzen.</li>
+      <li>Wenn Spieler(innen) unrichtig erraten, oder die Antwort nicht kennen, drücken Sie <FontAwesomeIcon icon={faXmark}/>-Schaltfläche, um mit der nächsten Antwort zu springen.</li>
+      <li>Sie haben 60 oder 120 Sekunden, abhängig von Ihrer Einstellung, um Frage zu erraten.</li>
+    </ol>
+  ),
+  ready: "Sind Sie bereit?",
+  play_now: "Jetzt spielen",
+  search_category: "Kategorie suchen",
+  settings: "Einstellungen",
+  settings_note: <p style={{ marginBottom: 0 }}><strong>Hinweis: </strong> Ihre Einstellungen werden automatisch gespeichert, wenn Sie diese Seitenleiste schließen.</p>,
+  timer: "Schaltuhr",
+  timer_note: "Die Schaltuhr wird oben auf dem Bildschirm angezeigt, wenn Sie spielen.",
+  sixty_seconds: "60 Sekunden",
+  hundred_twenty_seconds: "120 Sekunden",
+  go_back: "Zurückgehen",
+  no_results: "Keine Ergebnisse gefunden",
+  try_another_keyword: "Bitte versuchen Sie mit einem anderen Stichwort.",
+  screen_appearance: "Bildschirmdarstellung",
+  light_mode: "Heller Modus",
+  dark_mode: "Dunkler Modue",
+  warning_text: "*Bitte vermeiden Sie unhöfliche oder empfindliche Wörter.",
+  atsign_not_allowed: "*@ ist in diesem Textfeld nicht erlaubt.",
+  hidden_answer_text_title: "Verborgener Antworttext",
+  hidden_answer_text_desc: (<p>Dieser Text wird angezeigt, wenn der/die Hint-Spieler(in) auf der „Antwort verbergen“-Schaltfläche drückt. Der Standardtext ist „Die Antwort ist verborgen“.</p>),
+  the_answer_is_hidden: "Die Antwort ist verborgen",
+  english: "Englisch",
+  thai: "Thailändisch",
+  chinese: "Chinesisch",
+  german: "Deutsch",
+  hide_answer: "Antwort verbergen",
+  show_answer: "Antwort anzeigen",
+  times_up: "Die Zeit ist um!",
+  get_point: "Punkt + 1",
+  back_to_homepage: "Zur Startseite zurückgehen",
+  score: "Punkte",
+  result: "Ergebnis",
+  play_again: "Wiederspielen",
+  go_back_title: "Sind Sie sicher, dass Sie um Startseite zurückzugehen wollen?",
+  yes: "Ja",
+  no: "Nein",
+  after_game_text_1: "Macht das Ihnen Spaß?",
+  after_game_text_2: "Viel Glück beim nächsten Mal",
+  after_game_text_3: "Wollen Sie wiederspielen?",
+  after_game_text_4: "Ich hoffe, Ihnen hat das Spiel gefallen"
+}

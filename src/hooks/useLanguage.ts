@@ -4,7 +4,7 @@ import { cateListsChinese, cateTitlesChinese, sortedCategoriesChinese } from "..
 import { cateListsGerman, cateTitlesGerman, sortedCategoriesGerman } from "../data/categories-de";
 
 import { LangType, LanguagesEnum } from "../types/main-page";
-import { thaiText, englishText, chineseText } from "../data/languages";
+import { thaiText, englishText, chineseText, germanText } from "../data/languages";
 
 const useLanguage = (lang: LangType) => {
   const checkLang = lang === LanguagesEnum.English || 
@@ -25,7 +25,7 @@ const useLanguage = (lang: LangType) => {
     sortedCate: sortedCategoriesChinese
   } 
   : lang === LanguagesEnum.German ? {
-    language: englishText,
+    language: germanText,
     categories: cateTitlesGerman,
     cateList: cateListsGerman,
     sortedCate: sortedCategoriesGerman
