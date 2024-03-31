@@ -2,20 +2,20 @@ import { useEffect, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft,faGear,faLanguage,faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
-import { Button, ButtonWithIcon } from "../components/Button";
-import InvisibleOverlay from "../components/drawers/InvisibleOverlay";
+import { Button, ButtonWithIcon } from "./components/Button";
+import InvisibleOverlay from "./components/drawers/InvisibleOverlay";
 import { startStorages, getStorages } from "../data/initial-storages";
-import { CardCateWithTitle, CardCate } from "../components/Card";
-import SearchBar from "../components/SearchBar";
-import Tooltip from "../components/Tooltip";
+import { CardCateWithTitle, CardCate } from "./components/Card";
+import SearchBar from "./components/SearchBar";
+import Tooltip from "./components/Tooltip";
 import { BackgroundChange, PageSec, Background } from "../types/main-page";
 import useLanguage from "../hooks/useLanguage";
 import useSearch from "../hooks/useSearch";
 import useChangeMode from "../hooks/useChangeMode";
-import Loading from "../components/Loading";
+import Loading from "./components/Loading";
 import useAnswerIsHidden from "../hooks/useAnswerIsHidden";
-import Settings from "../components/drawers/Settings";
-import ChangeLangDrawer from "../components/drawers/ChangeLangDrawer";
+import Settings from "./components/drawers/Settings";
+import ChangeLangDrawer from "./components/drawers/ChangeLangDrawer";
 
 export default function MainPage(){
 
