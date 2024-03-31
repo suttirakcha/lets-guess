@@ -48,6 +48,7 @@ const GamePage = () => {
     resetStorage()
     document.body.style.animation = checkIfDarkMode ? BackgroundChange.GameToMainSlowDark : BackgroundChange.GameToMainSlow
     setTimeout(() => {
+      localStorage.setItem("timer-continue", timerStart!)
       window.location.replace(`/${lang}`)
     }, 3000)
   }
@@ -57,6 +58,7 @@ const GamePage = () => {
     document.body.style.animation = checkIfDarkMode ? BackgroundChange.GameToMainDark : BackgroundChange.GameToMain
     resetStorage()
     setTimeout(() => {
+      localStorage.setItem("timer-continue", timerStart!)
       window.location.replace(`/${lang}`)
     }, 3000)
   }

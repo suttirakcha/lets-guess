@@ -1,3 +1,9 @@
+/*
+Note: These sensitive words are just used for the prohibition of typing 'hidden answer' text 
+when the system detects that there are some of them included on the 'hidden answer' input,
+which is set on the settings.
+*/
+
 export const sensitiveWords: string[] = [
   "ควย",
   "เย็ด",

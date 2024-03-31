@@ -214,7 +214,7 @@ export const germanText = {
   try_another_keyword: "Bitte versuchen Sie mit einem anderen Stichwort.",
   screen_appearance: "Bildschirmdarstellung",
   light_mode: "Heller Modus",
-  dark_mode: "Dunkler Modue",
+  dark_mode: "Dunkler Modus",
   warning_text: "*Bitte vermeiden Sie unhöfliche oder empfindliche Wörter.",
   atsign_not_allowed: "*@ ist in diesem Textfeld nicht erlaubt.",
   hidden_answer_text_title: "Verborgener Antworttext",

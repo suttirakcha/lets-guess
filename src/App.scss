@@ -30,7 +30,7 @@ body{
   max-width:480px;
   margin:10% auto;
   text-align:center;
-  h1{margin:0}
+  h1{ margin:0 }
   animation:fadeAnim 900ms forwards;
 }
 
@@ -709,7 +709,7 @@ input:checked + .switch-toggle:before{
     transform:translateX(0);
     transition:transform 400ms;
   }
-  h1{margin:0}
+  h1{ margin:0 }
 }
 
 .modal-center {
@@ -784,7 +784,7 @@ input:checked + .switch-toggle:before{
   align-items:center;
   z-index: 999;
   margin:0;
-  padding:30px 0 20px;
+  padding:30px 0 10px;
   background-color:white;
   transition:background-color 300ms;
 }
