@@ -7,6 +7,9 @@ $pink-bg-dark:#3f1b3c;
 $blue-bg-dark:#272d60;
 $modal-bg-dark:#202020;
 
+$correct-btn-bg:#00D604;
+$incorrect-btn-bg:#E00000;
+
 body,button,input,code{font-family:"IBM Plex Sans Thai",sans-serif}
 body{
   background-color:#D4FFA8;
@@ -75,17 +78,17 @@ body{
   z-index:2;
   position:relative;
   &.correct{
-    background-color:#00D604;
+    background-color:$correct-btn-bg;
     &:hover{
       background-color:#47E149;
-      box-shadow:1px 1px 5px #00D604;
+      box-shadow:1px 1px 5px $correct-btn-bg;
     }
   }
   &.incorrect{
-    background-color:#E00000;
+    background-color:$incorrect-btn-bg;
     &:hover{
       background-color:#E63737;
-      box-shadow:1px 1px 5px #E00000;
+      box-shadow:1px 1px 5px $incorrect-btn-bg;
     }
   }
   &:hover{
@@ -100,17 +103,17 @@ body{
   background-color:white;
   color:black;
   &.correct{
-    background-color:#00D604;
+    background-color:$correct-btn-bg;
     &:hover{
       background-color:#47E149;
-      box-shadow:1px 1px 5px #00D604;
+      box-shadow:1px 1px 5px $correct-btn-bg;
     }
   }
   &.incorrect{
-    background-color:#E00000;
+    background-color:#ff9999;
     &:hover{
-      background-color:#E63737;
-      box-shadow:1px 1px 5px #E00000;
+      background-color:#e96b6b;
+      box-shadow:1px 1px 5px #ff000080;
     }
   }
   &:hover{
@@ -664,11 +667,11 @@ input:checked + .switch-toggle:before{
 }
 
 .correct-word {
-  color:#00D604;
+  color:$correct-btn-bg;
 }
 
 .wrong-word {
-  color:#E00000;
+  color:$incorrect-btn-bg;
 }
 
 .after-game-text {

@@ -69,7 +69,7 @@ const Settings = ({ open, onClose, lang } : SettingsProps) => {
         <div className="setting-sec">
           <h2>{mainLang.language.reset_settings}</h2>
           <p>{mainLang.language.reset_settings_note}</p>
-          <Button size="small" onClick={() => setConfirmReset(true)}>
+          <Button className="incorrect" size="small" onClick={() => setConfirmReset(true)}>
             {mainLang.language.reset_settings}
           </Button>
         </div>
