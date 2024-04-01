@@ -20,13 +20,13 @@ const useAnswerIsHidden = (lang: LangType) => {
   const [hasSensitiveWords, setHasSensitiveWords] = useState(false)
 
   const handleMessage = (message: string) => {
-    lang === LanguagesEnum.Thai ?
-      localStorage.setItem("text-hidden-th", message) :
-    lang === LanguagesEnum.Chinese ?
-      localStorage.setItem("text-hidden-zh", message) :
-    lang === LanguagesEnum.German ?
-      localStorage.setItem("text-hidden-de", message) :
-      localStorage.setItem("text-hidden", message)
+    localStorage.length > 1 && (lang === LanguagesEnum.Thai ?
+    localStorage.setItem("text-hidden-th", message) :
+  lang === LanguagesEnum.Chinese ?
+    localStorage.setItem("text-hidden-zh", message) :
+  lang === LanguagesEnum.German ?
+    localStorage.setItem("text-hidden-de", message) :
+    localStorage.setItem("text-hidden", message))
   }
 
   useEffect(() => {
