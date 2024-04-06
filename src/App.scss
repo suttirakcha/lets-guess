@@ -1164,6 +1164,11 @@ input:checked + .switch-toggle:before{
     padding-top:80px;
     transform:translateY(-150%);
   }
+  .block-space {
+    bottom:4%;
+    top:inherit;
+    height:calc(100% - 300px)
+  }
 }
 
 @media (max-width:1024px){
@@ -1171,10 +1176,6 @@ input:checked + .switch-toggle:before{
   .score-result.active {
     top:50%;
     transform:translateY(-50%)
-  }
-  .block-space {
-    bottom:4%;
-    top:inherit;
   }
 }
 
@@ -1209,7 +1210,6 @@ input:checked + .switch-toggle:before{
   .btn-with-icon {
     padding:10px 16px !important;
   }
-
   .btn{padding:10px 40px}
   .medium-btn{padding:10px 20px}
   .small-btn{padding:10px}
@@ -1219,6 +1219,9 @@ input:checked + .switch-toggle:before{
   }
   .block-space {
     height:60%;
+    h1 {
+      font-size:32px;
+    }
   }
   .modal-question {
     font-size:24px;
