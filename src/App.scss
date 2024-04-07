@@ -1169,6 +1169,9 @@ input:checked + .switch-toggle:before{
     top:inherit;
     height:calc(100% - 300px)
   }
+  .words-in-screen{
+    margin-top:15vh;
+  }
 }
 
 @media (max-width:1024px){
