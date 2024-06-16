@@ -111,7 +111,7 @@ export default function MainPage(){
                   <Button size='icon' onClick={() => setOpenSettings(true)} onMouseEnter={() => setTooltipAppear(true)} onMouseLeave={() => setTooltipAppear(false)}>
                     <FontAwesomeIcon icon={faGear}/>
                   </Button>
-                  <Tooltip text='Settings' appear={tooltipAppear}/>
+                  <Tooltip text={mainLang.language.settings} appear={tooltipAppear}/>
                 </div>
               </div>
             </>
