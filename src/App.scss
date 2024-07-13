@@ -762,14 +762,14 @@ input:checked + .switch-toggle:before{
       width:52px;
       height:52px;
       visibility:hidden;
-      transition:all 600ms, background-color 300ms;
+      transition:all 800ms, background-color 300ms;
     }
     &.active {
-      width:200em;
-      height:200em;
-      transform:translate(100em, -100em);
+      height: 400vw;
+      transform: translate(200vw, -200vw);
+      width: 400vw;
       visibility:visible;
-      transition:all 800ms, background-color 300ms;
+      transition:all 1600ms, background-color 300ms;
     }
   }
 }
