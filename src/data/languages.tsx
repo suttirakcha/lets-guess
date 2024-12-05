@@ -151,7 +151,7 @@ export const chineseText = {
   go_back: "返回",
   no_results: "无结果",
   try_another_keyword: "请试试其他的关键词",
-  screen_appearance: "屏幕出现",
+  screen_appearance: "屏幕外观",
   light_mode: "浅色模式",
   dark_mode: "深色模式",
   warning_text: "*请避免用不礼貌或敏感的词。",
