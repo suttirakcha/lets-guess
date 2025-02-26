@@ -2,13 +2,15 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ButtonHTMLAttributes, ReactNode } from "react";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+type ButtonAttributes = ButtonHTMLAttributes<HTMLButtonElement>
+
+interface ButtonProps extends ButtonAttributes {
   className?: string
   children: ReactNode
   size?: string
 }
 
-interface ButtonWithIconProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonWithIconProps extends ButtonAttributes {
   animation?: string
   className?: string
   icon: IconProp

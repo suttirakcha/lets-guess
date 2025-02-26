@@ -125,11 +125,11 @@ body{
 
 #heading{
   font-size:80px;
-  margin-top:50px;
+  line-height:80px;
+  margin-top:80px;
   margin-bottom:30px;
   transition:all 200ms;
   &.active{
-    margin-top:80px;
     font-size:64px;
     transition:all 200ms;
   }
@@ -248,7 +248,7 @@ body{
 .app-head{
   margin-top:50px;
   margin-bottom:30px;
-  transform:translateY(-200%);
+  transform:translateY(-250%);
   &.start {
     animation:headerAnim 900ms forwards;
   }
@@ -257,7 +257,7 @@ body{
     transition:transform 900ms;
   }
   &.active {
-    transform:translateY(-200%);
+    transform:translateY(-250%);
     transition:transform 900ms;
   }
 }
@@ -298,16 +298,6 @@ body{
 
 #how-to-play{
   margin-top:60px
-}
-
-#heading{
-  font-size:80px;
-  transition:all 200ms;
-  &.active{
-    margin-top:80px;
-    font-size:64px;
-    transition:all 200ms;
-  }
 }
 
 .modal-question {
@@ -546,7 +536,7 @@ body{
 }
 
 @keyframes headerAnim {
-  from {transform:translateY(-200%)}
+  from {transform:translateY(-250%)}
   to {transform:translateY(0)}
 }
 
@@ -758,16 +748,14 @@ input:checked + .switch-toggle:before{
     visibility:hidden;
     z-index:99;
     transition:background-color 300ms, width 800ms, height 800ms;
+    width:52px;
+    height:52px;
     &.inactive {
-      width:52px;
-      height:52px;
       visibility:hidden;
       transition:all 800ms, background-color 300ms;
     }
     &.active {
-      height: 400vw;
-      transform: translate(200vw, -200vw);
-      width: 400vw;
+      transform: scale(120);
       visibility:visible;
       transition:all 1600ms, background-color 300ms;
     }
@@ -1188,35 +1176,9 @@ input:checked + .switch-toggle:before{
     min-width:auto;
     width:100%;
   }
-  #heading {
-    font-size:64px;
-    margin-top:80px;
-  }
-  .close-search-btn {
-    width:40px;
-    height:40px;
-  }
-
-  .btn, .small-btn, .medium-btn, .icon-btn {
-    font-size:0.8em;
-    height:40px;
-  }
-  .icon-btn {
-    width:40px;
-  }
-  .text-input {
-    height:40px;
-  }
   #search-input.active {
     width:300px;
   }
-  .btn-with-icon {
-    padding:10px 16px !important;
-  }
-  .btn{padding:10px 40px}
-  .medium-btn{padding:10px 20px}
-  .small-btn{padding:10px}
-
   #words {
     font-size:3em;
   }
@@ -1232,5 +1194,10 @@ input:checked + .switch-toggle:before{
   }
   .result-title {
     font-size:48px;
+  }
+
+  .header-btns {
+    width:calc(100% - 50px);
+    padding:25px;
   }
 }

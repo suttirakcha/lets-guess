@@ -2,15 +2,10 @@ import { Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const Redirect = () => {
-
-  const [link, setLink] = useState<string>('')
+  const [link, setLink] = useState<string>('');
 
   useEffect(() => {
-    if (localStorage.getItem("lang") !== null){
-      setLink(`${localStorage.getItem("lang")}`)
-    } else {
-      setLink('/en')
-    }
+    setLink(localStorage.getItem("lang") !== null ? `${localStorage.getItem("lang")}` : '/en')
   }, [link, localStorage])
 
   return (

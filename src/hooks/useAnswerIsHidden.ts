@@ -4,9 +4,7 @@ import { sensitiveWords } from "../data/sensitive-words"
 import useLanguage from "./useLanguage"
 
 const useAnswerIsHidden = (lang: LangType) => {
-
   const { mainLang } = useLanguage(lang)
-
   const defaultText: string = 
     localStorage.length > 1 && localStorage.getItem(
       lang === LanguagesEnum.Thai ? "text-hidden-th" : 
@@ -30,18 +28,14 @@ const useAnswerIsHidden = (lang: LangType) => {
   }
 
   useEffect(() => {
-    if (sensitiveWords.some(word => text.toUpperCase().includes(word.toUpperCase()))){
-      setHasSensitiveWords(true)
-      setWarningText(mainLang.language.warning_text)
-      handleMessage("")
-    } else if (text.includes("@")){
-      setHasSensitiveWords(true)
-      setWarningText(mainLang.language.atsign_not_allowed)
-      handleMessage("")
-    } else {
-      setHasSensitiveWords(false)
-      handleMessage(text)
-    }
+    const checkIfSensitive = sensitiveWords.some(word => text.toUpperCase().includes(word.toUpperCase()))
+    const checkIfHasAtSign = text.includes("@");
+
+    if (checkIfSensitive) setWarningText(mainLang.language.warning_text);
+    if (checkIfHasAtSign) setWarningText(mainLang.language.atsign_not_allowed);
+
+    setHasSensitiveWords(checkIfSensitive || checkIfHasAtSign ? true : false);
+    handleMessage(checkIfSensitive || checkIfHasAtSign ? "" : text)
   }, [hasSensitiveWords, text])
 
   return { hasSensitiveWords, text, warningText, setText, defaultText }

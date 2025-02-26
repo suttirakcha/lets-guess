@@ -13,11 +13,9 @@ interface CardCateWithTitleProps {
 }
 
 export function CardCate({ href, category, onSelect } : CardCateProps){
-  const navigate = useNavigate()
-
+  const navigate = useNavigate();
   const clickCate = () => {
     onSelect && onSelect()
-
     const setLink = () => navigate(href, { replace: true })
     setTimeout(setLink, 5000);
   }

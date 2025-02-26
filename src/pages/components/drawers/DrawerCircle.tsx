@@ -20,7 +20,7 @@ export default function DrawerCircle({ open, onClose, children, title } : Drawer
     } else {
       setTimeout(() => {
         setIsDrawerActive(false)
-      })
+      }, 1)
     }
     return isDrawerActive
   }
