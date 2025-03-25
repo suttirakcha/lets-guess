@@ -11,7 +11,7 @@ const ThreeDots = () => {
     return () => clearInterval(interval);
   }, []);
 
-  return dot;
+  return <span>{dot}</span>;
 };
 
 export default ThreeDots;
