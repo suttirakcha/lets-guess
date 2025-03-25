@@ -1,12 +1,11 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ButtonHTMLAttributes, ReactNode } from "react";
+import { ButtonHTMLAttributes, PropsWithChildren } from "react";
 
 type ButtonAttributes = ButtonHTMLAttributes<HTMLButtonElement>
 
 interface ButtonProps extends ButtonAttributes {
   className?: string
-  children: ReactNode
   size?: string
 }
 
@@ -23,7 +22,7 @@ enum ButtonSize {
   Icon = "icon"
 }
 
-export function Button({ className, children, size, ...props } : ButtonProps){
+export function Button({ className, children, size, ...props } : PropsWithChildren<ButtonProps>){
   return (
     <button 
       className={`${size === ButtonSize.Small ? 'small-btn' : size === ButtonSize.Medium ? 'medium-btn' : size === ButtonSize.Icon ? 'icon-btn' : 'btn'} ${className || ''}`} 

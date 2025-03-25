@@ -13,15 +13,12 @@ import useLanguage from "../hooks/useLanguage";
 import useSearch from "../hooks/useSearch";
 import useChangeMode from "../hooks/useChangeMode";
 import Loading from "./components/Loading";
-import useAnswerIsHidden from "../hooks/useAnswerIsHidden";
 import Settings from "./components/drawers/Settings";
 import ChangeLangDrawer from "./components/drawers/ChangeLangDrawer";
 
 export default function MainPage(){
-
   const { lang } = useParams()
   const navigate = useNavigate()
-  const { hasSensitiveWords } = useAnswerIsHidden(lang)
   const { mainLang, checkLang } = useLanguage(lang)
   const { searchSec, openSearch, closeSearch, handleSearch } = useSearch()
   const { checkIfDarkMode } = useChangeMode()
@@ -36,10 +33,7 @@ export default function MainPage(){
   const [tooltipAppear, setTooltipAppear] = useState(false);
   const [openSettings, setOpenSettings] = useState(false)
   const [openSelectLang, setOpenSelectLang] = useState(false)
-
-  const closeSettings = () => {
-    hasSensitiveWords ? setOpenSettings(true) : setOpenSettings(false)
-  }
+  const closeSettings = () => setOpenSettings(false);
 
   const changePage = (page: number, animation: string, bgColor?: string) => {
     setPageSec(prev => ({...prev, isChanging: true, headerFading: true}))

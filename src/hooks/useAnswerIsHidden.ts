@@ -6,16 +6,17 @@ import useLanguage from "./useLanguage"
 const useAnswerIsHidden = (lang: LangType) => {
   const { mainLang } = useLanguage(lang)
   const defaultText: string = 
-    localStorage.length > 1 && localStorage.getItem(
-      lang === LanguagesEnum.Thai ? "text-hidden-th" : 
-      lang === LanguagesEnum.Chinese ? "text-hidden-zh" :
-      lang === LanguagesEnum.German ? "text-hidden-de" :
-      "text-hidden"
-    ) || ""
+    localStorage.length > 1 && (lang === LanguagesEnum.Thai ? 
+    localStorage.getItem("text-hidden-th") :
+  lang === LanguagesEnum.Chinese ?
+    localStorage.getItem("text-hidden-zh") :
+  lang === LanguagesEnum.German ?
+    localStorage.getItem("text-hidden-de") :
+    localStorage.getItem("text-hidden")) || ""
 
-  const [text, setText] = useState<string>(defaultText)
-  const [warningText, setWarningText] = useState<string>("")
-  const [hasSensitiveWords, setHasSensitiveWords] = useState(false)
+  const [text, setText] = useState(defaultText);
+  const [warningText, setWarningText] = useState("");
+  const [hasSensitiveWords, setHasSensitiveWords] = useState(false);
 
   const handleMessage = (message: string) => {
     localStorage.length > 1 && (lang === LanguagesEnum.Thai ?
@@ -35,7 +36,7 @@ const useAnswerIsHidden = (lang: LangType) => {
     if (checkIfHasAtSign) setWarningText(mainLang.language.atsign_not_allowed);
 
     setHasSensitiveWords(checkIfSensitive || checkIfHasAtSign ? true : false);
-    handleMessage(checkIfSensitive || checkIfHasAtSign ? "" : text)
+    handleMessage(checkIfSensitive || checkIfHasAtSign ? "" : text);
   }, [hasSensitiveWords, text])
 
   return { hasSensitiveWords, text, warningText, setText, defaultText }

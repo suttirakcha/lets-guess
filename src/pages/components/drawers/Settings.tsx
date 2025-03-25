@@ -11,6 +11,7 @@ import { Button } from "../Button"
 import Modal from "../Modal"
 import { useState } from "react"
 import { startStorages } from "../../../data/initial-storages"
+import ThreeDots from "../ThreeDots"
 
 interface SettingsProps {
   lang: string | undefined
@@ -19,7 +20,6 @@ interface SettingsProps {
 }
 
 const Settings = ({ open, onClose, lang } : SettingsProps) => {
-
   const { mainLang } = useLanguage(lang)
   const { timerSwitch, toggleTimer } = useTimer()
   const { changeMode } = useChangeMode()
@@ -35,18 +35,21 @@ const Settings = ({ open, onClose, lang } : SettingsProps) => {
     }, 3000)
   }
 
+  const handleOnClose = () => {
+    if (!hasSensitiveWords){
+      onClose();
+    }
+  }
+
   return (
     <>
-      <DrawerCircle open={open} onClose={onClose} title={mainLang.language.settings}>
+      <DrawerCircle open={open} onClose={handleOnClose} title={mainLang.language.settings}>
         {mainLang.language.settings_note}
-
         <div className="setting-sec">
           <h2>{mainLang.language.timer}</h2>
-
           <ToggleSelect id='switch-timer' checked={timerSwitch} onChange={toggleTimer} valueOne={mainLang.language.sixty_seconds} valueTwo={mainLang.language.hundred_twenty_seconds}/>
           <p>{mainLang.language.timer_note}</p>
         </div>
-
         <div className="setting-sec">
           <h2>{mainLang.language.screen_appearance}</h2>
           <div className="screen-appearance">
@@ -77,7 +80,9 @@ const Settings = ({ open, onClose, lang } : SettingsProps) => {
 
       <Modal open={confirmReset} onClose={() => !resetting && setConfirmReset(false)}>
         {resetting ? (
-          <h1 className="modal-question">{mainLang.language.resetting}</h1>
+          <h1 className="modal-question">
+            {mainLang.language.resetting}<ThreeDots/>
+          </h1>
         ) : (
           <>
             <h1 className="modal-question">{mainLang.language.confirm_reset}</h1>

@@ -763,18 +763,18 @@ input:checked + .switch-toggle:before{
 }
 
 .drawer-header {
-  position: fixed;
-  top:0;
-  width: calc(35% - 80px);
-  min-width: calc(480px - 80px);
   display: flex;
   justify-content: space-between;
   align-items:center;
-  z-index: 999;
   margin:0;
-  padding:30px 0 10px;
-  background-color:white;
-  transition:background-color 300ms;
+  padding:0 0 10px;
+}
+
+.drawer-content {
+  overflow:auto;
+  overflow-x:hidden;
+  height:calc(100% - 80px);
+  padding-right:20px;
 }
 
 .drawer-close {
@@ -806,13 +806,13 @@ input:checked + .switch-toggle:before{
   top:0;
   right:-1024px;
   z-index:99;
-  padding:100px 40px 40px;
+  padding:30px 40px 40px;
   text-align:left;
   transition:right 500ms;
   &.active {
     right:0;
     transition:right 500ms;
-    overflow:auto;
+    overflow:hidden;
   }
 }
 
@@ -860,7 +860,6 @@ input:checked + .switch-toggle:before{
     margin-top:0;
     li{
       list-style:none;
-      width:calc(100% - 80px);
       cursor:pointer;
       border-radius:99px;
       text-align:left;
@@ -868,14 +867,15 @@ input:checked + .switch-toggle:before{
       margin:12px 0;
       transition:background-color 300ms, color 300ms;
       font-size:28px;
-      &:hover,&.active{
+      &:hover{
         background-color:#202020;
         color:white;
         transition:all 300ms;
       }
       &.active{
-        @include visible;
-        transition:all 400ms;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
       }
     }
   }

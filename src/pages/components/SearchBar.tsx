@@ -3,7 +3,7 @@ import { faSearch, faClose } from "@fortawesome/free-solid-svg-icons"
 import { Button } from "./Button";
 import { TextInput } from "./TextInput";
 import Tooltip from "./Tooltip";
-import { ChangeEvent, useRef, useState, KeyboardEvent, useEffect } from "react";
+import { ChangeEvent, useState, KeyboardEvent } from "react";
 
 interface SearchBarProps {
   open: boolean
@@ -16,7 +16,6 @@ interface SearchBarProps {
 
 export default function SearchBar({ open, onOpen, onClose, onSearch, placeholder, value } : SearchBarProps){
   const [hover, setHover] = useState(false)
-
   const openSearch = (e: KeyboardEvent) => {
     if (e.ctrlKey && e.key === 's'){
       e.preventDefault()
@@ -30,7 +29,7 @@ export default function SearchBar({ open, onOpen, onClose, onSearch, placeholder
     }
   }
 
-  // document.addEventListener('keydown', openSearch)
+  // window.addEventListener('keydown', openSearch);
 
   return (
     <div className="relative">

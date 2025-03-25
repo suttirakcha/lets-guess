@@ -1,15 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
-import { ReactNode, useState } from "react";
+import { PropsWithChildren, ReactNode, useState } from "react";
 
 interface DrawerCircleProps {
   open: boolean
   onClose: () => void
-  children: ReactNode
   title?: string | ReactNode
 }
 
-export default function DrawerCircle({ open, onClose, children, title } : DrawerCircleProps){
+export default function DrawerCircle({ open, onClose, children, title } : PropsWithChildren<DrawerCircleProps>){
   
   const [isDrawerActive, setIsDrawerActive] = useState(false)
   const activeDrawer = () => {
@@ -44,7 +43,9 @@ export default function DrawerCircle({ open, onClose, children, title } : Drawer
           {title}
           <FontAwesomeIcon icon={faClose} className={`drawer-close${open ? ' active' : ' inactive'}`} onClick={onClose}/>
         </h1>
-        {children}
+        <div className="drawer-content">
+          {children}
+        </div>
       </main>
     </div>
   )

@@ -15,7 +15,6 @@ import usePoint from "../hooks/usePoint"
 import Modal from "./components/Modal"
 
 const GamePage = () => {
-
   const { checkIfDarkMode } = useChangeMode()
   document.body.style.backgroundColor = checkIfDarkMode ? Background.BlueDark : Background.Blue
 
@@ -138,7 +137,7 @@ const GamePage = () => {
         </footer>
       </main>
 
-      <BlockSpace isActive={isAnswerHidden} text={defaultText !== "" ? defaultText : mainLang.language.the_answer_is_hidden}/>
+      <BlockSpace isActive={isAnswerHidden} text={defaultText || mainLang.language.the_answer_is_hidden}/>
 
       {isTimeUp || clearGame || isGoingBack ? <InvisibleOverlay /> : null}
       <BlockSpace isActive={isTimeUp} text={(<span className="time-up-text">{mainLang.language.times_up}</span>)}/>

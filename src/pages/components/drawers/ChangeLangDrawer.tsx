@@ -1,6 +1,8 @@
 import useLanguage from "../../../hooks/useLanguage"
 import DrawerCircle from "./DrawerCircle"
 import { LanguagesEnum } from "../../../types/main-page"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCheck } from "@fortawesome/free-solid-svg-icons"
 
 interface ChangeLangDrawerProps {
   open: boolean
@@ -16,7 +18,6 @@ interface LangList {
 }
 
 const ChangeLangDrawer = ({ open, onClose, lang, onChange } : ChangeLangDrawerProps) => {
-
   const { mainLang } = useLanguage(lang)
 
   const langList: LangList[] = [
@@ -47,7 +48,17 @@ const ChangeLangDrawer = ({ open, onClose, lang, onChange } : ChangeLangDrawerPr
       <div id='langList'>
         <ul className="langs">
           {langList.map(list => (
-            <li key={list.title} className={`${list.isActive ? 'active' : ''}`} onClick={() => !list.isActive && onChange(list.link)}>{list.title}</li>
+            <li key={list.title} 
+              className={`${list.isActive ? 'active' : ''}`} 
+              onClick={() => !list.isActive && onChange(list.link)}
+            >
+              {list.title}
+              {list.isActive && (
+                <span className="check">
+                  <FontAwesomeIcon icon={faCheck}/>
+                </span>
+              )}
+            </li>
           ))}
         </ul>
       </div>
