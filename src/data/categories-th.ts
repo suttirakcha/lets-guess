@@ -1,3 +1,4 @@
+import { flattenedCategories, sortCategories } from "../lib/utils";
 import { Category, CateTitles } from "../types/categories";
 
 export const cateListsThai: Category = {
@@ -74,13 +75,4 @@ export const cateTitlesThai: CateTitles[] = [
   {key: 'อื่นๆ', title:'อื่นๆ', dataKey: 'otherTh'}
 ]
 
-const flattenedCategories = Object.values(cateListsThai).reduce(
-  (accumulator, currentCategory) => [...accumulator, ...currentCategory],
-  []
-);
-
-export const sortedCategoriesThai = flattenedCategories.sort((a, b) => {
-  const cateA = a.category.toLowerCase();
-  const cateB = b.category.toLowerCase();
-  return cateA.localeCompare(cateB);
-});
+export const sortedCategoriesThai = sortCategories(cateListsThai);
