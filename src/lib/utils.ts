@@ -7,9 +7,9 @@ export const flattenedCategories = (cates: Category) => {
 }
 
 export const sortCategories = (cates: Category) => {
-    return flattenedCategories(cates).sort((a, b) => {
-        const cateA = a.category.toLowerCase();
-        const cateB = b.category.toLowerCase();
-        return cateA.localeCompare(cateB);
-    });
+  return flattenedCategories(cates).sort((a, b) => {
+    const cateA = a.category.toLowerCase();
+    const cateB = b.category.toLowerCase();
+    return cateA.localeCompare(cateB);
+  });
 }

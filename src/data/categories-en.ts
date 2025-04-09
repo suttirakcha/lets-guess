@@ -1,4 +1,4 @@
-import { flattenedCategories, sortCategories } from "../lib/utils";
+import { sortCategories } from "../lib/utils";
 import { Category, CateTitlesEnglish } from "../types/categories";
 
 export const cateLists: Category = {
