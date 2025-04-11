@@ -17,7 +17,7 @@ export const englishText = {
       <li>You have 60 or 120 seconds, depending on your setting, to hint the answers.</li>
     </ol>
   ),
-  ready: "Are you ready?",
+  ready: "Are you ready? Let's go!",
   play_now: "Play now",
   search_category: "Search category",
   settings: "Settings",
